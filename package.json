@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@wdio/cli": "^7.11.1",
+    "mysql": "^2.18.1"
+  },
+  "scripts": {
+    "test": "react-app-rewired test",
+    "test:e2e": "./node_modules/.bin/wdio wdio.conf.js",
+    "appium": "./node_modules/.bin/wdio wdio.conf.js --port 4723"
+  },
+  "devDependencies": {
+    "@wdio/local-runner": "^7.11.1",
+    "@wdio/mocha-framework": "^7.11.1",
+    "@wdio/spec-reporter": "^7.10.1",
+    "chromedriver": "^92.0.2",
+    "wdio-chromedriver-service": "^7.2.0"
+  }
+}

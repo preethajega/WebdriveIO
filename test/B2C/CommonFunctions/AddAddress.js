@@ -1,0 +1,37 @@
+var actionWrapper = require("./../../CommonActions/ActionsWrappers").default;
+var addressPageObjects = require("./../PageObjects/Address.page");
+var addressInput = require("./../Input/Address");
+const assert = require("assert");
+
+class addAddress {
+  addAddressValid = async (ele) => {
+    await  actionWrapper.checkEnabledClearAndSetValue(
+      addressPageObjects.addressLine,
+      addressInput.addressLine1
+    );
+    await actionWrapper.checkEnabledClearAndSetValue(
+      addressPageObjects.locality,
+      addressInput.locality
+    );
+    await actionWrapper.checkEnabledClearAndSetValue(
+      addressPageObjects.city,
+      addressInput.city
+    );
+    await actionWrapper.checkEnabledClearAndSetValue(
+      addressPageObjects.state,
+      addressInput.state
+    );
+    await actionWrapper.checkVisibleClickableMoveAndClick(
+      addressPageObjects.workAddress
+    );
+    await actionWrapper.checkVisibleClickableMoveAndClick(addressPageObjects.save);
+  };
+  
+
+
+
+};
+
+module.exports = new addAddress();
+
+
