@@ -10,88 +10,93 @@ var dbConnectionB2C = require("../../CommonActions/DatabaseConnection");
 var addAddress = require("./../CommonFunctions/AddAddress");
 
 describe("Profile  page", () => {
-    let otp;
-    let test;
 
-    it("Valid Login Scenario", () => {
-        LoginPage.open();
-        LoginPage.wait();
+  let otp;
+  let test;
+
+  it("Opening and clicking login button", async () => {
+    await LoginPage.open();
+    await LoginPage.wait();
+  });
+
+  it("Valid Login Scenario", async () => {
+    await LoginPage.signInIconClick();
+    await actionwrappers.checkEnableddoubleClickDeleteAndSetValue(
+      LoginPage.mobileNumber,
+      ""
+    );
+    await LoginPage.login(loginInput.validMobile);
+  });
+
+  it("DB Connection", async () => {
+    await browser.pause(3000);
+    var sql = "SELECT otp FROM Users where ID=90;";
+        test = await LoginPage.dbConnection(sql).then((res) => {
+      otp = res ? res[0].otp : null;
+      return otp;
+    });
+    dbConnectionB2C.end();
+  });
+
+  it("one time passcode", async () => {
+    await browser.pause(1000);
+    await LoginPage.inputOTP(otp);
+    await browser.pause(1000);
     
-        LoginPage.signInIcon.waitForDisplayed(8000);
-        LoginPage.login(loginInput.validMobile);
-      });
-
-      it("DBConnect", function () {
-        browser.pause(5000);
-        var sql = "SELECT otp FROM Users where ID=90;";
-        dbConnectionB2C.connect();
-        test = dbConnectionB2C.query(sql, function (error, result) {
-          if (error) throw error;
-          if (!error) {
-            otp = result ? result[0].otp : null;
-          }
-        });
-        console.log(otp)
-      });
-
-      it("one time passcode", function () {
-        browser.pause(3000)
-        LoginPage.inputOTP(otp);
-        browser.pause(3000);
-        // LoginPage.image.click();
-      });
+  });
 
 
-it("Profile navigation", () => {
+
+it("Profile navigation", async () => {
   
- menuNavigation.Navigation(menuPage.profileIcon,menuPage.profile);
+  await menuNavigation.Navigation( menuPage.profileIcon,menuPage.profile);
 
- actionwrappers.urlValidation("profile");
+  await actionwrappers.urlValidation("profile");
      
 });
 
-it("upload prfile image",() =>{
-    uploadAttchment.upload(profilePage.appIcon,ProfileInput.profilepath);
-    actionwrappers.checkVisibleClickableAndClick(profilePage.save);
+it("upload prfile image", async () =>{
+  await  uploadAttchment.upload(profilePage.appIcon,ProfileInput.profilepath);
+  await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
     
     
 });
 
 
-it("Update the name & Email",() =>{
-    actionwrappers.clearAndsetValue(profilePage.fullName,ProfileInput.name);
-    actionwrappers.clearAndsetValue(profilePage.emailId,ProfileInput.mail);
-    actionwrappers.checkVisibleClickableAndClick(profilePage.save);
+it("Update the name & Email",async () =>{
+  await  actionwrappers.clearAndsetValue(profilePage.fullName,ProfileInput.name);
+  await  actionwrappers.clearAndsetValue(profilePage.emailId,ProfileInput.mail);
+  await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
    
     
 });
 
 
-// it("Add Address",()=>{
-//     actionwrappers.checkVisibleClickableAndClick(profilePage.addAddress);
-//     addAddress.addAddressValid();
+// it("Add Address", async ()=>{
+//   await  actionwrappers.checkVisibleClickableAndClick(profilePage.addAddress);
+//   await  addAddress.addAddressValid();
 // });
 
 
 
-it("Remove the Address", () =>{
-    actionwrappers.scroll(profilePage.lastAddress);
-    actionwrappers.checkVisibleClickableAndClick(profilePage.lastAddress);
-    actionwrappers.checkVisibleClickableAndClick(profilePage.removeAddress);
-    actionwrappers.checkVisibleClickableAndClick(profilePage.deleteAddress);
+it("Remove the Address", async () =>{
+  await actionwrappers.scroll(profilePage.lastAddress);
+  await actionwrappers.checkVisibleClickableAndClick(profilePage.lastAddress);
+  await actionwrappers.checkVisibleClickableAndClick(profilePage.removeAddress);
+  await actionwrappers.checkVisibleClickableAndClick(profilePage.deleteAddress);
 
 
 });
 
-it("Remove the app icon",() =>{
-    actionwrappers.checkVisibleClickableAndClick(profilePage.removeAppicon);
-    actionwrappers.checkVisibleClickableAndClick(profilePage.save);
+it("Remove the app icon", async () =>{
+  await  actionwrappers.checkVisibleClickableAndClick(profilePage.removeAppicon);
+  await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
 
 });
 
-it("Logout ", () => {
+it("Logout ", async () => {
   
-    menuNavigation.Navigation(menuPage.profileIcon,menuPage.logoutBtn);
+  await menuNavigation.Navigation(menuPage.profileIcon,menuPage.logoutBtn);
           
    });
 

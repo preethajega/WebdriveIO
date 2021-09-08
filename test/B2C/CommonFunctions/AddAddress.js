@@ -5,19 +5,19 @@ const assert = require("assert");
 
 class addAddress {
   addAddressValid = async (ele) => {
-    await  actionWrapper.checkEnabledClearAndSetValue(
+    await  actionWrapper.isNotEmpty_clearAndsetValue(
       addressPageObjects.addressLine,
       addressInput.addressLine1
     );
-    await actionWrapper.checkEnabledClearAndSetValue(
+    await actionWrapper.isNotEmpty_clearAndsetValue(
       addressPageObjects.locality,
       addressInput.locality
     );
-    await actionWrapper.checkEnabledClearAndSetValue(
+    await actionWrapper.isNotEmpty_clearAndsetValue(
       addressPageObjects.city,
       addressInput.city
     );
-    await actionWrapper.checkEnabledClearAndSetValue(
+    await actionWrapper.isNotEmpty_clearAndsetValue(
       addressPageObjects.state,
       addressInput.state
     );

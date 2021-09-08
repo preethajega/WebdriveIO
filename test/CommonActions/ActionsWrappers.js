@@ -102,7 +102,7 @@ urlValidation= async (ExceptedURL)=>{
 
   //if value is empty set the value
   isEmpty_setValue = async (ele, inputValue) => {
-    if (ele.getValue()=== "") {
+    if (await ele.getValue()=== "") {
       await  ele.waitForDisplayed(2000);
       await  ele.setValue(inputValue);
     }

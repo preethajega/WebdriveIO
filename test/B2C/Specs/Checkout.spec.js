@@ -1,35 +1,48 @@
-// import _ from "lodash";
+const ProdInput = require("../Input/Product.io");
+var actionwrappers = require("./../../CommonActions/ActionsWrappers");
+const path = require("../../B2C/PageObjects/Checkout.page");
 
-var dbConnectionB2C = require("../../CommonActions/DatabaseConnection");
-describe('MYSQL Test', function() {
+var  searchProdTocart= require("../CommonFunctions/AddProductCart");
 
- let otp;
-  it('Getting values from DB', function() {
 
-    
-    var sql = "SELECT otp FROM Users where ID=9;"
-    dbConnectionB2C.connect();
-      dbConnectionB2C.query(sql, function (error, result) {
-        if (error) throw error;
-        console.log(result);
-        if(!error){
-          console.log("if");
-          otp = result?result[0].otp :null;
-        }
-        console.log(otp);
-        
+describe("Checkout  page", () => {
 
-      }); 
-   });
-
-   it('Test', function(){
-    browser.url(`https://new.bcommerce.in/auth/login`);
-    let email = $('[name="Username"]');
-    let pswd = $('[name="Password"]')
-    email.setValue(otp);
-    pswd.click()
-    browser.pause(8000);
-    pswd.setValue("Admin@123");
-
-   })
+it("Search prod & Add to cart", async () => {
+   await searchProdTocart.searchProd(ProdInput.productName,ProdInput.qty,path.cartIcon);
+   await actionwrappers.urlValidation("checkout/cart");
 });
+
+it("save for later", async () => {
+    await  searchProdTocart.cartChanges(path.saveforLater);
+    await  actionwrappers.urlValidation("checkout/cart");
+
+});
+
+it("Move to cart", async () => {
+    await   actionwrappers.scroll(path.MoveTocart);
+    await   searchProdTocart.cartChanges(path.MoveTocart);
+    await   actionwrappers.urlValidation("checkout/cart");
+   
+});
+
+it("remove the prod from the cart",async () => {
+    await  searchProdTocart.cartChanges(path.removeProduct);
+    await  actionwrappers.urlValidation("checkout/cart");
+});
+
+it("remove the prod from the cart", async () => {
+    await  searchProdTocart.searchProd(ProdInput.productName,ProdInput.qty,path.cartIcon);
+    await  searchProdTocart.cartChanges(path.placeOrderCart);
+    await  actionwrappers.urlValidation("checkout/cart");
+    await  actionwrappers.checkClickableAndClick(path.logo);
+});
+
+it("Search prod & BuyNow", async () => {
+    await  searchProdTocart.searchProd(ProdInput.productName,ProdInput.qty,path.BuyNowInDetailPage);
+    await  actionwrappers.urlValidation("direct_checkout/address");
+    
+});
+
+
+});
+
