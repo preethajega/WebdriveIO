@@ -67,17 +67,18 @@ describe("Login page", () => {
         await CheckoutPageObject.continueBtn
       );
 
-      await actionwrappers.checkVisibleClickableMoveAndClick(
-        await CheckoutPageObject.changePickupAddress
-      );
+      // await actionwrappers.checkVisibleClickableMoveAndClick(
+      //   await CheckoutPageObject.changePickupAddress
+      // );
 
+      // await actionwrappers.checkVisibleClickableMoveAndClick(
+      //   await CheckoutPageObject.otherSellerAddress
+      // );
+browser.pause(1000)
       await actionwrappers.checkVisibleClickableMoveAndClick(
-        await CheckoutPageObject.otherSellerAddress
+        await CheckoutPageObject.shippingContinueBtn
       );
-
-      await actionwrappers.checkVisibleClickableMoveAndClick(
-        await CheckoutPageObject.continueBtn
-      );
+      // browser.url('https://b2cdev.myapptino.com/checkout/summary/iscart/payment')
     // change login starts here
 
     // await actionwrappers.checkVisibleClickableMoveAndClick(
@@ -92,4 +93,51 @@ describe("Login page", () => {
     // await LoginPage.signInIconClick();
     // // await actionwrappers.checkVisibleClickableMoveAndClick(await CheckoutPageObject.changePickupAddress);
   });
+
+  it("test", async () =>{
+    
+    // await actionwrappers.checkVisibleClickableMoveAndClick(
+    //   await CheckoutPageObject.placeOrderAndPay
+    // );
+    // change payment
+    // await actionwrappers.checkVisibleClickableMoveAndClick(
+    //   await CheckoutPageObject.payOnDelivery
+    // );
+
+    // await actionwrappers.checkVisibleClickableMoveAndClick(
+    //   await CheckoutPageObject.onlinePayment
+    // );
+    await CheckoutPageObject.onlinePayment.click()
+  
+        await actionwrappers.checkVisibleClickableMoveAndClick(
+          await CheckoutPageObject.placeOrderAndPay
+        );
+        
+        await actionwrappers.checkVisibleClickableMoveAndClick(
+          await CheckoutPageObject.otherNetwork
+        );
+        
+        await actionwrappers.checkEnableddoubleClickDeleteAndSetValue(
+          await CheckoutPageObject.referenceNumber, "8489232492"
+        );
+    
+        // await actionwrappers.checkVisibleClickableMoveAndClick(
+        //   await CheckoutPageObject.placeOrderAndPay
+        // );
+    
+        await actionwrappers.checkVisibleClickableMoveAndClick(
+          await CheckoutPageObject.cancelPaymentDialog
+        );
+        await actionwrappers.checkVisibleClickableMoveAndClick(
+          await CheckoutPageObject.placeOrderAndPay
+        );
+    
+        await actionwrappers.checkVisibleClickableMoveAndClick(
+          await CheckoutPageObject.proceedPaymentDialog
+        );
+      
+  
+    
+  
+  })
 });

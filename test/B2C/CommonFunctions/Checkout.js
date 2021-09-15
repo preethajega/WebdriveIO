@@ -57,111 +57,54 @@ class Checkout {
       await CheckoutPageObjects.continueBtn
     );
   };
-  // To choose the first option in the drop down with an click action.
-  ClickElementAndkeyboardVal = async (ele, keyValue) => {
-    await ele.waitForDisplayed(2000);
-    await ele.waitForClickable({ timeout: 2000 });
-    await ele.click();
-    await browser.pause(2000);
-    await ele.keys(keyValue);
-    await ele.keys("\uE015");
-    await browser.pause(1000);
-    await ele.keys("\uE007");
-  };
-  // To choose the first option in the drop down with an setvalue action.
-  SetValueElementMoveAndkeyboardVal = async (ele, inputValue, keyValue) => {
-    await ele.moveTo();
-    await ele.waitForDisplayed(2000);
-    await ele.waitForClickable({ timeout: 2000 });
-    await ele.click();
-    await ele.setValue(inputValue);
-    await browser.pause(1000);
-    await ele.keys(keyValue);
-    await ele.keys("\uE015");
-    await browser.pause(1000);
-    await ele.keys("\uE007");
-  };
-  //Wait for an element,and check clickable before clicking
-  checkClickableAndClick = async (ele) => {
-    await ele.waitForClickable({ timeout: 2000 });
-    await ele.click();
-  };
+  
+  // to select pay on delivery and place order, note this assume the first index 
+  // as pay on delivery after which place order will be done
+  selectPODAndPlaceOrder = async()=>{
+    await CheckoutPageObjects.payOnDelivery.click();
+    await actionwrappers.checkVisibleClickableMoveAndClick(
+      await CheckoutPageObjects.placeOrderAndPay
+    );
+  }
 
-  //Clear the setvalue using doubleclick and delete, and enter the new value
-  //double click does not work when there is more than 1 word.
-  checkEnableddoubleClickDeleteAndSetValue = async (elem, inputvalue) => {
-    await elem.waitForEnabled(2000);
-    await elem.waitForClickable({ timeout: 2000 });
-    await elem.doubleClick();
-    await elem.keys("\uE017");
-    await browser.pause(1000);
-    await elem.setValue(inputvalue);
-  };
+// To select online payment momo pay(for hisense) and select the payment options with input to method and place order
+  selectMoMOPayAndPlaceOrder= async (onlineType)  =>{
+    await CheckoutPageObjects.onlinePayment.click()
+  
+    await actionwrappers.checkVisibleClickableMoveAndClick(
+      await CheckoutPageObjects.placeOrderAndPay
+    );
 
-  //double click and delete
-  checkVisibleClickableAndDoubleClickDelete = async (ele) => {
-    await ele.waitForDisplayed(2000);
-    await ele.waitForClickable({ timeout: 2000 });
-    await ele.doubleClick();
-    await ele.keys("\uE0017");
-  };
-
-  //Clear value and select value from dropdown using keyboard
-  clearValue_selectDropdownvalue = async (ele, inputvalue) => {
-    await ele.waitForDisplayed(2000);
-    await ele.click();
-    await browser.keys(["\uE009", "a"]);
-    await ele.keys("\uE003");
-    await browser.pause(1000);
-    await ele.setValue(inputvalue);
-    await ele.keys("\uE015");
-    await browser.pause(1000);
-    await ele.keys("\uE007");
-  };
-
-  urlValidation = async (ExceptedURL) => {
-    await browser.pause(5000);
-    await browser.getUrl();
-    await expect(browser).toHaveUrlContaining(ExceptedURL);
-  };
-
-  //if value is empty set the value
-  isEmpty_setValue = async (ele, inputValue) => {
-    if ((await ele.getValue()) === "") {
-      await ele.waitForDisplayed(2000);
-      await ele.setValue(inputValue);
+    if(onlineType === "otherNetwork"){
+      await actionwrappers.checkVisibleClickableMoveAndClick(
+        await CheckoutPageObjects.otherNetwork
+      );
+    } else if(onlineType === "MTNMoMoPay"){
+      await actionwrappers.checkVisibleClickableMoveAndClick(
+        await CheckoutPageObjects.MTNMoMoPay
+      );
+    } else{
+      await actionwrappers.checkVisibleClickableMoveAndClick(
+        await CheckoutPageObjects.bankTransfer
+      );
     }
-  };
+    
+    
+    await actionwrappers.checkEnableddoubleClickDeleteAndSetValue(
+      await CheckoutPageObjects.referenceNumber, "8489232492"
+    );
+    await actionwrappers.checkVisibleClickableMoveAndClick(
+      await CheckoutPageObjects.cancelPaymentDialog
+    );
+    await actionwrappers.checkVisibleClickableMoveAndClick(
+      await CheckoutPageObjects.placeOrderAndPay
+    );
 
-  //if value is not equal to empty clear the value & set the new value else enter the new value
-  isNotEmpty_clearAndsetValue = async (ele, inputValue) => {
-    if (!(await ele.getValue()) === "") {
-      await ele.waitForDisplayed(4000);
-      await ele.click();
-      await browser.keys(["\uE009", "a"]);
-      await ele.keys("\uE003");
-      await browser.pause(2000);
-      await ele.setValue(inputValue);
-    } else {
-      await ele.waitForDisplayed(2000);
-      await ele.setValue(inputValue);
-    }
-  };
-
-  //clear the value & set the new value else enter the new value
-  clearAndsetValue = async (ele, inputValue) => {
-    await ele.waitForDisplayed(4000);
-    await ele.click();
-    await browser.keys(["\uE009", "a"]);
-    await browser.pause(2000);
-    await ele.keys("\uE003");
-    await browser.pause(2000);
-    await ele.setValue(inputValue);
-  };
-
-  //to scroll the page
-  scroll = async (ele) => {
-    await ele.scrollIntoView();
-  };
+    await actionwrappers.checkVisibleClickableMoveAndClick(
+      await CheckoutPageObjects.proceedPaymentDialog
+    );
+  }
+  
+  
 }
 module.exports = new Checkout();
