@@ -1,4 +1,4 @@
-var actionWrapper = require("./../../CommonActions/ActionsWrappers").default;
+var actionWrapper = require("./../../CommonActions/ActionsWrappers");
 var addressPageObjects = require("./../PageObjects/Address.page");
 var addressInput = require("./../Input/Address");
 const assert = require("assert");
@@ -24,6 +24,8 @@ class addAddress {
     await actionWrapper.checkVisibleClickableMoveAndClick(
       addressPageObjects.workAddress
     );
+
+    await actionWrapper.scroll(addressPageObjects.save);
     await actionWrapper.checkVisibleClickableMoveAndClick(addressPageObjects.save);
   };
   

@@ -8,6 +8,7 @@ var  menuNavigation= require("../CommonFunctions/MenuNavigation");
 var actionwrappers = require("./../../CommonActions/ActionsWrappers");
 var dbConnectionB2C = require("../../CommonActions/DatabaseConnection");
 var addAddress = require("./../CommonFunctions/AddAddress");
+const assert = require("assert");
 
 describe("Profile  page", () => {
 
@@ -50,14 +51,22 @@ describe("Profile  page", () => {
 it("Profile navigation", async () => {
   
   await menuNavigation.Navigation( menuPage.profileIcon,menuPage.profile);
-
   await actionwrappers.urlValidation("profile");
      
 });
 
-it("upload prfile image", async () =>{
+it("profile image size validation", async () =>{
+  await  uploadAttchment.upload(profilePage.appIcon,ProfileInput.profileImage);
+  assert.strictEqual(await profilePage.snackbar.getText(),"Maximum file size of 200KB allowed");
+    
+     
+});
+  
+
+it("upload profile image", async () =>{
   await  uploadAttchment.upload(profilePage.appIcon,ProfileInput.profilepath);
   await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
+  assert.strictEqual(await profilePage.snackbar.getText(),"Profile updated successfully");
     
     
 });
@@ -67,15 +76,11 @@ it("Update the name & Email",async () =>{
   await  actionwrappers.clearAndsetValue(profilePage.fullName,ProfileInput.name);
   await  actionwrappers.clearAndsetValue(profilePage.emailId,ProfileInput.mail);
   await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
+  assert.strictEqual(await profilePage.snackbar.getText(),"Profile updated successfully");
+ 
    
     
 });
-
-
-// it("Add Address", async ()=>{
-//   await  actionwrappers.checkVisibleClickableAndClick(profilePage.addAddress);
-//   await  addAddress.addAddressValid();
-// });
 
 
 
@@ -84,6 +89,7 @@ it("Remove the Address", async () =>{
   await actionwrappers.checkVisibleClickableAndClick(profilePage.lastAddress);
   await actionwrappers.checkVisibleClickableAndClick(profilePage.removeAddress);
   await actionwrappers.checkVisibleClickableAndClick(profilePage.deleteAddress);
+  assert.strictEqual(await profilePage.snackbar.getText(),"Profile updated successfully");
 
 
 });
@@ -91,7 +97,13 @@ it("Remove the Address", async () =>{
 it("Remove the app icon", async () =>{
   await  actionwrappers.checkVisibleClickableAndClick(profilePage.removeAppicon);
   await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
+  assert.strictEqual(await profilePage.snackbar.getText(),"Profile updated successfully");
 
+});
+
+it("Add Address", async ()=>{
+  await  actionwrappers.checkVisibleClickableAndClick(profilePage.addAddress);
+  await  addAddress.addAddressValid()
 });
 
 it("Logout ", async () => {

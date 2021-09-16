@@ -49,7 +49,7 @@ get defaultAddress() {
 }
 
 get save() {
-    return super.pathByXpath('//span[text()="Save"]');
+    return super.pathByXpath('(//span[text()="Save"])[last()]');
 }
 
 get cancel() {

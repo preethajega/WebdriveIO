@@ -2,11 +2,11 @@ const Page = require("../../B2B/PageObjects/page");
 
 
 class profilePage extends Page {
-  open() {
+  async open() {
     super.b2cPath(""); //this will append `login` to the baseUrl to form complete URL
   }
-wait(){
-  browser.pause(8000);
+async wait(){
+ await  browser.pause(8000);
 }
 
 get appIcon() {
@@ -57,7 +57,7 @@ get deleteAddress(){
 }
 
 get snackbar(){
-    return super.pathById('client-snackbar');
+    return super.pathByXpath('//div[@class="MuiAlert-message"]');
 
 }
 }
