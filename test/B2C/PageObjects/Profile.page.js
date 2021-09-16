@@ -60,6 +60,10 @@ get snackbar(){
     return super.pathByXpath('//div[@class="MuiAlert-message"]');
 
 }
+get nameAlert(){
+    return super.pathByXpath('//*[@id="App"]/div/div/div/div[2]/div[2]/form/div[1]/p');
+
+}
 }
 
 module.exports = new profilePage();

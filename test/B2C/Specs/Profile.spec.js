@@ -57,7 +57,7 @@ it("Profile navigation", async () => {
 
 it("profile image size validation", async () =>{
   await  uploadAttchment.upload(profilePage.appIcon,ProfileInput.profileImage);
-  assert.strictEqual(await profilePage.snackbar.getText(),"Maximum file size of 200KB allowed");
+ // assert.strictEqual(await profilePage.snackbar.getText(),"Maximum file size of 200KB allowed");
     
      
 });
@@ -71,29 +71,6 @@ it("upload profile image", async () =>{
     
 });
 
-
-it("Update the name & Email",async () =>{
-  await  actionwrappers.clearAndsetValue(profilePage.fullName,ProfileInput.name);
-  await  actionwrappers.clearAndsetValue(profilePage.emailId,ProfileInput.mail);
-  await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
-  assert.strictEqual(await profilePage.snackbar.getText(),"Profile updated successfully");
- 
-   
-    
-});
-
-
-
-it("Remove the Address", async () =>{
-  await actionwrappers.scroll(profilePage.lastAddress);
-  await actionwrappers.checkVisibleClickableAndClick(profilePage.lastAddress);
-  await actionwrappers.checkVisibleClickableAndClick(profilePage.removeAddress);
-  await actionwrappers.checkVisibleClickableAndClick(profilePage.deleteAddress);
-  assert.strictEqual(await profilePage.snackbar.getText(),"Profile updated successfully");
-
-
-});
-
 it("Remove the app icon", async () =>{
   await  actionwrappers.checkVisibleClickableAndClick(profilePage.removeAppicon);
   await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
@@ -101,9 +78,42 @@ it("Remove the app icon", async () =>{
 
 });
 
+it("Update the name & Email",async () =>{
+  await  actionwrappers.clearAndsetValue(profilePage.fullName,ProfileInput.name);
+  await  actionwrappers.clearAndsetValue(profilePage.emailId,ProfileInput.mail);
+  await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
+  assert.strictEqual(await profilePage.snackbar.getText(),"Profile updated successfully");
+    
+});
+
+it("save with empty name",async () =>{
+  await  actionwrappers.clearValues(profilePage.fullName);
+  await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
+  assert.strictEqual(await profilePage.nameAlert.getText(),"Name required");
+    
+});
+
+
 it("Add Address", async ()=>{
   await  actionwrappers.checkVisibleClickableAndClick(profilePage.addAddress);
   await  addAddress.addAddressValid()
+});
+
+it("Edit Address", async () =>{
+  await actionwrappers.scroll(profilePage.lastAddress);
+  await actionwrappers.checkVisibleClickableAndClick(profilePage.lastAddress);
+  await actionwrappers.checkVisibleClickableAndClick(profilePage.editAddress);
+  await addAddress.addAddressValid();
+
+});
+
+it("Remove the Address", async () =>{
+  await actionwrappers.scroll(profilePage.lastAddress);
+  await actionwrappers.checkVisibleClickableAndClick(profilePage.lastAddress);
+  await actionwrappers.checkVisibleClickableAndClick(profilePage.removeAddress);
+  await actionwrappers.checkVisibleClickableAndClick(profilePage.deleteAddress);
+  
+
 });
 
 it("Logout ", async () => {

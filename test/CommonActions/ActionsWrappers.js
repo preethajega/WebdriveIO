@@ -90,6 +90,15 @@ class TestActionWrapper  {
     await ele.keys("\uE007");
   };
 
+  //Clear the value using keyboard
+  clearValues = async (ele) => {
+    await ele.waitForDisplayed(2000);
+    await ele.click();
+    await browser.keys(["\uE009", "a"]);
+    await ele.keys("\uE003");
+   
+  };
+
 
 
 urlValidation= async (ExceptedURL)=>{
@@ -135,7 +144,8 @@ urlValidation= async (ExceptedURL)=>{
     } ;
 
   //to scroll the page
-  scroll= async (ele)=>{
+  scrollEle = async (ele)=>{
+    await  browser.pause(2000);
     await ele.scrollIntoView();
   };
 

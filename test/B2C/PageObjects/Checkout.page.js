@@ -39,6 +39,22 @@ get cartIcon() {
    return  super.pathByXpath('//header/div/div/div[3]/div[2]/button');
 }
 
+get saveforLater() {
+   return  super.pathByXpath('(//*[@title="Save for later"])[1]');
+}
+
+get MoveTocart() {
+   return  super.pathByXpath('(//*[@title="Move back to cart"])[1]');
+}
+
+get removeProduct() {
+   return  super.pathByXpath('(//*[@title="Remove from my cart"])[1]');
+}
+
+get logo() {
+   return  super.pathByXpath('//img[@alt="Logo"]');
+}
+
 get placeOrderCart() {
    return  super.pathByXpath('.MuiButton-containedPrimary');
 }
