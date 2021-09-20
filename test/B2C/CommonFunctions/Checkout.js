@@ -64,10 +64,8 @@ class Checkout {
   // to select pay on delivery and place order, note this assume the first index 
   // as pay on delivery after which place order will be done
   selectPODAndPlaceOrder = async()=>{
-
     this.changeDeliveryAddress();
     this.changePickUpAddress();
-
     await CheckoutPageObjects.payOnDelivery.click();
 
     await actionwrappers.checkVisibleClickableMoveAndClick(
@@ -82,7 +80,6 @@ class Checkout {
     this.changeDeliveryAddress();
     this.changePickUpAddress();
 
-   
     await CheckoutPageObjects.onlinePayment.click();
 
     await actionwrappers.checkVisibleClickableMoveAndClick(
@@ -120,8 +117,7 @@ class Checkout {
         await CheckoutPageObjects.bankTransfer
       );
     }   
-    return selectMoMOPayAndPlaceOrder;
-  }
+   }
 
 
 

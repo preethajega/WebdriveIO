@@ -112,12 +112,15 @@ get deliveryAddresses(){
    return super.pathByCss('[name="address-select"]')
 }
 
+get loginORsignup(){
+   return super.pathByXpath('//button/span[contains(text(),"Login")]');
+}
 
 get loginStepInStepper(){
 return super.pathByXpath('(//div/div[1]/button)[1]')
 }
 get changeLoginBtnInCart(){
-   return super.pathByCss('.MuiButton-textPrimary')
+   return super.pathByXpath('//span[text()="Change"]');
 }
 
 get logoutAndLoginAnotherAccount(){
@@ -191,7 +194,7 @@ get proceedPaymentDialog(){
       return super.pathByXpath('//Span[text()="Continue Shopping"]');
   }
   get orderDetails(){
-   return super.pathByXpath('//Span[text()="View order details"]');
+   return super.pathByXpath('//button/span[contains(text(),"details")]');
 }
 //   async signInIconClick() {
 //     await this.signInIcon.waitForClickable();
