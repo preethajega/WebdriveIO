@@ -2,8 +2,8 @@ class TestActionWrapper  {
   // Wait for an element, move and then check clickable before clicking
   checkVisibleClickableMoveAndClick = async (ele) => {
     
-    await ele.waitForDisplayed(5000);
-    await ele.waitForClickable({ timeout: 8000 });
+    await ele.waitForDisplayed(2000);
+    await ele.waitForClickable({ timeout:2000 });
     await ele.moveTo();
     await ele.click();
   };
@@ -148,6 +148,11 @@ urlValidation= async (ExceptedURL)=>{
     await  browser.pause(2000);
     await ele.scrollIntoView();
   };
+ 
+  eleDisplayed = async (ele) =>{
+    await ele.waitForDisplayed(2000);
+    await ele.isDisplayed();
+  }
 
 
 

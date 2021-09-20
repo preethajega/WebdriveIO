@@ -48,7 +48,11 @@ get MoveTocart() {
 }
 
 get removeProduct() {
-   return  super.pathByXpath('(//*[@title="Remove from my cart"])[1]');
+   return  super.pathByXpath('//*[@title="Remove from my cart"]');
+}
+
+get emptyCart() {
+   return super.pathByXpath('//*[@id="App"]/div/div/div/div[2]/h4');
 }
 
 get logo() {
@@ -137,17 +141,27 @@ get otherSellerAddress(){
    return super.pathByXpath('//div[3]//label[2]');
 }
 
+
+selectLocation(index) {
+   return super.pathByXpath(`(//*[@role="radiogroup"]//*[@name="address-select"])[${index}]`);
+
+}
+
+selectPaymentterm(index) {
+   return super.pathByXpath(`(//input[@name="payment-select"])[${index}]`);}
+
+
 get payOnDelivery(){
    return super.pathByXpath('(//*[@name="payment-select"])[1]');
    
 }
 
 get onlinePayment(){
-   return super.pathByXpath('//fieldset/div/label[2]/span/span/input');
+   return super.pathByXpath('(//*[@name="payment-select"])[2]');
 }
 
 get placeOrderAndPay(){
-   return super.pathByCss('.MuiButton-containedPrimary');
+   return super.pathByXpath('//Span[contains(text(),"Place Order")]');
 }
 
 get MTNMoMoPay(){
@@ -173,6 +187,12 @@ return super.pathByXpath('//span[text()="Cancel"]')
 get proceedPaymentDialog(){
    return super.pathByXpath('//span[text()="Proceed "]')
    }
+ get continueShopping(){
+      return super.pathByXpath('//Span[text()="Continue Shopping"]');
+  }
+  get orderDetails(){
+   return super.pathByXpath('//Span[text()="View order details"]');
+}
 //   async signInIconClick() {
 //     await this.signInIcon.waitForClickable();
 //     await this.signInIcon.click();

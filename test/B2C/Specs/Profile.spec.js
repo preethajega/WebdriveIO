@@ -56,9 +56,20 @@ it("Profile navigation", async () => {
 });
 
 it("profile image size validation", async () =>{
+  let appIconExist = await profilePage.appIcon.isExisting();
+
+  if(appIconExist){
   await  uploadAttchment.upload(profilePage.appIcon,ProfileInput.profileImage);
  // assert.strictEqual(await profilePage.snackbar.getText(),"Maximum file size of 200KB allowed");
+  }
+
+  else {
+    await  actionwrappers.checkVisibleClickableAndClick(profilePage.removeAppicon);
+    await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
+    assert.strictEqual(await profilePage.snackbar.getText(),"Profile updated successfully");
+    await  uploadAttchment.upload(profilePage.appIcon,ProfileInput.profileImage);
     
+  }  
      
 });
   

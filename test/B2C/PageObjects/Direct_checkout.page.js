@@ -22,7 +22,7 @@ get placeOrder(){
 }
 
 get addAddress() {
-    return super.pathByXpath('//span[text()="Add Address"]');
+    return super.pathByXpath('//span[text()="Add address"]');
 }
 
 get logout_Login() {
@@ -53,7 +53,7 @@ get continueShopping(){
 
 
 selectLocation(index) {
-    return super.pathByXpath(`(//input[@name="address-select"])[${index}]`);
+    return super.pathByXpath(`(//*[@role="radiogroup"]//*[@name="address-select"])[${index}]`);
 
 }
 
