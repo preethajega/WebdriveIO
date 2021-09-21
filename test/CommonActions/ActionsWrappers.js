@@ -7,6 +7,14 @@ class TestActionWrapper  {
     await ele.moveTo();
     await ele.click();
   };
+// Wait for an element, move 
+checkVisibleClickableMove = async (ele) => {
+    
+  await ele.waitForDisplayed(2000);
+  await ele.waitForClickable({ timeout:2000 });
+  await ele.moveTo();
+  
+};
   // Wait for an element, check clickable before clicking
   checkVisibleClickableAndClick = async (ele) => {
     await ele.waitForDisplayed(1000);
