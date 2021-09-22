@@ -1,4 +1,4 @@
-const Page = require("../../B2B/PageObjects/page");
+const Page = require("../../../B2B/PageObjects/page");
 
 
 class addressPage extends Page {
@@ -8,7 +8,6 @@ class addressPage extends Page {
 wait(){
   browser.pause(8000);
 }
-
 get fullName() {
     return super.pathByXpath('//*[@name="addressLine"]/preceding::input[2]');
 }
@@ -56,19 +55,14 @@ get cancel() {
     return super.pathByXpath('//span[text()="Cancel"]');
 }
 
-get addAddressCheckoutPage() {
-    return super.pathByXpath('//span[text()="Add address"]');
-}
-
-get cartIcon() {
-    return  super.pathByXpath('//header/div/div/div[3]/div[2]/button');
+get AddressSecondIndex(){
+    return super.pathByXpath('(//*[@role="radiogroup"]//*[@name="address-select"])[2]');
  }
 
- get placeOrderCart() {
-    return  super.pathByXpath('.MuiButton-containedPrimary');
+get ok(){
+     return super.pathByXpath('//*[text()="Ok"]');
  }
-
- get alertName(){
+get alertName(){
     return super.pathByXpath('//p[text()="Name required"]');
 }
 get alertmobileNo(){
@@ -80,6 +74,4 @@ get alertAddress(){
 get alertCity(){
     return super.pathByXpath('//p[text()="City / District required"]');
 }
-
 }
-module.exports = new addressPage();
