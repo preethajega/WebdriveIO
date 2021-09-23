@@ -1,6 +1,7 @@
 exports.config = {
     specs: [
-        './test/B2C/Specs/HomePage.spec.js'
+        './test/B2B/Specs/B2C_Orders/SellerOrder.js'
+        
     ],
     // Patterns to exclude.
     exclude: [

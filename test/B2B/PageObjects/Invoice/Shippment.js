@@ -1,8 +1,8 @@
 const Page = require("../../../B2B/PageObjects/page");
-const commonObjetcs =require('../Common/commonObjects');
+const commonObjects =require('../Common/commonObjects');
 var shippmentInput = require("../../Inputs/shippmentInput");
 var actionwrappers = require("../../../CommonActions/ActionsWrappers");
-const commonObjects = require("../Common/commonObjects");
+
 
 class shippment extends Page {
     open() {

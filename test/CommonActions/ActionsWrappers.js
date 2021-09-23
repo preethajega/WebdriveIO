@@ -58,8 +58,15 @@ checkVisibleClickableMove = async (ele) => {
   };
   //Wait for an element,and check clickable before clicking
   checkClickableAndClick =  async (ele) => {
+    await ele.waitForDisplayed(2000);
     await ele.waitForClickable({ timeout: 2000 });
     await  ele.click();
+  };
+
+   //Wait for an element,and check clickable before Double clicking
+   checkClickableAnddoubleClick =  async (ele) => {
+    await ele.waitForClickable({ timeout: 2000 });
+    await  ele.doubleClick();
   };
 
   //Clear the setvalue using doubleclick and delete, and enter the new value
@@ -91,12 +98,24 @@ checkVisibleClickableMove = async (ele) => {
     await ele.click();
     await browser.keys(["\uE009", "a"]);
     await ele.keys("\uE003");
-    await browser.pause(1000);
+    await browser.pause(2000);
     await ele.setValue(inputvalue);
     await ele.keys("\uE015");
-    await browser.pause(1000);
+    await browser.pause(2000);
     await ele.keys("\uE007");
+    await browser.pause(2000);
   };
+
+  //select first dropdown value if keyboard arrrows are not working
+  selectfirstDropdownValue = async (ele1,input,ele2) =>{
+    await ele1.waitForDisplayed(2000);
+    await ele1.setValue(input);
+    await browser.pause(2000);
+    await ele2.waitForClickable({ timeout: 2000 });
+    await ele2.click();
+
+  };
+
 
   //Clear the value using keyboard
   clearValues = async (ele) => {
@@ -110,12 +129,19 @@ checkVisibleClickableMove = async (ele) => {
 
 
 urlValidation= async (ExceptedURL)=>{
-  await browser.pause(5000);
+  await browser.pause(3000);
   await browser.getUrl();
   await expect(browser).toHaveUrlContaining(ExceptedURL);
-
-
 };
+
+displayValidation= async (elem) =>{
+  expect(elem).toBeDisabled();
+}
+
+navigateTo= async(Url)=>{
+  await browser.pause(3000);
+  await browser.Url(Url);
+}
 
   //if value is empty set the value
   isEmpty_setValue = async (ele, inputValue) => {
@@ -161,6 +187,8 @@ urlValidation= async (ExceptedURL)=>{
     await ele.waitForDisplayed(2000);
     await ele.isDisplayed();
   }
+
+  
 
 
 

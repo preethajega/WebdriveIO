@@ -40,7 +40,7 @@ get paymentNotes(){
     return super.pathByName('paymentData.notes');
 }
 get withoutpaymentRadio() {
-    return super.pathByName('Place order without paymentRadio');
+    return super.pathByXpath('//*[contains(text(),"without payment")]');
 
 }
 
@@ -57,7 +57,7 @@ get receiptNo() {
 
 }
 
-get paymnetDate() {
+get paymentDate() {
     return super.pathByName('paymentData.paymentDate');
 
 }
@@ -92,14 +92,21 @@ get ifscCode() {
 get chequeNo() {
     return super.pathByName('paymentData.refernceNumber');
 }
-get alertRecAmount(){
+get alertpayment() {
+    return super.pathByXpath('//p[contains(text(),"(cast from the value `NaN`)")]');
+ }
+get alertRecvAmount(){
     return super.pathByXpath('//p[text()="Min. amount should be atleast ₹0.1"]');
 }
 get alertReferenceNo(){
     return super.pathByXpath('//p[text()="Reference number is required"]');
 }
-get alertPaymnetDate(){
+get alertPaymentDate(){
     return super.pathByXpath('//p[text()="Payment date is required"]');
+}
+get alertpaymentEmpty(){
+    return super.pathByXpath('//p[text()="Enter amount received"]');
 }
 
 }
+module.exports = new payment();

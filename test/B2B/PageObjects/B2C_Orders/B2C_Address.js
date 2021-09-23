@@ -54,11 +54,6 @@ get save() {
 get cancel() {
     return super.pathByXpath('//span[text()="Cancel"]');
 }
-
-get AddressSecondIndex(){
-    return super.pathByXpath('(//*[@role="radiogroup"]//*[@name="address-select"])[2]');
- }
-
 get ok(){
      return super.pathByXpath('//*[text()="Ok"]');
  }

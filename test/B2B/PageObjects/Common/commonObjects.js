@@ -1,6 +1,6 @@
 const Page = require("../page");
 
-class commonObjetcs extends Page {
+class commonObjects extends Page {
     open() {
       super.new(""); //this will append `login` to the baseUrl to form complete URL
 }
@@ -35,4 +35,4 @@ get CurrentDate(){
 }
 
 
-module.exports = new commonObjetcs();
+module.exports = new commonObjects();
