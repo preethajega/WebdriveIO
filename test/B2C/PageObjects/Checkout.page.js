@@ -16,7 +16,7 @@ class Checkout extends Page {
  }
 
  get searchButtonHeader() {
-   return  super.pathByXpath('//div[1]/input');
+   return  super.pathByXpath('//input[@placeholder="Search by product code, name, variant and more"]');
 }
 
 get results() {

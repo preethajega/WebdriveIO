@@ -42,17 +42,15 @@ describe("Checkout  page", () => {
     
   });
 
-it("remove all the products in cart" , async () => {
+/*it("remove all the products in cart" , async () => {
   await actionwrappers.checkClickableAndClick(path.cartIcon);
   await actionwrappers.urlValidation("checkout/cart");
   await searchProdTocart.prodChanges(path.removeProduct);
   assert.strictEqual(await path.emptyCart.getText(),"Your Cart is Empty");
-  
-
-});
+});*/
 
 it("Search prod & Add to cart", async () => {
-   await searchProdTocart.searchProd(ProdInput.productName,ProdInput.qty,path.cartIcon);
+   await searchProdTocart.searchProd(ProdInput.product2,ProdInput.qty,path.cartIcon);
    await actionwrappers.urlValidation("checkout/cart");
 });
 
@@ -82,8 +80,8 @@ it("remove the prod from the cart", async () => {
     await  actionwrappers.checkClickableAndClick(path.logo);
 });
 
-it("Search prod & BuyNow", async () => {
-    await  searchProdTocart.searchProd(ProdInput.productName,ProdInput.qty,path.BuyNowInDetailPage);
+it("Search prod & moved to check out page", async () => {
+    await  searchProdTocart.searchProd(ProdInput.product3,ProdInput.qty,path.BuyNowInDetailPage);
     await  actionwrappers.urlValidation("direct_checkout/address");
     await  actionwrappers.checkClickableAndClick(path.logo);
     

@@ -73,26 +73,28 @@ describe("Checkout  page", () => {
      });
 
      it("place order and pay on delivery", async() =>{
-        await searchProdTocart.buyProd(ProdInput.ItemName);
-        await checkout.selectPODAndPlaceOrder();
-        await actionwrappers.urlValidation("ordersuccess");
-        await actionwrappers.checkClickableAndClick(path.logo);
-     });
-
-    
+      await searchProdTocart.buyProd(ProdInput.ItemName);
+      await checkout.selectPODAndPlaceOrder();
+      await actionwrappers.urlValidation("ordersuccess");
+      await actionwrappers.checkClickableAndClick(path.logo);
+      await actionwrappers.displayValidation(path.searchButtonHeader);
+   });
+       
 
      it("place order using BankTransfer" , async() =>{
-        await searchProdTocart.buyProd(ProdInput.productName);
+        await searchProdTocart.buyProd(ProdInput.product2);
         await checkout.selectOnlinePaymentAndPlaceOrder("BankTransfer");
         await actionwrappers.checkClickableAndClick(path.continueShopping);
+        await actionwrappers.displayValidation(path.searchButtonHeader);
 
      });
 
      it("place order using othernetworks" , async() =>{
-        await searchProdTocart.buyProd(ProdInput.productName);
+        await searchProdTocart.buyProd(ProdInput.product3);
         await checkout.selectOnlinePaymentAndPlaceOrder("otherNetwork");
         await actionwrappers.urlValidation("ordersuccess");
         await actionwrappers.checkClickableAndClick(path.logo);
+        await actionwrappers.displayValidation(path.searchButtonHeader);
 
      });
 
@@ -100,10 +102,12 @@ describe("Checkout  page", () => {
         await searchProdTocart.buyProd(ProdInput.productName);
         await checkout.selectOnlinePaymentAndPlaceOrder("MTNMoMoPay");
         await actionwrappers.urlValidation("ordersuccess");
+        await actionwrappers.checkClickableAndClick(path.logo);
+        await actionwrappers.displayValidation(path.searchButtonHeader);
+
+
     
      });
-
-
 
 
 

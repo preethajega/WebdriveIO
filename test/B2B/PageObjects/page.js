@@ -3,9 +3,12 @@ class Page {
 
   open(path){
     browser.url("https://new.bcommerce.in/" + path); 
+    browser.maximizeWindow();
   }
+  
   b2cPath(path) {
     browser.url("https://b2cdev.myapptino.com/" + path);
+    browser.maximizeWindow();
   }
   new(path) {
     browser.url("https://new.bcommerce.in/" + path);

@@ -111,7 +111,7 @@ it("Add Address", async ()=>{
 });
 
 it("Edit Address", async () =>{
-  await actionwrappers.scroll(profilePage.lastAddress);
+  await actionwrappers.scrollEle(profilePage.lastAddress);
   await actionwrappers.checkVisibleClickableAndClick(profilePage.lastAddress);
   await actionwrappers.checkVisibleClickableAndClick(profilePage.editAddress);
   await addAddress.addAddressValid();
@@ -119,7 +119,7 @@ it("Edit Address", async () =>{
 });
 
 it("Remove the Address", async () =>{
-  await actionwrappers.scroll(profilePage.lastAddress);
+  await actionwrappers.scrollEle(profilePage.lastAddress);
   await actionwrappers.checkVisibleClickableAndClick(profilePage.lastAddress);
   await actionwrappers.checkVisibleClickableAndClick(profilePage.removeAddress);
   await actionwrappers.checkVisibleClickableAndClick(profilePage.deleteAddress);
@@ -128,7 +128,7 @@ it("Remove the Address", async () =>{
 });
 
 it("Logout ", async () => {
-  
+  await LoginPage.open();
   await menuNavigation.Navigation(menuPage.profileIcon,menuPage.logoutBtn);
           
    });
