@@ -3,7 +3,6 @@ const path = require("path");
 const sellerB2C = require("../../PageObjects/B2C_Orders/SellerB2COrder");
 const payment = require("../../PageObjects/Invoice/Payment");
 const commonObjects =require("../../PageObjects/Common/commonObjects");
-const TestActionWrapper = require("../../../CommonActions/ActionsWrappers");
 const LoginPage = require("../../PageObjects/Login.page");
 var B2B_loginIp = require("../../Inputs/B2B_login");
 var B2C_OrdersIp = require("../../Inputs/Orders/B2C_Orders");
@@ -18,13 +17,14 @@ describe("Login and Navigate to b2c Orders ", () => {
      await  browser.maximizeWindow();
      await  LoginPage.open();
      await  LoginPage.login(B2B_loginIp.OwnerEmail,B2B_loginIp.OwnerPassword);  
-     await  TestActionWrapper.urlValidation("/dashboard");
+     await  ActionsWrappers.urlValidation("/dashboard");
      await  sellerB2C.open();
      await  sellerB2C.frstcreateB2cOrder();
      await  sellerB2C.open();
      await sellerB2C.createB2Corder();
    
      })
+   
 
       it("place order without customername",async()=>{
         await  sellerB2C.open();

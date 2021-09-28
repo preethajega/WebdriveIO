@@ -20,7 +20,7 @@ get submit(){
     return super.pathById('loadingButton');
 }
 get yes(){
-    return super.pathByXpath('yes');
+    return super.pathById('yes');
 }
 get cancelDailog(){
     return super.pathById('editDialogCancel');
@@ -30,6 +30,13 @@ get acceptDailog(){
 }
 get CurrentDate(){
     return super.pathByCss('[class="MuiButtonBase-root MuiIconButton-root MuiPickersDay-day MuiPickersDay-current MuiPickersDay-daySelected"]');
+}
+get snackbar(){
+    return super.pathById('client-snackbar');
+}
+
+get rowPerPage(){
+    return super.pathByCss('[class="MuiInputBase-root MuiTablePagination-input MuiTablePagination-selectRoot"]');
 }
 
 }

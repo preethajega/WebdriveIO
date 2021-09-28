@@ -2,6 +2,8 @@ const Page = require("../../../B2B/PageObjects/page");
 const commonObjects =require('../Common/commonObjects');
 var shippmentInput = require("../../Inputs/shippmentInput");
 var actionwrappers = require("../../../CommonActions/ActionsWrappers");
+const assert = require("assert");
+
 
 
 class shippment extends Page {
@@ -37,23 +39,26 @@ get alertShippmentDate(){
     return super.pathByXpath('//p[text()="Shipment date is required"]');
 }
 
-async createShippment(shipNo){
+async ShippmentFn(ele){
+    await actionwrappers.checkClickableAndClick(ele);
     await actionwrappers.checkEnabledAndSetValue(await this.shipmentCompany,
-        shippmentInput.shipmentCompany);
+        shippmentInput.shippmentName);
     await actionwrappers.checkEnabledAndSetValue(await this.shipReference,
         shippmentInput.shipReference);   
     await actionwrappers.checkEnabledAndSetValue(await this.shipNo,
-        shipNo);   
+        shippmentInput.shippmentNo);   
     await actionwrappers.checkEnabledAndSetValue(await this.trackingUrl,
         shippmentInput.trackingUrl);       
     await actionwrappers.checkEnabledAndSetValue(await this.deliveryType,
         shippmentInput.deliveryType);
-    await actionwrappers.checkEnabledAndSetValue(await this.shipReference,
-        shippmentInput.shipReference); 
     await actionwrappers.checkClickableAndClick(await this.shipmentDate);
     await actionwrappers.checkClickableAndClick(await commonObjects.CurrentDate);
     await actionwrappers.checkClickableAndClick(await commonObjects.acceptDailog);
+    await browser.pause(5000);
+    assert.strictEqual(await commonObjects.snackbar.getText(),
+    shippmentInput.shippmentMsg);
                  
 }
 
 }
+module.exports = new shippment();

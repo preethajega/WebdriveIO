@@ -188,7 +188,19 @@ navigateTo= async(Url)=>{
     await ele.isDisplayed();
   }
 
-  
+  isNotDisplayed_scrollAndClick=async (ele)=>{
+    await ele.waitForDisplayed(2000);
+    await ele.waitForClickable({ timeout: 2000 });
+    await ele.click();
+    if(ele.isDisplayed ===false){
+      await  browser.pause(2000);
+      await ele.scrollIntoView();  
+      await ele.waitForClickable({ timeout: 2000 });
+      await ele.click(); 
+     }
+
+  }
+    
 
 
 
