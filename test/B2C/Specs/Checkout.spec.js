@@ -93,7 +93,7 @@ describe("Checkout  page", () => {
         await searchProdTocart.buyProd(ProdInput.product3);
         await checkout.selectOnlinePaymentAndPlaceOrder("otherNetwork");
         await actionwrappers.urlValidation("ordersuccess");
-        await actionwrappers.checkClickableAndClick(path.logo);
+        await actionwrappers.checkClickableAndClick(path.continueShopping);
         await actionwrappers.displayValidation(path.searchButtonHeader);
 
      });

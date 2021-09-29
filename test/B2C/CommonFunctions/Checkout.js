@@ -64,8 +64,14 @@ class Checkout {
   // to select pay on delivery and place order, note this assume the first index 
   // as pay on delivery after which place order will be done
   selectPODAndPlaceOrder = async()=>{
-    this.changeDeliveryAddress();
-    this.changePickUpAddress();
+    await browser.pause(3000);
+
+    await actionwrappers.checkVisibleClickableMoveAndClick(
+      await CheckoutPageObjects.continueBtn
+    );
+    await actionwrappers.checkVisibleClickableMoveAndClick(
+      await CheckoutPageObjects.continueBtn
+    );
     await CheckoutPageObjects.payOnDelivery.click();
 
     await actionwrappers.checkVisibleClickableMoveAndClick(
@@ -77,8 +83,12 @@ class Checkout {
   //To select B2C term & select any one of the option
   selectOnlinePaymentAndPlaceOrder = async (onlineType) =>{
     
-    this.changeDeliveryAddress();
-    this.changePickUpAddress();
+    await actionwrappers.checkVisibleClickableMoveAndClick(
+      await CheckoutPageObjects.continueBtn
+    );
+     await actionwrappers.checkVisibleClickableMoveAndClick(
+      await CheckoutPageObjects.continueBtn
+    );
 
     await CheckoutPageObjects.onlinePayment.click();
 
@@ -94,10 +104,12 @@ class Checkout {
         await CheckoutPageObjects.proceedPaymentDialog
       );
   
-      await browser.pause(2000);
+      /*await browser.pause(5000);
+      if(CheckoutPageObjects.cancelPaymentDialog.isDisplayed()){
       await actionwrappers.checkVisibleClickableMoveAndClick(
       await CheckoutPageObjects.cancelPaymentDialog
       ); 
+    }*/
 
   } 
 
