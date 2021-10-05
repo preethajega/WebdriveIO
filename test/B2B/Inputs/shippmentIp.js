@@ -1,4 +1,4 @@
-function shippmentInput() {        
+function shippmentIp() {        
     this.shippmentName = 'Professional Courier';
     this.shipReference = 'Admin@123';
     this.shippmentNo ="Pro1234";
@@ -8,4 +8,4 @@ function shippmentInput() {
 }
 
 
-module.exports = new shippmentInput();
+module.exports = new shippmentIp();
