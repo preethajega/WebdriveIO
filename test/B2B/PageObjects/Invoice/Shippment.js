@@ -1,6 +1,6 @@
 const Page = require("../../../B2B/PageObjects/page");
 const commonObjects =require('../Common/commonObjects');
-var shippmentInput = require("../../Inputs/shippmentInput");
+var shippmentIp = require("../../Inputs/shippmentIp");
 var actionwrappers = require("../../../CommonActions/ActionsWrappers");
 const assert = require("assert");
 
@@ -42,21 +42,21 @@ get alertShippmentDate(){
 async ShippmentFn(ele){
     await actionwrappers.checkClickableAndClick(ele);
     await actionwrappers.checkEnabledAndSetValue(await this.shipmentCompany,
-        shippmentInput.shippmentName);
+        shippmentIp.shippmentName);
     await actionwrappers.checkEnabledAndSetValue(await this.shipReference,
-        shippmentInput.shipReference);   
+        shippmentIp.shipReference);   
     await actionwrappers.checkEnabledAndSetValue(await this.shipNo,
-        shippmentInput.shippmentNo);   
+        shippmentIp.shippmentNo);   
     await actionwrappers.checkEnabledAndSetValue(await this.trackingUrl,
-        shippmentInput.trackingUrl);       
+        shippmentIp.trackingUrl);       
     await actionwrappers.checkEnabledAndSetValue(await this.deliveryType,
-        shippmentInput.deliveryType);
+        shippmentIp.deliveryType);
     await actionwrappers.checkClickableAndClick(await this.shipmentDate);
     await actionwrappers.checkClickableAndClick(await commonObjects.CurrentDate);
     await actionwrappers.checkClickableAndClick(await commonObjects.acceptDailog);
     await browser.pause(5000);
     assert.strictEqual(await commonObjects.snackbar.getText(),
-    shippmentInput.shippmentMsg);
+    shippmentIp.shippmentMsg);
                  
 }
 

@@ -116,6 +116,17 @@ checkVisibleClickableMove = async (ele) => {
 
   };
 
+  //select first dropdown value when keyboard is working without input 
+  selectDrpdownusingKeyboard = async (ele) =>{
+    await ele.waitForClickable({ timeout: 2000 });
+    await ele.click();
+    await ele.keys("\uE015");
+    await browser.pause(2000);
+    await ele.keys("\uE007");
+    await browser.pause(2000);
+  }
+
+
 
   //Clear the value using keyboard
   clearValues = async (ele) => {
