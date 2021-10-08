@@ -1,30 +1,40 @@
 const actionWrapper = require("../../CommonActions/ActionsWrappers");
-const path = require("./path");
-var AddProduct = function () {
-  let cartIcon = $("#MHEAD_CQC");
+const path = require("../../PageObjects/BrowsePages/Cart");
+class AddProduct {
   // Wait for an element, move and then check clickable before clicking
-  this.searchProduct = (productId) => {
-      actionWrapper.checkVisibleClickableAndClick(path.cartIcon);
-    browser.pause(5000);
-    let emptyCart = path.selectbuyer.isExisting();
-        if (emptyCart) {
-          path.search.setValue(productId);
-      browser.pause(3000);
-      path.productSearched.click();
+  searchProductInCart = async (productId) => {
+    await actionWrapper.checkVisibleClickableAndClick(await path.cartIcon);
+    await browser.pause(5000);
+    let emptyCart = await path.selectbuyer.isExisting();
+    if (emptyCart) {
+      await path.search.setValue(productId);
+      await browser.pause(3000);
+      await path.productSearched.click();
     } else {
-      path.emptyCartSearch.setValue(productId);
-      browser.pause(3000);
-      path.emptyCartsearchedproduct.click();
+      await path.emptyCartSearch.setValue(productId);
+      await browser.pause(3000);
+      await path.emptyCartsearchedproduct.click();
     }
   };
 
-  this.selectBuyer = function () {
-   
-    actionWrapper.SetValueElementAndkeyboardVal(path.selectbuyer, "\uE015");
+  selectBuyer = async () => {
+    await actionWrapper.SetValueElementAndkeyboardVal(
+      await path.selectbuyer,
+      "\uE015"
+    );
   };
 
-  this.cartCreateQuote = function() {
-  actionWrapper.checkVisibleClickableMoveAndClick(path.createQuote);
-  }
-};
+  cartCreateQuote = async () => {
+    await actionWrapper.checkVisibleClickableMoveAndClick(
+      await path.createQuote
+    );
+  };
+
+  addToCartFromHeaderSearch = async (searchValue) => {
+    await path.searchBox.click();
+    await path.searchBox.setValue(searchValue);
+    // will click the first result available
+    await path.addToCartBtnInSearchResults.click();
+  };
+}
 module.exports = new AddProduct();
