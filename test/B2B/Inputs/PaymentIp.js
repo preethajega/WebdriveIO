@@ -7,7 +7,9 @@ function paymentInput() {
     this.holderName="QA";
     this.phoneNumber="9898989898";
     this.cardType="debit";
+    this.chequeNo='CNR123GB1233';
+    this.paymentNotes="thakyou for shopping with us";
 
 }  
 
-module.exports = new paymentIp();
+module.exports = new paymentInput();

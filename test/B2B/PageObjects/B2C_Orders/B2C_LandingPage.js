@@ -41,6 +41,10 @@ get canceled(){
   return super.pathByXpath('//p[text()="ORDER CANCELLED"]');
 
 }
+get pending(){
+  return super.pathByXpath('//p[text()="Pending"]');
+
+}
 
 
 viewOrder = async(ele) =>{
