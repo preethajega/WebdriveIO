@@ -1,6 +1,6 @@
 exports.config = {
     specs: [
-        './test/B2B/Specs/B2C_Orders/OrderDetails.js'     
+        './test/B2C/Specs/Profile.spec.js'     
         
         
     ],

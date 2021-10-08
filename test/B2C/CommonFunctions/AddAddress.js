@@ -21,6 +21,9 @@ class addAddress {
       addressPageObjects.state,
       addressInput.state
     );
+    await actionWrapper.scrollEle(
+      addressPageObjects.workAddress
+    );
     await actionWrapper.checkVisibleClickableMoveAndClick(
       addressPageObjects.workAddress
     );

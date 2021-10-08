@@ -7,7 +7,7 @@ class Page {
   }
   
   b2cPath(path) {
-    browser.url("https://b2cdev.myapptino.com/" + path);
+    browser.url("https://b2cnext.myapptino.com/" + path);
     browser.maximizeWindow();
   }
   new(path) {

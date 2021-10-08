@@ -42,48 +42,48 @@ describe("Checkout  page", () => {
     
   });
 
-/*it("remove all the products in cart" , async () => {
-  await actionwrappers.checkClickableAndClick(path.cartIcon);
-  await actionwrappers.urlValidation("checkout/cart");
-  await searchProdTocart.prodChanges(path.removeProduct);
+/* it("remove all the products in cart" , async () => {
+  await actionwrappers.checkClickableAndClick(path.cartIcon);/   await actionwrappers.urlValidation("cart");
+   await searchProdTocart.prodChanges(path.removeProduct,path.emptyCart);
   assert.strictEqual(await path.emptyCart.getText(),"Your Cart is Empty");
 });*/
 
 it("Search prod & Add to cart", async () => {
    await searchProdTocart.searchProd(ProdInput.product2,ProdInput.qty,path.cartIcon);
-   await actionwrappers.urlValidation("checkout/cart");
+   await actionwrappers.urlValidation("cart");
 });
 
 it("save for later", async () => {
     await  searchProdTocart.cartChanges(path.saveforLater);
-    await  actionwrappers.urlValidation("checkout/cart");
+    await  actionwrappers.urlValidation("cart");
 
 });
 
 it("Move to cart", async () => {
     await   actionwrappers.scrollEle(path.MoveTocart);
     await   searchProdTocart.cartChanges(path.MoveTocart);
-    await   actionwrappers.urlValidation("checkout/cart");
+    await   actionwrappers.urlValidation("cart");
    
 });
 
 it("remove the prod from the cart",async () => {
     await  searchProdTocart.cartChanges(path.removeProduct);
-    await  actionwrappers.urlValidation("checkout/cart");
+    await  actionwrappers.urlValidation("cart");
 });
 
 it("remove the prod from the cart", async () => {
     await  searchProdTocart.searchProd(ProdInput.ItemName,ProdInput.qty,path.cartIcon);
-    await  actionwrappers.urlValidation("checkout/cart");
+    await  actionwrappers.urlValidation("cart");
     await  searchProdTocart.cartChanges(path.placeOrderCart);
-    await  actionwrappers.urlValidation("iscart/address");
+    await  actionwrappers.urlValidation("checkout/2");
     await  actionwrappers.checkClickableAndClick(path.logo);
 });
 
 it("Search prod & moved to check out page", async () => {
-    await  searchProdTocart.searchProd(ProdInput.product3,ProdInput.qty,path.BuyNowInDetailPage);
-    await  actionwrappers.urlValidation("direct_checkout/address");
+    await  searchProdTocart.searchProd(ProdInput.product3,ProdInput.qty,path.buyNowBtn);
     await  actionwrappers.checkClickableAndClick(path.logo);
+    await  actionwrappers.urlValidation("https://b2cnext.myapptino.com/");
+
     
 });
 
