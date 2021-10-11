@@ -35,12 +35,12 @@ get state() {
 }
 
 get homeAddress() {
-    return super.pathByXpath('//span[text()="Home"]');
+    return super.pathByName('homeAdresss');
 
 }
 
 get workAddress() {
-    return super.pathByXpath('//span[text()="Work"]');
+    return super.pathByName('workAddress');
     
 }
 
@@ -49,15 +49,15 @@ get defaultAddress() {
 }
 
 get save() {
-    return super.pathByXpath('(//span[text()="Save"])[last()]');
+    return super.pathByXpath('(//button[text()="Save"])[last()]');
 }
 
 get cancel() {
-    return super.pathByXpath('//span[text()="Cancel"]');
+    return super.pathByXpath('//button[text()="Cancel"]');
 }
 
 get addAddressCheckoutPage() {
-    return super.pathByXpath('//span[text()="Add address"]');
+    return super.pathByXpath('//*[text()="Add address"]');
 }
 
 get cartIcon() {

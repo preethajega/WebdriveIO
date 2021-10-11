@@ -15,20 +15,20 @@ class Checkout extends Page {
    super.b2cPath('/'); //this will append `login` to the baseUrl to form complete URL
  }
 
- get searchButtonHeader() {
-   return  super.pathByXpath('//input[@placeholder="Search by product code, name, variant and more"]');
+ get searchProduct() {
+   return  super.pathById('productInput');
 }
 
 get results() {
-   return  super.pathByXpath('//header/div/div/div[2]/div/div[2]/div/div/div/div[1]');
+   return  super.pathByXpath('(//*[@class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-12lq1si-MuiPaper-root-MuiCard-root"])[1]');
 }
 
-get AddToCartInDetailPage() {
-   return  super.pathByXpath('(//button/span[contains(text(),"Add To cart")])[1]');
+get addTocartBtn() {
+   return  super.pathByXpath('(//button[text()="add to cart"])[1]');
 }
 
-get BuyNowInDetailPage() {
-   return  super.pathByXpath('(//button/span[contains(text(),"Buy now")])[1]');
+get buyNowBtn() {
+   return  super.pathById('buyNowBtn');
 }
 
 get qntyAfterAddToCart() {
@@ -36,76 +36,35 @@ get qntyAfterAddToCart() {
 }
 
 get cartIcon() {
-   return  super.pathByXpath('//header/div/div/div[3]/div[2]/button');
+   return  super.pathByXpath('//*[@class="MuiButtonBase-root MuiIconButton-root"]');
 }
 
 get saveforLater() {
-   return  super.pathByXpath('(//*[@title="Save for later"])[1]');
+   return  super.pathById('saveLaterBtn');
 }
 
 get MoveTocart() {
-   return  super.pathByXpath('(//*[@title="Move back to cart"])[1]');
+   return  super.pathById('moveCartBtn');
 }
 
 get removeProduct() {
-   return  super.pathByXpath('//*[@title="Remove from my cart"]');
+   return  super.pathById('removeBtn');
 }
 
 get emptyCart() {
-   return super.pathByXpath('//*[@id="App"]/div/div/div/div[2]/h4');
+   return super.pathByXpath('//h5[text()="Cart is empty"]');
 }
 
 get logo() {
-   return  super.pathByXpath('//img[@alt="Logo"]');
+   return  super.pathByXpath('//img[@alt="logo"]');
 }
 
 get placeOrderCart() {
-   return  super.pathByXpath('.MuiButton-containedPrimary');
-}
-
-get signUpInCart() {
- return  super.pathByCss(' div button.MuiButton-containedPrimary');
-
-}
-
-get mobileNumber() {
- return  super.pathByCss('[class="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense"]');
-}
-
-get requestCode() {
- return  super.pathByCss('[class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-fullWidth"]');
-}
-
-get Save() {
- return  super.pathByXpath('//*[@id="wrapped-tabpanel-1"]/div/header/div/button[2]');
-}
-
-get DeleteRange() { 
- return  super.pathById('deleteRange');
-}
-
-get ClickUserGroupTab() {
- return  super.pathById('wrapped-tab-0');
-}
-
-get DeleteGroup() {
- return  super.pathById('removeUserGroup');
-}
-
-get moreoption() {
- return  super.pathById('//header/div/button[2]');
-}
-
-get DeleteApprovalGroup() {
- return  super.pathById('');
-}
-
-get SureDelete() {
- return  super.pathById('yes');
+   return  super.pathById('loadingBtn');
 }
 
 get deliveryAddressSecondIndex(){
-   return super.pathByXpath('(//*[@role="radiogroup"]//*[@name="address-select"])[2]');
+   return super.pathByXpath('(//*[@name="address-select"])[2]');
 }
 
 get deliveryAddresses(){
@@ -113,31 +72,29 @@ get deliveryAddresses(){
 }
 
 get loginORsignup(){
-   return super.pathByXpath('//button/span[contains(text(),"Login")]');
+   return super.pathByXpath('//*[text()="Sign up / Login"]');
 }
 
 get loginStepInStepper(){
 return super.pathByXpath('(//div/div[1]/button)[1]')
 }
-get changeLoginBtnInCart(){
-   return super.pathByXpath('//span[text()="Change"]');
+get changeUser(){
+   return super.pathById('changeUser');
 }
 
-get logoutAndLoginAnotherAccount(){
-   return super.pathByXpath("//div/div[2]/button");
+get switchUser(){
+   return super.pathByXpath('//li[text()="Logout & Switch to another account"]');
 }
 
 
 get continueBtn(){
-   return super.pathByCss('//span[text()="Continue"]')
+   return super.pathById('loadingBtn')
 }
 
-get shippingContinueBtn(){
-   return super.pathByCss('//div[3]/div/button')
-}
+
 
 get changePickupAddress() {
-   return super.pathByCss(".MuiButton-textPrimary")
+   return super.pathById('shiipi')
 }
 
 get otherSellerAddress(){
@@ -163,20 +120,20 @@ get onlinePayment(){
    return super.pathByXpath('(//*[@name="payment-select"])[2]');
 }
 
-get placeOrderAndPay(){
-   return super.pathByXpath('//Span[contains(text(),"Place Order")]');
+get placeOrder(){
+   return super.pathByid('loadingBtn');
 }
 
 get MTNMoMoPay(){
-   return super.pathByXpath('//ul/div[1]')
+   return super.pathById('payments-tab-0');
 }
 
 get otherNetwork(){
-   return super.pathByXpath('//ul/div[2]')
+   return super.pathById('payments-tab-1');
 }
 
 get bankTransfer(){
-   return super.pathByXpath('//ul/div[3]')
+   return super.pathById('payments-tab-2');
 }
 get referenceNumber(){
    return super.pathByXpath('//*[@name="referenceNumber"]')
@@ -184,56 +141,19 @@ get referenceNumber(){
 
 
 get cancelPaymentDialog(){
-return super.pathByXpath('//span[text()="Cancel"]')
+   return super.pathById('editCancelBtn')
 }
 
 get proceedPaymentDialog(){
-   return super.pathByXpath('//span[text()="Proceed "]')
+   return super.pathById('eidtSaveBtn')
    }
  get continueShopping(){
-      return super.pathByXpath('//Span[text()="Continue Shopping"]');
+      return super.pathById('continueBtn');
   }
   get orderDetails(){
-   return super.pathByXpath('//button/span[contains(text(),"details")]');
+   return super.pathById('orderDetailsBtn')
 }
-//   async signInIconClick() {
-//     await this.signInIcon.waitForClickable();
-//     await this.signInIcon.click();
-//     await this.loginBtnHeader.click();
-//   }
-//   async login(mobNumber) {
-//     await this.mobileNumber.setValue(mobNumber);
-//     await this.requestCode.click();
-//   }
 
-//   async otpValidation(otp) {
-//     await actionwrappers.checkEnableddoubleClickDeleteAndSetValue(
-//       await this.oneTimePassCode,
-//       otp
-//     );
-//     await this.loginBtn.waitForClickable();
-//     await actionwrappers.checkVisibleClickableMoveAndClick(await this.loginBtn);
-//   }
-
-//   async inputOTP(otp) {
-//     await actionwrappers.checkEnableddoubleClickDeleteAndSetValue(
-//       this.oneTimePassCode,
-//       otp
-//     );
-//     await this.loginBtn.waitForClickable();
-//     this.loginBtn.click();
-//   }
-
-//   async dbConnection(sqlQuery) {
-//     let test;
-//     await browser.pause(5000);
-
-//     return new Promise((resolve, reject) => {
-//       dbConnectionB2C.query(sqlQuery, (err, res) =>
-//         err ? reject(err) : resolve(res)
-//       );
-//     });
-//   }
 }
 
 module.exports = new Checkout();

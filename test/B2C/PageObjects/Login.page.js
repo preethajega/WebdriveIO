@@ -20,11 +20,9 @@ class LoginPage extends Page {
     );
   }
   get loginBtnHeader() {
-    return $("ul[role='menu'] li");
+    return super.pathByXpath('//*[text()="Sign up / Login"]');
   }
-  // get () {
-  //   return $("ul[role='menu'] li");
-  // }
+  
   get cartIcon() {
     return $("//header/div/div/div[3]/div[2]/button");
   }
@@ -38,27 +36,19 @@ class LoginPage extends Page {
   }
 
   get mobileNumber() {
-    return $(
-      '[class="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense"]'
-    );
+    return super.pathById('mobileNo');
   }
 
   get requestCode() {
-    return $(
-      '[class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-fullWidth"]'
-    );
+    return super.pathById('loadingBtn');
   }
 
   get loginBtn() {
-    return $(
-      // '//span[contains(text(), "Login")]/ancestor::button'
-      "//div/div[2]/div[2]/button[1]"
-    );
+    return super.pathById('loadingBtn');
+    
   }
   get oneTimePassCode() {
-    return $(
-      "/html/body/div[2]/div[3]/div/div/div/div[2]/div[1]/div[2]/div/input"
-    );
+    return super.pathById('otp');
   }
 
   get userIcon() {
@@ -68,16 +58,18 @@ class LoginPage extends Page {
     return $("//nav/a[1]");
   }
   get emptyOTPValidationMesge() {
-    return super.pathByXpath("//div[2]/div[1]/div[2]/p");
+    return super.pathById("otp-helper-text");
   }
   get resendOTP() {
-    return super.pathByXpath("//div/div[2]/div[2]/button[2]/span[1]");
+    return super.pathById('resendCode');
+  }
+
+  get mobileNoAlert(){
+    return super.pathById('mobileNo-helper-text');
   }
 
   async signInIconClick() {
-    await this.signInIcon.waitForClickable();
-    await this.signInIcon.click();
-    await this.loginBtnHeader.click();
+      await this.loginBtnHeader.click();
   }
   async login(mobNumber) {
     await this.mobileNumber.setValue(mobNumber);

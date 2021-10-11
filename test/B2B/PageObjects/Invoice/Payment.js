@@ -3,7 +3,6 @@ const commonObjects =require('../Common/commonObjects');
 var paymentIp = require("../../Inputs/paymentIp");
 var actionwrappers = require("../../../CommonActions/ActionsWrappers");
 const assert = require("assert");
-const ActionsWrappers = require("../../../CommonActions/ActionsWrappers");
 
 class payment extends Page {
     open() {
@@ -181,11 +180,11 @@ get alertPaymentmode(){
  async cardDetails(){
      if(paymentIp.cardType==='debit'){
         await actionwrappers.checkClickableAndClick(
-            await this.credit
+            await this.debit
         )}
      else {
         await actionwrappers.checkClickableAndClick(
-            await this.debit
+            await this.credit
         )
      }
      await actionwrappers.checkEnabledAndSetValue(

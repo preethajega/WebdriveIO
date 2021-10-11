@@ -22,7 +22,7 @@ get placeOrder(){
 }
 
 get addAddress() {
-    return super.pathByXpath('//span[text()="Add address"]');
+    return super.pathById('addAddressBtn');
 }
 
 get logout_Login() {

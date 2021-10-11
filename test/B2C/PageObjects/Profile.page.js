@@ -27,19 +27,19 @@ get emailId() {
 }
 
 get save() {
-    return super.pathByXpath('//span[text()="Save"]');
+    return super.pathById('loadingBtn');
 }
 
 get addAddress() {
-    return super.pathByXpath('//span[text()="Add Address"]');
+    return super.pathById('addAddressBtn');
 }
 
 get removeAddress() {
-    return super.pathByXpath('//span[text()="Remove"]');
+    return super.pathByXpath('//*[text()="Remove"]');
 }
 
 get editAddress() {
-    return super.pathByXpath('//span[text()="Edit"]');
+    return super.pathByXpath('//*[text()="Edit"]');
 }
 
 get lastAddress() {
@@ -53,15 +53,15 @@ get firstAddress() {
 }
 
 get deleteAddress(){
-    return super.pathByXpath('//span[text()="Delete"]');
+    return super.pathByXpath('//*[text()="Delete"]');
 }
 
 get snackbar(){
-    return super.pathByXpath('//div[@class="MuiAlert-message"]');
+    return super.pathByXpath('//div[@class="MuiAlert-message css-acap47-MuiAlert-message"]');
 
 }
 get nameAlert(){
-    return super.pathByXpath('//*[@id="App"]/div/div/div/div[2]/div[2]/form/div[1]/p');
+    return super.pathByXpath('//p[text()="Name required"]');
 
 }
 }

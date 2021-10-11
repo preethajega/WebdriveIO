@@ -32,10 +32,10 @@ class Checkout {
       await CheckoutPageObjects.loginStepInStepper
     );
     await actionwrappers.checkVisibleClickableMoveAndClick(
-      await CheckoutPageObjects.changeLoginBtnInCart
+      await CheckoutPageObjects.changeUser
     );
     await actionwrappers.checkVisibleClickableMoveAndClick(
-      await CheckoutPageObjects.logoutAndLoginAnotherAccount
+      await CheckoutPageObjects.switchUser
     );
         
   };
@@ -75,7 +75,7 @@ class Checkout {
     await CheckoutPageObjects.payOnDelivery.click();
 
     await actionwrappers.checkVisibleClickableMoveAndClick(
-      await CheckoutPageObjects.placeOrderAndPay
+      await CheckoutPageObjects.placeOrder
     );
   }
 
@@ -93,7 +93,7 @@ class Checkout {
     await CheckoutPageObjects.onlinePayment.click();
 
     await actionwrappers.checkVisibleClickableMoveAndClick(
-      await CheckoutPageObjects.placeOrderAndPay
+      await CheckoutPageObjects.placeOrder
       );
 
     this.selectMoMOPayAndPlaceOrder(onlineType); 

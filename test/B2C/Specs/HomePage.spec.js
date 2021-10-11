@@ -30,9 +30,9 @@ describe("Checkout  page", () => {
 
     });
 
-    it ("Change the Branch Name" , async () => {
-        await homePage.branchSelection(ProdInput.branch);
-    });
+    // it ("Change the Branch Name" , async () => {
+    //     await homePage.branchSelection(ProdInput.branch);
+    // });
     
 
       
