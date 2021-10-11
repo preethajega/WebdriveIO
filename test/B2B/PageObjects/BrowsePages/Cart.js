@@ -58,6 +58,23 @@ get displayName() {
   get createQuote() {
     return super.pathByXpath("//div[2]/div/div/div[5]/button");
   }
+
+  get addCustomProduct(){
+    return super.pathById("acp");
+  }
+
+get customProductDescription(){
+  return super.pathById("cpdesc");
+}
+
+get customProductID(){
+  return super.pathById("cpid");
+}
+
+get customUnitPrice(){
+  return super.pathById("cpup");
+}
+
 }
 
 module.exports = new Cart();
