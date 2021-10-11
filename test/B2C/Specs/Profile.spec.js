@@ -60,7 +60,7 @@ it("profile image size validation", async () =>{
 
   if(appIconExist){
   await  uploadAttchment.upload(profilePage.appIcon,ProfileInput.profileImage);
- // assert.strictEqual(await profilePage.snackbar.getText(),"Maximum file size of 200KB allowed");
+  assert.strictEqual(await profilePage.snackbar.getText(),"Maximum file size of 200KB allowed");
   }
 
   else {
@@ -68,6 +68,7 @@ it("profile image size validation", async () =>{
     await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
     assert.strictEqual(await profilePage.snackbar.getText(),"Profile updated successfully");
     await  uploadAttchment.upload(profilePage.appIcon,ProfileInput.profileImage);
+    assert.strictEqual(await profilePage.snackbar.getText(),"Maximum file size of 200KB allowed");
     
   }  
      
@@ -82,11 +83,27 @@ it("upload profile image", async () =>{
     
 });
 
-it("Remove the app icon", async () =>{
-  await  actionwrappers.checkVisibleClickableAndClick(profilePage.removeAppicon);
+// it("Remove the app icon", async () =>{
+//   await  actionwrappers.checkVisibleClickableAndClick(profilePage.removeAppicon);
+//   await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
+//   assert.strictEqual(await profilePage.snackbar.getText(),"Profile updated successfully");
+
+// });
+
+
+
+it("save only with empty name",async () =>{
+  await  actionwrappers.clearValues(profilePage.fullName);
+  await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
+  assert.strictEqual(await profilePage.nameAlert.getText(),"Name required");
+    
+});
+
+it("save only with email id",async () =>{
+  await  actionwrappers.clearValues(profilePage.emailId);
   await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
   assert.strictEqual(await profilePage.snackbar.getText(),"Profile updated successfully");
-
+    
 });
 
 it("Update the name & Email",async () =>{
@@ -94,13 +111,6 @@ it("Update the name & Email",async () =>{
   await  actionwrappers.clearAndsetValue(profilePage.emailId,ProfileInput.mail);
   await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
   assert.strictEqual(await profilePage.snackbar.getText(),"Profile updated successfully");
-    
-});
-
-it("save with empty name",async () =>{
-  await  actionwrappers.clearValues(profilePage.fullName);
-  await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
-  assert.strictEqual(await profilePage.nameAlert.getText(),"Name required");
     
 });
 

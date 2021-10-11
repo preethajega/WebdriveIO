@@ -6,6 +6,7 @@ var actionwrappers = require("./../../CommonActions/ActionsWrappers");
 var addAddress = require("./../CommonFunctions/AddAddress");
 const assert = require("assert");
 
+
 describe("Login page", () => {
   let otp;
   let test;
@@ -15,16 +16,13 @@ describe("Login page", () => {
     await LoginPage.wait();
   });
   it("Mobile number Validation", async () => {
-    var enterMobileValidation = $("//div[2]/div[1]/div/div/p");
+   
     // Validation for empty mobile number
     await LoginPage.signInIconClick();
     await actionwrappers.checkVisibleClickableMoveAndClick(
       LoginPage.requestCode
     );
-    assert.strictEqual(
-      await enterMobileValidation.getText(),
-      "Enter the mobile Number"
-    );
+    await actionwrappers.eleDisplayed(LoginPage.mobileNoAlert);
     // Validation for incomplete mobile number
     await actionwrappers.checkEnableddoubleClickDeleteAndSetValue(
       LoginPage.mobileNumber,

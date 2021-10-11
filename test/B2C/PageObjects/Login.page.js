@@ -58,10 +58,14 @@ class LoginPage extends Page {
     return $("//nav/a[1]");
   }
   get emptyOTPValidationMesge() {
-    return super.pathByXpath("//div[2]/div[1]/div[2]/p");
+    return super.pathById("otp-helper-text");
   }
   get resendOTP() {
     return super.pathById('resendCode');
+  }
+
+  get mobileNoAlert(){
+    return super.pathById('mobileNo-helper-text');
   }
 
   async signInIconClick() {

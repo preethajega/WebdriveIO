@@ -12,17 +12,15 @@ wait(){
 
 
 get profileIcon() {
-    return  super.pathByCss(
-        "[class='MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeEnd']"
-      );
+    return  super.pathById('userIcon');
 }
 
 get profile() {
-    return super.pathByXpath('//a[@href="/profile"]');
+    return super.pathByXpath('//li[text()="Profile"]');
 }
 
 get orders() {
-    return super.pathByXpath('//a[@href="/orders/1"]');
+    return super.pathByXpath('//li[text()="Orders"]');
 
 }
 
