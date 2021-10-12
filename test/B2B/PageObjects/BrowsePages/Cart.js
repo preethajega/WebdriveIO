@@ -59,7 +59,7 @@ class Cart extends Page {
     return super.pathById("asynchronous-demo");
   }
   get createQuote() {
-    return super.pathByXpath("//div[2]/div/div/div[5]/button");
+    return super.pathById("cq_rfq");
   }
 
   get addCustomProduct() {
@@ -77,6 +77,73 @@ class Cart extends Page {
   get customUnitPrice() {
     return super.pathById("cpup");
   }
+
+  get createOrder() {
+    return super.pathById("co");
+  }
+
+
+  // enquiry
+
+  get leadName(){
+    return super.pathByName("leadName");
+  }
+
+  get companyName(){
+    return super.pathById("companyName");
+  }
+
+  get contactPerson(){
+    return super.pathById("fullName")
+  }
+
+  get CustEmail(){
+    return super.pathById("email")
+  }
+
+  get BuyerName(){
+    return super.pathByXpath('//form//input[@id="asynchronous-demo"]')
+  } 
+
+get CustContactNo(){
+  return super.pathById("phone")
+}
+get Source(){
+  return super.pathById("leadSource")
+}
+
+get message(){
+  return super.pathById("message")
+}
+
+get createLead (){
+return super.pathByXpath('//button[@id="loadingButton"]');
+}
+
+get snackbar (){
+  return super.pathById('client-snackbar');
+  }
+
+get remove (){
+  return super.pathByXpath('//div[contains(@class,"Paper-root jss")]');
+  }
+
+get MoreOptions (){
+  return super.pathByXpath('//*[text()="Upload Products"]/following::button[1]');
+  }
+
+get clearCart (){
+  return super.pathByXpath('//*[text()="Clear Cart"]');
+  }
+
+get yes (){
+  return super.pathById('yes');
+  }
+
+  get attachmentEnquiry(){
+    return super.pathById("button-file-leads");
+  }
+
 }
 
 module.exports = new Cart();

@@ -1,5 +1,6 @@
 const actionWrapper = require("../../../CommonActions/ActionsWrappers");
 const path = require("../../PageObjects/BrowsePages/Cart");
+const inputEnquiry = require("../../Inputs/Browse/Cart");
 class AddProduct {
   //
   clickCartIcon = async () => {
@@ -37,6 +38,13 @@ class AddProduct {
     );
   };
 
+  // to click create order btn in cart page
+  cartCreateQuote = async () => {
+    await actionWrapper.checkVisibleClickableMoveAndClick(
+      await path.createOrder
+    );
+  };
+
   // product search and add to cart from header search
   addToCartFromHeaderSearch = async (searchValue) => {
     await path.searchBox.click();
@@ -62,6 +70,81 @@ class AddProduct {
     await actionWrapper.checkEnabledClearAndSetValue(
       await path.customUnitPrice,
       unitPrice
+    );
+  };
+
+  // to create a lead
+  createEnquiry = async () => {
+    await path.cartIcon.waitForDisplayed(2000);
+    await actionWrapper.checkVisibleClickableAndClick(await path.cartIcon);
+    await browser.pause(2000);
+    if (await path.remove.isExisting()) {
+      await actionWrapper.checkVisibleClickableAndClick(await path.MoreOptions);
+      await browser.pause(2000);
+      await actionWrapper.checkVisibleClickableAndClick(await path.clearCart);
+      await actionWrapper.checkVisibleClickableAndClick(await path.yes);
+    }
+
+    await actionWrapper.checkEnabledClearAndSetValue(
+      await path.leadName,
+      inputEnquiry.leadName
+    );
+    await path.BuyerName.waitForClickable(1000);
+    await actionWrapper.searchAndselectDrpdownusingKeyboard(
+      inputEnquiry.BuyerName,
+      await path.BuyerName
+    );
+
+    if ((await path.companyName.getValue()) === "") {
+      await actionWrapper.checkEnabledClearAndSetValue(
+        await path.companyName,
+        inputEnquiry.CompanyName
+      );
+    }
+    if ((await path.contactPerson.getValue()) === "") {
+      await actionWrapper.checkEnabledClearAndSetValue(
+        await path.contactPerson,
+        inputEnquiry.ContactPerson
+      );
+    }
+    if ((await path.CustEmail.getValue()) === "") {
+      await actionWrapper.checkEnabledClearAndSetValue(
+        await path.CustEmail,
+        inputEnquiry.CustomerEmail
+      );
+    }
+    if ((await path.CustContactNo.getValue()) === "") {
+      await actionWrapper.checkEnabledClearAndSetValue(
+        await path.CustContactNo,
+        inputEnquiry.ContactNo
+      );
+    }
+
+    await actionWrapper.searchAndselectDrpdownusingKeyboard(
+      inputEnquiry.Source,
+      await path.Source
+    );
+
+    await path.message.waitForDisplayed(1000);
+    await actionWrapper.checkEnabledClearAndSetValue(
+      await path.message,
+      inputEnquiry.Message
+    );
+    browser.execute(
+      (el) => (el.style.display = "block"),
+      await path.attachmentEnquiry
+    );
+    await path.attachmentEnquiry.waitForDisplayed();
+    await actionWrapper.checkEnabledClearAndSetValue(
+      await path.attachmentEnquiry,
+      inputEnquiry.Attachment
+    );
+    await browser.pause(5000);
+    await actionWrapper.checkVisibleClickableAndClick(await path.createLead);
+    await browser.pause(2000);
+    assert.strictEqual(
+      await path.snackbar.getText(),
+      "Lead created successfully"
     );
   };
 }

@@ -23,8 +23,10 @@ describe("Create Draft quote ", () => {
 
     await cartPage.clickCartIcon();
     // await cartPage.addCustomProductInCart("TEST DESC", "TEST ID",9000);
-    await cartPage.searchProductInCart("appple");
-    await cartPage.selectBuyer();
-    await cartPage.cartCreateQuote();
+    // await cartPage.searchProductInCart("appple");
+    // await cartPage.selectBuyer();
+    // await cartPage.cartCreateQuote();
+
+    await cartPage.createEnquiry();
   });
 });
