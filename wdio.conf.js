@@ -1,6 +1,10 @@
 exports.config = {
     specs: [
+<<<<<<< HEAD
         './test/B2B/Specs/B2C_Orders/Payment.spec.js'     
+=======
+        './test/B2B/Specs/ToTestDevfile.js'     
+>>>>>>> d94a37ac744c6414d6c3002938215b14805bed7e
         
         
     ],
