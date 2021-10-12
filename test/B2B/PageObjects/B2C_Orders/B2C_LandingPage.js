@@ -41,8 +41,23 @@ get canceled(){
   return super.pathByXpath('//p[text()="ORDER CANCELLED"]');
 
 }
-get pending(){
-  return super.pathByXpath('//p[text()="Pending"]');
+
+get paid(){
+  return super.pathByXpath('//p[text()="Paid"]');
+
+}
+
+get odrBK_PayPen(){
+  return super.pathByXpath('//*[text()="ORDER BOOKED"]/following::td[1]/p[text()="Pending"]');
+
+}
+get odrPL_PayPen(){
+  return super.pathByXpath('//*[text()="ORDER PLACED"]/following::td[1]/p[text()="Pending"]');
+
+}
+
+get odrAC_PayPen(){
+  return super.pathByXpath('//*[text()="ORDER ACCEPTED"]/following::td[1]/p[text()="Pending"]');
 
 }
 

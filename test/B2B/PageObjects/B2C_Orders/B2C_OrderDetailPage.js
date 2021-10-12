@@ -1,7 +1,7 @@
 const Page = require("../../PageObjects/page");
 const assert = require("assert");
 var actionwrappers = require("../../../CommonActions/ActionsWrappers");
-const commonObjects = require("../Common/commonObjects");
+const common_path = require("../Common/commonObjects");
 var B2C_OrdersIp = require("../../Inputs/Orders/B2C_Orders");
 const B2C_Landing = require("../../PageObjects/B2C_Orders/B2C_LandingPage");
 var downloadFile = require("../../../CommonActions/pdfDownload");
@@ -46,10 +46,6 @@ get cancelBtn(){
 
 get downloadPDF() {
     return super.pathByXpath('//li[text()="Download PDF"]');
-}
-get odrBked_PaymtPendg(){
-    return super.pathByXpath('//*[text()="ORDER BOOKED"]/following::td[1]/p[text()="Pending"]');
-
 }
 
 get orderNo(){
@@ -100,14 +96,14 @@ get alertCity(){
 
 
 cancelOrder = async(cancelMsg) =>{
-    await actionwrappers.checkVisibleClickableAndClick(await commonObjects.moreOptions);
+    await actionwrappers.checkVisibleClickableAndClick(await common_path.moreOptions);
     await actionwrappers.checkVisibleClickableAndClick(await this.orderCancel);
     await actionwrappers.checkEnabledAndSetValue(await this.cancelMsg,cancelMsg);
     await actionwrappers.checkClickableAndClick(await this.cancelBtn);
     await browser.pause(5000);
-    assert.strictEqual(await commonObjects.snackbar.getText(),B2C_OrdersIp.cancelOrder);
+    assert.strictEqual(await common_path.snackbar.getText(),B2C_OrdersIp.cancelOrder);
     await browser.refresh();
-    await actionwrappers.checkClickableAndClick(commonObjects.close);
+    await actionwrappers.checkClickableAndClick(common_path.close);
 
 
 
@@ -117,27 +113,27 @@ acceptOrder = async(warehouse,tax)  =>{
     await actionwrappers.checkVisibleClickableAndClick(await this.orderBtn);
     await actionwrappers.clearValue_selectDropdownvalue(await this.warehouse,warehouse);
     await actionwrappers.clearAndsetValue(await this.tax,tax);
-    await actionwrappers.checkClickableAndClick(await commonObjects.acceptDailog);
-    assert.strictEqual(await commonObjects.snackbar.getText(),B2C_OrdersIp.orderaccepted);
+    await actionwrappers.checkClickableAndClick(await common_path.acceptDailog);
+    assert.strictEqual(await common_path.snackbar.getText(),B2C_OrdersIp.orderaccepted);
 
 }
 
 bookOrder = async(erpIp) =>{
     await actionwrappers.checkVisibleClickableAndClick(await this.orderBtn);
     await actionwrappers.checkEnabledAndSetValue(await this.erpId,erpIp);
-    await actionwrappers.checkClickableAndClick(await commonObjects.acceptDailog);
+    await actionwrappers.checkClickableAndClick(await common_path.acceptDailog);
     await browser.pause(5000);
-    assert.strictEqual(await commonObjects.snackbar.getText(),B2C_OrdersIp.orderBooked);
+    assert.strictEqual(await common_path.snackbar.getText(),B2C_OrdersIp.orderBooked);
 }
 
 fullfill_Invoice=async() =>{
 if (await this.paymentStatus.getText()=="Paid"){
     await actionwrappers.checkVisibleClickableAndClick(await this.orderBtn);
     await browser.pause(2000);
-    await actionwrappers.checkVisibleClickableAndClick(await commonObjects.submit);
-    await actionwrappers.checkClickableAndClick(await commonObjects.yes);
+    await actionwrappers.checkVisibleClickableAndClick(await common_path.submit);
+    await actionwrappers.checkClickableAndClick(await common_path.yes);
     await browser.pause(4000);
-    assert.strictEqual(await commonObjects.snackbar.getText(),B2C_OrdersIp.invoice);
+    assert.strictEqual(await common_path.snackbar.getText(),B2C_OrdersIp.invoice);
 } 
 else if(await this.paymentStatus.getText()=="Pending"){
   await  this.CheckPaymentAlert();
@@ -146,25 +142,26 @@ else if(await this.paymentStatus.getText()=="Pending"){
 CheckPaymentAlert= async() =>{
     await actionwrappers.checkVisibleClickableAndClick(await this.orderBtn);
     await browser.pause(5000);
-    assert.strictEqual(await commonObjects.snackbar.getText(),B2C_OrdersIp.pendingPayment);
+    assert.strictEqual(await common_path.snackbar.getText(),B2C_OrdersIp.pendingPayment);
     await browser.refresh();
-    await actionwrappers.checkClickableAndClick(commonObjects.close);
+    await actionwrappers.checkClickableAndClick(common_path.close);
 
 }
 
-cancelOrderScenarios = async(input) =>{
-    await actionwrappers.checkVisibleClickableAndClick(await commonObjects.moreOptions);
-    await actionwrappers.checkVisibleClickableAndClick(await this.orderCancel);
+moreOptionScenarios = async(ele,input) =>{
+    await actionwrappers.checkVisibleClickableAndClick(await common_path.moreOptions);
+    await actionwrappers.checkVisibleClickableAndClick(ele);
     await browser.pause(5000);
-    assert.strictEqual(await commonObjects.snackbar.getText(),input);
+    assert.strictEqual(await common_path.snackbar.getText(),input);
     await browser.refresh();
-    await actionwrappers.checkClickableAndClick(commonObjects.close);
+    await actionwrappers.checkClickableAndClick(common_path.close);
 
 }
+
 
 pdfDownload =async(ele)=>{
     await B2C_Landing.viewOrder(ele);
-    await downloadFile.download_switchWindow(await commonObjects.moreOptions,
+    await downloadFile.download_switchWindow(await common_path.moreOptions,
         await this.downloadPDF)
 
 }
@@ -179,13 +176,13 @@ markAsdeliveredFn = async()=>{
     await actionwrappers.checkEnabledAndSetValue(
         await this.deliveryNote,B2C_OrdersIp.deliveryNote);
     await actionwrappers.checkClickableAndClick(await this.deliveryDate);  
-    await actionwrappers.checkClickableAndClick(await commonObjects.CurrentDate);
-    await actionwrappers.checkClickableAndClick(await commonObjects.acceptDailog);
+    await actionwrappers.checkClickableAndClick(await common_path.CurrentDate);
+    await actionwrappers.checkClickableAndClick(await common_path.acceptDailog);
     await browser.pause(5000);
-    assert.strictEqual(await commonObjects.snackbar.getText(),
+    assert.strictEqual(await common_path.snackbar.getText(),
     B2C_OrdersIp.deliveryMsg);
     await browser.refresh();
-    await actionwrappers.checkClickableAndClick(commonObjects.close);
+    await actionwrappers.checkClickableAndClick(common_path.close);
 
 
 }
