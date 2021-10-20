@@ -2,6 +2,7 @@ var actionwrappers = require("./../../CommonActions/ActionsWrappers");
 var CheckoutPageObjects = require("./../PageObjects/Checkout.page");
 var addressInput = require("./../Input/Address");
 const assert = require("assert");
+const LoginIo = require("../Input/Login.io");
 
 class Checkout {
   // to click cart icon and place order button
@@ -46,19 +47,18 @@ class Checkout {
     await actionwrappers.checkVisibleClickableMoveAndClick(
       await CheckoutPageObjects.continueBtn
     );
-
     await actionwrappers.checkVisibleClickableMoveAndClick(
       await CheckoutPageObjects.changePickupAddress
-    );
-
-    await actionwrappers.checkVisibleClickableMoveAndClick(
-      await CheckoutPageObjects.otherSellerAddress
-    );
-
+    );  
+  
+    // await browser.pause(2000);
+    // await actionwrappers.checkVisibleClickableMoveAndClick(
+    //   await CheckoutPageObjects.deliveryAddressSecondIndex
+    // );
     await actionwrappers.checkVisibleClickableMoveAndClick(
       await CheckoutPageObjects.continueBtn
     );
-  // return changePickUpAddress;
+ 
   };
   
   // to select pay on delivery and place order, note this assume the first index 
@@ -73,10 +73,11 @@ class Checkout {
       await CheckoutPageObjects.continueBtn
     );
     await CheckoutPageObjects.payOnDelivery.click();
-
+    
     await actionwrappers.checkVisibleClickableMoveAndClick(
       await CheckoutPageObjects.placeOrder
-    );
+      );
+    
   }
 
 

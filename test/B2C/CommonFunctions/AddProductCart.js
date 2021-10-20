@@ -25,17 +25,15 @@ var searchProdTocart = function () {
      }
 
      this.prodChanges= async (ele,ele2) =>{
-        let btnDisplayed= await ele.isDisplayed();
-        let emptyCart = await ele2.isDisplayed();
-   
-            for (let i = 0; i < 20; i++) 
+            let emptyCart = await ele2.isDisplayed();
+               for (let i = 0; i < 20; i++) 
             {
              await actionwrappers.checkVisibleClickableAndClick(ele);
-             await browser.refresh();   
-             if(emptyCart ){
+             await browser.refresh();  
+             if(emptyCart){
                 break;
             }   
-            }        
+           }        
           }
          }
     module.exports = new searchProdTocart();

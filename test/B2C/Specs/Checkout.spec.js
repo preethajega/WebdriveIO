@@ -75,7 +75,6 @@ describe("Checkout  page", () => {
      it("place order and pay on delivery", async() =>{
       await searchProdTocart.buyProd(ProdInput.ItemName);
       await checkout.selectPODAndPlaceOrder();
-     // await actionwrappers.urlValidation("ordersuccess");
       await actionwrappers.checkClickableAndClick(path.logo);
       await actionwrappers.displayValidation(path.searchProduct);
    });
@@ -92,7 +91,6 @@ describe("Checkout  page", () => {
      it("place order using othernetworks" , async() =>{
         await searchProdTocart.buyProd(ProdInput.product3);
         await checkout.selectOnlinePaymentAndPlaceOrder("otherNetwork");
-        //await actionwrappers.urlValidation("ordersuccess");
         await actionwrappers.checkClickableAndClick(path.continueShopping);
         await actionwrappers.displayValidation(path.searchProduct);
 
@@ -101,8 +99,8 @@ describe("Checkout  page", () => {
      it("place order using MTNMoMoPay" , async() =>{
         await searchProdTocart.buyProd(ProdInput.productName);
         await checkout.selectOnlinePaymentAndPlaceOrder("MTNMoMoPay");
-       //await actionwrappers.urlValidation("ordersuccess");
-        await actionwrappers.checkClickableAndClick(path.logo);
+        await browser.pause(2000);
+        await actionwrappers.checkClickableAndClick(path.continueShopping);
         await actionwrappers.displayValidation(path.searchProduct);
 
 

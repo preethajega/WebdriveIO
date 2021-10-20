@@ -57,6 +57,10 @@ class LoginPage extends Page {
   get ordersMenu() {
     return $("//nav/a[1]");
   }
+
+  get enterMobileValidation() {
+    return super.pathById("mobileNo-helper-text");
+  }
   get emptyOTPValidationMesge() {
     return super.pathById("otp-helper-text");
   }

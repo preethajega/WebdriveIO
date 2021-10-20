@@ -42,11 +42,12 @@ describe("Checkout  page", () => {
     
   });
 
-/* it("remove all the products in cart" , async () => {
-  await actionwrappers.checkClickableAndClick(path.cartIcon);/   await actionwrappers.urlValidation("cart");
-   await searchProdTocart.prodChanges(path.removeProduct,path.emptyCart);
-  assert.strictEqual(await path.emptyCart.getText(),"Your Cart is Empty");
-});*/
+//  it("remove all the products in cart" , async () => {
+//   await actionwrappers.checkClickableAndClick(path.cartIcon);
+//   await actionwrappers.urlValidation("cart");
+//   await searchProdTocart.prodChanges(path.removeProduct,path.emptyCart);
+//   assert.strictEqual(await path.emptyCartText.getText(),"Cart is empty");
+// });
 
 it("Search prod & Add to cart", async () => {
    await searchProdTocart.searchProd(ProdInput.product2,ProdInput.qty,path.cartIcon);
