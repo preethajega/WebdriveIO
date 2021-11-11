@@ -1,4 +1,5 @@
-const Page = require("../page");
+const Page = require("../../../B2B/PageObjects/page");
+
 
 class Cart extends Page {
   open() {
@@ -12,7 +13,7 @@ class Cart extends Page {
   }
 
   get searchBox() {
-    return super.pathByXpath("(//div[1]/input)[1]");
+    return super.pathByXpath('//*[starts-with(@placeholder,"Search by")]');
   }
 
   get searchResultsImage() {
@@ -20,47 +21,44 @@ class Cart extends Page {
   }
 
   get addToCartBtnInSearchResults() {
-    return super.pathByXpath("//div[1]/div[1]/div[3]/button/span[1]");
+    return super.pathByXpath('//*[@type="button" and  @operator="add"]');
   }
 
   get searchBarInCartPage() {
-    return super.pathByXpath("(//div[1]/input)[2]");
+    return super.pathByXpath('//*[@placeholder="Search for products"]');
   }
 
-  get resultsListInCartPage() {
-    return super.pathByXpath("//ul/div/div[1]/span");
+   resultsListInCartPage(Index) {
+    return super.pathByXpath(`(//*[contains(@class,"MuiGrid-grid-lg-9")])[${Index}]`);
   }
 
   get displayName() {
     return super.pathByName("displayName");
   }
-  get selectbuyerEmptyCart() {
-    return super.pathById("asynchronous-demo");
-  }
-  get emptyCartSearch() {
-    return super.pathByXpath("//div[2]/div[2]/div/div/div/input");
+  
+  get searchProd() {
+    return super.pathByXpath('//input[@placeholder="Search for products"]');
   }
 
-  get emptyCartsearchedproduct() {
-    return super.pathByXpath(
-      '//*[@id="root"]/div[2]/div[2]/div[2]/div/div[2]/div/div/ul/div[1]'
+  get prodResults() {
+    return super.pathByXpath('//*[contains(@class,"root MuiListItem-gutters MuiListItem-button")]' 
     );
   }
-  get search() {
-    return super.pathByXpath("//div[1]/div[1]/div[2]/div[1]/div/div/div/input");
-  }
-  get productSearched() {
-    return super.pathByXpath(
-      '//*[@id="root"]/div[4]/div/div[1]/div/div[1]/div[1]/div[2]/div[1]/div/div[2]/div/div/ul/div[1]'
-    );
-  }
+    
 
   get selectbuyer() {
     return super.pathById("asynchronous-demo");
   }
-  get createQuote() {
-    return super.pathById("cq_rfq");
+  
+  get uploadBtn() {
+    return super.pathByXpath('//*[@id="acp"]/following::button[1]');
+  
   }
+
+  get uploadFile() {
+    return super.pathById("upload-excel-file");
+  }
+
 
   get addCustomProduct() {
     return super.pathById("acp");
@@ -78,12 +76,21 @@ class Cart extends Page {
     return super.pathById("cpup");
   }
 
+  get qty() {
+    return super.pathById("quantity");
+  }
+
   get createOrder() {
     return super.pathById("co");
   }
-
+  get createQuote() {
+    return super.pathById("cq_rfq");
+  }
 
   // enquiry
+  get enqBtn(){
+    return super.pathById("panel1bh-header");
+  }
 
   get leadName(){
     return super.pathByName("leadName");
@@ -97,18 +104,18 @@ class Cart extends Page {
     return super.pathById("fullName")
   }
 
-  get CustEmail(){
+  get custEmail(){
     return super.pathById("email")
   }
 
-  get BuyerName(){
-    return super.pathByXpath('//form//input[@id="asynchronous-demo"]')
+  get buyerName(){
+    return super.pathByXpath('//input[@id="companyName"]/preceding::input[1]')
   } 
 
-get CustContactNo(){
+get custContactNo(){
   return super.pathById("phone")
 }
-get Source(){
+get source(){
   return super.pathById("leadSource")
 }
 
@@ -116,13 +123,6 @@ get message(){
   return super.pathById("message")
 }
 
-get createLead (){
-return super.pathByXpath('//button[@id="loadingButton"]');
-}
-
-get snackbar (){
-  return super.pathById('client-snackbar');
-  }
 
 get remove (){
   return super.pathByXpath('//div[contains(@class,"Paper-root jss")]');
@@ -136,9 +136,7 @@ get clearCart (){
   return super.pathByXpath('//*[text()="Clear Cart"]');
   }
 
-get yes (){
-  return super.pathById('yes');
-  }
+
 
   get attachmentEnquiry(){
     return super.pathById("button-file-leads");

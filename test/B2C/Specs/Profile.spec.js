@@ -83,12 +83,12 @@ it("upload profile image", async () =>{
     
 });
 
-// it("Remove the app icon", async () =>{
-//   await  actionwrappers.checkVisibleClickableAndClick(profilePage.removeAppicon);
-//   await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
-//   assert.strictEqual(await profilePage.snackbar.getText(),"Profile updated successfully");
+it("Remove the app icon", async () =>{
+  await  actionwrappers.checkVisibleClickableAndClick(profilePage.removeAppicon);
+  await  actionwrappers.checkVisibleClickableAndClick(profilePage.save);
+  assert.strictEqual(await profilePage.snackbar.getText(),"Profile updated successfully");
 
-// });
+});
 
 
 
@@ -133,8 +133,6 @@ it("Remove the Address", async () =>{
   await actionwrappers.checkVisibleClickableAndClick(profilePage.lastAddress);
   await actionwrappers.checkVisibleClickableAndClick(profilePage.removeAddress);
   await actionwrappers.checkVisibleClickableAndClick(profilePage.deleteAddress);
-  
-
 });
 
 it("Logout ", async () => {

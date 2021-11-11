@@ -3,21 +3,23 @@ class Landingpage  extends Page {
     open() {
         super.open('auth/login'); //this will append `login` to the baseUrl to form complete URL
       }
-      get Filterbutton() {
-        return  super.pathByXpath('//div[2]/div/div/div/div[1]/button');
-     }
+      get quoteFilter() {
+        return  super.pathById('quotefilter')
+      }
+      get exportQuote() {
+        return  super.pathById('exportQuote');
+        }
+  
 
      get QuoteName() {
-      return  super.pathById('qname');
+      return  super.pathByXpath('(//*[contains(@class,"MuiTableCell-sizeSmall")])[11]');
    }
 
    get QuoteID() {
-    return  super.pathById('qid');
+    return  super.pathByXpath('(//*[contains(@class,"MuiTableCell-sizeSmall")])[12]');
  }
 
- get ApplyButton() {
-  return  super.pathById('/html/body/div[5]/div[3]/header/div/button[2]');
-}
+ 
 
     };
 
