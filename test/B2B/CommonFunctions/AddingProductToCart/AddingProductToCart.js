@@ -147,5 +147,14 @@ class AddProduct {
       "Lead created successfully"
     );
   };
+
+  updateQuantityInCart = async () =>{
+let existingQuantity = await path.quantity.getText();
+console.log(existingQuantity);
+await actionWrapper.checkEnabledClearAndSetValue(
+  await path.attachmentEnquiry,
+  existingQuantity + existingQuantity
+);
+  }
 }
 module.exports = new AddProduct();

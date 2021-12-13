@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@wdio/cli": "^7.11.1",
+    "date-fns": "^2.25.0",
+    "jscodeshift": "^0.13.0",
     "mysql": "^2.18.1"
   },
   "scripts": {

@@ -1,7 +1,7 @@
 exports.config = {
     specs: [
         // './test/B2B/Specs/B2C_Orders/Payment.spec.js'     
-        './test/B2B/Specs/ToTestDevfile.js'     
+        './test/SanityTesting/SanityTest.js'     
         
         
     ],
@@ -33,7 +33,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://localhost',
+    baseUrl: 'http://new.bcommerce.in/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
