@@ -1,6 +1,9 @@
 const actionWrapper = require("../../../CommonActions/ActionsWrappers");
 const path = require("../../PageObjects/BrowsePages/Cart");
-const inputEnquiry = require("../../Inputs/Browse/Cart");
+const common = require("../../PageObjects/Common/commonObjects");
+var uploadAttchment = require("../../../CommonActions/attchmentUpload");
+const CartPageInput = require("../../Inputs/Browse/Cart");
+
 class AddProduct {
   //
   clickCartIcon = async () => {
@@ -39,11 +42,22 @@ class AddProduct {
   };
 
   // to click create order btn in cart page
-  cartCreateQuote = async () => {
+  cartCreateOrder = async () => {
     await actionWrapper.checkVisibleClickableMoveAndClick(
       await path.createOrder
     );
   };
+
+  // to click create enquiry btn in cart page
+  cartCreateEnquiry = async () => {
+
+    await actionWrapper.checkVisibleClickableMoveAndClick(
+      await path.createEnquiry
+    );
+  };
+
+
+
 
   // product search and add to cart from header search
   addToCartFromHeaderSearch = async (searchValue) => {
@@ -72,80 +86,80 @@ class AddProduct {
       unitPrice
     );
   };
-
-  // to create a lead
-  createEnquiry = async () => {
-    await path.cartIcon.waitForDisplayed(2000);
-    await actionWrapper.checkVisibleClickableAndClick(await path.cartIcon);
-    await browser.pause(2000);
+ 
+  // Clear cart 
+  clearCart = async () => {
     if (await path.remove.isExisting()) {
       await actionWrapper.checkVisibleClickableAndClick(await path.MoreOptions);
       await browser.pause(2000);
       await actionWrapper.checkVisibleClickableAndClick(await path.clearCart);
-      await actionWrapper.checkVisibleClickableAndClick(await path.yes);
+      await actionWrapper.checkVisibleClickableAndClick(await common.yes);
     }
 
+  }
+
+  // to create a lead
+  createEnquiry = async (leadName,BuyerName,ContactNo,Source) => {
+    await path.cartIcon.waitForDisplayed(2000);
+    this.clickCartIcon();
+    await browser.pause(2000);
+    this.clearCartclearCart();
     await actionWrapper.checkEnabledClearAndSetValue(
-      await path.leadName,
-      inputEnquiry.leadName
+      await path.leadName,leadName
+     
     );
     await path.BuyerName.waitForClickable(1000);
     await actionWrapper.searchAndselectDrpdownusingKeyboard(
-      inputEnquiry.BuyerName,
-      await path.BuyerName
+      BuyerName,await path.BuyerName
     );
 
     if ((await path.companyName.getValue()) === "") {
       await actionWrapper.checkEnabledClearAndSetValue(
         await path.companyName,
-        inputEnquiry.CompanyName
+        CartPageInput.CompanyName
       );
     }
     if ((await path.contactPerson.getValue()) === "") {
       await actionWrapper.checkEnabledClearAndSetValue(
         await path.contactPerson,
-        inputEnquiry.ContactPerson
+        CartPageInput.ContactPerson
       );
     }
     if ((await path.CustEmail.getValue()) === "") {
       await actionWrapper.checkEnabledClearAndSetValue(
         await path.CustEmail,
-        inputEnquiry.CustomerEmail
+        CartPageInput.CustomerEmail
       );
     }
-    if ((await path.CustContactNo.getValue()) === "") {
+  
       await actionWrapper.checkEnabledClearAndSetValue(
-        await path.CustContactNo,
-        inputEnquiry.ContactNo
+        await path.CustContactNo,ContactNo
       );
-    }
+    
 
     await actionWrapper.searchAndselectDrpdownusingKeyboard(
-      inputEnquiry.Source,
-      await path.Source
+      Source,await path.Source
     );
 
     await path.message.waitForDisplayed(1000);
     await actionWrapper.checkEnabledClearAndSetValue(
       await path.message,
-      inputEnquiry.Message
+      CartPageInput.Message
     );
-    browser.execute(
-      (el) => (el.style.display = "block"),
-      await path.attachmentEnquiry
-    );
-    await path.attachmentEnquiry.waitForDisplayed();
-    await actionWrapper.checkEnabledClearAndSetValue(
+    await uploadAttchment.upload(
       await path.attachmentEnquiry,
-      inputEnquiry.Attachment
+      CartPageInput.Attachment
     );
-    await browser.pause(5000);
-    await actionWrapper.checkVisibleClickableAndClick(await path.createLead);
-    await browser.pause(2000);
+    this.cartCreateEnquiry();
+    if(await path.snackbar.getText() !== CartPageInput.suceessAlert ){
+      this.cartCreateEnquiry();
+    }
     assert.strictEqual(
-      await path.snackbar.getText(),
-      "Lead created successfully"
+      await path.snackbar.getText(),CartPageInput.suceessAlert
     );
   };
 }
+
+
+
 module.exports = new AddProduct();

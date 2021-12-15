@@ -3,11 +3,11 @@ const Page = require("../../../B2B/PageObjects/page");
 
 class Cart extends Page {
   open() {
-    super.b2cPath(""); //super will append `login` to the baseUrl to form complete URL
+    super.open(""); //this will append `login` to the baseUrl to form complete URL
   }
-  wait() {
-    browser.pause(8000);
-  }
+wait(){
+  browser.pause(8000);
+}
   get cartIcon() {
     return super.pathByCss('[aria-label="cart"]');
   }
@@ -136,11 +136,15 @@ get clearCart (){
   return super.pathByXpath('//*[text()="Clear Cart"]');
   }
 
-
-
   get attachmentEnquiry(){
     return super.pathById("button-file-leads");
   }
+
+  get CreateEnquiry(){
+    return super.pathById("loadingButton");
+  }
+
+
 
 }
 

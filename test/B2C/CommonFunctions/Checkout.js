@@ -13,7 +13,7 @@ class Checkout {
     await actionwrappers.checkVisibleClickableMoveAndClick(
       await CheckoutPageObjects.placeOrderCart
     );
-   // return clickCartIconAndPlaceOrderBtn;
+
   };
 
   // If there is more than single delivery address, 2nd index will be selected
@@ -23,7 +23,7 @@ class Checkout {
     if (deliveryAddressCardExists) {
       await CheckoutPageObjects.deliveryAddressSecondIndex.click();
     }
-   // return changeDeliveryAddress;
+
    
   };
   // To change the logged in user from checkout page

@@ -7,7 +7,9 @@ function CartPageInput() {
     this.ContactNo = "9876543210";
     this.Source = "Social Networks";
     this.Message = "this is to inform one enquiry is received";
-    this.Attachment = "C:/Users/Madhan/Downloads/order.PNG"; //this needs to be changed
+    this.suceessAlert = "Lead created successfully";
+    this.uploadAlert = "Uploading attachment, please wait";
+    this.Attachment = path.join(__dirname,'./../../FileUtils/profilepic.png');
 }
 
 
