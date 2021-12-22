@@ -128,7 +128,7 @@ checkVisibleClickableMove = async (ele) => {
 
   //search for the input and select first dropdown value when keyboard
   searchAndselectDrpdownusingKeyboard = async (searchText, ele) =>{
-    await ele.waitForClickable({ timeout: 2000 });
+    await browser.pause(2000);
     await ele.setValue(searchText);
     await ele.click();
     await ele.keys("\uE015");

@@ -1,71 +1,85 @@
 const actionWrapper = require("../../../CommonActions/ActionsWrappers");
 const path = require("../../PageObjects/BrowsePages/Cart");
+const assert = require("assert");
 const common = require("../../PageObjects/Common/commonObjects");
-var uploadAttchment = require("../../../CommonActions/attchmentUpload");
-const CartPageInput = require("../../Inputs/Browse/Cart");
+var CartIP = require("../../Inputs/Browse/CartIp");
+const attchmentUpload = require("../../../CommonActions/attchmentUpload");
+const CartIp = require("../../Inputs/Browse/CartIp");
+const { uploadExcel } = require("../../Inputs/Browse/CartIp");
 
 class AddProduct {
-  //
-  clickCartIcon = async () => {
-    await actionWrapper.checkVisibleClickableAndClick(await path.cartIcon);
+  
+ 
+  clickEnquiryIcon = async () => {
+    await actionWrapper.checkVisibleClickableAndClick(await path.enqBtn);
   };
 
-  // To search for a product in cart
-  searchProductInCart = async (productId) => {
-    await actionWrapper.checkVisibleClickableAndClick(await path.cartIcon);
-    await browser.pause(5000);
-    let emptyCart = await path.selectbuyerEmptyCart.isExisting();
-    if (emptyCart) {
-      await path.search.setValue(productId);
-      await browser.pause(3000);
-      await path.productSearched.click();
-    } else {
-      await path.emptyCartSearch.setValue(productId);
-      await browser.pause(3000);
-      await path.emptyCartsearchedproduct.click();
-    }
+  clickgetQuoteBtn = async () => {
+    if(await actionWrapper.eleDisplayed(await path.getQuote))
+    await actionWrapper.checkVisibleClickableAndClick(await path.getQuote);
   };
 
-  // to select buyer in cart page with search value
-  selectBuyer = async () => {
-    await actionWrapper.searchAndselectDrpdownusingKeyboard(
-      "Ara",
-      await path.selectbuyer
-    );
-  };
-
-  // to click create quote cart page
-  cartCreateQuote = async () => {
-    await actionWrapper.checkVisibleClickableMoveAndClick(
+   // to click create quote cart page
+   cartCreateQuote = async () => {
+    await actionWrapper.checkVisibleClickableAndClick(
       await path.createQuote
     );
   };
 
   // to click create order btn in cart page
   cartCreateOrder = async () => {
-    await actionWrapper.checkVisibleClickableMoveAndClick(
+    await actionWrapper.checkVisibleClickableAndClick(
       await path.createOrder
     );
   };
 
-  // to click create enquiry btn in cart page
-  cartCreateEnquiry = async () => {
 
-    await actionWrapper.checkVisibleClickableMoveAndClick(
-      await path.createEnquiry
+  
+  
+  // to select buyer in cart page with search value
+  selectBuyer = async () => {
+    await actionWrapper.searchAndselectDrpdownusingKeyboard(
+          CartIP.BuyerName,await path.selectbuyer
     );
   };
 
 
+  // Navigate cart page & clear cart
+  ClickAndclearCart = async (productId) => {
+    await actionWrapper.checkVisibleClickableAndClick(await path.cartIcon);
+    await browser.pause(2000);
+    if (await path.mycart.isExisting()) {
+      await actionWrapper.checkVisibleClickableAndClick(await path.moreOptions);
+      await browser.pause(2000);
+      await actionWrapper.checkVisibleClickableAndClick(await path.clearCart);
+      await actionWrapper.checkVisibleClickableAndClick(await common.yes);
+    }
+    
+  };
+
+// to select products in cart page with search value
+selectProducts = async (productId) => {
+  await actionWrapper.selectfirstDropdownValue(
+    await path.cartSearch,productId,await path.searchResultsImage
+  );
+};
 
 
   // product search and add to cart from header search
-  addToCartFromHeaderSearch = async (searchValue) => {
-    await path.searchBox.click();
-    await path.searchBox.setValue(searchValue);
+  addToCartFromHeaderSearch = async () => {
+    await actionWrapper.checkVisibleClickableAndClick(
+     await path.searchBox);
+    await actionWrapper.checkEnabledClearAndSetValue(
+     await path.searchBox,CartIP.ProdName);
     // will click the first result available
-    await path.searchResultsImage.moveTo();
-    await path.addToCartBtnInSearchResults.click();
+    await actionWrapper.checkVisibleClickableMove(
+     await path.searchResultsImage)
+    await actionWrapper.checkVisibleClickableAndClick(
+     await path.addToCart);
+     await actionWrapper.checkVisibleClickableAndClick(
+       await path.cartIcon);
+
+    
   };
 
   // to add custom product
@@ -81,83 +95,109 @@ class AddProduct {
       await path.customProductID,
       productId
     );
-    await actionWrapper.checkEnabledClearAndSetValue(
+    await actionWrapper.clearAndsetValue(
       await path.customUnitPrice,
       unitPrice
     );
   };
- 
-  // Clear cart 
-  clearCart = async () => {
-    if (await path.remove.isExisting()) {
-      await actionWrapper.checkVisibleClickableAndClick(await path.MoreOptions);
-      await browser.pause(2000);
-      await actionWrapper.checkVisibleClickableAndClick(await path.clearCart);
-      await actionWrapper.checkVisibleClickableAndClick(await common.yes);
-    }
 
+ 
+  //to add products via excel
+  uploadProducts = async () =>{
+    await actionWrapper.checkVisibleClickableAndClick(
+      await path.uploadBtn
+    );
+    await attchmentUpload.upload(
+      await path.uploadFile,
+      uploadExcel
+    );
+    await actionWrapper.checkVisibleClickableAndClick(
+      await path.addtoCartBtn
+    )
+  }
+ 
+ 
+  //to create random enquiry
+  RandomEnqiury = async ()=>{
+    
+    await actionWrapper.checkEnabledClearAndSetValue(
+      await path.contactPerson,
+      CartIP.ContactPerson
+    );
+    await actionWrapper.checkEnabledClearAndSetValue(
+      await path.custEmail,
+      CartIP.CustomerEmail
+    );
+    await  this.cartCreateEnquiry(CartIP.suceessAlert);
   }
 
+
   // to create a lead
-  createEnquiry = async (leadName,BuyerName,ContactNo,Source) => {
-    await path.cartIcon.waitForDisplayed(2000);
-    this.clickCartIcon();
-    await browser.pause(2000);
-    this.clearCartclearCart();
-    await actionWrapper.checkEnabledClearAndSetValue(
-      await path.leadName,leadName
-     
-    );
-    await path.BuyerName.waitForClickable(1000);
-    await actionWrapper.searchAndselectDrpdownusingKeyboard(
-      BuyerName,await path.BuyerName
+  createEnquiry = async (buyerName,ContactNo,Attchment,alertmsg) => {
+     await actionWrapper.checkEnabledAndSetValue(
+      await path.leadName,CartIP.LeadName     
     );
 
+    await actionWrapper.ClickElementAndkeyboardVal(
+     await path.LeadbuyerName,buyerName
+    );
+    
     if ((await path.companyName.getValue()) === "") {
       await actionWrapper.checkEnabledClearAndSetValue(
         await path.companyName,
-        CartPageInput.CompanyName
+        CartIP.CompanyName
       );
     }
     if ((await path.contactPerson.getValue()) === "") {
       await actionWrapper.checkEnabledClearAndSetValue(
         await path.contactPerson,
-        CartPageInput.ContactPerson
+        CartIP.ContactPerson
       );
     }
-    if ((await path.CustEmail.getValue()) === "") {
+    if ((await path.custEmail.getValue()) === "") {
       await actionWrapper.checkEnabledClearAndSetValue(
-        await path.CustEmail,
-        CartPageInput.CustomerEmail
+        await path.custEmail,
+        CartIP.CustomerEmail
       );
-    }
-  
-      await actionWrapper.checkEnabledClearAndSetValue(
-        await path.CustContactNo,ContactNo
+    } 
+
+   await actionWrapper.checkEnabledClearAndSetValue(
+      await path.custContactNo,ContactNo
       );
     
-
-    await actionWrapper.searchAndselectDrpdownusingKeyboard(
-      Source,await path.Source
+    await actionWrapper.ClickElementAndkeyboardVal(
+      await path.source,CartIp.Source
     );
 
     await path.message.waitForDisplayed(1000);
     await actionWrapper.checkEnabledClearAndSetValue(
       await path.message,
-      CartPageInput.Message
+      CartIP.Message
     );
-    await uploadAttchment.upload(
+    await attchmentUpload.upload(
       await path.attachmentEnquiry,
-      CartPageInput.Attachment
+      Attchment
     );
-    this.cartCreateEnquiry();
-    if(await path.snackbar.getText() !== CartPageInput.suceessAlert ){
-      this.cartCreateEnquiry();
+    await this.cartCreateEnquiry(alertmsg);
+   
+  };
+  // to click create enquiry btn in cart page
+  cartCreateEnquiry = async (alertmsg) => {
+
+    await actionWrapper.checkVisibleClickableMoveAndClick(
+      await path.createEnquiry
+    );
+    if(await common.snackbar.getText() === CartIP.uploadAlert ){
+      await actionWrapper.checkVisibleClickableMoveAndClick(
+        await path.createEnquiry
+      );
     }
-    assert.strictEqual(
-      await path.snackbar.getText(),CartPageInput.suceessAlert
+   await assert.strictEqual(
+      await common.snackbar.getText(),alertmsg 
+    
     );
   };
+
 }
 
 

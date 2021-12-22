@@ -8,6 +8,10 @@ class Cart extends Page {
 wait(){
   browser.pause(8000);
 }
+get getQuote() {
+  return super.pathById('getQuote');
+}
+
   get cartIcon() {
     return super.pathByCss('[aria-label="cart"]');
   }
@@ -15,9 +19,13 @@ wait(){
   get searchBox() {
     return super.pathByXpath('//*[starts-with(@placeholder,"Search by")]');
   }
+  get cartSearch() {
+    return super.pathByXpath('//*[@placeholder="Search for products"]');
+  }
+
 
   get searchResultsImage() {
-    return super.pathByXpath('(//*[@alt="product"])[1]');
+    return super.pathByXpath('//div[@class="MuiPaper-root MuiPaper-elevation1"]/div/ul/div[1]');
   }
 
   get addToCartBtnInSearchResults() {
@@ -54,6 +62,12 @@ wait(){
     return super.pathByXpath('//*[@id="acp"]/following::button[1]');
   
   }
+
+  get addtoCartBtn() {
+    return super.pathByXpath('//*[text()="Add to Cart"]');
+  
+  }
+
 
   get uploadFile() {
     return super.pathById("upload-excel-file");
@@ -96,21 +110,22 @@ wait(){
     return super.pathByName("leadName");
   }
 
+  get LeadbuyerName(){
+    return super.pathByXpath('//input[@id="companyName"]/preceding::input[1]')
+  } 
   get companyName(){
     return super.pathById("companyName");
   }
 
   get contactPerson(){
-    return super.pathById("fullName")
+    return super.pathByName("name")
   }
 
   get custEmail(){
     return super.pathById("email")
   }
 
-  get buyerName(){
-    return super.pathByXpath('//input[@id="companyName"]/preceding::input[1]')
-  } 
+ 
 
 get custContactNo(){
   return super.pathById("phone")
@@ -124,11 +139,12 @@ get message(){
 }
 
 
-get remove (){
+
+get mycart (){
   return super.pathByXpath('//div[contains(@class,"Paper-root jss")]');
   }
 
-get MoreOptions (){
+get moreOptions (){
   return super.pathByXpath('//*[text()="Upload Products"]/following::button[1]');
   }
 
@@ -140,7 +156,7 @@ get clearCart (){
     return super.pathById("button-file-leads");
   }
 
-  get CreateEnquiry(){
+  get createEnquiry(){
     return super.pathById("loadingButton");
   }
 
