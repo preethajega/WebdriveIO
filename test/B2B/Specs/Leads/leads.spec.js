@@ -19,52 +19,52 @@ describe("Leads Page", () => {
              
         })
 
-        // it("Create lead W/o Products ",async () => {
-        // await  cart_fn.ClickAndclearCart();
-        // await  cart_fn.createEnquiry(CartIp.BuyerName,CartIp.ContactNo,CartIp.Attachment,CartIp.suceessAlert);
-        // });
+        it("Create lead W/o Products ",async () => {
+        await  cart_fn.ClickAndclearCart();
+        await  cart_fn.createEnquiry(CartIp.BuyerName,CartIp.ContactNo,CartIp.Attachment,CartIp.suceessAlert);
+        });
 
-        // it("Create lead W/o Products & Attachments ",async () => {
-        // await cart_fn.RandomEnqiury();
-        // });
+        it("Create lead W/o Products & Attachments ",async () => {
+        await cart_fn.RandomEnqiury();
+        });
 
-        // it("Add product to cart & create lead  ",async () => {
-        // await  cart_fn.ClickAndclearCart();
-        // await  cart_fn.selectProducts(CartIp.ProdName);
-        // await  cart_fn.clickEnquiryIcon();
-        // await  cart_fn.createEnquiry(CartIp.BuyerName,CartIp.ContactNo,CartIp.Attachment,CartIp.suceessAlert);
-        // });
+        it("Add product to cart & create lead  ",async () => {
+        await  cart_fn.ClickAndclearCart();
+        await  cart_fn.selectProducts(CartIp.ProdName);
+        await  cart_fn.clickEnquiryIcon();
+        await  cart_fn.createEnquiry(CartIp.BuyerName,CartIp.ContactNo,CartIp.Attachment,CartIp.suceessAlert);
+        });
 
-        // it("Upload excel in  cart & create lead  ",async () => {
-        //     await  cart_fn.ClickAndclearCart();
-        //     await  cart_fn.uploadProducts();
-        //     await  cart_fn.clickEnquiryIcon();
-        //     await  cart_fn.createEnquiry(CartIp.BuyerName,
-        //         CartIp.ContactNo,CartIp.Attachment,CartIp.suceessAlert);
-            
-        //  });
-
-         it("Select product from header & create lead  ",async () => {
+        it("Upload excel in  cart & create lead  ",async () => {
             await  cart_fn.ClickAndclearCart();
-            await  cart_fn.addToCartFromHeaderSearch();
+            await  cart_fn.uploadProducts();
             await  cart_fn.clickEnquiryIcon();
             await  cart_fn.createEnquiry(CartIp.BuyerName,
                 CartIp.ContactNo,CartIp.Attachment,CartIp.suceessAlert);
             
          });
 
-
-
-
-        // it("Add custom product to cart & create lead  ",async () => {
+        //  it("Select product from header & create lead  ",async () => {
         //     await  cart_fn.ClickAndclearCart();
-        //     await  cart_fn.addCustomProductInCart(CartIp.custProdDesc,
-        //         CartIp.custProdid,CartIp.custProdprice);
+        //     await  cart_fn.addToCartFromHeaderSearch();
         //     await  cart_fn.clickEnquiryIcon();
         //     await  cart_fn.createEnquiry(CartIp.BuyerName,
-        //         CartIp.ContactNo,CartIp.Attachment,CartIp.customAlert);
+        //         CartIp.ContactNo,CartIp.Attachment,CartIp.suceessAlert);
             
         //  });
+
+
+
+
+        it("Add custom product to cart & create lead  ",async () => {
+            await  cart_fn.ClickAndclearCart();
+            await  cart_fn.addCustomProductInCart(CartIp.custProdDesc,
+                CartIp.custProdid,CartIp.custProdprice);
+            await  cart_fn.clickEnquiryIcon();
+            await  cart_fn.createEnquiry(CartIp.BuyerName,
+                CartIp.ContactNo,CartIp.Attachment,CartIp.customAlert);
+            
+         });
 
         
          
