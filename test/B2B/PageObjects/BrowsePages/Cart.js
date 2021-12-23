@@ -29,15 +29,15 @@ get getQuote() {
   }
 
   get addToCartBtnInSearchResults() {
-    return super.pathByXpath('//*[@type="button" and  @operator="add"]');
+    return super.pathByXpath('//*[@operator="add"]');
   }
 
   get searchBarInCartPage() {
     return super.pathByXpath('//*[@placeholder="Search for products"]');
   }
 
-   resultsListInCartPage(Index) {
-    return super.pathByXpath(`(//*[contains(@class,"MuiGrid-grid-lg-9")])[${Index}]`);
+  get resultImage() {
+    return super.pathByXpath('//*[@id="root"]/header/div/div[2]/div/div/div[3]/div/div/div/div[1]/div[1]');
   }
 
   get displayName() {

@@ -71,11 +71,13 @@ selectProducts = async (productId) => {
      await path.searchBox);
     await actionWrapper.checkEnabledClearAndSetValue(
      await path.searchBox,CartIP.ProdName);
+     await browser.pause(2000);
     // will click the first result available
     await actionWrapper.checkVisibleClickableMove(
-     await path.searchResultsImage)
+     await path.resultImage)
+     await browser.pause(1000);
     await actionWrapper.checkVisibleClickableAndClick(
-     await path.addToCart);
+     await path.addToCartBtnInSearchResults);
      await actionWrapper.checkVisibleClickableAndClick(
        await path.cartIcon);
 

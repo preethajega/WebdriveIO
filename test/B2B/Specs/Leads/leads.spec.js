@@ -44,14 +44,14 @@ describe("Leads Page", () => {
             
          });
 
-        //  it("Select product from header & create lead  ",async () => {
-        //     await  cart_fn.ClickAndclearCart();
-        //     await  cart_fn.addToCartFromHeaderSearch();
-        //     await  cart_fn.clickEnquiryIcon();
-        //     await  cart_fn.createEnquiry(CartIp.BuyerName,
-        //         CartIp.ContactNo,CartIp.Attachment,CartIp.suceessAlert);
+         it("Select product from header & create lead  ",async () => {
+            await  cart_fn.ClickAndclearCart();
+            await  cart_fn.addToCartFromHeaderSearch();
+            await  cart_fn.clickEnquiryIcon();
+            await  cart_fn.createEnquiry(CartIp.BuyerName,
+                CartIp.ContactNo,CartIp.Attachment,CartIp.suceessAlert);
             
-        //  });
+         });
 
 
 
