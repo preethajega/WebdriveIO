@@ -57,7 +57,7 @@ selectProducts = async (productId) => {
     // will click the first result available
     await actionWrapper.checkVisibleClickableMove(
      await path.resultImage)
-     await browser.pause(1000);
+     await browser.pause(3000);
     await actionWrapper.checkVisibleClickableAndClick(
      await path.addToCartBtnInSearchResults);
      await actionWrapper.checkVisibleClickableAndClick(
@@ -112,12 +112,12 @@ selectProducts = async (productId) => {
       await path.custEmail,
       CartIP.CustomerEmail
     );
-    await  this.cartCreateEnquiry(CartIP.suceessAlert);
+    await  this.EnquiryValidation(CartIP.suceessAlert);
   }
 
 
   // to create a lead
-  createEnquiry = async (buyerName,ContactNo,Attchment,alertmsg) => {
+  sellerCreateEnquiry = async (buyerName,ContactNo,Attchment,alertmsg) => {
      await actionWrapper.checkEnabledAndSetValue(
       await path.leadName,CartIP.LeadName     
     );
@@ -125,47 +125,17 @@ selectProducts = async (productId) => {
     await actionWrapper.ClickElementAndkeyboardVal(
      await path.LeadbuyerName,buyerName
     );
-    
-    if ((await path.companyName.getValue()) === "") {
-      await actionWrapper.checkEnabledClearAndSetValue(
-        await path.companyName,
-        CartIP.CompanyName
-      );
-    }
-    if ((await path.contactPerson.getValue()) === "") {
-      await actionWrapper.checkEnabledClearAndSetValue(
-        await path.contactPerson,
-        CartIP.ContactPerson
-      );
-    }
-    if ((await path.custEmail.getValue()) === "") {
-      await actionWrapper.checkEnabledClearAndSetValue(
-        await path.custEmail,
-        CartIP.CustomerEmail
-      );
-    } 
 
-   await actionWrapper.checkEnabledClearAndSetValue(
-      await path.custContactNo,ContactNo
-      );
-    
     await actionWrapper.ClickElementAndkeyboardVal(
       await path.source,CartIp.Source
     );
 
-    await path.message.waitForDisplayed(1000);
-    await actionWrapper.checkEnabledClearAndSetValue(
-      await path.message,
-      CartIP.Message
-    );
-    await attchmentUpload.upload(
-      await path.attachmentEnquiry,
-      Attchment
-    );
-    await this.cartCreateEnquiry(alertmsg);
+    await this.commonEnquiryFields(ContactNo,Attchment,alertmsg);
+    
+  
   };
   // to click create enquiry btn in cart page
-  cartCreateEnquiry = async (alertmsg) => {
+  EnquiryValidation = async (alertmsg) => {
 
     await actionWrapper.checkVisibleClickableMoveAndClick(
       await path.createEnquiry
@@ -180,6 +150,41 @@ selectProducts = async (productId) => {
     
     );
   };
+
+commonEnquiryFields = async(ContactNo,Attchment,alertmsg)  =>{
+  if ((await path.companyName.getValue()) === "") {
+    await actionWrapper.checkEnabledClearAndSetValue(
+      await path.companyName,
+      CartIP.CompanyName
+    );
+  }
+  if ((await path.contactPerson.getValue()) === "") {
+    await actionWrapper.checkEnabledClearAndSetValue(
+      await path.contactPerson,
+      CartIP.ContactPerson
+    );
+  }
+  if ((await path.custEmail.getValue()) === "") {
+    await actionWrapper.checkEnabledClearAndSetValue(
+      await path.custEmail,
+      CartIP.CustomerEmail
+    );
+  } 
+
+ await actionWrapper.checkEnabledClearAndSetValue(
+    await path.custContactNo,ContactNo
+    );
+  await path.message.waitForDisplayed(1000);
+  await actionWrapper.checkEnabledClearAndSetValue(
+    await path.message,
+    CartIP.Message
+  );
+  await attchmentUpload.upload(
+    await path.attachmentEnquiry,
+    Attchment
+  );
+  await this.EnquiryValidation(alertmsg);
+}
 
 }
 

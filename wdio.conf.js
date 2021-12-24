@@ -2,7 +2,7 @@ const url = require('./url')
 
 exports.config = {
     specs: [
-         './test/B2B/Specs/Cart/Cart.spec.js'
+         './test/B2B/Specs/Cart/Leads.spec.js'
         
         
     ],
