@@ -19,29 +19,12 @@ class AddProduct {
     await actionWrapper.checkVisibleClickableAndClick(await path.getQuote);
   };
 
-   // to click create quote cart page
-   cartCreateQuote = async () => {
-    await actionWrapper.checkVisibleClickableAndClick(
-      await path.createQuote
-    );
-  };
-
-  // to click create order btn in cart page
-  cartCreateOrder = async () => {
-    await actionWrapper.checkVisibleClickableAndClick(
-      await path.createOrder
-    );
-  };
-
-
-  
-  
-  // to select buyer in cart page with search value
-  selectBuyer = async () => {
+ //select Buyer and create quote or order
+  carttoSummary  =async (buyerName,cartButton) => {
     await actionWrapper.searchAndselectDrpdownusingKeyboard(
-          CartIP.BuyerName,await path.selectbuyer
-    );
-  };
+     buyerName,await path.selectbuyer);
+       await actionWrapper.checkVisibleClickableAndClick(cartButton);
+  }
 
 
   // Navigate cart page & clear cart
@@ -53,8 +36,7 @@ class AddProduct {
       await browser.pause(2000);
       await actionWrapper.checkVisibleClickableAndClick(await path.clearCart);
       await actionWrapper.checkVisibleClickableAndClick(await common.yes);
-    }
-    
+    } 
   };
 
 // to select products in cart page with search value
@@ -65,7 +47,7 @@ selectProducts = async (productId) => {
 };
 
 
-  // product search and add to cart from header search
+  // search product  and add to cart from header search
   addToCartFromHeaderSearch = async () => {
     await actionWrapper.checkVisibleClickableAndClick(
      await path.searchBox);
@@ -181,7 +163,6 @@ selectProducts = async (productId) => {
       Attchment
     );
     await this.cartCreateEnquiry(alertmsg);
-   
   };
   // to click create enquiry btn in cart page
   cartCreateEnquiry = async (alertmsg) => {

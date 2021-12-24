@@ -133,6 +133,7 @@ checkVisibleClickableMove = async (ele) => {
     await browser.pause(2000);
     await ele.setValue(searchText);
     await ele.click();
+    await browser.pause(2000);
     await ele.keys("\uE015");
     await browser.pause(2000);
     await ele.keys("\uE007");
@@ -169,15 +170,25 @@ navigateTo= async(Url)=>{
 
   //if value is empty set the value
   isEmpty_setValue = async (ele, inputValue) => {
-    if (await ele.getValue()=== "") {
+    if ((await ele.getValue())=== "") {
       await  ele.waitForDisplayed(2000);
       await  ele.setValue(inputValue);
     }
   };
 
+  //if value is not empty then celar the value
+  isNotEmpty_clearValue = async (ele) => {
+    if ((await ele.getValue())!== "") {
+      await  ele.waitForDisplayed(2000);
+      await  this.clearValues(ele);
+    }
+  };
+
+
+
   //if value is not equal to empty clear the value & set the new value else enter the new value
   isNotEmpty_clearAndsetValue = async (ele, inputValue) => {
-    if (! await ele.getValue()==="") {
+    if ((await ele.getValue())!=="") {
       await ele.waitForDisplayed(4000);
       await ele.click();
       await browser.keys(["\uE009", "a"]);

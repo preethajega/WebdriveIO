@@ -5,6 +5,8 @@ function cartPageInput() {
     this.custProdid="123";
     this.custProdprice="1000";
     this.ProdName="Apple";
+    this.itemName="laptop";
+    this.ProdQty="10";
     this.LeadName = 'sanity';
     this.BuyerName = 'Enterprise';
     this.CompanyName = "apptino software";
@@ -15,10 +17,12 @@ function cartPageInput() {
     this.Message = "this is to inform one enquiry is received";
     this.suceessAlert = "Lead created successfully";
     this.cartAlert="Product added to cart";
+    this.buyerAlert="Select a buyer to proceed";
     this.customAlert="You cannot create enquiry with custom product(s)";
     this.uploadAlert = "Uploading attachment, please wait";
     this.Attachment = path.join(__dirname,'./../../../FileUtils/Growmax PWA Icon 500x500.png');
-    this.uploadExcel=path.join(__dirname,'./../../../FileUtils/sample-cart.1fd3e1a4.xlsx')
-    this.Attachmenttext="text"
+    this.uploadExcel=path.join(__dirname,'./../../../FileUtils/sample-cart.1fd3e1a4.xlsx');
+    this.Attachmenttext="text";
+    this.qtyAlert="Invalid quantity";
 }
 module.exports= new cartPageInput();
