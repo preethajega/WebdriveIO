@@ -57,7 +57,7 @@ get deleteAddress(){
 }
 
 get snackbar(){
-    return super.pathByXpath('//div[@class="MuiAlert-message css-acap47-MuiAlert-message"]');
+    return super.pathByXpath('//div[contains(@class,"MuiAlert-message css")]');
 
 }
 get nameAlert(){

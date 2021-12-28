@@ -5,7 +5,7 @@ var actionwrappers = require("./../../CommonActions/ActionsWrappers");
 const assert = require("assert");
 class LoginPage extends Page {
   async open() {
-    super.b2cPath(""); //this will append `login` to the baseUrl to form complete URL
+    super.open(""); //this will append `login` to the baseUrl to form complete URL
   }
   async wait() {
     await browser.pause(8000);
@@ -56,6 +56,10 @@ class LoginPage extends Page {
   }
   get ordersMenu() {
     return $("//nav/a[1]");
+  }
+
+  get enterMobileValidation() {
+    return super.pathById("mobileNo-helper-text");
   }
   get emptyOTPValidationMesge() {
     return super.pathById("otp-helper-text");

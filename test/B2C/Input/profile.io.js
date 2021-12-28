@@ -1,7 +1,7 @@
 function ProfileInput() { 
-
-     this.profileImage="C:/Apptino/Automation code/automationTestCodeUI/test/ProfileImage.jpg"
-     this.profilepath = "C:/Apptino/Automation code/automationTestCodeUI/test/Growmax PWA Icon 500x500.png";
+     const path = require('path');
+     this.profileImage= path.join(__dirname,"./../../FileUtils/ProfileImage.jpg");
+     this.profilepath = path.join(__dirname,"./../../FileUtils/Growmax PWA Icon 500x500.png");
      this.name="madhan";
      this.mail="smk@gmail.com";
 

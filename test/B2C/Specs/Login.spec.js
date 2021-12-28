@@ -32,7 +32,7 @@ describe("Login page", () => {
       LoginPage.requestCode
     );
     assert.strictEqual(
-      await enterMobileValidation.getText(),
+      await LoginPage.enterMobileValidation.getText(),
       "Not a valid number"
     );
 
@@ -45,21 +45,21 @@ describe("Login page", () => {
       LoginPage.requestCode
     );
     assert.strictEqual(
-      await enterMobileValidation.getText(),
-      "Invalid Mobile Number"
+      await LoginPage.enterMobileValidation.getText(),
+      "Not a valid number"
     );
 
     // Validation for string as input to mobile number
     await actionwrappers.checkEnableddoubleClickDeleteAndSetValue(
       LoginPage.mobileNumber,
-      "kshdjkhsjkdh"
+      "e"
     );
     await actionwrappers.checkVisibleClickableMoveAndClick(
       LoginPage.requestCode
     );
     assert.strictEqual(
-      await enterMobileValidation.getText(),
-      "Invalid Mobile Number"
+      await LoginPage.enterMobileValidation.getText(),
+       "This is required."
     );
   });
   it("Valid Login Scenario", async () => {

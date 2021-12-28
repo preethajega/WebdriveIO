@@ -9,7 +9,7 @@ var downloadFile = require("../../../CommonActions/pdfDownload");
 
 class B2C_Detail extends Page {
     async open() {
-    await   super.new(B2C_OrdersIp.url); //this will append `login` to the baseUrl to form complete URL
+    await   super.open(B2C_OrdersIp.url); //this will append `login` to the baseUrl to form complete URL
     await actionwrappers.urlValidation(B2C_OrdersIp.url);
 }
 async  wait(){

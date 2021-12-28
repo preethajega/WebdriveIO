@@ -1,66 +1,78 @@
-const Page = require("../page");
+const Page = require("../../../B2B/PageObjects/page");
+
 
 class Cart extends Page {
-  open() {
-    super.b2cPath(""); //super will append `login` to the baseUrl to form complete URL
+  open(path) {
+    super.open(path); 
   }
-  wait() {
-    browser.pause(8000);
-  }
+wait(){
+  browser.pause(8000);
+}
+get getQuote() {
+  return super.pathById('getQuote');
+}
+
   get cartIcon() {
     return super.pathByCss('[aria-label="cart"]');
   }
 
   get searchBox() {
-    return super.pathByXpath("(//div[1]/input)[1]");
+    return super.pathByXpath('//*[starts-with(@placeholder,"Search by")]');
+  }
+  get cartSearch() {
+    return super.pathByXpath('//*[@placeholder="Search for products"]');
   }
 
+
   get searchResultsImage() {
-    return super.pathByXpath('(//*[@alt="product"])[1]');
+    return super.pathByXpath('//div[@class="MuiPaper-root MuiPaper-elevation1"]/div/ul/div[1]');
   }
 
   get addToCartBtnInSearchResults() {
-    return super.pathByXpath("//div[1]/div[1]/div[3]/button/span[1]");
+    return super.pathByXpath('//*[@operator="add"]');
   }
 
   get searchBarInCartPage() {
-    return super.pathByXpath("(//div[1]/input)[2]");
+    return super.pathByXpath('//*[@placeholder="Search for products"]');
   }
 
-  get resultsListInCartPage() {
-    return super.pathByXpath("//ul/div/div[1]/span");
+  get resultImage() {
+    return super.pathByXpath('//*[@id="root"]/header/div/div[2]/div/div/div[3]/div/div/div/div[1]/div[1]');
   }
 
   get displayName() {
     return super.pathByName("displayName");
   }
-  get selectbuyerEmptyCart() {
-    return super.pathById("asynchronous-demo");
-  }
-  get emptyCartSearch() {
-    return super.pathByXpath("//div[2]/div[2]/div/div/div/input");
+  
+  get searchProd() {
+    return super.pathByXpath('//input[@placeholder="Search for products"]');
   }
 
-  get emptyCartsearchedproduct() {
-    return super.pathByXpath(
-      '//*[@id="root"]/div[2]/div[2]/div[2]/div/div[2]/div/div/ul/div[1]'
+  get prodResults() {
+    return super.pathByXpath('//*[contains(@class,"root MuiListItem-gutters MuiListItem-button")]' 
     );
   }
-  get search() {
-    return super.pathByXpath("//div[1]/div[1]/div[2]/div[1]/div/div/div/input");
-  }
-  get productSearched() {
-    return super.pathByXpath(
-      '//*[@id="root"]/div[4]/div/div[1]/div/div[1]/div[1]/div[2]/div[1]/div/div[2]/div/div/ul/div[1]'
-    );
-  }
+    
 
   get selectbuyer() {
-    return super.pathById("asynchronous-demo");
+    return super.pathById('asynchronous-demo');
   }
-  get createQuote() {
-    return super.pathById("cq_rfq");
+  
+  get uploadBtn() {
+    return super.pathByXpath('//*[@id="acp"]/following::button[1]');
+  
   }
+
+  get addtoCartBtn() {
+    return super.pathByXpath('//*[text()="Add to Cart"]');
+  
+  }
+
+
+  get uploadFile() {
+    return super.pathById("upload-excel-file");
+  }
+
 
   get addCustomProduct() {
     return super.pathById("acp");
@@ -78,37 +90,47 @@ class Cart extends Page {
     return super.pathById("cpup");
   }
 
+  get qty() {
+    return super.pathById("quantity");
+  }
+
   get createOrder() {
     return super.pathById("co");
   }
-
+  get createQuote() {
+    return super.pathById("cq_rfq");
+  }
 
   // enquiry
+  get enqBtn(){
+    return super.pathById("panel1bh-header");
+  }
 
   get leadName(){
     return super.pathByName("leadName");
   }
 
+  get LeadbuyerName(){
+    return super.pathByXpath('//input[@id="companyName"]/preceding::input[1]')
+  } 
   get companyName(){
     return super.pathById("companyName");
   }
 
   get contactPerson(){
-    return super.pathById("fullName")
+    return super.pathByName("name")
   }
 
-  get CustEmail(){
+  get custEmail(){
     return super.pathById("email")
   }
 
-  get BuyerName(){
-    return super.pathByXpath('//form//input[@id="asynchronous-demo"]')
-  } 
+ 
 
-get CustContactNo(){
+get custContactNo(){
   return super.pathById("phone")
 }
-get Source(){
+get source(){
   return super.pathById("leadSource")
 }
 
@@ -116,28 +138,18 @@ get message(){
   return super.pathById("message")
 }
 
-get createLead (){
-return super.pathByXpath('//button[@id="loadingButton"]');
-}
 
-get snackbar (){
-  return super.pathById('client-snackbar');
-  }
 
-get remove (){
+get mycart (){
   return super.pathByXpath('//div[contains(@class,"Paper-root jss")]');
   }
 
-get MoreOptions (){
+get moreOptions (){
   return super.pathByXpath('//*[text()="Upload Products"]/following::button[1]');
   }
 
 get clearCart (){
   return super.pathByXpath('//*[text()="Clear Cart"]');
-  }
-
-get yes (){
-  return super.pathById('yes');
   }
 
   get attachmentEnquiry(){
@@ -147,6 +159,12 @@ get yes (){
   get quantity(){
     return super.pathById("quantity")
   }
+
+  get createEnquiry(){
+    return super.pathById("loadingButton");
+  }
+
+
 
 }
 

@@ -5,7 +5,7 @@ var B2C_OrdersIp = require("../../Inputs/Orders/B2C_Orders");
 
 class B2C_Landing extends Page {
   async  open() {
-      super.new(B2C_OrdersIp.url); //this will append `login` to the baseUrl to form complete URL
+      super.open(B2C_OrdersIp.url); //this will append `login` to the baseUrl to form complete URL
       await actionwrappers.urlValidation(B2C_OrdersIp.url);
 }
 async wait(){

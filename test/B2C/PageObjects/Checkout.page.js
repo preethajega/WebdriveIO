@@ -20,7 +20,7 @@ class Checkout extends Page {
 }
 
 get results() {
-   return  super.pathByXpath('(//*[@class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-12lq1si-MuiPaper-root-MuiCard-root"])[1]');
+   return  super.pathByXpath('//*[contains(@class,"MuiGrid-root MuiGrid-item MuiGrid-grid")][1]');
 }
 
 get addTocartBtn() {
@@ -36,7 +36,7 @@ get qntyAfterAddToCart() {
 }
 
 get cartIcon() {
-   return  super.pathByXpath('//*[@class="MuiButtonBase-root MuiIconButton-root"]');
+   return  super.pathById('cartIcon');
 }
 
 get saveforLater() {
@@ -52,8 +52,12 @@ get removeProduct() {
 }
 
 get emptyCart() {
+   return super.pathByXpath('//img[@alt="asd"]');
+}
+get emptyCartText() {
    return super.pathByXpath('//h5[text()="Cart is empty"]');
 }
+
 
 get logo() {
    return  super.pathByXpath('//img[@alt="logo"]');
@@ -94,11 +98,13 @@ get continueBtn(){
 
 
 get changePickupAddress() {
-   return super.pathById('shiipi')
+   return super.pathById('changeLocation')
 }
-
+get searchAddress(){
+   return super.pathById('search');
+}
 get otherSellerAddress(){
-   return super.pathByXpath('//div[3]//label[2]');
+   return super.pathByName('//div[3]//label[2]');
 }
 
 
@@ -120,10 +126,11 @@ get onlinePayment(){
    return super.pathByXpath('(//*[@name="payment-select"])[2]');
 }
 
-get placeOrder(){
-   return super.pathByid('loadingBtn');
-}
 
+
+get placeOrder(){
+   return super.pathByXpath('//button[@id="loadingBtn"]');
+}
 get MTNMoMoPay(){
    return super.pathById('payments-tab-0');
 }
@@ -145,7 +152,7 @@ get cancelPaymentDialog(){
 }
 
 get proceedPaymentDialog(){
-   return super.pathById('eidtSaveBtn')
+   return super.pathById('editSaveBtn')
    }
  get continueShopping(){
       return super.pathById('continueBtn');

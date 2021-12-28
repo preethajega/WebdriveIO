@@ -1,7 +1,10 @@
+const url = require('./url')
+
 exports.config = {
     specs: [
         // './test/B2B/Specs/B2C_Orders/Payment.spec.js'     
-        './test/SanityTesting/SanityTest.js'     
+        // './test/SanityTesting/SanityTest.js'     
+         './test/B2B/Specs/setting/company.spec.js'
         
         
     ],
@@ -17,6 +20,7 @@ exports.config = {
         acceptInsecureCerts: true
     }],
     //
+    
     // ===================
     // Test Configurations
     // ===================
@@ -33,7 +37,11 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
+<<<<<<< HEAD
     baseUrl: 'http://new.bcommerce.in/',
+=======
+    baseUrl: url.demo,
+>>>>>>> 3f5cc0fb0226e2f85835e8fb68c5f981e98d38bb
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,

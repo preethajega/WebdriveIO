@@ -3,7 +3,7 @@ const Page = require("../../../B2B/PageObjects/page");
 
 class addressPage extends Page {
   open() {
-    super.b2cPath(""); //this will append `login` to the baseUrl to form complete URL
+    super.open(""); //this will append `login` to the baseUrl to form complete URL
   }
 wait(){
   browser.pause(8000);

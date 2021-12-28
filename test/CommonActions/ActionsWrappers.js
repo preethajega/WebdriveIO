@@ -10,10 +10,17 @@ class TestActionWrapper  {
 // Wait for an element, move 
 checkVisibleClickableMove = async (ele) => {
     
-  await ele.waitForDisplayed(2000);
+  await ele.waitForDisplayed(1000);
   await ele.waitForClickable({ timeout:2000 });
   await ele.moveTo();
+  await ele.waitForDisplayed(1000);
+
   
+};
+// wait for an element.click
+Click = async(ele) => {
+  await ele.waitForDisplayed(1000);
+  await ele.click();
 };
   // Wait for an element, check clickable before clicking
   checkVisibleClickableAndClick = async (ele) => {
@@ -128,9 +135,10 @@ checkVisibleClickableMove = async (ele) => {
 
   //search for the input and select first dropdown value when keyboard
   searchAndselectDrpdownusingKeyboard = async (searchText, ele) =>{
-    await ele.waitForClickable({ timeout: 2000 });
+    await browser.pause(2000);
     await ele.setValue(searchText);
     await ele.click();
+    await browser.pause(2000);
     await ele.keys("\uE015");
     await browser.pause(2000);
     await ele.keys("\uE007");
@@ -167,15 +175,25 @@ navigateTo= async(Url)=>{
 
   //if value is empty set the value
   isEmpty_setValue = async (ele, inputValue) => {
-    if (await ele.getValue()=== "") {
+    if ((await ele.getValue())=== "") {
       await  ele.waitForDisplayed(2000);
       await  ele.setValue(inputValue);
     }
   };
 
+  //if value is not empty then celar the value
+  isNotEmpty_clearValue = async (ele) => {
+    if ((await ele.getValue())!== "") {
+      await  ele.waitForDisplayed(2000);
+      await  this.clearValues(ele);
+    }
+  };
+
+
+
   //if value is not equal to empty clear the value & set the new value else enter the new value
   isNotEmpty_clearAndsetValue = async (ele, inputValue) => {
-    if (! await ele.getValue()==="") {
+    if ((await ele.getValue())!=="") {
       await ele.waitForDisplayed(4000);
       await ele.click();
       await browser.keys(["\uE009", "a"]);
