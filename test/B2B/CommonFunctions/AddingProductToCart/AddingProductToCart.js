@@ -19,29 +19,12 @@ class AddProduct {
     await actionWrapper.checkVisibleClickableAndClick(await path.getQuote);
   };
 
-   // to click create quote cart page
-   cartCreateQuote = async () => {
-    await actionWrapper.checkVisibleClickableAndClick(
-      await path.createQuote
-    );
-  };
-
-  // to click create order btn in cart page
-  cartCreateOrder = async () => {
-    await actionWrapper.checkVisibleClickableAndClick(
-      await path.createOrder
-    );
-  };
-
-
-  
-  
-  // to select buyer in cart page with search value
-  selectBuyer = async () => {
+ //select Buyer and create quote or order
+  carttoSummary  =async (buyerName,cartButton) => {
     await actionWrapper.searchAndselectDrpdownusingKeyboard(
-          CartIP.BuyerName,await path.selectbuyer
-    );
-  };
+     buyerName,await path.selectbuyer);
+       await actionWrapper.checkVisibleClickableAndClick(cartButton);
+  }
 
 
   // Navigate cart page & clear cart
@@ -53,8 +36,7 @@ class AddProduct {
       await browser.pause(2000);
       await actionWrapper.checkVisibleClickableAndClick(await path.clearCart);
       await actionWrapper.checkVisibleClickableAndClick(await common.yes);
-    }
-    
+    } 
   };
 
 // to select products in cart page with search value
@@ -65,7 +47,7 @@ selectProducts = async (productId) => {
 };
 
 
-  // product search and add to cart from header search
+  // search product  and add to cart from header search
   addToCartFromHeaderSearch = async () => {
     await actionWrapper.checkVisibleClickableAndClick(
      await path.searchBox);
@@ -75,7 +57,7 @@ selectProducts = async (productId) => {
     // will click the first result available
     await actionWrapper.checkVisibleClickableMove(
      await path.resultImage)
-     await browser.pause(1000);
+     await browser.pause(3000);
     await actionWrapper.checkVisibleClickableAndClick(
      await path.addToCartBtnInSearchResults);
      await actionWrapper.checkVisibleClickableAndClick(
@@ -130,12 +112,12 @@ selectProducts = async (productId) => {
       await path.custEmail,
       CartIP.CustomerEmail
     );
-    await  this.cartCreateEnquiry(CartIP.suceessAlert);
+    await  this.EnquiryValidation(CartIP.suceessAlert);
   }
 
 
   // to create a lead
-  createEnquiry = async (buyerName,ContactNo,Attchment,alertmsg) => {
+  sellerCreateEnquiry = async (buyerName,ContactNo,Attchment,alertmsg) => {
      await actionWrapper.checkEnabledAndSetValue(
       await path.leadName,CartIP.LeadName     
     );
@@ -143,48 +125,17 @@ selectProducts = async (productId) => {
     await actionWrapper.ClickElementAndkeyboardVal(
      await path.LeadbuyerName,buyerName
     );
-    
-    if ((await path.companyName.getValue()) === "") {
-      await actionWrapper.checkEnabledClearAndSetValue(
-        await path.companyName,
-        CartIP.CompanyName
-      );
-    }
-    if ((await path.contactPerson.getValue()) === "") {
-      await actionWrapper.checkEnabledClearAndSetValue(
-        await path.contactPerson,
-        CartIP.ContactPerson
-      );
-    }
-    if ((await path.custEmail.getValue()) === "") {
-      await actionWrapper.checkEnabledClearAndSetValue(
-        await path.custEmail,
-        CartIP.CustomerEmail
-      );
-    } 
 
-   await actionWrapper.checkEnabledClearAndSetValue(
-      await path.custContactNo,ContactNo
-      );
-    
     await actionWrapper.ClickElementAndkeyboardVal(
       await path.source,CartIp.Source
     );
 
-    await path.message.waitForDisplayed(1000);
-    await actionWrapper.checkEnabledClearAndSetValue(
-      await path.message,
-      CartIP.Message
-    );
-    await attchmentUpload.upload(
-      await path.attachmentEnquiry,
-      Attchment
-    );
-    await this.cartCreateEnquiry(alertmsg);
-   
+    await this.commonEnquiryFields(ContactNo,Attchment,alertmsg);
+    
+  
   };
   // to click create enquiry btn in cart page
-  cartCreateEnquiry = async (alertmsg) => {
+  EnquiryValidation = async (alertmsg) => {
 
     await actionWrapper.checkVisibleClickableMoveAndClick(
       await path.createEnquiry
@@ -199,6 +150,41 @@ selectProducts = async (productId) => {
     
     );
   };
+
+commonEnquiryFields = async(ContactNo,Attchment,alertmsg)  =>{
+  if ((await path.companyName.getValue()) === "") {
+    await actionWrapper.checkEnabledClearAndSetValue(
+      await path.companyName,
+      CartIP.CompanyName
+    );
+  }
+  if ((await path.contactPerson.getValue()) === "") {
+    await actionWrapper.checkEnabledClearAndSetValue(
+      await path.contactPerson,
+      CartIP.ContactPerson
+    );
+  }
+  if ((await path.custEmail.getValue()) === "") {
+    await actionWrapper.checkEnabledClearAndSetValue(
+      await path.custEmail,
+      CartIP.CustomerEmail
+    );
+  } 
+
+ await actionWrapper.checkEnabledClearAndSetValue(
+    await path.custContactNo,ContactNo
+    );
+  await path.message.waitForDisplayed(1000);
+  await actionWrapper.checkEnabledClearAndSetValue(
+    await path.message,
+    CartIP.Message
+  );
+  await attchmentUpload.upload(
+    await path.attachmentEnquiry,
+    Attchment
+  );
+  await this.EnquiryValidation(alertmsg);
+}
 
 }
 

@@ -21,7 +21,8 @@ describe("Leads Page", () => {
 
         it("Create lead W/o Products ",async () => {
         await  cart_fn.ClickAndclearCart();
-        await  cart_fn.createEnquiry(CartIp.BuyerName,CartIp.ContactNo,CartIp.Attachment,CartIp.suceessAlert);
+        await  cart_fn.sellerCreateEnquiry(CartIp.BuyerName,
+            CartIp.ContactNo,CartIp.Attachment,CartIp.suceessAlert);
         });
 
         it("Create lead W/o Products & Attachments ",async () => {
@@ -32,14 +33,15 @@ describe("Leads Page", () => {
         await  cart_fn.ClickAndclearCart();
         await  cart_fn.selectProducts(CartIp.ProdName);
         await  cart_fn.clickEnquiryIcon();
-        await  cart_fn.createEnquiry(CartIp.BuyerName,CartIp.ContactNo,CartIp.Attachment,CartIp.suceessAlert);
+        await  cart_fn.sellerCreateEnquiry(CartIp.BuyerName,
+            CartIp.ContactNo,CartIp.Attachment,CartIp.suceessAlert);
         });
 
         it("Upload excel in  cart & create lead  ",async () => {
             await  cart_fn.ClickAndclearCart();
             await  cart_fn.uploadProducts();
             await  cart_fn.clickEnquiryIcon();
-            await  cart_fn.createEnquiry(CartIp.BuyerName,
+            await  cart_fn.sellerCreateEnquiry(CartIp.BuyerName,
                 CartIp.ContactNo,CartIp.Attachment,CartIp.suceessAlert);
             
          });
@@ -48,27 +50,18 @@ describe("Leads Page", () => {
             await  cart_fn.ClickAndclearCart();
             await  cart_fn.addToCartFromHeaderSearch();
             await  cart_fn.clickEnquiryIcon();
-            await  cart_fn.createEnquiry(CartIp.BuyerName,
+            await  cart_fn.sellerCreateEnquiry(CartIp.BuyerName,
                 CartIp.ContactNo,CartIp.Attachment,CartIp.suceessAlert);
             
          });
-
-
-
 
         it("Add custom product to cart & create lead  ",async () => {
             await  cart_fn.ClickAndclearCart();
             await  cart_fn.addCustomProductInCart(CartIp.custProdDesc,
                 CartIp.custProdid,CartIp.custProdprice);
             await  cart_fn.clickEnquiryIcon();
-            await  cart_fn.createEnquiry(CartIp.BuyerName,
+            await  cart_fn.sellerCreateEnquiry(CartIp.BuyerName,
                 CartIp.ContactNo,CartIp.Attachment,CartIp.customAlert);
             
          });
-
-        
-         
-
-
-
 })

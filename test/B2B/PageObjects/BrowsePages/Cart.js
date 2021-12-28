@@ -2,8 +2,8 @@ const Page = require("../../../B2B/PageObjects/page");
 
 
 class Cart extends Page {
-  open() {
-    super.open(""); //this will append `login` to the baseUrl to form complete URL
+  open(path) {
+    super.open(path); 
   }
 wait(){
   browser.pause(8000);
@@ -55,7 +55,7 @@ get getQuote() {
     
 
   get selectbuyer() {
-    return super.pathById("asynchronous-demo");
+    return super.pathById('asynchronous-demo');
   }
   
   get uploadBtn() {

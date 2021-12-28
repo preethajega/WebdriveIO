@@ -4,6 +4,8 @@ const Summary = require("../Quotes/Summary");
 const ActionWrapper = require("../../CommonActions/ActionsWrappers");
 const Edit = require("../../CommonFunctions/Quotes/Edit");
 const Respond = require("../../CommonFunctions/Quotes/Respond");
+
+
 var CreateQuote = function () {
 //click cart button
   this.Clickcartbutton = () => {
