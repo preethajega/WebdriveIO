@@ -2,7 +2,7 @@ const url = require('./url')
 
 exports.config = {
     specs: [
-         './test/B2B/Specs/Leads/leads.spec.js'
+         './test/B2B/Specs/setting/company.spec.js'
         
         
     ],
@@ -18,6 +18,7 @@ exports.config = {
         acceptInsecureCerts: true
     }],
     //
+    
     // ===================
     // Test Configurations
     // ===================
