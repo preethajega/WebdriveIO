@@ -27,6 +27,6 @@ describe("Create Draft quote ", () => {
     // await cartPage.selectBuyer();
     // await cartPage.cartCreateQuote();
 
-    await cartPage.createEnquiry();
+    await cartPage.updateQuantityInCart();
   });
 });

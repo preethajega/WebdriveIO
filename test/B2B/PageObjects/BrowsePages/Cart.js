@@ -156,6 +156,10 @@ get clearCart (){
     return super.pathById("button-file-leads");
   }
 
+  get quantity(){
+    return super.pathById("quantity")
+  }
+
   get createEnquiry(){
     return super.pathById("loadingButton");
   }

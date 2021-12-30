@@ -17,6 +17,11 @@ checkVisibleClickableMove = async (ele) => {
 
   
 };
+// wait for an element.click
+Click = async(ele) => {
+  await ele.waitForDisplayed(1000);
+  await ele.click();
+};
   // Wait for an element, check clickable before clicking
   checkVisibleClickableAndClick = async (ele) => {
     await ele.waitForDisplayed(1000);
