@@ -1,4 +1,4 @@
-const assert = require("assert");
+const  assert = require("assert");
 const { time, exception } = require("console");
 const { isYesterday } = require("date-fns");
 const { taggedTemplateExpression } = require("jscodeshift");
@@ -13,51 +13,50 @@ const productUpload=path.join(__dirname, './../../FileUtils/productUpload.xlsx')
 
 describe("Sanity test check", () => {
 
-    it("login page", () => {
-        browser.url('/auth/login');
-        browser.pause(3000);
-        browser.getCookies();
-        browser.deleteCookies();
-        browser.maximizeWindow();
-        browser.pause(3000);
-        console.log(browser.getTitle);
-        let loginUsername = $('[name="Username"]');
-        let loginpassword = $('[name="Password"]');
-        let signIn = $('#loadingButton');
-        let Register = $('//*[text()="Sign Up"]');
-        let mailReq = $('//p[text()="Email required"]');
-        let pwdReq = $('//p[text()="Password required"]');
-        let invaildMail = $('//p[text="Invalid business email"]');
-        let userExist = $('//p[text="User does not exist"]');
-        let incrtPwd = $('//p[text="Incorrect password"]');
+    it("login page", async() => {
+      await  browser.url('/auth/login');
+    await  browser.pause(3000);
+    await  browser.getCookies();
+      await  browser.deleteCookies();
+      await  browser.maximizeWindow();
+      await  browser.pause(3000);
+        console.log(await browser.getTitle);
+        let loginUsername = await $('[name="Username"]');
+        let loginpassword =await $('[name="Password"]');
+        let signIn = await $('#loadingButton');
+        let Register = await $('//*[text()="Sign Up"]');
+        let mailReq = await $('//p[text()="Email required"]');
+        let pwdReq = await $('//p[text()="Password required"]');
+        let invaildMail = await $('//p[text="Invalid business email"]');
+        let userExist = await $('//p[text="User does not exist"]');
+        let incrtPwd = await $('//p[text="Incorrect password"]');
 
-        loginUsername.waitForDisplayed(2000);
-        loginUsername.setValue("admin@apptino.com");
-        loginpassword.waitForDisplayed(2000);
-        loginpassword.setValue("Admin@123");
-        signIn.click();
-        if ((mailReq.isDisplayed()) || (invaildMail.isDisplayed())||(userExist.isDisplayed()))
+        await loginUsername.waitForDisplayed(2000);
+        await loginUsername.setValue("admin@apptino.com");
+        await loginpassword.waitForDisplayed(2000);
+        await loginpassword.setValue("Admin@123");
+        await signIn.click();
+        if ((await mailReq.isDisplayed()) || (await invaildMail.isDisplayed())||(await userExist.isDisplayed()))
         {
-           loginUsername.click();
-             browser.pause(2000)
-              browser.keys(["\uE009", "a"]);
-                loginUsername.keys("\uE003");   
-                  loginUsername.setValue("admin@apptino.com");
-                    signIn.click();
+          await loginUsername.click();
+        await  browser.pause(2000)
+        await  browser.keys(["\uE009", "a"]);
+          await loginUsername.keys("\uE003");   
+          await  loginUsername.setValue("admin@apptino.com");
+         await  signIn.click();
         }
-        if((pwdReq.isDisplayed()) || (incrtPwd.isDisplayed()))
+        if((await pwdReq.isDisplayed()) || (await incrtPwd.isDisplayed()))
         {         
-          loginpassword.click();
-            browser.pause(2000)
-             browser.keys(["\uE009", "a"]);
-              loginpassword.keys("\uE003");   
-                loginpassword.setValue("Admin@123");
-                  signIn.click();
+           await  browser.pause(2000)
+           await  browser.keys(["\uE009", "a"]);
+           await  loginpassword.keys("\uE003");   
+           await  loginpassword.setValue("Admin@123");
+           await  signIn.click();
         }
         
-        browser.pause(5000);
-        browser.getUrl();
-       expect(browser).toHaveUrlContaining('dashboard');
+        await  browser.pause(5000);
+        await  browser.getUrl();
+        await  expect(await browser).toHaveUrlContaining('dashboard');
 
 
 
@@ -66,1221 +65,1219 @@ describe("Sanity test check", () => {
 
    
 
-    it("Create and delete the Brand", () => {
+    // it("Create and delete the Brand",async() => {
         
-        let AddBrand = $('//span[text()="Delete"]/following::button[1]');
-        let Brandname = $('//span[text()="Cancel"]/preceding::input[1]');
-        let Submit = $('//*[@id="editDialogButton"]');
-        let Cancel = $('#editDialogCancel');
-        let save = $('#loadingButton');
-        let DeleteBrand = $('//span[text()="Delete"]');
-        let Yes = $('#yes');
-        let snackbar = $('#client-snackbar');
-        let nameExsists = $('//p[text()="brand Name already exists "]');
+    //     let AddBrand = await $('//span[text()="Delete"]/following::button[1]');
+    //     let Brandname = await $('//span[text()="Cancel"]/preceding::input[1]');
+    //     let Submit = await $('//*[@id="editDialogButton"]');
+    //     let Cancel = await $('#editDialogCancel');
+    //     let save = await $('#loadingButton');
+    //     let DeleteBrand = await $('//span[text()="Delete"]');
+    //     let Yes = await $('#yes');
+    //     let snackbar = await $('#client-snackbar');
+    //     let nameExsists = await $('//p[text()="brand Name already exists "]');
 
-        browser.url("/brands");
-        browser.pause(1000);
-        AddBrand.click();
-        browser.pause(1000);
-        Brandname.setValue("Nokia");
-        browser.pause(1000);
-        Submit.click();
-        if (nameExsists.isDisplayed()) {
-            Brandname.click();
-            browser.pause(1000);
-            browser.keys(["\uE009", "a"]);
-            Brandname.keys("\uE003");
-            browser.pause(1000);
-            Brandname.setValue('Sanity');
-            Submit.click();
-        }
-        browser.pause(4000);
-        assert.strictEqual(snackbar.getText(),"Brand added");
-
-
-        let brandImage = $('//h6[text()="Brands Image"]/following::input[1]');
-        browser.execute(
-            (el) => el.style.display = 'block',
-            brandImage);
-        brandImage.waitForDisplayed();
-        brandImage.setValue(imageUpload);
-        browser.pause(2000);
-        save.click();
-
-        DeleteBrand.click();
-        browser.pause(2000);
-        Yes.click();
-        browser.pause(2000);
-        assert.strictEqual(snackbar.getText(),"Brand deleted successfully");
+    //     await browser.url("/brands");
+    //     await browser.pause(1000);
+    //     await  AddBrand.click();
+    //     await browser.pause(1000);
+    //     await  Brandname.setValue("Nokia");
+    //     await browser.pause(1000);
+    //     await  Submit.click();
+    //     if (await nameExsists.isDisplayed()) {
+    //       await  Brandname.click();
+    //         await browser.pause(1000);
+    //         await browser.keys(["\uE009", "a"]);
+    //         await  Brandname.keys("\uE003");
+    //         await browser.pause(1000);
+    //         await Brandname.setValue('Sanity');
+    //         await  Submit.click();
+    //     }
+    //     await browser.pause(4000);
+    //     await assert.strictEqual(await await snackbar.getText(),"Brand added");
 
 
-    })
+    //     let brandImage = await $('//h6[text()="Brands Image"]/following::input[1]');
+    //     await browser.execute(
+    //         (el) => el.style.display = 'block',
+    //         await brandImage);
+    //         await brandImage.waitForDisplayed();
+    //         await brandImage.setValue(imageUpload);
+    //     await browser.pause(2000);
+    //     await save.click();
+
+    //     awaitDeleteBrand.click();
+    //     await browser.pause(2000);
+    //     await Yes.click();
+    //     await browser.pause(2000);
+    //     await assert.strictEqual(await await snackbar.getText(),"Brand deleted successfully");
 
 
-    it("Create and delete the Category", ()=>{
+    // })
+
+
+//     it("Create and delete the Category",async()=>{
        
-      let AddCategoery=$('(//span[text()="Department"]/following::button[@aria-label="add"])[1]');
-      let catName = $('//input[@name="name"]');
-      let Department  =$('//span[text()="Department"]');
-      let save=$('//span[text()="Save"]');
-      let Cancel =$('//span[text()="Cancel"]');
-      let newCategory=$('//span[text()="bocsh"]');
-      let EditCategory=$('(//*[@aria-label="edit"])[last()]');
-      let DeleteCategoery = $('(//*[@aria-label="delete"])[last()]');
-      let Yes = $('#yes');
-      let snackbar = $('#client-snackbar');
+//       let AddCategoery=await $('//span[text()="Add category"]');
+//       let catName = await $('//input[@name="name"]');
+//       let Department  =await $('//span[text()="Department"]');
+//       let save=await $('//span[text()="Save"]');
+//       let Cancel =await $('//span[text()="Cancel"]');
+//       let EditCategory=await $('(//*[@aria-label="edit"])[last()]');
+//       let DeleteCategoery = await $('(//*[@aria-label="delete"])[last()]');
+//       let Yes = await $('#yes');
+//       let snackbar = await $('#client-snackbar');
 
 
 
-    browser.url("/categories");
-    browser.pause(3000);
-    Department.click();
-     browser.pause(2000);
-      AddCategoery.click();
-      browser.pause(2000);
-      catName.click();
-      catName.keys(["\uE009", "a"]);
-      catName.keys("\uE003");
-      browser.pause(2000);
-        catName.setValue("bocsh");
+//     await browser.url("/categories");
+//     await browser.pause(3000);
+//      await AddCategoery.click();
+//       await browser.pause(2000);
+//       await catName.click();
+//       await catName.keys(["\uE009", "a"]);
+//       await catName.keys("\uE003");
+//       await browser.pause(2000);
+//       await catName.setValue("bocsh");
 
-    let catIcon=$('//h6[text()="Icon"]/following::input[1]');
-    catIcon.scrollIntoView();
+//     let catIcon=await $('//h6[text()="Icon"]/following::input[1]');
+//     await catIcon.scrollIntoView();
 
-      browser.execute(
-        (el) => el.style.display = 'block',
-          catIcon );
-    catIcon.waitForDisplayed();
-      catIcon.setValue(imageUpload);
-        browser.pause(4000);
-        save.click();       
-assert.strictEqual(snackbar.getText(),"Saved successfully");
+//       await browser.execute(
+//         (el) => el.style.display = 'block',
+//         await catIcon );
+//         await catIcon.waitForDisplayed();
+//         await catIcon.setValue(imageUpload);
+//         await browser.pause(4000);
+//         await save.click();       
+// await assert.strictEqual(await snackbar.getText(),"Saved successfully");
 
-/*Edit category 
-        browser.pause(2000);
-  newCategory.click();  
-    EditCategory.click();
-      browser.pause(2000);
-      let catImage=$('//h6[text()="Image"]/following::input[1]');
-       catImage.scrollIntoView();
-      browser.execute(
-            (el) => el.style.display = 'block',
-         catImage );
-       catImage.waitForDisplayed();
-       browser.pause(2000);
-     catImage.setValue(imageUpload);
-      browser.pause(2000);
-         save.scrollIntoView();
-         browser.pause(4000);
-        save.click();
-assert.strictEqual(snackbar.getText(),"Saved successfully");*/
-/*Delete category */
-browser.pause(2000);
-  newCategory.click();  
-     DeleteCategoery.click();
-      browser.pause(2000);
-        Yes.click();
-          browser.pause(2000);
-assert.strictEqual(snackbar.getText(),"Deleted successfully");
+// /*Edit category 
+//         await browser.pause(2000);
+//  await newCategory.click();  
+//   await EditCategory.click();
+//       await browser.pause(2000);
+//       let catImage=await $('//h6[text()="Image"]/following::input[1]');
+//    await  catImage.scrollIntoView();
+//       await browser.execute(
+//             (el) => el.style.display = 'block',
+//       await catImage );
+//       await catImage.waitForDisplayed();
+//        await browser.pause(2000);
+//    await catImage.setValue(imageUpload);
+//       await browser.pause(2000);
+//        await save.scrollIntoView();
+//          await browser.pause(4000);
+//      await save.click();
+// await assert.strictEqual(await snackbar.getText(),"Saved successfully");*/
+// /*Delete category */
+// await browser.pause(2000);
+// await  DeleteCategoery.scrollIntoView();
+// await DeleteCategoery.click();
+//       await browser.pause(2000);
+//       await Yes.click();
+//           await browser.pause(2000);
+// await assert.strictEqual(await snackbar.getText(),"Deleted successfully");
 
-    });
+//     });
 
-    it("Create and delete the product",()=>{
+    it("Create and delete the product",async()=>{
        
-        let AddProdcut=$('#MPG_PPGL_CFBCPG');
-        let save = $('//*[@id="editDialogButton"]');
-        let Cancel =$('#editDialogCancel');
-        let ProductName=$('//input[@name="name"]');
-        let LeadTime=$('//input[@name="standardLeadTime"]');
-        let Time=$('//input[@value="Days"]');
-        let BrandName=$('//input[@id="brandsId"]');
-        let Date =$('#date-picker-inline');
-        let currentDate = $('//*[@class="MuiButtonBase-root MuiIconButton-root MuiPickersDay-day MuiPickersDay-current MuiPickersDay-daySelected"]');
-        let CreateVarient=$('#MPG_PPGL_CFBCPG');
-        let productID=$('//input[@name="brandProductId"]');
-        let cloneProdID=$('//input[@name="hsnCode"]/preceding::input[1]');
-        let productVarient=$('//*[@name="productShortDescription"]');
-        let primaryCategory=$('//*[@id="productSubCategories.primarySubcategoryName"]');
-        let HSN=$('//input[@name="hsnCode"]');
-        let unitPrice=$('//input[@name="unitListPrice"]');
-        let UnitQty=$('//input[@name="unitQuantity"]');
-        let PackQty=$('//input[@name="packagingQty"]');
-        let UOM=$('//input[@name="unitOfMeasure"]');
-        let MoreOptions=$('//button[@Title="More options"]');
-        let DeleteProdvarient=$('//*[text()="Delete"]');
-        let DeleteProd=$('//*[text()="Delete"]');
-        let yes=$('#yes');
-        let snackbar=$('#client-snackbar');
-        let publish=$('//span[text()="Publish"]');
-        let clone=$('//span[text()="Clone"]');
-        let catalogID=$('//*[@name="extendedProductID"]');
-        let subCategoery=$('//*[@placeholder="Search for Categories"]');
-        let MSRP=$('//input[@name="unitMrp"]');
-        let prodCost=$('//input[@name="productCost"]');
-        let costValidty=$('//input[@name="costValidity"]');
-        let vaildDate=$('//button[contains(@class,"daySelected")]/following::div[1]');
-        let MOQ=$('//input[@name="outerPackQty"]/preceding::input[1]');
-        let outerPack=$('//input[@name="outerPackQty"]');
-        let isNew=$('//input[@name="showPrice"]/preceding::input[1]');
-        let priceTocus=$('//input[@name="isDiscontinued"]');
-        let movingProd=$('//input[@name="isBrandStock"]');
-        let DisconProd=$('//input[@name="isDiscontinued"]');
-        let disTocustmers=$('//input[@name="isListpricePublic"]');
-        let internalProd=$('//input[@name="internal"]');
-        let saveProd=$('#loadingButton');
-        let lastProd=$('//h4[text()="Product Variants"]/following::div[contains(@class," MuiPaper-elevation1 MuiPaper-rounded")][last()]');
-        let asset=$('//*[@id="Assets"]');
-        let primeImage=$('(//*[@title="Make Primary Image"])[last()]');
-        let freqBought=$('//*[@id="Frequently Bought Together"]');
-        let frqBoughtVarient=$('//*[@placeholder="Search for Product Variant"]');
-        let longDesc=$('//*[@id="Long Description & Keywords"]');
-        let addKeywords=$('//*[@id="Long Description & Keywords"]/following::input[1]');
-        let varientAccess=$('//*[@id="Variant Accessories"]');
-        let addprodVarient=$('//*[@placeholder="Search for Product Variant"]');
-        let spec=$('#Specifications');
-        let specDesc=$('//*[@id="Specifications"]/following::input[1]');
-        let specValue=$('//*[@id="Specifications"]/following::input[2]');
-        let addtionalInfo=$('//*[@id="Additional Information"]');
-        let packingDimensions=$('//*[@name="packagingDimension"]');
-        let netWeight=$('//*[@name="netWeight"]');
-        let eanUpc=$('//*[@name="ean"]');
-        let orginCountry=$('//*[@name="ean"]/following::input[1]');
-        let prodExsists=$('//p[text()="Product ID (SKU) already exists"]');
-        let uploadProd=$('//*[text()="Upload Products"]');
-        let groupAssign=$('//span[text()="Assign"]');
-        let category=$('//span[text()="Assign"]/preceding::input[1]');
-        let uploadSave=$('//span[text()="Save"]');
-        let optionsMore=$('//span[text()="Create product variant"]/following::button[1]');
+        let AddProdcut=await $('#MPG_PPGL_CFBCPG');
+        let save = await $('//*[@id="editDialogButton"]');
+        let Cancel =await $('#editDialogCancel');
+        let ProductName=await $('//input[@name="name"]');
+        let LeadTime=await $('//input[@name="standardLeadTime"]');
+        let Time=await $('//input[@value="Days"]');
+        let BrandName=await $('//input[@id="brandsId"]');
+        let Date =await $('#date-picker-inline');
+        let currentDate = await $('//*[@class="MuiButtonBase-root MuiIconButton-root MuiPickersDay-day MuiPickersDay-current MuiPickersDay-daySelected"]');
+        let CreateVarient=await $('#MPG_PPGL_CFBCPG');
+        let productID=await $('//input[@name="brandProductId"]');
+        let cloneProdID=await $('//input[@name="hsnCode"]/preceding::input[1]');
+        let productVarient=await $('//*[@name="productShortDescription"]');
+        let primaryCategory=await $('//*[@id="productSubCategories.primarySubcategoryName"]');
+        let HSN=await $('//input[@name="hsnCode"]');
+        let unitPrice=await $('//input[@name="unitListPrice"]');
+        let UnitQty=await $('//input[@name="unitQuantity"]');
+        let PackQty=await $('//input[@name="packagingQty"]');
+        let UOM=await $('//input[@name="unitOfMeasure"]');
+        let MoreOptions=await $('//button[@Title="More options"]');
+        let DeleteProdvarient=await $('//*[text()="Delete"]');
+        let DeleteProd=await $('//*[text()="Delete"]');
+        let yes=await $('#yes');
+        let snackbar=await $('#client-snackbar');
+        let publish=await $('//span[text()="Publish"]');
+        let clone=await $('//span[text()="Clone"]');
+        let catalogID=await $('//*[@name="extendedProductID"]');
+        let subCategoery=await $('//*[@placeholder="Search for Categories"]');
+        let MSRP=await $('//input[@name="unitMrp"]');
+        let prodCost=await $('//input[@name="productCost"]');
+        let costValidty=await $('//input[@name="costValidity"]');
+        let vaildDate=await $('//button[contains(@class,"daySelected")]/following::div[1]');
+        let MOQ=await $('//input[@name="outerPackQty"]/preceding::input[1]');
+        let outerPack=await $('//input[@name="outerPackQty"]');
+        let isNew=await $('//input[@name="showPrice"]/preceding::input[1]');
+        let priceTocus=await $('//input[@name="isDiscontinued"]');
+        let movingProd=await $('//input[@name="isBrandStock"]');
+        let DisconProd=await $('//input[@name="isDiscontinued"]');
+        let disTocustmers=await $('//input[@name="isListpricePublic"]');
+        let internalProd=await $('//input[@name="internal"]');
+        let saveProd=await $('#loadingButton');
+        let lastProd=await $('//h4[text()="Product Variants"]/following::div[contains(@class," MuiPaper-elevation1 MuiPaper-rounded")][last()]');
+        let asset=await $('//*[@id="Assets"]');
+        let primeImage=await $('(//*[@title="Make Primary Image"])[last()]');
+        let freqBought=await $('//*[@id="Frequently Bought Together"]');
+        let frqBoughtVarient=await $('//*[@placeholder="Search for Product Variant"]');
+        let longDesc=await $('//*[@id="Long Description & Keywords"]');
+        let addKeywords=await $('//*[@id="Long Description & Keywords"]/following::input[1]');
+        let varientAccess=await $('//*[@id="Variant Accessories"]');
+        let addprodVarient=await $('//*[@placeholder="Search for Product Variant"]');
+        let spec=await $('#Specifications');
+        let specDesc=await $('//*[@id="Specifications"]/following::input[1]');
+        let specValue=await $('//*[@id="Specifications"]/following::input[2]');
+        let addtionalInfo=await $('//*[@id="Additional Information"]');
+        let packingDimensions=await $('//*[@name="packagingDimension"]');
+        let netWeight=await $('//*[@name="netWeight"]');
+        let eanUpc=await $('//*[@name="ean"]');
+        let orginCountry=await $('//*[@name="ean"]/following::input[1]');
+        let prodExsists=await $('//p[text()="Product ID (SKU) already exists"]');
+        let uploadProd=await $('//*[text()="Upload Products"]');
+        let groupAssign=await $('//span[text()="Assign"]');
+        let category=await $('//span[text()="Assign"]/preceding::input[1]');
+        let uploadSave=await $('//span[text()="Save"]');
+        let optionsMore=await $('//span[text()="Create product variant"]/following::button[1]');
 
             
 
 
       /*create product*/
-    browser.url("/create-products/productgroup-landing");
-     browser.pause(1000);
-      AddProdcut.click();
-       browser.pause(1000);
-        ProductName.setValue("1100");
-         LeadTime.setValue("10");
-           browser.pause(1000);
-            Time.click();
-             browser.pause(1000);
-              browser.keys(["\uE009", "a"]);
-               Time.keys("\uE003");
-                browser.pause(1000);
-                 Time.setValue("Days");
-                   Time.keys("\uE015");
-                     Time.keys("\uE007");
-                       browser.pause(1000);
-                        BrandName.setValue("HP");
-                          browser.pause(1000);
-                           BrandName.keys("\uE015");
-                             browser.pause(1000);
-                               BrandName.keys("\uE007");
-                                 browser.pause(1000);
-                                  Date.click();
-                                   currentDate.click();
-                                      save.click();
-                                        browser.pause(2000);
-assert.strictEqual(snackbar.getText(),'Product group created');
+    await browser.url("/create-products/productgroup-landing");
+     await browser.pause(1000);
+     await AddProdcut.click();
+       await browser.pause(1000);
+       await ProductName.setValue("1100");
+       await  LeadTime.setValue("10");
+           await browser.pause(1000);
+           await Time.click();
+             await browser.pause(1000);
+              await browser.keys(["\uE009", "a"]);
+              await Time.keys("\uE003");
+                await browser.pause(1000);
+                await Time.setValue("Days");
+                await Time.keys("\uE015");
+                await   Time.keys("\uE007");
+                       await browser.pause(1000);
+                      await  BrandName.setValue("HP");
+                          await browser.pause(1000);
+                         await  BrandName.keys("\uE015");
+                     await browser.pause(1000);
+                     await   BrandName.keys("\uE007");
+                          await browser.pause(1000);
+                               await Date.click();
+                               await  currentDate.click();
+                               await   save.click();
+                                        await browser.pause(2000);
+await assert.strictEqual(await snackbar.getText(),'Product group created');
 
 /* upload product */
- MoreOptions.click();
-  browser.pause(1000);
-   uploadProd.click();
+await MoreOptions.click();
+  await browser.pause(1000);
+  await uploadProd.click();
     
-   let uploadFile = $('#upload-excel-file');
-      browser.execute(
+   let uploadFile = await $('#upload-excel-file');
+      await browser.execute(
            
            (el) => el.style.display = 'block',
-           uploadFile
+           await uploadFile
        );
-       uploadFile.waitForDisplayed();
-       uploadFile.setValue(productUpload);
+       await uploadFile.waitForDisplayed();
+       await uploadFile.setValue(productUpload);
 
-       category.setValue("Apple watch");
-       browser.pause(1000);
-         category.keys("\uE015");
-           browser.pause(1000);
-             category.keys("\uE007");
-               groupAssign.click();
-             /*   uploadSave.click();*/
+       await category.setValue("Apple watch");
+       await browser.pause(1000);
+       await  category.keys("\uE015");
+           await browser.pause(1000);
+           await  category.keys("\uE007");
+           await   groupAssign.click();
+             /*  await uploadSave.click();*/
 
       
                 
 
         /*create product variant*/
-    browser.refresh();
-    CreateVarient.click();
-      browser.pause(1000);
-       productID.setValue("1100 black");
-         productVarient.setValue("Nokia 1100");
-          primaryCategory.setValue("Apple watch");
-           browser.pause(1000);
-             primaryCategory.keys("\uE015");
-               browser.pause(1000);
-                 primaryCategory.keys("\uE007");
-                   HSN.setValue("7");
-                    browser.pause(1000);
-                      HSN.keys("\uE015");
-                         browser.pause(1000);
-                           HSN.keys("\uE007");
-                             unitPrice.setValue("10000");
-                                UnitQty.setValue("1");
-                                  PackQty.setValue("1");
-                                     UOM.setValue("NOS");
-                                       save.click();
-                                         if(prodExsists.isDisplayed()){
-                                             productVarient.click();
-                                              browser.keys(["\uE009", "a"]);
-                                               productVarient.keys("\uE003");
-                                                 browser.pause(2000);
-                                                  productVarient.setValue("Nokia 11000 test");
-                                                   save.click();
+    await browser.refresh();
+    await CreateVarient.click();
+      await browser.pause(1000);
+      await productID.setValue("1100 black");
+      await  productVarient.setValue("Nokia 1100");
+      await primaryCategory.setValue("Apple watch");
+           await browser.pause(1000);
+           await primaryCategory.keys("\uE015");
+               await browser.pause(1000);
+              await primaryCategory.keys("\uE007");
+              await  HSN.setValue("7");
+                    await browser.pause(1000);
+                   await  HSN.keys("\uE015");
+                         await browser.pause(1000);
+                        await HSN.keys("\uE007");
+                        await unitPrice.setValue("10000");
+                        await   UnitQty.setValue("1");
+                        await PackQty.setValue("1");
+                        await UOM.setValue("NOS");
+                        await save.click();
+                                         if(await prodExsists.isDisplayed()){
+                                          awaitproductVarient.click();
+                                              await browser.keys(["\uE009", "a"]);
+                                              await productVarient.keys("\uE003");
+                                                 await browser.pause(2000);
+                                                 await  productVarient.setValue("Nokia 11000 test");
+                                                 await  save.click();
                                          }
                                          
-                                        browser.pause(1000);
-assert.strictEqual(snackbar.getText(),'Product created');
+                                        await browser.pause(1000);
+await assert.strictEqual(await snackbar.getText(),'Product created');
    
-    catalogID.setValue('12345');
-     subCategoery.setValue('mobile phones');
-       subCategoery.keys("\uE015");
-        browser.pause(1000);
-         subCategoery.keys("\uE007");
-           longDesc.click();
-           browser.pause(1000);
-            addKeywords.setValue('nokia');
-              addKeywords.keys('\uE007');
-                  asset.click();
-                    let prodImg=$('//*[@id="button-file"]');
-                        browser.execute(
+await catalogID.setValue('12345');
+await subCategoery.setValue('mobile phones');
+await  subCategoery.keys("\uE015");
+        await browser.pause(1000);
+       await subCategoery.keys("\uE007");
+       await  longDesc.click();
+           await browser.pause(1000);
+           await  addKeywords.setValue('nokia');
+           await addKeywords.keys('\uE007');
+           await   asset.click();
+                    let prodImg=await $('//*[@id="button-file"]');
+                        await browser.execute(
                            (el) => el.style.display = 'block',
-                             prodImg );
-                          prodImg.waitForDisplayed();
-                       prodImg.setValue(imageUpload);
-                  prodImg.pause(2000);
-              prodImg.waitForDisplayed();
-           prodImg.setValue(ProductImage);
-       prodImg.pause(1000);
-     primeImage.click();
-  /* freqBought.click();
-     frqBoughtVarient.setValue('redmi');
-       frqBoughtVarient.keys('\uE015');
-         browser.pause(1000);
-          frqBoughtVarient.keys('\uE007');*/
+                           await prodImg );
+                           await prodImg.waitForDisplayed();
+                           await prodImg.setValue(imageUpload);
+                           await prodImg.pause(2000);
+                           await prodImg.waitForDisplayed();
+                           await prodImg.setValue(ProductImage);
+                           await prodImg.pause(1000);
+                           await primeImage.click();
+  /* await freqBought.click();
+    await frqBoughtVarient.setValue('redmi');
+     await frqBoughtVarient.keys('\uE015');
+         await browser.pause(1000);
+        await frqBoughtVarient.keys('\uE007');*/
     
-          spec.click();
-            browser.pause(1000);
-             specDesc.setValue("nokia best mobile");
-              specValue.setValue('2500');
-              browser.pause(1000);
-                addtionalInfo.click();
-                browser.pause(1000);
-               packingDimensions.setValue('10*10');
-              netWeight.setValue('250g');
-            eanUpc.setValue(1100);
+        await spec.click();
+            await browser.pause(1000);
+            await  specDesc.setValue("nokia best mobile");
+            await specValue.setValue('2500');
+              await browser.pause(1000);
+              await  addtionalInfo.click();
+                await browser.pause(1000);
+                await  packingDimensions.setValue('10*10');
+                await netWeight.setValue('250g');
+                await  eanUpc.setValue(1100);
          
 
-    MSRP.setValue('1000');
-    prodCost.setValue('800');
-      costValidty.click();
-        vaildDate.click();
-          MOQ.waitForClickable(1000);
-          MOQ.setValue('2');
-           outerPack.setValue('1');
-           browser.pause(2000);
-           orginCountry.setValue('China');
-           browser.keys('\uE015');
-           browser.pause(1000);
-            browser.keys('\uE007');
-            browser.pause(1000);
-            isNew.scrollIntoView();
+                await MSRP.setValue('1000');
+                await prodCost.setValue('800');
+                await costValidty.click();
+                await  vaildDate.click();
+                await  MOQ.waitForClickable(1000);
+                await MOQ.setValue('2');
+                await   outerPack.setValue('1');
+           await browser.pause(2000);
+           await orginCountry.setValue('China');
+           await browser.keys('\uE015');
+           await browser.pause(1000);
+            await browser.keys('\uE007');
+            await browser.pause(1000);
+            await  isNew.scrollIntoView();
          
              /*isNew.click(); */
-                   if(priceTocus.getValue()===true){
-                     priceTocus.click();
+                   if(await priceTocus.getValue()===true){
+                    await   priceTocus.click();
                       }
-                      if(disTocustmers.getValue()===true){
-                        disTocustmers.click();
+                      if(await disTocustmers.getValue()===true){
+                        await  disTocustmers.click();
                          }                        
-                          internalProd.click();
-                            movingProd.click();
-                              DisconProd.click();
-                                saveProd.click();
-                                  browser.pause(1000);
-/*assert.strictEqual(snackbar.getText(),'Product updated');*/
-                                      browser.pause(1000);
-                                     publish.click();
-                                       yes.click();
-                                        browser.pause(1000);                            
-/*assert.strictEqual(snackbar.getText(),'Product group published');*/
-                                       browser.pause(1000);  
-                                          clone.click();
-                                            productID.setValue('1100 red');
-                                              save.click();
-                                              if(cloneProdID.isDisplayed()){
-                                                cloneProdID.setValue('1100 Red');
-                                                 save.click();}
-                                                  browser.pause(1000);
-/*assert.strictEqual(snackbar.getText(),'Product created'); */  
-    MoreOptions.click();
-     browser.pause(2000);
-       DeleteProdvarient.click();
-         browser.pause(1000);
-           yes.click();
+                         await internalProd.click();
+                         await movingProd.click();
+                         await  DisconProd.click();
+                        await  saveProd.click();
+                                  await browser.pause(1000);
+/*await assert.strictEqual(await snackbar.getText(),'Product updated');*/
+                                      await browser.pause(1000);
+                                      await  publish.click();
+                                      await  yes.click();
+                                        await browser.pause(1000);                            
+/*await assert.strictEqual(await snackbar.getText(),'Product group published');*/
+                                       await browser.pause(1000);  
+                                       await  clone.click();
+                                       await productID.setValue('1100 red');
+                                       await  save.click();
+                                              if(await cloneProdID.isDisplayed()){
+                                                await cloneProdID.setValue('1100 Red');
+                                                await save.click();}
+                                                  await browser.pause(1000);
+/*await assert.strictEqual(await snackbar.getText(),'Product created'); */  
+await MoreOptions.click();
+     await browser.pause(2000);
+     await DeleteProdvarient.click();
+         await browser.pause(1000);
+         await  yes.click();
         
- /*assert.strictEqual(snackbar.getText(),'Product deleted');*/
+ /*await assert.strictEqual(await snackbar.getText(),'Product deleted');*/
 
-    optionsMore.click();
-      browser.pause(2000);
-       DeleteProd.click();
-        browser.pause(1000);
-         yes.click();
-          browser.pause(1000);
-/*assert.strictEqual(snackbar.getText(),'1 products linked to this Product Group, kindly delete those products first');*/
-          lastProd.scrollIntoView();
-           browser.pause(1000);
-            lastProd.click();
-             browser.pause(1000);
-              MoreOptions.click();
-               browser.pause(1000);
-                 DeleteProdvarient.click();
-                   browser.pause(1000);
-                     yes.click();
-                       browser.pause(1000);
-/*assert.strictEqual(snackbar.getText(),'Product deleted');*/
-                          optionsMore.click();
-                             browser.pause(1000);
-                               DeleteProd.click();
-                                 browser.pause(1000);
-                                   yes.click();
-                                     browser.pause(1000);
-                                       browser.getUrl();       
-expect(browser).toHaveUrlContaining('productgroup-landing');
+ await optionsMore.click();
+      await browser.pause(2000);
+      await DeleteProd.click();
+        await browser.pause(1000);
+        await   yes.click();
+          await browser.pause(1000);
+/*await assert.strictEqual(await snackbar.getText(),'1 products linked to this Product Group, kindly delete those products first');*/
+await  lastProd.scrollIntoView();
+           await browser.pause(1000);
+          await   lastProd.click();
+             await browser.pause(1000);
+            await MoreOptions.click();
+               await browser.pause(1000);
+               await  DeleteProdvarient.click();
+                   await browser.pause(1000);
+                   await yes.click();
+                     await browser.pause(1000);
+/*await assert.strictEqual(await snackbar.getText(),'Product deleted');*/
+                   await optionsMore.click();
+                             await browser.pause(1000);
+                            await DeleteProd.click();
+                                 await browser.pause(1000);
+                                await yes.click();
+                                     await browser.pause(1000);
+                                       await browser.getUrl();       
+await expect(await browser).toHaveUrlContaining('productgroup-landing');
       });
 
-    it("Create and delete the Pricelist", ()=>{
+    it("Create and delete the Pricelist",async()=>{
        
-      let CreatePriceList=$('//span[text()="Create Price List"]');
-      let PlName = $('//input[@name="priceListName"]');
-      let PlDesc =$('//textarea[@name="description"]');
-      let PlCurrency =$('//input[@name="currencyId"]');
-      let isDefaultPL=$('//input[@name="isDefault"]');
-      let isApprovalPL=$('//input[@name="isDefault"]/following::input[1]');
-      let save = $('//*[@id="editDialogButton"]');
-      let Cancel =$('#editDialogCancel');
-      let SearchPL=$('//input[@placeholder="Search by price list name"]');
-      let SelectPL=$('//tbody[@class="MuiTableBody-root"]/tr[1]/td[1]'); 
-      let DeletePL = $('//span[text()="Delete Price list"]');
-      let submit = $('#loadingButton');
-      let snackbar = $('#client-snackbar');
-      let companySearch=$('//*[@placeholder="Search Companies"]');
-      let addCompany=$('//span[text()="Add Companies"]');
-      let addProdcuts=$('//span[text()="Add Products"]');
-      let prodBrand=$('//*[text()="Brands"]/following::div[1]/input[1]');
-      let prodCate=$('//*[text()="Catgeory"]/following::div[1]/input[1]');
-      let prodSubcat=$('//*[text()="Sub-Category"]/following::div[1]/input[1]');
-      let prodGroup=$('//*[text()="Product Group"]/following::div[1]/input[1]');
-      let prodName=$('//*[text()="Products"]/following::div[1]/input[1]');
-      let prodDisc=$('//*[contains(text(),"Discounts")]/following::div[1]/input[1]');
-      let ProdToList=$('//span[text()="Add Products To List"]');
-      let saveProd=$('//span[text()="Save"]');
-      let checkAll=$('//span[@title="Checkall"]');
-      let applyDisc=$('//span[text()="Apply Discount"]');
-      let deleteprod=$('//span[text()="Delete"]');
-      let discount=$('//*[@name="discount"]');
+      let CreatePriceList=await $('//span[text()="Create Price List"]');
+      let PlName = await $('//input[@name="priceListName"]');
+      let PlDesc =await $('//textarea[@name="description"]');
+      let PlCurrency =await $('//input[@name="currencyId"]');
+      let isDefaultPL=await $('//input[@name="isDefault"]');
+      let isApprovalPL=await $('//input[@name="isDefault"]/following::input[1]');
+      let save = await $('//*[@id="editDialogButton"]');
+      let Cancel =await $('#editDialogCancel');
+      let SearchPL=await $('//input[@placeholder="Search by price list name"]');
+      let SelectPL=await $('//tbody[@class="MuiTableBody-root"]/tr[1]/td[1]'); 
+      let DeletePL = await $('//span[text()="Delete Price list"]');
+      let submit = await $('#loadingButton');
+      let snackbar = await $('#client-snackbar');
+      let companySearch=await $('//*[@placeholder="Search Companies"]');
+      let addCompany=await $('//span[text()="Add Companies"]');
+      let addProdcuts=await $('//span[text()="Add Products"]');
+      let prodBrand=await $('//*[text()="Brands"]/following::div[1]/input[1]');
+      let prodCate=await $('//*[text()="Catgeory"]/following::div[1]/input[1]');
+      let prodSubcat=await $('//*[text()="Sub-Category"]/following::div[1]/input[1]');
+      let prodGroup=await $('//*[text()="Product Group"]/following::div[1]/input[1]');
+      let prodName=await $('//*[text()="Products"]/following::div[1]/input[1]');
+      let prodDisc=await $('//*[contains(text(),"Discounts")]/following::div[1]/input[1]');
+      let ProdToList=await $('//span[text()="Add Products To List"]');
+      let saveProd=await $('//span[text()="Save"]');
+      let checkAll=await $('//span[@title="Checkall"]');
+      let applyDisc=await $('//span[text()="Apply Discount"]');
+      let deleteprod=await $('//span[text()="Delete"]');
+      let discount=await $('//*[@name="discount"]');
 
 
 
 
 
-    browser.url("pricelist/landing");
-     browser.pause(2000);
-      CreatePriceList.click();
-        browser.pause(1000);
-         PlName.setValue("Sanity Pricelist");
-          PlDesc.setValue("Testing");
-           PlCurrency.setValue("INR");
-            browser.pause(1000);
-              PlCurrency.keys("\uE015");
-               browser.pause(1000);
-                 PlCurrency.keys("\uE007");
-                  browser.pause(1000);
-                     isApprovalPL.click();
-                        save.click();
-                           browser.pause(2000);
-assert.strictEqual(snackbar.getText(),"Pricelist Created");
-    browser.refresh();
-      SearchPL.setValue('Sanity');
-        SelectPL.click();
-        companySearch.setValue('a');
-         browser.pause(1000);
-          companySearch.keys("\uE015");
-            browser.pause(1000);
-              companySearch.keys("\uE007");
-                browser.pause(1000);
-                  companySearch.click();
-                     addCompany.click();
-                       submit.click();
-                        browser.pause(2000);
-assert.strictEqual(snackbar.getText(),"PriceList updated");
-                  addProdcuts.click();
-                    browser.pause(1000);
-                     prodBrand.setValue('a');
-                      browser.pause(1000);
-                      prodBrand.keys("\uE015");
-                       browser.pause(1000);
-                        prodBrand.keys("\uE007");
-                         browser.pause(1000);
-                          prodCate.setValue('a');
-                          browser.pause(1000);
-                           prodCate.keys("\uE015");
-                            browser.pause(1000);
-                              prodCate.keys("\uE007");
-                               browser.pause(1000);
-                                prodSubcat.setValue('a');
-                                browser.pause(1000);
-                                 prodSubcat.keys("\uE015");
-                                  browser.pause(1000);
-                                   prodSubcat.keys("\uE007");
-                                     browser.pause(1000);
-                                      prodGroup.setValue('a');
-                                      browser.pause(1000);
-                                       prodGroup.keys("\uE015");
-                                         browser.pause(1000);
-                                          prodGroup.keys("\uE007");
-                                            browser.pause(1000);
-                                              prodName.setValue('a');
-                                              browser.pause(1000);
-                                               prodName.keys("\uE015");
-                                                browser.pause(1000);
-                                                  prodName.keys("\uE007");
-                                                   browser.pause(1000);
-                                                    prodDisc.setValue('10');
-                                                      ProdToList.click();
-                                                        saveProd.click();
-                                                          browser.pause(2000);
-                                                            checkAll.click();
-                                                            applyDisc.click();
-                                                           discount.setValue(10);
-                                                          submit.click();
-                                                        checkAll.scrollIntoView();
-                                                      checkAll.click();
-                                                    deleteprod.click();
-                                                 submit.click();
-                                             browser.pause(1000);                                                                                                                                                                                                                              
-                                         DeletePL.click();
-                                     browser.pause(1000);
-                               submit.click();
-                           browser.pause(1000);
-                        browser.getUrl();
-expect(browser).toHaveUrlContaining('pricelist/landing');
+    await browser.url("pricelist/landing");
+     await browser.pause(2000);
+     await CreatePriceList.click();
+        await browser.pause(1000);
+        await  PlName.setValue("Sanity Pricelist");
+        await  PlDesc.setValue("Testing");
+        await PlCurrency.setValue("INR");
+            await browser.pause(1000);
+            await PlCurrency.keys("\uE015");
+               await browser.pause(1000);
+               await  PlCurrency.keys("\uE007");
+                  await browser.pause(1000);
+                 await  isApprovalPL.click();
+                 await save.click();
+                           await browser.pause(2000);
+await assert.strictEqual(await snackbar.getText(),"Pricelist Created");
+    await browser.refresh();
+    await SearchPL.setValue('Sanity');
+    await  SelectPL.click();
+    await companySearch.setValue('a');
+         await browser.pause(1000);
+         await  companySearch.keys("\uE015");
+            await browser.pause(1000);
+           await  companySearch.keys("\uE007");
+                await browser.pause(1000);
+               await   companySearch.click();
+               await addCompany.click();
+               await  submit.click();
+                        await browser.pause(2000);
+await assert.strictEqual(await snackbar.getText(),"PriceList updated");
+await  addProdcuts.click();
+                    await browser.pause(1000);
+                   await  prodBrand.setValue('a');
+                      await browser.pause(1000);
+                      await  prodBrand.keys("\uE015");
+                       await browser.pause(1000);
+                       await prodBrand.keys("\uE007");
+                         await browser.pause(1000);
+                         await prodCate.setValue('a');
+                          await browser.pause(1000);
+                          await   prodCate.keys("\uE015");
+                            await browser.pause(1000);
+                           await prodCate.keys("\uE007");
+                               await browser.pause(1000);
+                              await   prodSubcat.setValue('a');
+                                await browser.pause(1000);
+                               await   prodSubcat.keys("\uE015");
+                                  await browser.pause(1000);
+                                 await   prodSubcat.keys("\uE007");
+                                     await browser.pause(1000);
+                                    await prodGroup.setValue('a');
+                                      await browser.pause(1000);
+                                     await   prodGroup.keys("\uE015");
+                                         await browser.pause(1000);
+                                        await  prodGroup.keys("\uE007");
+                                            await browser.pause(1000);
+                                           await prodName.setValue('a');
+                                              await browser.pause(1000);
+                                             await prodName.keys("\uE015");
+                                                await browser.pause(1000);
+                                               await prodName.keys("\uE007");
+                                                   await browser.pause(1000);
+                                                  await prodDisc.setValue('10');
+                                                  await ProdToList.click();
+                                                  await saveProd.click();
+                                                          await browser.pause(2000);
+                                                         await checkAll.click();
+                                                         await applyDisc.click();
+                                                         await discount.setValue(10);
+                                                         await submit.click();
+                                                         await checkAll.scrollIntoView();
+                                                         await checkAll.click();
+                                                         await   deleteprod.click();
+                                                         await submit.click();
+                                             await browser.pause(1000);                                                                                                                                                                                                                              
+                                             await  DeletePL.click();
+                                     await browser.pause(1000);
+                                     await submit.click();
+                           await browser.pause(1000);
+                        await browser.getUrl();
+await expect(await browser).toHaveUrlContaining('pricelist/landing');
     });
 
-    it("Create and delete the Inventory", ()=>{
+    it("Create and delete the Inventory",async()=>{
 
 
 
-    let AddInventory =$('//span[text()="Add New Inventory"]');
-    let searchProduct=$('//input[@placeholder="Search for products"]');
-    let SearchResult = $('//div[@class="MuiPaper-root MuiPaper-elevation1"]/div/ul/div[1]');
-    let prodcutId=$('//input[@name="InventoryForm.productsId.brandProductId"]');
-    let BrandName=$('//input[@name="InventoryForm.brandId.name"]');
-    let shortDes=$('//input[@name="InventoryForm.productsId.productShortDescription"]');
-    let ListPrice=$('//input[@name="InventoryForm.productsId.unitListPrice"]');
-    let UniqueQty=$('//input[@name="InventoryForm.productsId.unitQuantity"]');
-    let wareHouse=$('//input[@name="InventoryForm.wareHouseDtoId"]');
-    let warehouseDrpdwn=$('//button[@title="Open"]');
-    let stockQty=$('//input[@name="InventoryForm.stockQuantity"]');
-    let safetyQty=$('//input[@name="InventoryForm.safetyStock"]');
-    let availableQty=$('//input[@name="InventoryForm.availableQuantity"]');
-    let avgCost=$('//input[@name="InventoryForm.averageCost"]');
-    let cancel=$('//span[text()="Cancel"]');
-    let save=$('#loadingButton');
-    let snackbar = $('#client-snackbar');
-    let search=$('//input[@placeholder="Search by Product ID"]');
-    let MoreOptions=$('//button[@Title="More options"]');
-    let Delete=$('//*[text()="Delete"]');
-    let productResult=$('//div[@role="button"][1]');
-    let maxValue=$('//p[contains(text(),"Maximum")]');
+    let AddInventory =await $('//span[text()="Add New Inventory"]');
+    let searchProduct=await $('//input[@placeholder="Search for products"]');
+    let SearchResult = await $('//div[@class="MuiPaper-root MuiPaper-elevation1"]/div/ul/div[1]');
+    let prodcutId=await $('//input[@name="InventoryForm.productsId.brandProductId"]');
+    let BrandName=await $('//input[@name="InventoryForm.brandId.name"]');
+    let shortDes=await $('//input[@name="InventoryForm.productsId.productShortDescription"]');
+    let ListPrice=await $('//input[@name="InventoryForm.productsId.unitListPrice"]');
+    let UniqueQty=await $('//input[@name="InventoryForm.productsId.unitQuantity"]');
+    let wareHouse=await $('//input[@name="InventoryForm.wareHouseDtoId"]');
+    let warehouseDrpdwn=await $('//button[@title="Open"]');
+    let stockQty=await $('//input[@name="InventoryForm.stockQuantity"]');
+    let safetyQty=await $('//input[@name="InventoryForm.safetyStock"]');
+    let availableQty=await $('//input[@name="InventoryForm.availableQuantity"]');
+    let avgCost=await $('//input[@name="InventoryForm.averageCost"]');
+    let cancel=await $('//span[text()="Cancel"]');
+    let save=await $('#loadingButton');
+    let snackbar = await $('#client-snackbar');
+    let search=await $('//input[@placeholder="Search by Product ID"]');
+    let MoreOptions=await $('//button[@Title="More options"]');
+    let Delete=await $('//*[text()="Delete"]');
+    let productResult=await $('//div[@role="button"][1]');
+    let maxValue=await $('//p[contains(text(),"Maximum")]');
 
 
 
 
-    browser.url("/inventory/landing");
-     browser.pause(2000);
-      AddInventory.click();
-       browser.pause(1000);
-    searchProduct.setValue("MQTX2HN/A");
-      browser.pause(1000);
-      SearchResult.click();
-       safetyQty.scrollIntoView();
-            if(!wareHouse.getValue()==='')
+    await browser.url("/inventory/landing");
+     await browser.pause(2000);
+     await AddInventory.click();
+       await browser.pause(1000);
+       await searchProduct.setValue("MQTX2HN/A");
+      await browser.pause(1000);
+      await SearchResult.click();
+      await  safetyQty.scrollIntoView();
+              if((await wareHouse.getValue)!=='')
             {
-              browser.keys(["\uE009", "a"]);
-               wareHouse.keys('\uE003');
+              await browser.keys(["\uE009", "a"]);
+              await wareHouse.keys('\uE003');
             }
-        warehouseDrpdwn.click();
-         wareHouse.setValue('a');
-          browser.pause(1000);
-            wareHouse.keys("\uE015");
-             browser.pause(1000);
-               wareHouse.keys("\uE007");
-                browser.pause(1000);
-                if(stockQty.getValue()===''){
-                  stockQty.setValue('10');
-                   browser.pause(1000);
+            await  warehouseDrpdwn.click();
+            await wareHouse.setValue('a');
+          await browser.pause(1000);
+          await wareHouse.keys("\uE015");
+             await browser.pause(1000);
+             await wareHouse.keys("\uE007");
+                await browser.pause(1000);
+                if(await stockQty.getValue()===''){
+                  await stockQty.setValue('10');
+                   await browser.pause(1000);
                    }
-                 if(safetyQty.getValue()===''){
-                    safetyQty.setValue('1');
-                        browser.pause(1000);
+                 if(await safetyQty.getValue()===''){
+                  await safetyQty.setValue('1');
+                        await browser.pause(1000);
                    }
-                    avgCost.setValue('01');
-                           save.click();
-                           if(maxValue.isDisplayed()){
-                            browser.keys(["\uE009", "a"]);
-                            avgCost.keys('\uE003');
-                            avgCost.setValue(100);
-                            save.click();
+                   await avgCost.setValue('01');
+                   await  save.click();
+                           if(await maxValue.isDisplayed()){
+                            await browser.keys(["\uE009", "a"]);
+                            await avgCost.keys('\uE003');
+                            await avgCost.setValue(100);
+                            await save.click();
                            }
-                            browser.pause(2000);
-assert.strictEqual(snackbar.getText(),"Saved successfully");
+                            await browser.pause(2000);
+await assert.strictEqual(await snackbar.getText(),"Saved successfully");
 
-    search.setValue('MQTX2HN/A');
-      browser.pause(1000);
-        productResult.click();
-          browser.pause(1000);
-           MoreOptions.click();
-            browser.pause(1000);
-              Delete.click();
-               browser.pause(1000);
-                save.click();
-                  browser.pause(1000);
-assert.strictEqual(snackbar.getText(),"Saved successfully");
+await search.setValue('MQTX2HN/A');
+      await browser.pause(1000);
+      await productResult.click();
+          await browser.pause(1000);
+          await MoreOptions.click();
+            await browser.pause(1000);
+            await   Delete.click();
+               await browser.pause(1000);
+              await  save.click();
+                  await browser.pause(1000);
+await assert.strictEqual(await snackbar.getText(),"Saved successfully");
     });
 
-    it("upload and delete the inventory", ()=>{
+    it("upload and delete the inventory",async()=>{
 
-    let upload =$('//*[text()="Upload"]');
-    let save=$('#loadingButton');
-    let filters=$('//*[text()="Filters"]');
-    let productID=$('//*[@id="brand"]/following::input[1]');
-    let Apply=$('//*[text()="Apply"]');
-    let checkbox=$('//input[@type="checkbox"]')
-    let MoreOptions=$('//button[@Title="More options"]');
-    let Delete=$('//*[text()="Delete"]');
-    let snackbar = $('#client-snackbar');
-    let alertMsg=$('//*[text()="Warehouse name not exist"]');
-    let wareHouse=$('//*[contains(@name,"wareHouseName-inventoryForm")]');
-    let filterResults=$('(//*[contains(@class,"-deleteIconSmall")])[last()]');
-    let filterClear=$('//span[text()="Clear All"]');
+    let upload =await $('//*[text()="Upload"]');
+    let save=await $('#loadingButton');
+    let filters=await $('//*[text()="Filters"]');
+    let productID=await $('//*[@id="brand"]/following::input[1]');
+    let Apply=await $('//*[text()="Apply"]');
+    let checkbox=await $('//input[@type="checkbox"]')
+    let MoreOptions=await $('//button[@Title="More options"]');
+    let Delete=await $('//*[text()="Delete"]');
+    let snackbar = await $('#client-snackbar');
+    let alertMsg=await $('//*[text()="Warehouse name not exist"]');
+    let wareHouse=await $('//*[contains(@name,"wareHouseName-inventoryForm")]');
+    let filterResults=await $('(//*[contains(@class,"-deleteIconSmall")])[last()]');
+    let filterClear=await $('//span[text()="Clear All"]');
 
 
-    browser.url("/inventory/landing");
-     browser.pause(2000);
-     if(filterResults.isExisting())
-           {    browser.pause(2000);
-                filterResults.click();
+    await browser.url("/inventory/landing");
+     await browser.pause(2000);
+     if(await filterResults.isExisting())
+           {    await browser.pause(2000);
+            await filterResults.click();
                }
 
-      upload.click();
-        let uploadFile = $('#upload-excel-file');
-            browser.execute(
+               await upload.click();
+        let uploadFile = await $('#upload-excel-file');
+            await browser.execute(
                 
                 (el) => el.style.display = 'block',
                 
-                uploadFile
+                await uploadFile
             );
-    uploadFile.waitForDisplayed();
-      uploadFile.setValue(inventoryUpload);
-        browser.pause(2000);
-        if(alertMsg.isDisplayed()){
-        wareHouse.click();   
-          browser.pause(1000);
-            browser.keys("\uE015");
-             browser.pause(1000);
-                browser.keys("\uE007")
+            await uploadFile.waitForDisplayed();
+            await  uploadFile.setValue(inventoryUpload);
+        await browser.pause(2000);
+        if(await alertMsg.isDisplayed()){
+          await wareHouse.click();   
+          await browser.pause(1000);
+            await browser.keys("\uE015");
+             await browser.pause(1000);
+                await browser.keys("\uE007")
 
         }
-          save.click();
-            browser.pause(1000);
-assert.strictEqual(snackbar.getText(),"Saved successfully");
+        await save.click();
+            await browser.pause(1000);
+await assert.strictEqual(await snackbar.getText(),"Saved successfully");
 
-    browser.refresh();
-    filters.click();
-    browser.pause(1000);
-    filterClear.click();
-     browser.pause(1000);
-      productID.setValue('Z0WX1HN/A');
-       browser.pause(1000);
-        Apply.click();
-         browser.pause(1000);
+    await browser.refresh();
+    await filters.click();
+    await browser.pause(1000);
+    await filterClear.click();
+     await browser.pause(1000);
+     await  productID.setValue('Z0WX1HN/A');
+       await browser.pause(1000);
+       await Apply.click();
+         await browser.pause(1000);
 
-      checkbox.click();
-        browser.pause(1000);
-          MoreOptions.click();
-            browser.pause(1000);
-             Delete.click();
-              browser.pause(1000);
-               save.click();
-                browser.pause(1000);
-assert.strictEqual(snackbar.getText(),"Changes saved successfully");
+         await  checkbox.click();
+        await browser.pause(1000);
+        await MoreOptions.click();
+            await browser.pause(1000);
+            await   Delete.click();
+              await browser.pause(1000);
+              await  save.click();
+                await browser.pause(1000);
+await assert.strictEqual(await snackbar.getText(),"Changes saved successfully");
     });
     
-    it("Create and delete the Buyer", ()=>{
+    it("Create and delete the Buyer", async()=>{
 
-      let createCustomer=$('//span[text()="Create Customer"]');
-      let BuyerName=$('//input[@name="companyName"]');
-      let BranchName=$('//input[@name="regAddress.branchName"]');
-      let Address=$('//*[@name="regAddress.addressLine"]');
-      let locality=$('//*[@name="regAddress.locality"]');   
-      let city=$('//input[@name="regAddress.city"]');
-      let district=$('//input[@name="regAddress.district"]');
-      let State=$('//input[@name="regAddress.state"]');
-      let pin=$('//input[@name="regAddress.pinCodeId"]');
-      let country=$('//input[@name="regAddress.country"]');
-      let billing=$('//input[@name="regAddress.isBilling"]');
-      let Shipping=$('//input[@name="regAddress.isShipping"]');
-      let tax=$('//input[@name="regAddress.gst"]');
-      let BusinessType=$('//input[@name="businesstype"]');
-      let Currency=$('//input[@name="currencyId"]');
-      let BuyerUsrName=$('//input[@name="displayName"]');
-      let UsrMobileNo=$('//input[@name="mobileNo"]');
-      let UsrEmail=$('//input[@name="userEmail"]');
-      let UsrRole=$('//input[@name="roleName"]');
-      let UsrDepartment=$('//input[@name="department"]');
-      let usrJobTilte=$('//input[@name="jobTitle"]');
-      let save=$('#editDialogButton');
-      let cancel=$('#editDialogCancel');
-      let custEdit=$('//*[text()="Company Details"]/following::button[1]');
-      let invite=$('//*[text()="invite"]');
-      let Buyerlist=$('//*[contains(@title,"Apple")]');
-      let createUser=$('//*[text()="Create User"]');
-      let createBranch=$('//span[text()="Create Branch"]');
-      let usrmail=$('//input[@name="email"]');
-      let Checkbox=$('(//input[@type="checkbox"])[last()]')
-      let snackbar = $('#client-snackbar');
-      let MoreOptions=$('//*[@title="More options"]');
-      let deleteBuyer=$('//span[text()="Delete Customer"]');
-      let userEdit=$('//span[text()="Edit"]');
-      let userMoreOptions=$('//span[text()="Edit"]/following::button[@title="More options"]');
-      let userDelete=$('//span[text()="Delete"]');
-      let userReinvite=$('//span[text()="Reinvite"]');
-      let yes=$('#yes');
-      let alreadyExsists=$('//p[text()="Email already exists"]');
-      let filter=$('//span[text()="Filters"]');
-      let customerName=$('#companyName');
-      let filterApply=$('//span[text()="Apply"]');
-      let filterResults=$('(//*[@class="MuiChip-deleteIcon MuiChip-deleteIconSmall"])[last()]');
-      let cusWebsite=$('//input[@name="website"]');
-      let cusTaxid=$('//input[@name="taxDetailsId.pan"]');
-      let cusSubIndustry=$('//input[@name="subIndustryId"]');
-      let acuntOwner=$('//input[@name="subIndustryId"]/following::input[1]');
-      let supportOwner=$('//input[@name="subIndustryId"]/following::input[2]');
-      let contactsTab=$('//span[text()="Contacts"]');
-      let preferenceTab=$('//span[text()="Preferences"]');
-      let addressTab=$('//span[text()="Addresses"]');
-      let inviteAccess=$('//input[@name="inviteAccess"]');
-      let inventoryAccess=$('//input[@name="inventory"]');
-      let showPrice=$('//*[@name="showPrice"]');
-      let taxExempted=$('//input[@name="companyId.taxExempted"]');
-      let branchName=$('//input[@name="branchName"]');
-       let branchAddress=$('//textarea[@name="addressLine"]');
-       let branchlocality=$('//input[@name="locality"]');
-       let branchCity=$('//input[@name="city"]');
-       let branchPin=$('//input[@name="pinCodeId"]');
-       let branchState=$('//input[@name="state"]');
-       let branchCountry=$('//input[@name="country"]');
-       let branchDistrict=$('//input[@name="district"]');
-       let branchLongitude=$('//input[@name="longitude"]');
-       let branchbilling=$('//input[@name="isBilling"]');
-       let branchShipping=$('//input[@name="isShipping"]');
-       let branchtax=$('//input[@name="gst"]');
-       let contactName=$('//input[@name="primaryContact"]');
-       let contactNo=$('//input[@name="mobileNo"]');
-       let submit=$('//*[@id="loadingButton"]');
-       let goBack=$('//*[@title="Go Back"]');
-       let firstCheckbox=$('//*[@type="checkbox"]');
-       let edit=$('//*[text()="Edit"]');
-       let deleteBtn=$('//*[text()="Delete"]');
-       let branchTags=$('//*[@name="tags"]');
-       let erpCode=$('//*[@name="erpCode"]');
-       let vendorCode=$('//*[@name="vendorID"]');
-       let exemptionId=$('//input[contains(@name,"ExemptionId")]');
-       let close=$('//*[@title="Close"]');
+      let createCustomer=await $('//span[text()="Create Customer"]');
+      let BuyerName=await $('//input[@name="companyName"]');
+      let BranchName=await $('//input[@name="regAddress.branchName"]');
+      let Address=await $('//*[@name="regAddress.addressLine"]');
+      let locality=await $('//*[@name="regAddress.locality"]');   
+      let city=await $('//input[@name="regAddress.city"]');
+      let district=await $('//input[@name="regAddress.district"]');
+      let State=await $('//input[@name="regAddress.state"]');
+      let pin=await $('//input[@name="regAddress.pinCodeId"]');
+      let country=await $('//input[@name="regAddress.country"]');
+      let billing=await $('//input[@name="regAddress.isBilling"]');
+      let Shipping=await $('//input[@name="regAddress.isShipping"]');
+      let tax=await $('//input[@name="regAddress.gst"]');
+      let BusinessType=await $('//input[@name="businesstype"]');
+      let Currency=await $('//input[@name="currencyId"]');
+      let BuyerUsrName=await $('//input[@name="displayName"]');
+      let UsrMobileNo=await $('//input[@name="mobileNo"]');
+      let UsrEmail=await $('//input[@name="userEmail"]');
+      let UsrRole=await $('//input[@name="roleName"]');
+      let UsrDepartment=await $('//input[@name="department"]');
+      let usrJobTilte=await $('//input[@name="jobTitle"]');
+      let save=await $('#editDialogButton');
+      let cancel=await $('#editDialogCancel');
+      let custEdit=await $('//*[text()="Company Details"]/following::button[1]');
+      let invite=await $('//*[text()="invite"]');
+      let Buyerlist=await $('//*[contains(@title,"Apple")]');
+      let createUser=await $('//*[text()="Create User"]');
+      let createBranch=await $('//span[text()="Create Branch"]');
+      let usrmail=await $('//input[@name="email"]');
+      let Checkbox=await $('(//input[@type="checkbox"])[last()]')
+      let snackbar = await $('#client-snackbar');
+      let MoreOptions=await $('//*[@title="More options"]');
+      let deleteBuyer=await $('//span[text()="Delete Customer"]');
+      let userEdit=await $('//span[text()="Edit"]');
+      let userMoreOptions=await $('//span[text()="Edit"]/following::button[@title="More options"]');
+      let userDelete=await $('//span[text()="Delete"]');
+      let userReinvite=await $('//span[text()="Reinvite"]');
+      let yes=await $('#yes');
+      let alreadyExsists=await $('//p[text()="Email already exists"]');
+      let filter=await $('//span[text()="Filters"]');
+      let customerName=await $('#companyName');
+      let filterApply=await $('//span[text()="Apply"]');
+      let filterResults=await $('(//*[@class="MuiChip-deleteIcon MuiChip-deleteIconSmall"])[last()]');
+      let cusWebsite=await $('//input[@name="website"]');
+      let cusTaxid=await $('//input[@name="taxDetailsId.pan"]');
+      let cusSubIndustry=await $('//input[@name="subIndustryId"]');
+      let acuntOwner=await $('//input[@name="subIndustryId"]/following::input[1]');
+      let supportOwner=await $('//input[@name="subIndustryId"]/following::input[2]');
+      let contactsTab=await $('//span[text()="Contacts"]');
+      let preferenceTab=await $('//span[text()="Preferences"]');
+      let addressTab=await $('//span[text()="Addresses"]');
+      let inviteAccess=await $('//input[@name="inviteAccess"]');
+      let inventoryAccess=await $('//input[@name="inventory"]');
+      let showPrice=await $('//*[@name="showPrice"]');
+      let taxExempted=await $('//input[@name="companyId.taxExempted"]');
+      let branchName=await $('//input[@name="branchName"]');
+       let branchAddress=await $('//textarea[@name="addressLine"]');
+       let branchlocality=await $('//input[@name="locality"]');
+       let branchCity=await $('//input[@name="city"]');
+       let branchPin=await $('//input[@name="pinCodeId"]');
+       let branchState=await $('//input[@name="state"]');
+       let branchCountry=await $('//input[@name="country"]');
+       let branchDistrict=await $('//input[@name="district"]');
+       let branchLongitude=await $('//input[@name="longitude"]');
+       let branchbilling=await $('//input[@name="isBilling"]');
+       let branchShipping=await $('//input[@name="isShipping"]');
+       let branchtax=await $('//input[@name="gst"]');
+       let contactName=await $('//input[@name="primaryContact"]');
+       let contactNo=await $('//input[@name="mobileNo"]');
+       let submit=await $('//*[@id="loadingButton"]');
+       let goBack=await $('//*[@title="Go Back"]');
+       let firstCheckbox=await $('//*[@type="checkbox"]');
+       let edit=await $('//*[text()="Edit"]');
+       let deleteBtn=await $('//*[text()="Delete"]');
+       let branchTags=await $('//*[@name="tags"]');
+       let erpCode=await $('//*[@name="erpCode"]');
+       let vendorCode=await $('//*[@name="vendorID"]');
+       let exemptionId=await $('//input[contains(@name,"ExemptionId")]');
+       let close=await $('//*[@title="Close"]');
      
 
-    browser.url("/accounts/landing");
-                if(filterResults.isDisplayed())
+    await browser.url("/accounts/landing");
+                if(await filterResults.isDisplayed())
          {
-          filterResults.click();
+          await filterResults.click();
          }
-        createCustomer.click();
-         BuyerName.setValue("Apple India");
-           browser.pause(1000);
-             BuyerName.keys("\uE015");
-              browser.pause(1000);
-                 BuyerName.keys("\uE007")
-                   BranchName.setValue("Coimbatore");
-    if(Address.getValue()===''){
-        Address.setValue("100 main road");
+         await createCustomer.click();
+         await BuyerName.setValue("Apple India");
+           await browser.pause(1000);
+           await BuyerName.keys("\uE015");
+              await browser.pause(1000);
+              await  BuyerName.keys("\uE007")
+              await   BranchName.setValue("Coimbatore");
+    if(await Address.getValue()===''){
+      await Address.setValue("100 main road");
       }
-        if(locality.getValue()===''){
-          locality.setValue("US");
+        if(await locality.getValue()===''){
+          await locality.setValue("US");
         }
-         if(city.getValue()===''){
-           city.setValue("coimbatore");
+         if(await city.getValue()===''){
+          await city.setValue("coimbatore");
          }
          
-         if(country.getValue()===''){
-          country.setValue("India");
-          browser.keys("\uE015");
-          browser.pause(2000);
-          browser.keys("\uE015");
-          browser.keys("\uE007");
+         if(await country.getValue()===''){
+          await country.setValue("India");
+          await browser.keys("\uE015");
+          await browser.pause(2000);
+          await browser.keys("\uE015");
+          await browser.keys("\uE007");
 
         }
-            if(State.getValue()===''){
-             State.setValue("Tamil Nadu");
-               browser.keys("\uE015");
-               browser.pause(2000);
-               browser.keys("\uE007");
+            if(await State.getValue()===''){
+              await  State.setValue("Tamil Nadu");
+               await browser.keys("\uE015");
+               await browser.pause(2000);
+               await browser.keys("\uE007");
             }
 
-           if(district.getValue()===''){
-              district.setValue("coimbatore");
-               browser.keys("\uE015");
-                  browser.pause(2000);
-                  browser.keys("\uE007");
+           if(await district.getValue()===''){
+            await district.setValue("coimbatore");
+               await browser.keys("\uE015");
+                  await browser.pause(2000);
+                  await browser.keys("\uE007");
             }
-               if(pin.getValue()===''){
-                 pin.setValue("641010");
+               if(await pin.getValue()===''){
+                await pin.setValue("641010");
                 }
-                 if(billing.getValue()===false){
-                  billing.click();
+                 if(await billing.getValue()===false){
+                  await billing.click();
                  }
-                  if(Shipping.getValue()===false){
-                    Shipping.click();
+                  if(await Shipping.getValue()===false){
+                    await Shipping.click();
                    }
-     tax.setValue("Gst");
-      BusinessType.setValue("Dealer");
-       browser.pause(1000);
-       BusinessType.keys("\uE015");
-        browser.pause(2000);
-        BusinessType.keys("\uE007");
-         browser.pause(1000);
-          UsrDepartment.scrollIntoView();
-            Currency.setValue("INR");
-            browser.pause(2000);
-             Currency.keys("\uE015");
-              browser.pause(2000);
-               Currency.keys("\uE007");
-                browser.pause(2000);
-                 BuyerUsrName.setValue("JD");
-                  UsrMobileNo.setValue("90909090");
-                     UsrEmail.setValue("manchester007"+today+"@gmail.com");
-                        UsrRole.setValue("User");
-                           browser.pause(2000);
-                            UsrRole.keys("\uE015");
-                              browser.pause(2000);
-                               UsrRole.keys("\uE007");
-                                usrJobTilte.setValue("user");
-                                 UsrDepartment.setValue("EEE");
-                                    save.click();
-                                     browser.pause(1000);
-                                       if(alreadyExsists.isDisplayed()){
-                                         UsrEmail.click();
-                                         browser.keys(["\uE009","a"]);
-                                          UsrEmail.keys("\uE003");
-                                           browser.pause(2000);
-                                            UsrEmail.setValue('mkc3031'+today+'@gmail.com');
-                                              save.click();}
-/* assert.strictEqual(snackbar.getText(),"Account Created");*/
+                   await tax.setValue("Gst");
+                   await BusinessType.setValue("Dealer");
+       await browser.pause(1000);
+       await BusinessType.keys("\uE015");
+        await browser.pause(2000);
+        await  BusinessType.keys("\uE007");
+         await browser.pause(1000);
+         await  UsrDepartment.scrollIntoView();
+         await   Currency.setValue("INR");
+            await browser.pause(2000);
+            await   Currency.keys("\uE015");
+              await browser.pause(2000);
+             await  Currency.keys("\uE007");
+                await browser.pause(2000);
+                await  BuyerUsrName.setValue("JD");
+                await   UsrMobileNo.setValue("90909090");
+               await  UsrEmail.setValue("manchester007"+today+"@gmail.com");
+               await   UsrRole.setValue("User");
+                           await browser.pause(2000);
+                          await UsrRole.keys("\uE015");
+                              await browser.pause(2000);
+                             await  UsrRole.keys("\uE007");
+                             await   usrJobTilte.setValue("user");
+                             await UsrDepartment.setValue("EEE");
+                                await save.click();
+                                     await browser.pause(1000);
+                                       if(await alreadyExsists.isDisplayed()){
+                                        await  UsrEmail.click();
+                                         await browser.keys(["\uE009","a"]);
+                                         await  UsrEmail.keys("\uE003");
+                                           await browser.pause(2000);
+                                           await  UsrEmail.setValue('mkc3031'+today+'@gmail.com');
+                                           await  save.click();}
+/* await assert.strictEqual(await snackbar.getText(),"Account Created");*/
   
-   browser.pause(1000);
-   filter.click();
-   browser.pause(1000);
-    customerName.setValue('apple');
-     customerName.keys("\uE015");
-      browser.pause(1000);
-       customerName.keys("\uE007");
-        filterApply.click();
-          browser.pause(2000);
-            invite.click();
-            browser.pause(2000);
-/*assert.strictEqual(snackbar.getText(),"User invited");*/
-  browser.pause(3000);
-   Buyerlist.click();
-   browser.pause(2000);
-   custEdit.click();
-    cusWebsite.setValue('www.apple.com');
-     cusTaxid.setValue('GST');
-      cusSubIndustry.scrollIntoView();
-       cusSubIndustry.setValue('Tires & Rubber');
-        cusSubIndustry.keys("\uE015");
-         browser.pause(1000);
-         cusSubIndustry.keys("\uE015");
-         browser.pause(1000);
-          cusSubIndustry.keys("\uE007");
-           acuntOwner.scrollIntoView();
-            acuntOwner.setValue('a')
-              acuntOwner.keys("\uE015");
-               browser.pause(2000);
-               acuntOwner.keys("\uE015");
-                 acuntOwner.keys("\uE007");
-                  supportOwner.scrollIntoView();
-                   supportOwner.setValue('a');
-                     supportOwner.keys("\uE015");
-                       browser.pause(2000);
-                         supportOwner.keys("\uE007");
-                           save.click();
+   await browser.pause(1000);
+   await filter.click();
+   await browser.pause(1000);
+   await customerName.setValue('apple');
+   await customerName.keys("\uE015");
+      await browser.pause(1000);
+      await  customerName.keys("\uE007");
+      await  filterApply.click();
+          await browser.pause(2000);
+          await  invite.click();
+            await browser.pause(2000);
+/*await assert.strictEqual(await snackbar.getText(),"User invited");*/
+  await browser.pause(3000);
+  await Buyerlist.click();
+   await browser.pause(2000);
+   await custEdit.click();
+   await cusWebsite.setValue('www.apple.com');
+   await cusTaxid.setValue('GST');
+   await  cusSubIndustry.scrollIntoView();
+   await cusSubIndustry.setValue('Tires & Rubber');
+   await  cusSubIndustry.keys("\uE015");
+         await browser.pause(1000);
+         await  cusSubIndustry.keys("\uE015");
+         await browser.pause(1000);
+         await  cusSubIndustry.keys("\uE007");
+         await acuntOwner.scrollIntoView();
+         await acuntOwner.setValue('a')
+         await acuntOwner.keys("\uE015");
+               await browser.pause(2000);
+               await   acuntOwner.keys("\uE015");
+              await  acuntOwner.keys("\uE007");
+              await  supportOwner.scrollIntoView();
+              await  supportOwner.setValue('a');
+               await   supportOwner.keys("\uE015");
+                       await browser.pause(2000);
+                      await supportOwner.keys("\uE007");
+                      await   save.click();
                              
-/*assert.strictEqual(snackbar.getText(),"Account updated successfully");*/  
-  browser.pause(2000);                        
-   createUser.click();
-    BuyerUsrName.setValue("MK");
-     UsrMobileNo.setValue("90909090");
-      usrmail.setValue("realMadrid007"+today+"@gmail.com");
-       UsrRole.setValue("User");
-         browser.pause(1000);
-           UsrRole.keys("\uE015");
-            browser.pause(1000);
-              UsrRole.keys("\uE007");
-                save.click();
-                 browser.pause(1000);
-                                       if(alreadyExsists.isDisplayed()){
-                                         UsrEmail.click();
-                                         browser.keys(["\uE009","a"]);
-                                          UsrEmail.keys("\uE003");
-                                           browser.pause(2000);
-                                            UsrEmail.setValue('mkw3031'+today+'@gmail.com');
-                                              save.click();}
-/*assert.strictEqual(snackbar.getText(),"Account updated successfully");*/
-                    browser.pause(2000);
-                     Checkbox.click();
-                      browser.pause(1000);
-                        invite.click();
-                         browser.pause(2000);
-/*assert.strictEqual(snackbar.getText(),"User invited");*/
-          browser.refresh();
-           MoreOptions.click();
-            browser.pause(1000);
-              deleteBuyer.click();
-                 browser.pause(1000);
-/*assert.strictEqual(snackbar.getText(),"Delete the Contacts other than default email user, before deleting company");*/
-                       firstCheckbox.scrollIntoView();
-                       firstCheckbox.click();
-                              browser.pause(1000);
-                              userMoreOptions.click();
-                                browser.pause(2000);
-                                  userReinvite.click();
+/*await assert.strictEqual(await snackbar.getText(),"Account updated successfully");*/  
+  await browser.pause(2000);                        
+  await createUser.click();
+  await BuyerUsrName.setValue("MK");
+  await UsrMobileNo.setValue("90909090");
+  await  usrmail.setValue("realMadrid007"+today+"@gmail.com");
+  await UsrRole.setValue("User");
+         await browser.pause(1000);
+        await  UsrRole.keys("\uE015");
+            await browser.pause(1000);
+           await UsrRole.keys("\uE007");
+           await save.click();
+                 await browser.pause(1000);
+                                       if(await alreadyExsists.isDisplayed()){
+                                        await UsrEmail.click();
+                                         await browser.keys(["\uE009","a"]);
+                                         await UsrEmail.keys("\uE003");
+                                           await browser.pause(2000);
+                                           await UsrEmail.setValue('mkw3031'+today+'@gmail.com');
+                                           await  save.click();}
+/*await assert.strictEqual(await snackbar.getText(),"Account updated successfully");*/
+                    await browser.pause(2000);
+                    await Checkbox.click();
+                      await browser.pause(1000);
+                      await invite.click();
+                         await browser.pause(2000);
+/*await assert.strictEqual(await snackbar.getText(),"User invited");*/
+          await browser.refresh();
+          await MoreOptions.click();
+            await browser.pause(1000);
+            await deleteBuyer.click();
+                 await browser.pause(1000);
+/*await assert.strictEqual(await snackbar.getText(),"Delete the Contacts other than default email user, before deleting company");*/
+await  firstCheckbox.scrollIntoView();
+await  firstCheckbox.click();
+                              await browser.pause(1000);
+                             await  userMoreOptions.click();
+                                await browser.pause(2000);
+                               await userReinvite.click();
                                 
- /*assert.strictEqual(snackbar.getText(),"User reinvited");*/
-          addressTab.click();
-            firstCheckbox.click();
-             deleteBtn.click();
+ /*await assert.strictEqual(await snackbar.getText(),"User reinvited");*/
+ await addressTab.click();
+ await firstCheckbox.click();
+ await   deleteBtn.click();
              
-/*assert.strictEqual(snackbar.getText(),"you can`t delete the register address");*/ 
-                browser.refresh();
-                  createBranch.click();
-                    branchName.setValue("Coimabtore Branch");
-                      branchAddress.setValue("16 avinashi road");
-                      branchCountry.setValue("India");
-                      browser.keys("\uE015");
-                       browser.pause(2000);
-                       browser.keys("\uE015");
-                        browser.pause(2000);
-                        browser.keys("\uE007");
-                        branchState.setValue("Tamil nadu");
-                         browser.keys("\uE015");
-                          browser.pause(2000);
-                           browser.keys("\uE007");
-                           branchDistrict.setValue("Coimbatore");
-                           browser.keys("\uE015");
-                            browser.pause(2000);
-                             browser.keys("\uE007");
-                        branchlocality.setValue("coimbatore");
-                         browser.keys("\uE015");
-                          browser.pause(2000);
-                           browser.keys("\uE007");
-                           branchCity.setValue("coimbatore");
-                             branchPin.setValue("641010");
-                               branchState.setValue("Tamil nadu");
+/*await assert.strictEqual(await snackbar.getText(),"you can`t delete the register address");*/ 
+                await browser.refresh();
+                await  createBranch.click();
+               await  branchName.setValue("Coimabtore Branch");
+               await branchAddress.setValue("16 avinashi road");
+               await branchCountry.setValue("India");
+                      await browser.keys("\uE015");
+                       await browser.pause(2000);
+                       await browser.keys("\uE015");
+                        await browser.pause(2000);
+                        await browser.keys("\uE007");
+                       await branchState.setValue("Tamil nadu");
+                         await browser.keys("\uE015");
+                          await browser.pause(2000);
+                           await browser.keys("\uE007");
+                          await   branchDistrict.setValue("Coimbatore");
+                           await browser.keys("\uE015");
+                            await browser.pause(2000);
+                             await browser.keys("\uE007");
+                            await  branchlocality.setValue("coimbatore");
+                         await browser.keys("\uE015");
+                          await browser.pause(2000);
+                           await browser.keys("\uE007");
+                          await branchCity.setValue("coimbatore");
+                          await  branchPin.setValue("641010");
+                          await branchState.setValue("Tamil nadu");
                                  
-                                    branchtax.setValue('GST');
-                                      contactName.setValue("admin");
-                                        contactNo.setValue("9898989899");
-                                          save.click();
+                          await branchtax.setValue('GST');
+                                   await  contactName.setValue("admin");
+                                   await  contactNo.setValue("9898989899");
+                                   await   save.click();
                                                           
-/*assert.strictEqual(snackbar.getText(),"Address added successfully");*/
-                             browser.pause(2000);
-                             addressTab.click();
-                             browser.pause(1000);
-                               Checkbox.click();
-                                 edit.click();
-                                   branchTags.scrollIntoView();
-                                    branchTags.setValue('TN');
-                                     branchTags.keys("\uE015");
-                                       browser.pause(1000);
-                                        branchTags.keys("\uE007");
-                                          browser.pause(1000);
-                                            erpCode.setValue("SYS2021");
-                                             vendorCode.setValue("2021");
-                                               save.click();
-/*assert.strictEqual(snackbar.getText(),"Account updated successfully");*/
-close.click();
-browser.getUrl();
-  expect(browser).toHaveUrlContaining('accounts/landing');
-     Buyerlist.click();
-      contactsTab.click();
-       Checkbox.click();
-        userEdit.click();
-         usrJobTilte.scrollIntoView();
-          usrJobTilte.setValue("QA");
-           UsrDepartment.setValue("ECE");
-             submit.click();             
-/*assert.strictEqual(snackbar.getText(),"Saved successfully");*/
+/*await assert.strictEqual(await snackbar.getText(),"Address added successfully");*/
+                             await browser.pause(2000);
+                             await  addressTab.click();
+                             await browser.pause(1000);
+                             await Checkbox.click();
+                             await edit.click();
+                             await   branchTags.scrollIntoView();
+                            await  branchTags.setValue('TN');
+                            await branchTags.keys("\uE015");
+                                       await browser.pause(1000);
+                                      await branchTags.keys("\uE007");
+                                          await browser.pause(1000);
+                                         await erpCode.setValue("SYS2021");
+                                         await vendorCode.setValue("2021");
+                                         await  save.click();
+/*await assert.strictEqual(await snackbar.getText(),"Account updated successfully");*/
+await close.click();
+await browser.getUrl();
+  await expect(await browser).toHaveUrlContaining('accounts/landing');
+  awaitBuyerlist.click();
+  await contactsTab.click();
+  await Checkbox.click();
+  await  userEdit.click();
+  await usrJobTilte.scrollIntoView();
+  await usrJobTilte.setValue("QA");
+ await  UsrDepartment.setValue("ECE");
+ await  submit.click();             
+/*await assert.strictEqual(await snackbar.getText(),"Saved successfully");*/
 
- browser.pause(1000);
-  goBack.click();
-   browser.pause();
-    Checkbox.click();
-     userMoreOptions.click();
-      browser.pause(1000);
-        userDelete.click();
-         yes.click();
+ await browser.pause(1000);
+ await goBack.click();
+   await browser.pause();
+   await Checkbox.click();
+   await  userMoreOptions.click();
+      await browser.pause(1000);
+      await  userDelete.click();
+      await  yes.click();
    
-/*assert.strictEqual(snackbar.getText(),"User deleted successfully");*/
-               browser.pause(1000);
-                preferenceTab.click();
-                  inviteAccess.scrollIntoView();
-                   inviteAccess.click();
-                     inventoryAccess.click();
-                   /* showPrice.click();
-                      taxExempted.click();
-                      if(exemptionId.isDisplayed()){
-                          exemptionId.setValue("test");
-                          exemptionId.keys("\uE013");
-                             browser.pause(1000);
-                              exemptionId.keys("\uE007");
-                              browser.pause(1000);
+/*await assert.strictEqual(await snackbar.getText(),"User deleted successfully");*/
+               await browser.pause(1000);
+               await   preferenceTab.click();
+               await inviteAccess.scrollIntoView();
+               await  inviteAccess.click();
+                await  inventoryAccess.click();
+                /* await showPrice.click();
+                   await taxExempted.click();
+                      if(await exemptionId.isDisplayed()){
+                        await exemptionId.setValue("test");
+                       await exemptionId.keys("\uE013");
+                             await browser.pause(1000);
+                            awaitexemptionId.keys("\uE007");
+                              await browser.pause(1000);
                                }*/
-                          browser.pause(1000);
-                           submit.click();
-                            browser.pause(1000);
-/*assert.strictEqual(snackbar.getText(),"Account updated successfully");*/
+                          await browser.pause(1000);
+                          await submit.click();
+                            await browser.pause(1000);
+/*await assert.strictEqual(await snackbar.getText(),"Account updated successfully");*/
 
                                    
 /*Buyer delete*/
-    MoreOptions.waitForDisplayed(2000);
-     MoreOptions.click();
-      browser.pause(1000);
-       deleteBuyer.click();
-        browser.pause(1000);
-         expect(yes).toBeExisting();
-          yes.click();
-           browser.getUrl();
-expect(browser).toHaveUrlContaining('accounts/landing');
+await MoreOptions.waitForDisplayed(2000);
+await MoreOptions.click();
+      await browser.pause(1000);
+      await  deleteBuyer.click();
+        await browser.pause(1000);
+         await expect(yes).toBeExisting();
+         await yes.click();
+           await browser.getUrl();
+await expect(await browser).toHaveUrlContaining('accounts/landing');
 
 
      });
 
 
-    it("Create a Company Address",()=>{
+    it("Create a Company Address",async()=>{
 
-       let addAddress =$('//*[text()="Add Address"]');
-       let search=$('//input[@name="Search"]');
-       let branchName=$('//input[@name="branchName"]');
-       let branchAddress=$('//textarea[@name="addressLine"]');
-       let locality=$('//input[@name="locality"]');
-       let branchCity=$('//input[@name="city"]');
-       let branchPin=$('//input[@name="pinCodeId"]');
-       let branchDistrict=$('//input[@name="district"]');
-       let branchState=$('//input[@name="state"]');
-       let branchCountry=$('//input[@name="country"]');
-       let Lattitude=$('//input[@name="lattitude"]');
-       let Longitude=$('//input[@name="longitude"]');
-       let billing=$('//input[@name="isBilling"]');
-       let Shipping=$('//input[@name="isShipping"]');
-       let warehouse=$('//input[@name="wareHouse"]');
-       let tax=$('//input[@name="gst"]');
-       let contactName=$('//input[@name="primaryContact"]');
-       let contactNo=$('//input[@name="mobileNo"]');
-       let save = $('#editDialogButton');
-       let cancel=$('#editDialogCancel');
-       let lastBranch=$('(//*[@type="checkbox"])[1]');
-       let firstBranch=$('(//input[@type="checkbox"])[last()]');
-       let cmpanyEdit=$('//*[text()="Edit"]');
-       let cmpnyDelete=$('//*[text()="Delete"]');
-       let snackbar =$('#client-snackbar');
-       let yes=$('#yes');
+       let addAddress =await $('//*[text()="Add Address"]');
+       let search=await $('//input[@name="Search"]');
+       let branchName=await $('//input[@name="branchName"]');
+       let branchAddress=await $('//textarea[@name="addressLine"]');
+       let locality=await $('//input[@name="locality"]');
+       let branchCity=await $('//input[@name="city"]');
+       let branchPin=await $('//input[@name="pinCodeId"]');
+       let branchDistrict=await $('//input[@name="district"]');
+       let branchState=await $('//input[@name="state"]');
+       let branchCountry=await $('//input[@name="country"]');
+       let Lattitude=await $('//input[@name="lattitude"]');
+       let Longitude=await $('//input[@name="longitude"]');
+       let billing=await $('//input[@name="isBilling"]');
+       let Shipping=await $('//input[@name="isShipping"]');
+       let warehouse=await $('//input[@name="wareHouse"]');
+       let tax=await $('//input[@name="gst"]');
+       let contactName=await $('//input[@name="primaryContact"]');
+       let contactNo=await $('//input[@name="mobileNo"]');
+       let save = await $('#editDialogButton');
+       let cancel=await $('#editDialogCancel');
+       let lastBranch=await $('(//*[@type="checkbox"])[1]');
+       let firstBranch=await $('(//input[@type="checkbox"])[last()]');
+       let cmpanyEdit=await $('//*[text()="Edit"]');
+       let cmpnyDelete=await $('//*[text()="Delete"]');
+       let snackbar =await $('#client-snackbar');
+       let yes=await $('#yes');
 
 
 
-     browser.url('/settings/company');
-      browser.pause(1000);
-      firstBranch.click();
-       browser.pause(2000);
-         cmpnyDelete.click();
-           yes.click();
-            browser.pause(2000);
-            snackbar.scrollIntoView();
-assert.strictEqual(snackbar.getText(),"Registered Address cannot be deleted");
+     await browser.url('/settings/company');
+      await browser.pause(1000);
+      await  firstBranch.click();
+       await browser.pause(2000);
+       await cmpnyDelete.click();
+       await  yes.click();
+            await browser.pause(2000);
+            await snackbar.scrollIntoView();
+await assert.strictEqual(await snackbar.getText(),"Registered Address cannot be deleted");
              
-browser.refresh();  
- addAddress.click();
-  browser.pause(1000);
-   branchName.setValue("Coimabtore ");
-     branchAddress.setValue("16 avinashi road");
-      locality.setValue("coimbatore");
-      branchCountry.setValue("India");
-      browser.keys("\uE015");
-      browser.pause(1000);
-      browser.keys("\uE015");
-      browser.pause(1000);
-      browser.keys("\uE007");
-      branchState.setValue("Tamil nadu");
-      browser.keys("\uE015");
-      browser.pause(1000);
-      browser.keys("\uE007");
-      branchDistrict.setValue("Coimbatore");
-      browser.keys("\uE015");
-      browser.pause(1000);
-      browser.keys("\uE007");
-        branchCity.setValue("coimbatore");
-         branchPin.setValue("641010");
-            tax.setValue('GST');
-                contactName.setValue("madhan");
-                contactNo.setValue("9898989899");
-                  save.click();
-                   browser.pause(2000);
-assert.strictEqual(snackbar.getText(),"Address added successfully");
+await browser.refresh();  
+await awaitaddAddress.click();
+  await browser.pause(1000);
+  await branchName.setValue("Coimabtore ");
+  await branchAddress.setValue("16 avinashi road");
+  await locality.setValue("coimbatore");
+      await branchCountry.setValue("India");
+      await browser.keys("\uE015");
+      await browser.pause(1000);
+      await browser.keys("\uE015");
+      await browser.pause(1000);
+      await browser.keys("\uE007");
+      await  branchState.setValue("Tamil nadu");
+      await browser.keys("\uE015");
+      await browser.pause(1000);
+      await browser.keys("\uE007");
+      await branchDistrict.setValue("Coimbatore");
+      await browser.keys("\uE015");
+      await browser.pause(1000);
+      await browser.keys("\uE007");
+      await  branchCity.setValue("coimbatore");
+      await  branchPin.setValue("641010");
+        await  tax.setValue('GST');
+        await  contactName.setValue("madhan");
+         await  contactNo.setValue("9898989899");
+         await   save.click();
+                   await browser.pause(2000);
+await assert.strictEqual(await snackbar.getText(),"Address added successfully");
  
- lastBranch.scrollIntoView(0,3000);  
- browser.pause(5000);
-  lastBranch.click();
-      browser.pause(1000);
-        cmpanyEdit.click();
-          browser.pause(1000);
-          branchName.setValue("Branch ");
-          if(Shipping.getValue()==='true'){
-            browser.pause(1000);
-              Shipping.click();
+await lastBranch.scrollIntoView(0,3000);  
+ await browser.pause(5000);
+ await lastBranch.click();
+      await browser.pause(1000);
+      await cmpanyEdit.click();
+          await browser.pause(1000);
+          await  branchName.setValue("Branch ");
+          if(await Shipping.getValue()==='true'){
+            await browser.pause(1000);
+            await Shipping.click();
           }
-          contactName.setValue('kumar');
-          browser.pause(1000);
-            save.click();
-             browser.pause(2000);
-assert.strictEqual(snackbar.getText(),"Address updated Successfully");
+          await contactName.setValue('kumar');
+          await browser.pause(1000);
+          await  save.click();
+             await browser.pause(2000);
+await assert.strictEqual(await snackbar.getText(),"Address updated Successfully");
          
           
-          lastBranch.scrollIntoView(0,3000);  
-          browser.pause(2000);
-           lastBranch.click();
-            browser.pause(2000);
-              cmpnyDelete.click();
-                yes.click();
-                 browser.pause(2000);
-assert.strictEqual(snackbar.getText(),"Branch address deleted succesfully");
+await  lastBranch.scrollIntoView(0,3000);  
+          await browser.pause(2000);
+          await  lastBranch.click();
+            await browser.pause(2000);
+            await  cmpnyDelete.click();
+            await  yes.click();
+                 await browser.pause(2000);
+await assert.strictEqual(await snackbar.getText(),"Branch address deleted succesfully");
     });
 
- it("Create and delete the  user " ,() =>{
+ it("Create and delete the  user " , async()=>{
 
-          let createUser = $('//button[@type="button"]/following::span[text()="Add User"]');
-          let EmpName = $('//input[@name="displayName"]');
-          let EmpMobile= $('//input[@name="mobileNo"]');
-          let EmpEmail = $('//input[@name="email"]');
-          let EmpJobTitle = $('//input[@name="jobTitle"]');
-          let EmpDepart = $('//input[@name="department"]');
-          let EmpRole = $('//input[@name="roleName"]');
-          let EmpSave=$('#loadingButton');
-          let invite=$('//*[contains(@title,"ABCD")]/following::td[5]');
-          let Emplist=$('//*[contains(@title,"ABCD")]');
-          let activeEmp=$('//*[contains(@title,"Admin")]');
-          let MoreOptions=$('//button[@title="More options"]');
-          let deleteEmp=$('//*[text()="Delete"]');
-          let activateEmp=$('//*[text()="Activate"]');
-          let inactivateEmp=$('//*[text()="Inactivate"]');
-          let tags=$('//*[@placeholder="Search"]');
-          let yes=$('#yes');
-          let save=$('#loadingButton');
-          let snackbar = $('#client-snackbar');
-          let alreadyExsists=$('//p[text()="Email id already exists"]');
-          let close=$('//button[@title="Close"]');
+
+          let createUser = await $('//button[@type="button"]/following::span[text()="Add User"]')
+          let EmpName = await $('//input[@name="displayName"]')
+          let EmpMobile= await $('//input[@name="mobileNo"]');
+          let EmpEmail = await $('//input[@name="email"]');
+          let EmpJobTitle = await $('//input[@name="jobTitle"]');
+          let EmpDepart = await $('//input[@name="department"]');
+          let EmpRole = await $('//input[@name="roleName"]');
+          let EmpSave=await $('#loadingButton');
+          let invite=await $('//*[contains(@title,"ABCD")]/following::td[5]');
+          let Emplist=await $('//*[contains(@title,"ABCD")]');
+          let activeEmp=await $('//*[contains(@title,"Admin")]');
+          let MoreOptions=await $('//button[@title="More options"]');
+          let deleteEmp=await $('//*[text()="Delete"]');
+          let activateEmp=await $('//*[text()="Activate"]');
+          let inactivateEmp=await $('//*[text()="Inactivate"]');
+          let tags=await $('//*[@placeholder="Search"]');
+          let yes=await $('#yes');
+          let save=await $('#loadingButton');
+          let snackbar = await $('#client-snackbar');
+          let alreadyExsists=await $('//p[text()="Email id already exists"]');
+          let close=await $('//button[@title="Close"]');
           
 
 
-browser.url("/settings/team/landing");
-createUser.doubleClick();   
- browser.pause(2000);
-  EmpName.setValue('ABCD');
-   EmpMobile.setValue('9090909090');
-    EmpEmail.setValue("qa7"+today+"@gmail.com");
-     EmpJobTitle.setValue('QA');
-      EmpDepart.setValue('Accounts');
-       EmpRole.setValue("user");
-         browser.pause(1000);
-          EmpRole.keys("\uE015");
-           browser.pause(1000);
-            EmpRole.keys("\uE007");
-             browser.pause(2000);
-              EmpSave.click();
-              if(alreadyExsists.isDisplayed()){
-                EmpEmail.click();
-                 browser.keys(["\uE009", "a"]);
-                 EmpEmail.keys("\uE003");
-                  browser.pause(2000);
-                   EmpEmail.setValue("mkc3031"+today+"@gmail.com");
-                    EmpSave.click();
+await browser.url("/settings/team/landing");
+await createUser.doubleClick();   
+ await browser.pause(2000);
+ await EmpName.setValue('ABCD');
+ await EmpMobile.setValue('9090909090');
+ await EmpEmail.setValue("qa7"+today+"@gmail.com");
+ await EmpJobTitle.setValue('QA');
+ await  EmpDepart.setValue('Accounts');
+ await EmpRole.setValue("user");
+         await browser.pause(1000);
+        await  EmpRole.keys("\uE015");
+           await browser.pause(1000);
+          await  EmpRole.keys("\uE007");
+             await browser.pause(2000);
+            await   EmpSave.click();
+              if(await alreadyExsists.isDisplayed()){
+                await EmpEmail.click();
+                 await browser.keys(["\uE009", "a"]);
+                 await EmpEmail.keys("\uE003");
+                  await browser.pause(2000);
+                  await EmpEmail.setValue("mkc3031"+today+"@gmail.com");
+                  await  EmpSave.click();
               }
-               browser.pause(2000);
-assert.strictEqual(snackbar.getText(),"User added successfully");
+               await browser.pause(2000);
+await assert.strictEqual(await snackbar.getText(),"User added successfully");
 
  /*invite the employee*/
     
-    invite.click();
-     browser.pause(2000);
-/*assert.strictEqual(snackbar.getText(),"User invited");*/
+ await invite.click();
+     await browser.pause(2000);
+/*await assert.strictEqual(await snackbar.getText(),"User invited");*/
 
 /*edit the employee*/
-Emplist.click();
-tags.setValue('a');
-tags.keys("\uE015");
-browser.pause(1000);
-tags.keys("\uE007");
-save.click();
-browser.pause(2000);
-/*assert.strictEqual(snackbar.getText(),"User updated successfully");*/
+await Emplist.click();
+await tags.setValue('a');
+await tags.keys("\uE015");
+await browser.pause(1000);
+await tags.keys("\uE007");
+await save.click();
+await browser.pause(2000);
+/*await assert.strictEqual(await snackbar.getText(),"User updated successfully");*/
 
 /*delete the employee*/
-   browser.refresh();
-     MoreOptions.click();
-      browser.pause(1000);
-       deleteEmp.click();
-        browser.pause(1000);
-         yes.click();
-         browser.pause(2000);
-assert.strictEqual(snackbar.getText(),"User deleted successfully");
+   await browser.refresh();
+   await  MoreOptions.click();
+      await browser.pause(1000);
+      await deleteEmp.click();
+        await browser.pause(1000);
+        await  yes.click();
+         await browser.pause(2000);
+await assert.strictEqual(await snackbar.getText(),"User deleted successfully");
 
 /*
 
-browser.pause(2000);
-activeEmp.click();
-browser.pause('1000');
-MoreOptions.click();
-browser.pause(1000);
-  inactivateEmp.click();
-    yes.click();
-    browser.pause(2000);
-assert.strictEqual(snackbar.getText(),"User activated");
+await browser.pause(2000);
+await activeEmp.click();
+await browser.pause('1000');
+await MoreOptions.click();
+await browser.pause(1000);
+ await inactivateEmp.click();
+  await yes.click();
+    await browser.pause(2000);
+await assert.strictEqual(await snackbar.getText(),"User activated");
 
 
-MoreOptions.click();
-browser.pause(1000);
-  activateEmp.click();
-    yes.click();
-    browser.pause(2000);
-assert.strictEqual(snackbar.getText(),"User activated"); */
+await MoreOptions.click();
+await browser.pause(1000);
+ await activateEmp.click();
+ await  yes.click();
+    await browser.pause(2000);
+await assert.strictEqual(await snackbar.getText(),"User activated"); */
 
   
 
