@@ -13,7 +13,7 @@ class BU extends Page {
     get savebtn(){
         return super.pathByXpath('//h5[text()="Options"]/preceding::button[1]');
     }
-    get toaster(){
+    get snackbar(){
         return super.pathById('client-snackbar');
     }
     get options1(){

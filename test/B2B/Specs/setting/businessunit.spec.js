@@ -21,9 +21,6 @@ describe("BusinessUnit Page", () => {
         });
         it('should valiadte add business unit by valid options & priority with canceling',async () => {
           await BU_fn.Addbusinessunitcancel();
-       });
-        it('should valiadte add business unit by valid options & priority with canceling',async () => {
-          await BU_fn.Addbusinessunitcancel();
         });
         it('should validate add business unit by valid options & invalid priority',async () => {
            await BU_fn.Invaidpriority();
@@ -41,10 +38,10 @@ describe("BusinessUnit Page", () => {
           await BU_fn.Withoutpriority();
         });
         it('should validate update businessunit',async () => {
-          await BU_fn.UpdateBU();
+          await BU_fn.UpdateBU(await BU_path.savebtn);
         });
         it('should validate update businessunit by cancel',async () => {
-          await BU_fn.UpdateBUCancel();
+          await BU_fn.UpdateBU(await BU_path.cancelbtn);
         });
         it('should validate delete businessunit',async () => {
           await BU_fn.DeleteBU();
