@@ -1,10 +1,55 @@
 const Page = require("../../PageObjects/page");
-// const CommonWrappers = require("../ActionsWrappers");
+
 class Summary extends Page {
   // common methods for path
   open() {
-    super.open('auth/login'); //this will append `login` to the baseUrl to form complete URL
+    super.open(); //this will append `login` to the baseUrl to form complete URL
   }
+/* BusinessUnit & approval details */
+  get businessUnit() {
+    return  super.pathById('BusinessUnits-outlined');
+  }
+
+  get quoteOwners() {
+    return  super.pathById('quote-owners-select');
+  }
+
+  get selectedOwners() {
+    return super.pathByXpath('(//div[@role="button"][last()])');
+  }
+
+  get approvalGroup() {
+    return  super.pathById('ApprovalGroup');
+  }
+
+  get currencyFactor() {
+    return  super.pathById('currencyDashboard');
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 get cartCreateQuoteBtn() {
   return  super.pathByXpath('//div[4]/button');
@@ -44,47 +89,10 @@ get summaryRequestApprovalBtn(){
   return  super.pathByXpath('//*[@id="root"]/div[2]/header/div/button[2]');
 }
 // empty cart enquiry elements paths
-get selectBuyerEmptyCart() {
-  return  super.pathById('MBRW_PCE_CE_CFN')
-}
 
-get selectSourceEmptyCart() {
-  return  super.pathById('MBRW_PCE_CE_CS');
-}
 
-get contactNumberEmptyCart(){
-  return  super.pathById('MBRW_PCE_CE_CCNO');
-}
 
-get messageEmptyCart(){
-  return  super.pathById('MBRW_PCE_CE_CM')
-}
 
-get createEnquiryEmptyCart(){
-  return  super.pathById('MBRW_PCE_CE_CCE')
-}
-
-// need to  check
-// enquiry elements path with product
-get selectBuyerWithPrdtInEnquiry() {
-  return  super.pathById('MBRW_PC_CSC_CSB')
-}
-
-get selectSourceWithPrdt() {
-  return   super.pathById('MBRW_PCE_CE_CS');
-}
-
-get contactNumberWithPrdt(){
-  return  super.pathById('MBRW_PCE_CE_CCNO');
-}
-
-get messageWithPrdt(){
-  return  super.pathById('MBRW_PCE_CE_CM')
-}
-
-get createEnquiryWithPrdt(){
-  return  super.pathById('MBRW_PCE_CE_CCE')
-}
 // need to  check till here
 
 get newSubTotalBtn(){

@@ -1,29 +1,19 @@
-
+const LoginPage = require("../../../PageObjects/Login.page");
+const B2B_loginIp = require("../../../Inputs/B2B_login");
 const Branch_path = require("../../../PageObjects/Settings/AddBranch.page");
 const actionsWrappers = require("../../../../CommonActions/ActionsWrappers");
 const Branch_fn= require("../../../CommonFunctions/settings/branch");
 //var Branchip= require("../../../Inputs/settings/BranchIP");
 
 
-describe('open a application', () => {
-    before('login',async () => {
-        await browser.url("https://dev.myapptino.com/auth/login");
-        await browser.maximizeWindow()
-        browser.pause(2000);
-        const username = await $("//input[@name='Username']");
-        await username.click();
-        await username.setValue("admin@apptino.com");
-        const password = await $("//input[@name='Password']");
-        await password.click();
-        await password.setValue("Admin@123");
-        const signin = await $("//button[@id='loadingButton']")
-        await signin.click();
-        await browser.pause(5000);
-        let handle = await browser.getWindowHandle();
-        await browser.switchToWindow(handle);
-        await browser.pause(3000);
-    
-    });
+describe('Company Page', () => {
+    it("Should allow to access login into company page ",async () => {
+        await  LoginPage.open();
+        await  LoginPage.login(B2B_loginIp.OwnerEmail,B2B_loginIp.OwnerPassword);  
+        await  actionsWrappers.urlValidation("/dashboard");
+        await  Branch_fn.open();
+        await  actionsWrappers.urlValidation("/company");
+        });
     it('should open Dashboard company', async () => {
         await browser.url("https://dev.myapptino.com/settings/company")
     });

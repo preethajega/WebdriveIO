@@ -2,7 +2,7 @@ const url = require('./url')
 
 exports.config = {
     specs: [
-         './test/B2B/Specs/setting/company/AddBranch.spec.js'
+         './test/B2B/Specs/setting/company/AddWarehouse.spec.js'
         
         
     ],
@@ -35,7 +35,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: url.demo,
+    baseUrl: url.ptc,
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,

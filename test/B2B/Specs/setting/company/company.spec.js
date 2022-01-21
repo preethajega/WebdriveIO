@@ -15,7 +15,7 @@ describe('Company Page', () => {
         await  actionsWrappers.urlValidation("/dashboard");
         await  Comp_fn.open();
         await  actionsWrappers.urlValidation("/company");
-        })
+        });
     it('should Validate a company details by updating a Logo with valid files',async () => {
        await Comp_fn.UploadLogo();
     });

@@ -7,6 +7,9 @@ const assert = require("assert");
 
 
 class Branch extends Page{
+   async open() {
+    super.open(Branchip.BranchUrl); 
+   }
 
     AddBranchByAutoFill = async (btn) =>{
      await actionsWrappers.Click(path.AddBranchbtn)  
@@ -73,7 +76,7 @@ class Branch extends Page{
         await actionsWrappers.clearValue_selectDropdownvalue(path.SearchCompname,Branchip.EditSearchCompname)
         await actionsWrappers.Click(btn)     
         if(await common.snackbar.isDisplayed()){
-        await assert.strictEqual(
+         assert.strictEqual(
           await common.snackbar.getText(),Branchip.saveAlert );
     } 
     }

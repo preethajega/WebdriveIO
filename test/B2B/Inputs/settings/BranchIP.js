@@ -1,4 +1,6 @@
 function Branchip(){
+    const path = require('path');
+    this.BranchUrl="/settings/company"
 this.searchcompname="LS MILLS, Reg "
 this.EditSearchCompname="Theni bus stand"
 this.BranchName ="Theni"
