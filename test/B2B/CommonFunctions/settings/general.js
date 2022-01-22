@@ -33,12 +33,9 @@ class General extends Page {
          } 
         await actionWrapper.Click(path.CancelBtn)
    }
-   DeleteCurr = async() =>{
-       await actionWrapper.Click(path.Deletebtn)
-       if(await common.snackbar.isDisplayed()){
-        assert.strictEqual(
-       await common.snackbar.getText(),genip.alert);
-      } 
+   DeleteCurr = async(ele,errormsg,errorip) =>{
+       await actionWrapper.Click(ele)
+       await actionWrapper.snackBarValidate(errormsg,errorip)
    }
    EditCurr = async(ele,input,btn) =>{
        await actionWrapper.clearAndsetValue(ele,input)
@@ -47,10 +44,6 @@ class General extends Page {
        await actionWrapper.clickAndSetvalue(path.EditFactor,genip.editfactor)
        await actionWrapper.Click(btn)
        await actionWrapper.snackBarValidate(common.snackbar,genip.alert)
-    //    if(await common.snackbar.isDisplayed()){
-    //     assert.strictEqual(
-    //    await common.snackbar.getText(),genip.alert);
-    //   } 
    }
    Mandatoryfieldvalidate = async(errormsg,errorip) =>{
     await actionWrapper.Click(path.AddCurBtn)
@@ -59,19 +52,22 @@ class General extends Page {
     await actionWrapper.Click(path.CancelBtn)
 
    }
-
-    SymbolFieldvalidate = async(ele,errormsg,errorip) =>{
-        await actionWrapper.Click(path.AddCurBtn)
-        await actionWrapper.scrollEleAndDoubleClick(ele)
-        await actionWrapper.Click(path.SaveBtn)
-        await actionWrapper.snackBarValidate(errormsg,errorip)
-        await actionWrapper.Click(path.CancelBtn)
-    }
     Fieldvalidate = async(ele,errormsg,errorip) =>{
         await actionWrapper.clearValues(ele)
         await actionWrapper.Click(path.EditSavebtn)
         await actionWrapper.snackBarValidate(errormsg,errorip)
         await actionWrapper.Click(path.EditCancelbtn)
+    }
+    EditAddtionalsetting = async(ele,input,btn,msg,input1) =>{
+        await actionWrapper.clearAndsetValue(ele,input)
+        await actionWrapper.Click(btn)
+        await actionWrapper.snackBarValidate(msg,input1)
+    }
+    EditRegionalSetting = async(ele,input,btn,msg,input1) => {
+        await actionWrapper.clearValue_selectDropdownvalue(ele,input)
+        await actionWrapper.Click(btn)
+        await actionWrapper.snackBarValidate(msg,input1)
+
     }
 
 

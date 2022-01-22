@@ -36,10 +36,10 @@ checkVisibleClickableMove = async (ele) => {
     await ele.doubleClick();
   }
   // validating a snackbar text eruals to element input
-  snackBarValidate = async(errormsg,errorip) =>{
-    if(await errormsg.isDisplayed()){
+  snackBarValidate = async(msgalert,ipalert) =>{
+    if(await msgalert.isDisplayed()){
       assert.strictEqual(
-      await errormsg.getText(),errorip);
+      await msgalert.getText(),ipalert);
    } 
   }
   // click a element & set the value & click the first option using keyboard 

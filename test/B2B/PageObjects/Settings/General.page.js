@@ -29,19 +29,22 @@ class General extends Page{
         return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[3]/button[2]")
     }
     get Deletebtn(){
-        return super.pathById('Currency_6')
+        return super.pathById('Currency_5')
+    }
+    get MapedDeleteBtn(){
+        return super.pathById('Currency_1')
     }
     get EditCode(){
-        return super.pathByName("currencyDetail[6].currencyCode")
+        return super.pathByName("currencyDetail[5].currencyCode")
     }
     get EditFactor(){
-        return super.pathByName('currencyFactor[6].factor')
+        return super.pathByName('currencyFactor[5].factor')
     }
     get EditFormat(){
-        return super.pathByXpath('//div[3]/div/div[2]/div/div[7]/div/div/div//div/input[@name="priceFormat"]')
+        return super.pathByXpath('//div[3]/div/div[2]/div/div[6]/div/div/div//div/input[@name="priceFormat"]')
     }
     get EditSymbol(){
-        return super.pathByXpath('//div[3]/div/div[2]/div/div[7]/div/div/div//div/input[@name="currencyFormat"]')
+        return super.pathByXpath('//div[3]/div/div[2]/div/div[6]/div/div/div//div/input[@name="currencyFormat"]')
     }
     get EditSavebtn(){
         return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiAppBar-root MuiAppBar-positionF')][4]/div/button[2]")
@@ -73,11 +76,27 @@ class General extends Page{
     get ErrormsgMailId(){
         return super.pathByXpath("//p[text()='Email required']")
     }
+    get Invalidmailid(){
+        return super.pathByXpath("//p[text()='Invalid email']")
+    }
+    get Finicalyear(){
+        return super.pathByName('finStartMonth')
+    }
+
     get RoundOff(){
         return super.pathByName('roundOff')
     }
     get ErrorRoundOff(){
         return super.pathByXpath("//p[text()='Round off required']")
+    }
+    get DateDiaplay(){
+        return super.pathByName('dateFormatId')
+    }
+    get TimeDisplay(){
+        return super.pathByName('timeFormat')
+    }
+    get TimeZone(){
+        return super.pathByName('timeZone')
     }
 }
 module.exports = new General();
