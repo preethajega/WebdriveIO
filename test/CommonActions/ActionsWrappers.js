@@ -1,3 +1,4 @@
+const assert = require("assert");
 class TestActionWrapper  {
   // Wait for an element, move and then check clickable before clicking
   checkVisibleClickableMoveAndClick = async (ele) => {
@@ -15,7 +16,6 @@ checkVisibleClickableMove = async (ele) => {
   await ele.moveTo();
   await ele.waitForDisplayed(1000);
 
-  
 };
   // wait for an element.click
   Click = async(ele) => {
@@ -23,11 +23,24 @@ checkVisibleClickableMove = async (ele) => {
     await ele.click();
     await browser.pause(1000);
   };
-  // scrool into view and click an element
+  // scroll into view and click an element
   scrollEleAndClick = async(ele)=>{
     await ele.waitForDisplayed(1000);
     await ele.scrollIntoView();
     await ele.click();
+  }
+  // scroll element double clik
+  scrollEleAndDoubleClick = async(ele)=>{
+    await ele.waitForDisplayed(1000);
+    await ele.scrollIntoView();
+    await ele.doubleClick();
+  }
+  // validating a snackbar text eruals to element input
+  snackBarValidate = async(errormsg,errorip) =>{
+    if(await errormsg.isDisplayed()){
+      assert.strictEqual(
+      await errormsg.getText(),errorip);
+   } 
   }
   // click a element & set the value & click the first option using keyboard 
   clickSetvalueAndSelectoption= async(ele,value) =>{

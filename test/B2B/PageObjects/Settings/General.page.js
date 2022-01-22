@@ -9,16 +9,18 @@ class General extends Page{
         return super.pathByName('currencyCode')
     }
     get Name(){
-        return super.pathByName('description')
+        return super.pathByXpath('//div[@role="dialog"]/div[2]/div[2]/div/input')
+        //return super.pathByName('description')
     }
     get Format(){
-        return super.pathById("mui-84691")
+        return super.pathByXpath('//div[@role="dialog"]/div[2]/div[3]/div/div/input')
+        //return super.pathById("mui-84691")
     }
     get Symbol(){
         return super.pathByXpath('//div[@role="dialog"]/div[2]/div[4]/div/div/input')
     }
     get Factor(){
-        return super.pathByXpath("factor")
+        return super.pathByName("factor")
     }
     get CancelBtn(){
         return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[3]/button[1]")
@@ -41,6 +43,41 @@ class General extends Page{
     get EditSymbol(){
         return super.pathByXpath('//div[3]/div/div[2]/div/div[7]/div/div/div//div/input[@name="currencyFormat"]')
     }
-
+    get EditSavebtn(){
+        return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiAppBar-root MuiAppBar-positionF')][4]/div/button[2]")
+    }
+    get EditCancelbtn(){
+        return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiAppBar-root MuiAppBar-positionF')][4]/div/button[1]")
+    }
+    get ErrormsgCode(){
+        return super.pathByXpath('//div[contains(@class,"MuiDialogConte")]/div[1]/p')
+    }
+    get ErrormsgName(){
+        return super.pathByXpath('//div[contains(@class,"MuiDialogConte")]/div[2]/p')
+    }
+    get ErrormsgSymbol(){
+        return super.pathByXpath("//span[text()='Required']")
+    }
+    get ErrormsgFactor(){
+        return super.pathByXpath('//div[contains(@class,"MuiDialogConte")]/div[5]/p')
+    }
+    get CompIdentifier(){
+        return super.pathByName('companyIdentifier')
+    }
+    get ErrormsgCompId(){
+        return super.pathByXpath("//p[text()='Company Identifier required']")
+    }
+    get DefaultMailId(){
+        return super.pathByName('email')
+    }
+    get ErrormsgMailId(){
+        return super.pathByXpath("//p[text()='Email required']")
+    }
+    get RoundOff(){
+        return super.pathByName('roundOff')
+    }
+    get ErrorRoundOff(){
+        return super.pathByXpath("//p[text()='Round off required']")
+    }
 }
 module.exports = new General();
