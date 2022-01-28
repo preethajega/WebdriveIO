@@ -2,7 +2,7 @@ const url = require('./url')
 
 exports.config = {
     specs: [       
-         './test/SanityTesting/Module/Products.js'     
+         './test/B2B/Specs/Cart/Leads.spec.js'     
     ],
     // Patterns to exclude.
     exclude: [
@@ -33,7 +33,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: url.demo,
+    baseUrl: url.dev,
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,

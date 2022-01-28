@@ -9,19 +9,19 @@ const imageUpload = path.join(__dirname,'./../../FileUtils/profilepic.png');
 
 
 
-describe("Sanity test check",  () => {
+describe("Sanity test check", async  () => {
 
-    it("login page", async () => {
+    it("login page", async  () => {
         await browser.url('/auth/login');
         await browser.pause(3000);
         await browser.getCookies();
         await browser.deleteCookies();
         await browser.maximizeWindow();
         await browser.pause(3000);
-        let loginUsername = await $('[name="Username"]');
-        let loginpassword = await $('[name="Password"]');
-        let signIn = await $('#loadingButton');
-        let Register = await $('//*[text()="Sign Up"]');
+        let loginUsername = await  $('[name="Email"]');
+        let loginpassword = await  $('[name="Password"]');
+        let signIn = await  $('//*[text()="Sign In"]');
+        let Register = await  $('//*[text()="Register"]');
         let mailReq = await $('//p[text()="Email required"]');
         let pwdReq = await $('//p[text()="Password required"]');
         let invaildMail = await $('//p[text="Invalid business email"]');
@@ -54,7 +54,7 @@ describe("Sanity test check",  () => {
         
         await browser.pause(5000);
         await browser.getUrl();
-       expect(await browser).toHaveUrlContaining('dashboard');
+        await  expect(await browser).toHaveUrlContaining('dashboard');
 
 
 
@@ -66,7 +66,7 @@ describe("Sanity test check",  () => {
 
     
     
-    it("Create  the Terms", ()=>{
+    it("Create  the Terms", async ()=> {
 
       let deliveryTerm= await $('//div[text()="Delivery Terms"]');
       let dispatchTerm= await $('//div[text()="Mode of Dispatch"]');
@@ -255,7 +255,7 @@ await save.click();
 
   });
 
-   it("Delete the Terms", ()=>{
+   it("Delete the Terms", async ()=> {
 
       let deliveryTerm= await $('//div[text()="Delivery Terms"]');
       let dispatchTerm= await $('//div[text()="Mode of Dispatch"]');
@@ -378,7 +378,7 @@ await save.click();
 
    });
 
-  it("Create and delete the approval group", ()=>{
+  it("Create and delete the approval group", async ()=> {
 
       let approversGroup=await $('//span[text()="Approvers Group"]');
       let range=await $('//span[text()="Range"]');
@@ -517,7 +517,7 @@ await save.click();
 });
 
 
-     it("Create  Tax" ,async () =>{
+     it("Create  Tax" ,async  () =>{
         
     let taxNametab=await $('//span[text()="Tax Name"]');
     let taxGrouptab= await $('//span[text()="Tax Group"]');
@@ -662,7 +662,7 @@ await     save.click();
                         await browser.pause(2000);
                         await       save.click();
           } 
-await assert.strictEqual(await snackbar.getText(),"Changes saved successfully");
+          await assert.strictEqual(await snackbar.getText(),"Changes saved successfully");
 
 /*Adding TaxException*/   
 await browser.refresh();
@@ -928,7 +928,7 @@ it("General Settings", async () => {
                                       await browser.pause(2000);
 await assert.strictEqual(await snackbar.getText(),"Changes saved successfully");
                                          await browser.refresh();
-                                       if((await acompanyIdentifier.getValue())!=="Apptino"){
+                                       if((await companyIdentifier.getValue())!=="Apptino"){
                                         await  companyIdentifier.setValue('Apptino Softwares');
                                     }
                                    if(await defaultEmail.getValue===""){
