@@ -29,7 +29,7 @@ describe('Company Page', () => {
       //  it('should validate a Email field',async() => {
       //    await team_fn.MandatoryFieldvalid(team_path.ErrormsgEmail,teamip.errmsgEmail)
       //  });
-      // it('should validate a Role field',async() => {
+      //  it('should validate a Role field',async() => {
       //    await team_fn.MandatoryFieldvalid(team_path.ErrormsgRole,teamip.errmsgRole)
       //  });
       //  it('should delete a user with canceling',async () => {
@@ -37,17 +37,40 @@ describe('Company Page', () => {
       //  });
       //  it('should delete a user with canceling',async () => {
       //    await team_fn.DeleteUser(team_path.ConfYesBtn)
-      // });
-      // it('should edit the tags with saving',async () => {
+      //  });
+      //  it('should edit the tags with saving',async () => {
+      //    await browser.pause(2000);
       //    await team_fn.AddTags(team_path.Savebtn)
-      // });
-      // it('should edit the tags with saving',async () => {
+      //  });
+      //  it('should edit the tags with saving',async () => {
       //    await team_fn.AddTags(team_path.CancelBtn)
+      //  });
+      //  it('should add the Bu to the exisiting user with canceling',async () => {
+      //    await browser.pause(2000);
+      //    await team_fn.AddBu(team_path.CancelBtn)
+      //  });
+      //  it('should add the Bu to the exisiting user with saving',async () => {
+      //    await team_fn.AddBu(team_path.Savebtn)
+      //  });
+      // it('should delete the Tag with cancel',async () => {
+      //    await team_fn.DeleteTag(team_path.CancelBtn)
+      //    await actionsWrappers.Click(team_path.Closecard)
       // });
-      it('should add the Bu to the exisiting user with saving',async () => {
-         await team_fn.AddBu(team_path.Savebtn)
-      });
-      it('should add the Bu to the exisiting user with canceling',async () => {
-         await team_fn.AddBu(team_path.CancelBtn)
-      });
+      // it('should delete the Tag with save',async () => {
+      //    await team_fn.DeleteTag(team_path.Savebtn)
+      // });
+      //  it('should delete a Branch & BU with saving',async () => {
+      //     await browser.pause(2000);
+      //     await team_fn.DeleteBu(team_path.Savebtn)
+      //  });
+      //  it('should delete a Branch & BU with cancel',async () => {
+      //     await team_fn.DeleteBu(team_path.CancelBtn)
+      //  });
+       it('should add only Branch in Branch & Bu',async () => {
+          await browser.pause(2000);
+          await team_fn.AddBranch()
+       });
+       it('should not allow a user to save the Branch field without entering inputs',async () => {
+          await team_fn.BranchValid()
+       });
 });

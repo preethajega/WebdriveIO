@@ -27,10 +27,12 @@ class Team extends Page{
         return super.pathByXpath('//input[@name="roleName"]')
     }
     get Savebtn(){
-        return super.pathByXpath("//span[text()='Save']")
+        return super.pathByXpath('//button[@id="loadingButton"]')
+       // return super.pathByXpath("//span[text()='Save']")
     }
     get CancelBtn(){
-        return super.pathByXpath("//span[text()='Cancel']")
+        return super.pathByXpath('//button[@aria-label="cancel"]')
+       // return super.pathByXpath("//span[text()='Cancel']")
     }
     get Closecard(){
         return super.pathByXpath('//button[@aria-label="close"]')
@@ -74,9 +76,10 @@ class Team extends Page{
         return super.pathByXpath("//span[text()='Edit']")
     }
     get Tags(){
-        return super.pathByXpath('//div/div/input[@placeholder="Search"]')
-       // return super.pathByXpath('//input[@id='"tag"tags.data.id']')
-        //return super.pathByXpath('//input[@placeholder="Search"]')
+        return super.pathByXpath('//input[@placeholder="Search"]')
+    }
+    get DeleteTag(){
+        return super.pathByXpath('//div[@role="combobox"]/div/div/div[3]/button[@title="Clear"]')
     }
     get BUAddBtn(){
         return super.pathById("addNew")
@@ -100,19 +103,16 @@ class Team extends Page{
         return super.pathById("businessUnit2")
     }
     get DeleteBU1(){
-        return super.pathByXpath('//div[@class="MuiCardContent-root"]/div[1]/div[2]/div[3]')
+        return super.pathByXpath('//div[@class="MuiCardContent-root css-2c2xgk"]/div[1]/div[2]/div[3]')
     }
     get DeleteBU2(){
-        return super.pathByXpath('//div[@class="MuiCardContent-root"]/div[1]/div[3]/div[3]')
+        return super.pathByXpath('//div[@class="MuiCardContent-root css-2c2xgk"]/div[1]/div[3]/div[3]')
     }
     get DeleteBU3(){
-        return super.pathByXpath('//div[@class="MuiCardContent-root"]/div[1]/div[4]/div[3]')
+        return super.pathByXpath('//div[@class="MuiCardContent-root css-2c2xgk"]/div[1]/div[4]/div[3]')
     }
     get ErrormsgBU(){
-        return super.pathById('branch0-helper-text')
-    }
-    get DeleteBU(){
-        return super.pathById('deleteBU')
+        return super.pathById('branch2-helper-text')
     }
     get MoreOptionbtn (){
         return super.pathByXpath('//button[@aria-label="moreOption"]')

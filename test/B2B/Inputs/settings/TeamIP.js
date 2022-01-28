@@ -11,7 +11,7 @@ function Teamip(){
     this.depart="Testing"
     this.role="user"
     this.branch1="Citihealth ("
-    this.branch2="Citihealth("
+    this.branch2="citihealth"
     this.bu1="Raw"
     this.bu2="Finished"
     this.tag="tamil"
@@ -21,6 +21,7 @@ function Teamip(){
     this.errmdsgName="Name required"
     this.errmsgEmail="Email id required"
     this.errmsgRole="Role required"
+    this.errmsgBranch="Branch required"
 
 }
 module.exports = new Teamip();

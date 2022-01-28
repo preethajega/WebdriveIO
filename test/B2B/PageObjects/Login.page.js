@@ -7,9 +7,9 @@ class LoginPage extends Page {
     /**
      * define selectors using getter methods
      */
-    get inputUsername () { return $('//*[@name="Username"]') }
-    get inputPassword () { return $('//*[@name="Password"]') }
-    get btnSubmit () { return $('#loadingButton') }
+    get inputUsername () { return super.pathByName('Email') }
+    get inputPassword () { return super.pathByName("Password") }
+    get btnSubmit () { return super.pathByXpath('//button[@type="submit"]') }
 
     /**
      * a method to encapsule automation code to interact with the page

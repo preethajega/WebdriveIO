@@ -5,6 +5,7 @@ const path = require("../../PageObjects/Settings/Team.page");
 const attchmentUpload = require("../../../CommonActions/attchmentUpload");
 const common = require("../../PageObjects/Common/commonObjects");
 const assert = require("assert");
+const { arEG } = require("date-fns/locale");
 
 
 
@@ -49,6 +50,14 @@ class Team extends Page {
         await actionWrapper.snackBarValidate(common.snackbar,teamip.alert)
         await actionWrapper.Click(path.Closecard)
     }
+    DeleteTag = async(btn) =>{
+        await actionWrapper.scrollEleAndClick(path.Editdata)
+        await actionWrapper.scrollEleAndClick(path.Tags)
+        await actionWrapper.scrollEleAndClick(path.DeleteTag)
+        //await browser.pause(1000)
+        await actionWrapper.Click(btn)
+        await actionWrapper.snackBarValidate(common.snackbar,teamip.alert)
+    }
     AddBu = async(btn) =>{
         await actionWrapper.scrollEleAndClick(path.Editdata)
         await actionWrapper.scrollEleAndClick(path.BUAddBtn)
@@ -56,6 +65,34 @@ class Team extends Page {
         await actionWrapper.clickSetvalueAndSelectoption(path.BU1,teamip.bu1)
         await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(common.snackbar,teamip.alert)
+        await actionWrapper.Click(path.Closecard)
+    }
+    DeleteBu = async(btn)=>{
+        await actionWrapper.scrollEleAndClick(path.Editdata)
+        await actionWrapper.scrollEleAndClick(path.BUAddBtn)
+        await actionWrapper.clickSetvalueAndSelectoption(path.Branch2,teamip.branch2)
+        await actionWrapper.clickSetvalueAndSelectoption(path.BU2,teamip.bu2)
+        await actionWrapper.Click(path.Savebtn)
+        await actionWrapper.scrollEleAndClick(path.DeleteBU2)
+        await actionWrapper.Click(btn)
+        await actionWrapper.snackBarValidate(common.snackbar,teamip.alert)
+        await actionWrapper.Click(path.Closecard)
+    }
+    AddBranch = async() =>{
+        await actionWrapper.scrollEleAndClick(path.Editdata)
+        await actionWrapper.scrollEleAndClick(path.BUAddBtn)
+        await actionWrapper.clickSetvalueAndSelectoption(path.Branch3,teamip.branch2)
+        await actionWrapper.Click(path.Savebtn)
+        await actionWrapper.snackBarValidate(common.snackbar,teamip.alert)
+        await actionWrapper.Click(path.Closecard)
+    }
+    BranchValid = async() =>{
+        await actionWrapper.scrollEleAndClick(path.Editdata)
+        await actionWrapper.scrollEleAndClick(path.BUAddBtn)
+        await actionWrapper.Click(path.Branch3)
+        await actionWrapper.Click(path.Savebtn)
+        await actionWrapper.snackBarValidate(path.ErrormsgBU,teamip.errmsgBranch)
+        await actionWrapper.Click(path.CancelBtn)
         await actionWrapper.Click(path.Closecard)
     }
 
