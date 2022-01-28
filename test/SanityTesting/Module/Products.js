@@ -11,7 +11,7 @@ const ProductImage = path.join(__dirname,'./../../FileUtils/download.jpg');
 const productUpload=path.join(__dirname, './../../FileUtils/productUpload.xlsx');
 
 
-describe("Sanity test check", () => {
+describe("Sanity test check",async() => {
 
     it("login page", async() => {
       await  browser.url('/auth/login');
@@ -21,10 +21,10 @@ describe("Sanity test check", () => {
       await  browser.maximizeWindow();
       await  browser.pause(3000);
         console.log(await browser.getTitle);
-        let loginUsername = await $('[name="Username"]');
-        let loginpassword =await $('[name="Password"]');
-        let signIn = await $('#loadingButton');
-        let Register = await $('//*[text()="Sign Up"]');
+        let loginUsername = await  $('[name="Email"]');
+        let loginpassword = await  $('[name="Password"]');
+        let signIn = await  $('//*[text()="Sign In"]');
+        let Register = await  $('//*[text()="Register"]');
         let mailReq = await $('//p[text()="Email required"]');
         let pwdReq = await $('//p[text()="Password required"]');
         let invaildMail = await $('//p[text="Invalid business email"]');
@@ -65,55 +65,55 @@ describe("Sanity test check", () => {
 
    
 
-    // it("Create and delete the Brand",async() => {
+    it("Create and delete the Brand",async() => {
         
-    //     let AddBrand = await $('//span[text()="Delete"]/following::button[1]');
-    //     let Brandname = await $('//span[text()="Cancel"]/preceding::input[1]');
-    //     let Submit = await $('//*[@id="editDialogButton"]');
-    //     let Cancel = await $('#editDialogCancel');
-    //     let save = await $('#loadingButton');
-    //     let DeleteBrand = await $('//span[text()="Delete"]');
-    //     let Yes = await $('#yes');
-    //     let snackbar = await $('#client-snackbar');
-    //     let nameExsists = await $('//p[text()="brand Name already exists "]');
+        let AddBrand = await $('//span[text()="Delete"]/following::button[1]');
+        let Brandname = await $('//span[text()="Cancel"]/preceding::input[1]');
+        let Submit = await $('//*[@id="editDialogButton"]');
+        let Cancel = await $('#editDialogCancel');
+        let save = await $('#loadingButton');
+        let DeleteBrand = await $('//span[text()="Delete"]');
+        let Yes = await $('#yes');
+        let snackbar = await $('#client-snackbar');
+        let nameExsists = await $('//p[text()="brand Name already exists "]');
 
-    //     await browser.url("/brands");
-    //     await browser.pause(1000);
-    //     await  AddBrand.click();
-    //     await browser.pause(1000);
-    //     await  Brandname.setValue("Nokia");
-    //     await browser.pause(1000);
-    //     await  Submit.click();
-    //     if (await nameExsists.isDisplayed()) {
-    //       await  Brandname.click();
-    //         await browser.pause(1000);
-    //         await browser.keys(["\uE009", "a"]);
-    //         await  Brandname.keys("\uE003");
-    //         await browser.pause(1000);
-    //         await Brandname.setValue('Sanity');
-    //         await  Submit.click();
-    //     }
-    //     await browser.pause(4000);
-    //     await assert.strictEqual(await await snackbar.getText(),"Brand added");
-
-
-    //     let brandImage = await $('//h6[text()="Brands Image"]/following::input[1]');
-    //     await browser.execute(
-    //         (el) => el.style.display = 'block',
-    //         await brandImage);
-    //         await brandImage.waitForDisplayed();
-    //         await brandImage.setValue(imageUpload);
-    //     await browser.pause(2000);
-    //     await save.click();
-
-    //     awaitDeleteBrand.click();
-    //     await browser.pause(2000);
-    //     await Yes.click();
-    //     await browser.pause(2000);
-    //     await assert.strictEqual(await await snackbar.getText(),"Brand deleted successfully");
+        await browser.url("/brands");
+        await browser.pause(1000);
+        await  AddBrand.click();
+        await browser.pause(1000);
+        await  Brandname.setValue("Nokia");
+        await browser.pause(1000);
+        await  Submit.click();
+        if (await nameExsists.isDisplayed()) {
+          await  Brandname.click();
+            await browser.pause(1000);
+            await browser.keys(["\uE009", "a"]);
+            await  Brandname.keys("\uE003");
+            await browser.pause(1000);
+            await Brandname.setValue('Sanity');
+            await  Submit.click();
+        }
+        await browser.pause(4000);
+        await assert.strictEqual(await  snackbar.getText(),"Brand added");
 
 
-    // })
+        let brandImage = await $('//h6[text()="Brands Image"]/following::input[1]');
+        await browser.execute(
+            (el) => el.style.display = 'block',
+            await brandImage);
+            await brandImage.waitForDisplayed();
+            await brandImage.setValue(imageUpload);
+        await browser.pause(2000);
+        await save.click();
+
+        await DeleteBrand.click();
+        await browser.pause(2000);
+        await Yes.click();
+        await browser.pause(2000);
+        await assert.strictEqual(await  snackbar.getText(),"Brand deleted successfully");
+
+
+    })
 
 
 //     it("Create and delete the Category",async()=>{
@@ -196,7 +196,7 @@ describe("Sanity test check", () => {
         let productID=await $('//input[@name="brandProductId"]');
         let cloneProdID=await $('//input[@name="hsnCode"]/preceding::input[1]');
         let productVarient=await $('//*[@name="productShortDescription"]');
-        let primaryCategory=await $('//*[@id="productSubCategories.primarySubcategoryName"]');
+        let primaryCategory=await $('//*[@name="productShortDescription"]/following::input[1]');
         let HSN=await $('//input[@name="hsnCode"]');
         let unitPrice=await $('//input[@name="unitListPrice"]');
         let UnitQty=await $('//input[@name="unitQuantity"]');
@@ -585,7 +585,7 @@ await expect(await browser).toHaveUrlContaining('pricelist/landing');
     let shortDes=await $('//input[@name="InventoryForm.productsId.productShortDescription"]');
     let ListPrice=await $('//input[@name="InventoryForm.productsId.unitListPrice"]');
     let UniqueQty=await $('//input[@name="InventoryForm.productsId.unitQuantity"]');
-    let wareHouse=await $('//input[@name="InventoryForm.wareHouseDtoId"]');
+    let wareHouse=await $('//input[@id="InventoryForm.wareHouseDtoId"]');
     let warehouseDrpdwn=await $('//button[@title="Open"]');
     let stockQty=await $('//input[@name="InventoryForm.stockQuantity"]');
     let safetyQty=await $('//input[@name="InventoryForm.safetyStock"]');
@@ -667,7 +667,7 @@ await assert.strictEqual(await snackbar.getText(),"Saved successfully");
     let Delete=await $('//*[text()="Delete"]');
     let snackbar = await $('#client-snackbar');
     let alertMsg=await $('//*[text()="Warehouse name not exist"]');
-    let wareHouse=await $('//*[contains(@name,"wareHouseName-inventoryForm")]');
+    let wareHouse=await $('//*[starts-with(@id,"wareHouseName-inventoryForm[")]');
     let filterResults=await $('(//*[contains(@class,"-deleteIconSmall")])[last()]');
     let filterClear=await $('//span[text()="Clear All"]');
 
@@ -1027,7 +1027,7 @@ await  firstCheckbox.click();
 await close.click();
 await browser.getUrl();
   await expect(await browser).toHaveUrlContaining('accounts/landing');
-  awaitBuyerlist.click();
+  await Buyerlist.click();
   await contactsTab.click();
   await Checkbox.click();
   await  userEdit.click();
@@ -1124,7 +1124,7 @@ await expect(await browser).toHaveUrlContaining('accounts/landing');
 await assert.strictEqual(await snackbar.getText(),"Registered Address cannot be deleted");
              
 await browser.refresh();  
-await awaitaddAddress.click();
+await addAddress.click();
   await browser.pause(1000);
   await branchName.setValue("Coimabtore ");
   await branchAddress.setValue("16 avinashi road");

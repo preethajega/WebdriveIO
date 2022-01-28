@@ -13,7 +13,7 @@ get getQuote() {
 }
 
   get cartIcon() {
-    return super.pathByCss('[aria-label="cart"]');
+    return super.pathByCss('#cartIcon');
   }
 
   get searchBox() {
