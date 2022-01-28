@@ -45,11 +45,12 @@ checkVisibleClickableMove = async (ele) => {
   // click a element & set the value & click the first option using keyboard 
   clickSetvalueAndSelectoption= async(ele,value) =>{
     await ele.waitForDisplayed(2000);
+    await ele.scrollIntoView();
     await ele.click();
     await ele.setValue(value);
     await browser.pause(1000);
     await ele.keys("\uE015");
-    await browser.pause(2000);
+    await browser.pause(1000);
     await ele.keys("\uE007");
   }
   // click a element & set value & selct the second option using Keyboard

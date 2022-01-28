@@ -1,6 +1,9 @@
 const Page = require("../../../B2B/PageObjects/page");
 
 class BU extends Page {
+    get BUTab(){
+        return super.pathById('wrapped-tab-1')
+    }
     get addSymbol() {
         return super.pathByXpath('//button[@aria-label="Add business unit"]')
     }

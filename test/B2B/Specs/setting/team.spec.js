@@ -23,19 +23,31 @@ describe('Company Page', () => {
       //    await team_fn.AddUser(team_path.Email,teamip.email1,team_path.CancelBtn)
       //    await actionsWrappers.Click(team_path.Closecard)
       //  });
-       it('should validate a Name field',async() => {
-          await team_fn.MandatoryFieldvalid(team_path.ErrormsgName,teamip.errmdsgName)
-       });
-       it('should validate a Email field',async() => {
-         await team_fn.MandatoryFieldvalid(team_path.ErrormsgEmail,teamip.errmsgEmail)
-       });
-      it('should validate a Role field',async() => {
-         await team_fn.MandatoryFieldvalid(team_path.ErrormsgRole,teamip.errmsgRole)
-       });
+      //  it('should validate a Name field',async() => {
+      //     await team_fn.MandatoryFieldvalid(team_path.ErrormsgName,teamip.errmdsgName)
+      //  });
+      //  it('should validate a Email field',async() => {
+      //    await team_fn.MandatoryFieldvalid(team_path.ErrormsgEmail,teamip.errmsgEmail)
+      //  });
+      // it('should validate a Role field',async() => {
+      //    await team_fn.MandatoryFieldvalid(team_path.ErrormsgRole,teamip.errmsgRole)
+      //  });
       //  it('should delete a user with canceling',async () => {
       //     await team_fn.DeleteUser(team_path.ConfcancelBtn)
       //  });
       //  it('should delete a user with canceling',async () => {
       //    await team_fn.DeleteUser(team_path.ConfYesBtn)
       // });
+      // it('should edit the tags with saving',async () => {
+      //    await team_fn.AddTags(team_path.Savebtn)
+      // });
+      // it('should edit the tags with saving',async () => {
+      //    await team_fn.AddTags(team_path.CancelBtn)
+      // });
+      it('should add the Bu to the exisiting user with saving',async () => {
+         await team_fn.AddBu(team_path.Savebtn)
+      });
+      it('should add the Bu to the exisiting user with canceling',async () => {
+         await team_fn.AddBu(team_path.CancelBtn)
+      });
 });

@@ -16,60 +16,55 @@ class BusinessUnit extends Page {
   browser.pause(8000);
 }
 
-Addbusinessunit = async() =>{
+Addbusinessunit = async(opti,optiIp,pri,priorIp,btn) =>{
+  await actionWrapper.Click(path.BUTab)
   await actionWrapper.Click(path.addSymbol);
-  await actionWrapper.checkEnabledAndSetValue(await path.options,BUip.options);
-  await actionWrapper.checkEnabledAndSetValue(await path.priority,BUip.priority);
-  await actionWrapper.Click(await path.savebtn);
-  if(await path.snackbar.getText() === BUip.saveAlert){
-    return true
+  await actionWrapper.checkEnabledAndSetValue(opti,optiIp);
+  await actionWrapper.checkEnabledAndSetValue(pri,priorIp);
+  await actionWrapper.Click(btn);
+  await actionWrapper.snackBarValidate(common.snackbar,BUip.saveAlert)
   }
-  }
-Addbusinessunitcancel = async() =>{
-    await actionWrapper.Click(path.addSymbol);
-    await actionWrapper.checkEnabledAndSetValue(await path.options1,BUip.options);
-    await actionWrapper.checkEnabledAndSetValue(await path.priority1,BUip.priority);
-    await actionWrapper.Click(await path.cancelbtn);
-}
+// Addbusinessunitcancel = async() =>{
+//     await actionWrapper.Click(path.addSymbol);
+//     await actionWrapper.checkEnabledAndSetValue(await path.options1,BUip.options);
+//     await actionWrapper.checkEnabledAndSetValue(await path.priority1,BUip.priority);
+//     await actionWrapper.Click(await path.cancelbtn);
+// }
   
-Invaidpriority = async() =>{
+ FieldValidate = async(opti,optiIp,pri,priorIp) =>{
   await actionWrapper.Click(path.addSymbol);
-  await actionWrapper.checkEnabledAndSetValue(await path.options1,BUip.options1);
-  await actionWrapper.checkEnabledAndSetValue(await path.priority1,BUip.priority1);
+  await actionWrapper.checkEnabledAndSetValue(opti,optiIp);
+  await actionWrapper.checkEnabledAndSetValue(pri,priorIp);
   await actionWrapper.Click(await path.savebtn);
-  if(await path.snackbar.getText() === BUip.errorAlert){
-    return true
-  }
+  await actionWrapper.snackBarValidate(msgAlert,ipAlert)
   await actionWrapper.Click(await path.cancelbtn)
   }
-Exisitingpriority =async() =>{
-  await actionWrapper.Click(path.addSymbol);
-  await actionWrapper.checkEnabledAndSetValue(await path.options1,BUip.options2);
-  await actionWrapper.checkEnabledAndSetValue(await path.priority1,BUip.priority2);
-  await actionWrapper.Click(await path.savebtn)
-  if(await path.errormsg.getText() === BUip.errorAlert){
-    return true
-  }
-  await actionWrapper.Click(await path.cancelbtn)
-  }
-Exisitingoption  = async() =>{
-  await actionWrapper.Click(path.addSymbol);
-  await actionWrapper.checkEnabledAndSetValue(await path.options1,BUip.options);
-  await actionWrapper.checkEnabledAndSetValue(await path.priority1,BUip.priority3);
-  await actionWrapper.Click(await path.savebtn);
-  if(await path.snackbar.getText() === BUip.errorAlert1){
-    return true
-  }
-  await actionWrapper.Click(await path.cancelbtn)
-  }
+// Exisitingpriority =async() =>{
+//   await actionWrapper.Click(path.addSymbol);
+//   await actionWrapper.checkEnabledAndSetValue(await path.options1,BUip.options2);
+//   await actionWrapper.checkEnabledAndSetValue(await path.priority1,BUip.priority2);
+//   await actionWrapper.Click(await path.savebtn)
+//   if(await path.errormsg.getText() === BUip.errorAlert){
+//     return true
+//   }
+//   await actionWrapper.Click(await path.cancelbtn)
+//   }
+// Exisitingoption  = async() =>{
+//   await actionWrapper.Click(path.addSymbol);
+//   await actionWrapper.checkEnabledAndSetValue(await path.options1,BUip.options);
+//   await actionWrapper.checkEnabledAndSetValue(await path.priority1,BUip.priority3);
+//   await actionWrapper.Click(await path.savebtn);
+//   if(await path.snackbar.getText() === BUip.errorAlert1){
+//     return true
+//   }
+//   await actionWrapper.Click(await path.cancelbtn)
+//   }
 Withoutoption = async() =>{
   await actionWrapper.Click(path.addSymbol);
-  await actionWrapper.Click(await path.options1,BUip.options1);
-  await actionWrapper.checkEnabledAndSetValue(await path.priority1,BUip.priority1);
+  await actionWrapper.Click(path.options1,BUip.options1);
+  await actionWrapper.checkEnabledAndSetValue(path.priority1,BUip.priority1);
   await actionWrapper.Click(await path.savebtn);
-  if (await path.errormsg.getText() === BUip.errorMsg1) {
-    return true
-  }
+  await actionWrapper.snackBarValidate(path.errormsg,BUip.errorMsg1)
   await actionWrapper.Click(await path.cancelbtn)
   }
 Withoutpriority = async() =>{
@@ -77,40 +72,32 @@ Withoutpriority = async() =>{
   await actionWrapper.checkEnabledAndSetValue(await path.options1,BUip.options1);
   await actionWrapper.Click(await path.priority1);
   await actionWrapper.Click(await path.savebtn);
-  if (await path.errormsg.getText() === BUip.errorMsg) {
-    return true
-  }
+  await actionWrapper.snackBarValidate(path.errormsg,BUip.errorMsg)
   await actionWrapper.Click(await path.cancelbtn)
   }
 UpdateBU = async(btn) =>{
   await actionWrapper.clearAndsetValue(path.options,BUip.updateop);
   await actionWrapper.clearAndsetValue(path.priority,BUip.updatepri);
   await actionWrapper.Click(btn);
-  if(await common.snackbar.isDisplayed()){
-    await assert.strictEqual(
-      await common.snackbar.getText(),BUip.saveAlert
-    );
-  }
+  await actionWrapper.snackBarValidate(common.snackbar,BUip.saveAlert)
 }
 
-DeleteBU = async() =>{
-  await actionWrapper.Click(path.deletebtn);
-  await actionWrapper.Click(await path.savebtn);
-  if(await path.snackbar.getText() === BUip.saveAlert){
-    return true
+DeleteBU = async(btn,btn1,msgAlert,ipAlert) =>{
+  await actionWrapper.Click(btn);
+  await actionWrapper.Click(btn1);
+  await actionWrapper.snackBarValidate(msgAlert,ipAlert)
   }
-  }
-DeleteMapedBU = async() =>{
-  await actionWrapper.Click(path.DeleteMPDbtn);
-  await actionWrapper.Click(await path.savebtn);
-  if(await path.snackbar.getText() === BUip.mapedalert){
-    return true
-  }
-}
- DeleteBUCancel = async() =>{
-  await actionWrapper.Click(path.DeleteMPDbtn);
-  await actionWrapper.Click(await path.cancelbtn);
-  }
+// DeleteMapedBU = async() =>{
+//   await actionWrapper.Click(path.DeleteMPDbtn);
+//   await actionWrapper.Click(await path.savebtn);
+//   if(await path.snackbar.getText() === BUip.mapedalert){
+//     return true
+//   }
+// }
+//  DeleteBUCancel = async() =>{
+//   await actionWrapper.Click(path.DeleteMPDbtn);
+//   await actionWrapper.Click(await path.cancelbtn);
+//   }
 }
 
 module.exports = new BusinessUnit();

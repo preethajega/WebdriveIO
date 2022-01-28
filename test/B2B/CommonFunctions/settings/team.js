@@ -42,5 +42,22 @@ class Team extends Page {
         await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(common.snackbar,teamip.deletealert)
     }
+    AddTags = async(btn) =>{
+        await actionWrapper.scrollEleAndClick(path.Editdata)
+        await actionWrapper.clickSetvalueAndSelectoption(path.Tags,teamip.tag)
+        await actionWrapper.Click(btn)
+        await actionWrapper.snackBarValidate(common.snackbar,teamip.alert)
+        await actionWrapper.Click(path.Closecard)
+    }
+    AddBu = async(btn) =>{
+        await actionWrapper.scrollEleAndClick(path.Editdata)
+        await actionWrapper.scrollEleAndClick(path.BUAddBtn)
+        await actionWrapper.clickSetvalueAndSelectSecondOption(path.Branch1,teamip.branch1)
+        await actionWrapper.clickSetvalueAndSelectoption(path.BU1,teamip.bu1)
+        await actionWrapper.Click(btn)
+        await actionWrapper.snackBarValidate(common.snackbar,teamip.alert)
+        await actionWrapper.Click(path.Closecard)
+    }
+
 }
 module.exports = new Team();

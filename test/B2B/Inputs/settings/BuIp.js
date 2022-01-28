@@ -1,6 +1,6 @@
 function Buip() {     
     const path = require('path');
-    this.BUUrl="/settings/businessunit"
+    this.BUUrl="/settings/division-bu"
     this.options="Purchased Goods"
     this.priority="10"
     this.saveAlert="Changes saved successfully"
