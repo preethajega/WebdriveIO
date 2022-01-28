@@ -11,6 +11,8 @@ function Buip() {
     this.priority2="2"
     this.errorAlert="Priority with value 2 already exist"
     this.priority3='5'
+    this.updateop='zen'
+    this.updatepri='6'
     this.errorAlert1="Purchased Goods already exists"
     this.errorMsg1="Name required"
     this.mapedalert="BusinessUnit mapped with Branch cannot be deleted!!!"

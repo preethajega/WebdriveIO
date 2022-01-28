@@ -17,11 +17,45 @@ checkVisibleClickableMove = async (ele) => {
 
   
 };
-// wait for an element.click
-Click = async(ele) => {
-  await ele.waitForDisplayed(1000);
-  await ele.click();
-};
+  // wait for an element.click
+  Click = async(ele) => {
+    await ele.waitForDisplayed(2000);
+    await ele.click();
+    await browser.pause(1000);
+  };
+  // scrool into view and click an element
+  scrollEleAndClick = async(ele)=>{
+    await ele.waitForDisplayed(1000);
+    await ele.scrollIntoView();
+    await ele.click();
+  }
+  // click a element & set the value & click the first option using keyboard 
+  clickSetvalueAndSelectoption= async(ele,value) =>{
+    await ele.waitForDisplayed(2000);
+    await ele.click();
+    await ele.setValue(value);
+    await browser.pause(1000);
+    await ele.keys("\uE015");
+    await browser.pause(2000);
+    await ele.keys("\uE007");
+  }
+  // click a element & set value & selct the second option using Keyboard
+  clickSetvalueAndSelectSecondOption = async(ele,value) =>{
+    await ele.waitForDisplayed(2000);
+    await ele.click();
+    await ele.setValue(value);
+    await browser.pause(1000);
+    await ele.keys("\uE015");
+    await ele.keys("\uE015");
+    await browser.pause(2000);
+    await ele.keys("\uE007");
+  }
+  //click and select a value from dropdown
+  clickAndSetvalue = async(ele,value) =>{
+    await ele.click();
+    await ele.setValue(value);
+  }
+  
   // Wait for an element, check clickable before clicking
   checkVisibleClickableAndClick = async (ele) => {
     await ele.waitForDisplayed(1000);
@@ -38,6 +72,7 @@ Click = async(ele) => {
   checkEnabledAndSetValue = async (elem, value) => {
     await elem.waitForEnabled(2000);
     await elem.setValue(value);
+    
   };
   // To choose the first option in the drop down with an click action.
   ClickElementAndkeyboardVal = async (ele, keyValue) => {
@@ -138,7 +173,6 @@ Click = async(ele) => {
     await browser.pause(2000);
     await ele.setValue(searchText);
     await ele.click();
-    await browser.pause(2000);
     await ele.keys("\uE015");
     await browser.pause(2000);
     await ele.keys("\uE007");
@@ -175,25 +209,15 @@ navigateTo= async(Url)=>{
 
   //if value is empty set the value
   isEmpty_setValue = async (ele, inputValue) => {
-    if ((await ele.getValue())=== "") {
+    if (await ele.getValue()=== "") {
       await  ele.waitForDisplayed(2000);
       await  ele.setValue(inputValue);
     }
   };
 
-  //if value is not empty then celar the value
-  isNotEmpty_clearValue = async (ele) => {
-    if ((await ele.getValue())!== "") {
-      await  ele.waitForDisplayed(2000);
-      await  this.clearValues(ele);
-    }
-  };
-
-
-
   //if value is not equal to empty clear the value & set the new value else enter the new value
   isNotEmpty_clearAndsetValue = async (ele, inputValue) => {
-    if ((await ele.getValue())!=="") {
+    if (! await ele.getValue()==="") {
       await ele.waitForDisplayed(4000);
       await ele.click();
       await browser.keys(["\uE009", "a"]);
