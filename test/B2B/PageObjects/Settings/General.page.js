@@ -47,10 +47,12 @@ class General extends Page{
         return super.pathByXpath('//div[3]/div/div[2]/div/div[6]/div/div/div//div/input[@name="currencyFormat"]')
     }
     get EditSavebtn(){
-        return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiAppBar-root MuiAppBar-positionF')][4]/div/button[2]")
+        return super.pathByXpath('//button[@aria-label="Save"]')
+        //return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiAppBar-root MuiAppBar-positionF')][4]/div/button[2]")
     }
     get EditCancelbtn(){
-        return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiAppBar-root MuiAppBar-positionF')][4]/div/button[1]")
+        return super.pathByXpath('//button[@aria-label="cancel"]')
+        //return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiAppBar-root MuiAppBar-positionF')][4]/div/button[1]")
     }
     get ErrormsgCode(){
         return super.pathByXpath('//div[contains(@class,"MuiDialogConte")]/div[1]/p')

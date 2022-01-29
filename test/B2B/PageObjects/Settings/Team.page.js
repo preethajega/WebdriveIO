@@ -28,11 +28,9 @@ class Team extends Page{
     }
     get Savebtn(){
         return super.pathByXpath('//button[@id="loadingButton"]')
-       // return super.pathByXpath("//span[text()='Save']")
     }
     get CancelBtn(){
         return super.pathByXpath('//button[@aria-label="cancel"]')
-       // return super.pathByXpath("//span[text()='Cancel']")
     }
     get Closecard(){
         return super.pathByXpath('//button[@aria-label="close"]')
@@ -53,19 +51,11 @@ class Team extends Page{
     get Editdata(){
         return super.pathByXpath('//table/tbody/tr[12]')
     }
-    get DeleteUser(){
-        return super.pathByXpath('//div[@class="MuiTableContainer-root"]/table/tbody/tr[12]/td/span/span/input')
-        //return super.pathByXpath('//tbody/tr[12]/td/span/span/input[@aria-labelledby="enhanced-table-checkbox-11"]')
-    }
-    get delete1(){
-        return super.pathByXpath("/html/body/div[@id='root']/div[@class='MuiContainer-root MuiContainer-disableGutters']/div[@class='MuiBox-root jss161']/div[@class='MuiGrid-root jss159 MuiGrid-container']/div[@class='MuiGrid-root jss160 MuiGrid-item MuiGrid-grid-md-10']/div[@class='MuiBox-root jss163']/div[@class='MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded']/div[@class='MuiTableContainer-root']/table[@class='MuiTable-root MuiTable-stickyHeader']/tbody[@class='MuiTableBody-root']/tr[@class='MuiTableRow-root MuiTableRow-hover'][12]/td[@class='MuiTableCell-root MuiTableCell-body MuiTableCell-paddingCheckbox MuiTableCell-sizeSmall']")
-    }
-    get delete(){
-        return super.pathByXpath('//input[@aria-labelledby="enhanced-table-checkbox-11"]')
+    get Editdata1(){
+        return super.pathByXpath('//table/tbody/tr[11]')
     }
     get UserInviteBtn(){
         return super.pathByXpath('//button[@aria-label="Invite"]')
-        //return super.pathByXpath('//tbody/tr[12]/td/button[@id="loadingButton"]')
     }
 
     //
@@ -79,7 +69,7 @@ class Team extends Page{
         return super.pathByXpath('//input[@placeholder="Search"]')
     }
     get DeleteTag(){
-        return super.pathByXpath('//div[@role="combobox"]/div/div/div[3]/button[@title="Clear"]')
+        return super.pathByXpath('//div[@role="combobox"]/div/div/div[3]/button[@aria-label="Clear"]')
     }
     get BUAddBtn(){
         return super.pathById("addNew")
@@ -115,20 +105,20 @@ class Team extends Page{
         return super.pathById('branch2-helper-text')
     }
     get MoreOptionbtn (){
-        return super.pathByXpath('//button[@aria-label="moreOption"]')
+        return super.pathByXpath('//button[@aria-label="moreOptions"]')
     }
     get Activatebtn(){
         return super.pathByXpath("//span[text()='Activate']")
     }
+    get ConfYesBtn(){
+        return super.pathByXpath('//button[@aria-label="Yes"]')
+    }
+    get ConfcancelBtn(){
+        return super.pathByXpath('//button[@aria-label="cancel"]')
+    }
     get Deletebtn(){
         return super.pathByXpath("//span[text()='Delete']")
     }
-    get ConfYesBtn(){
-        return super.pathByXpath("//span[text()='Yes']")
-    }
-    get ConfcancelBtn(){
-        return super.pathByXpath("//span[text()='Cancel']")
-    } 
     get Inactivebtn(){
         return super.pathByXpath("//span[text()='Inactivate']")
     }

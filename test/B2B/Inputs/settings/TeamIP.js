@@ -4,7 +4,7 @@ function Teamip(){
     this.name="preetha"
     this.code="ECP123"
     this.phNum="866732881"
-    this.email="preethajegatheesan@gmail.com"
+    this.email="preethajegatheesan1@gmail.com"
     this.email1="demo1@gmail.com"
     this.invalidmail="application"
     this.jobtitle="QA"
@@ -22,6 +22,10 @@ function Teamip(){
     this.errmsgEmail="Email id required"
     this.errmsgRole="Role required"
     this.errmsgBranch="Branch required"
-
+    this.invitealert="User invited"
+    this.reinvitealert="User reinvited"
+    this.activatealert="User activated"
+    this.inactivealert="User inactivated"
+    this.swaprolealert="Owner role swapped!! you will be redirected to login page"
 }
 module.exports = new Teamip();

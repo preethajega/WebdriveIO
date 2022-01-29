@@ -6,6 +6,7 @@ const attchmentUpload = require("../../../CommonActions/attchmentUpload");
 const common = require("../../PageObjects/Common/commonObjects");
 const assert = require("assert");
 const { arEG } = require("date-fns/locale");
+const { activatealert } = require("../../Inputs/settings/TeamIP");
 
 
 
@@ -37,7 +38,7 @@ class Team extends Page {
         await actionWrapper.snackBarValidate(elepath,eleip)
     }
     DeleteUser = async(btn) =>{
-        await actionWrapper.scrollEleAndClick(path.DeleteUser)
+        await actionWrapper.scrollEleAndClick(path.Editdata)
         await actionWrapper.Click(path.MoreOptionbtn)
         await actionWrapper.Click(path.Deletebtn)
         await actionWrapper.Click(btn)
@@ -53,7 +54,7 @@ class Team extends Page {
     DeleteTag = async(btn) =>{
         await actionWrapper.scrollEleAndClick(path.Editdata)
         await actionWrapper.scrollEleAndClick(path.Tags)
-        await actionWrapper.scrollEleAndClick(path.DeleteTag)
+        await actionWrapper.Click(path.DeleteTag)
         //await browser.pause(1000)
         await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(common.snackbar,teamip.alert)
@@ -95,6 +96,28 @@ class Team extends Page {
         await actionWrapper.Click(path.CancelBtn)
         await actionWrapper.Click(path.Closecard)
     }
+    InviteUser =async() =>{
+        await actionWrapper.scrollEleAndClick(path.Editdata)
+        await actionWrapper.Click(path.UserInviteBtn)
+        await actionWrapper.snackBarValidate(common.snackbar,teamip.invitealert)
+        await actionWrapper.Click(path.Closecard)
+    }
+    ReinvieUser = async() =>{
+        await actionWrapper.scrollEleAndClick(path.Editdata)
+        await actionWrapper.Click(path.MoreOptionbtn)
+        await actionWrapper.Click(path.Reinvitebtn)
+        await actionWrapper.snackBarValidate(common.snackbar,teamip.reinvitealert)
+        await actionWrapper.Click(path.Closecard)
+    }
+    statusUser = async(statusbtn,confbtn,snackpath,alertip)=>{
+        await actionWrapper.scrollEleAndClick(path.Editdata1)
+        await actionWrapper.Click(path.MoreOptionbtn)
+        await actionWrapper.Click(statusbtn)
+        await actionWrapper.Click(confbtn)
+        await actionWrapper.snackBarValidate(snackpath,alertip)
+        await actionWrapper.Click(path.Closecard)
+    }
+
 
 }
 module.exports = new Team();
