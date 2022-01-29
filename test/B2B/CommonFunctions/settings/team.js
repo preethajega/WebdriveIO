@@ -5,8 +5,6 @@ const path = require("../../PageObjects/Settings/Team.page");
 const attchmentUpload = require("../../../CommonActions/attchmentUpload");
 const common = require("../../PageObjects/Common/commonObjects");
 const assert = require("assert");
-const { arEG } = require("date-fns/locale");
-const { activatealert } = require("../../Inputs/settings/TeamIP");
 
 
 
