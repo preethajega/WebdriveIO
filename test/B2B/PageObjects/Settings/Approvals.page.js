@@ -70,11 +70,14 @@ class Approval extends Page{
         return super.pathByXpath('(//*[starts-with(@id,"defaultApprover")])[last()]')
     }
     get DeleUserGrpbtn(){
-        return super.pathById('removeApproverGroup')
-        //return super.pathByXpath('(//button[@id="removeApproverGroup"])[last()]')
+        //return super.pathById('removeApproverGroup')
+        return super.pathByXpath('(//button[@id="removeApproverGroup"])[last()]')
     }
     get EditUserGrp(){
         return super.pathByXpath('(//div[@id="panel1a-header"])[last()]')
+    }
+    get ErrOptiApproval(){
+        return super.pathByXpath('//p[text()="Required"]')
     }
     get ErrGrpName(){
         return super.pathByXpath("//p[text()='Group Name required']")
