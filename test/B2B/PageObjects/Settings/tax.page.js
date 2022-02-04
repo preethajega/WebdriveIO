@@ -43,7 +43,7 @@ class Tax extends Page{
     get TaxgrpName(){
         return super.pathByXpath('(//input[contains(@name,"taxGroupName")])[last()]')
     }
-    get TaxName(){
+    get TaxNameGrp(){
         return super.pathByXpath('(//input[contains(@name,"taxReqLs")])[last()]')
     }
     get CompoundTax(){
@@ -87,10 +87,10 @@ class Tax extends Page{
     get ExempName(){
         return super.pathByXpath('(//input[contains(@name,"taxExemptName")])[last()]')
     }
-    get CustmerRadBtn(){
-        return super.pathByXpath('(//input[@name="position"][@value="customer"])[last()]')
+    get CustmerRadioBtn(){
+        return super.pathByXpath('(//input[@value="customer"])[last()]')
     }
-    get ItemRadBtn(){
+    get ItemRadioBtn(){
         return super.pathByXpath('(//input[@name="position"][@value="item"])[last()]')
     }
    

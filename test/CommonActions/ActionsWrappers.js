@@ -66,6 +66,7 @@ checkVisibleClickableMove = async (ele) => {
   }
   //click and select a value from dropdown
   clickAndSetvalue = async(ele,value) =>{
+    await ele.waitForEnabled(2000);
     await ele.click();
     await ele.setValue(value);
   }
