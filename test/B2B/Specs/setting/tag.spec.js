@@ -9,8 +9,8 @@ var tagip= require("../../Inputs/settings/tagIP");
 const common = require("../../PageObjects/Common/commonObjects");
 const ActionsWrappers = require("../../../CommonActions/ActionsWrappers");
 
-describe('Company Page', () => {
-     it("Should allow to access login into company page ",async () => {
+describe('Tag Page', () => {
+     it("Should allow to access login into Tag page ",async () => {
         await  LoginPage.open();
         await  LoginPage.login(B2B_loginIp.OwnerEmail,B2B_loginIp.OwnerPassword);  
         await  actionsWrappers.urlValidation("/dashboard");

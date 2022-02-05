@@ -8,8 +8,8 @@ const gen_fn= require("../../CommonFunctions/settings/general")
 var genip= require("../../Inputs/settings/GeneralIP");
 const common = require("../../PageObjects/Common/commonObjects");
 
-describe('Company Page', () => {
-     it("Should allow to access login into company page ",async () => {
+describe('General Page', () => {
+     it("Should allow to access login into general page ",async () => {
         await  LoginPage.open();
         await  LoginPage.login(B2B_loginIp.OwnerEmail,B2B_loginIp.OwnerPassword);  
         await  actionsWrappers.urlValidation("/dashboard");

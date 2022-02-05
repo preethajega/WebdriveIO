@@ -32,7 +32,7 @@ get CurrentDate(){
     return super.pathByCss('[class="MuiButtonBase-root MuiIconButton-root MuiPickersDay-day MuiPickersDay-current MuiPickersDay-daySelected"]');
 }
 get snackbar(){
-    return super.pathById('client-snackbar');
+    return super.pathById('notistack-snackbar');
 }
 
 get rowPerPage(){

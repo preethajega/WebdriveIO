@@ -8,7 +8,7 @@ const approval_fn= require("../../CommonFunctions/settings/approvals")
 var approvalip= require("../../Inputs/settings/AproveIP");
 const common = require("../../PageObjects/Common/commonObjects");
 
-describe('Company Page', () => {
+describe('Approval Page', () => {
       it("Should allow to access login into Approval page ",async () => {
         await  LoginPage.open();
         await  LoginPage.login(B2B_loginIp.OwnerEmail,B2B_loginIp.OwnerPassword);  

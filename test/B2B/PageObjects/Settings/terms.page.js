@@ -24,21 +24,31 @@ class Terms extends Page{
         return super.pathByXpath("//div[text()='Warranty Terms']")
     }
     get TermName(){
-        return super.pathByXpath('(//input[starts-with(@id,"MSETT_PT_CD_")])[last()]')
+        return super.pathByXpath('(//input[starts-with(@name,"termData[")])[last()]')
+        //return super.pathByXpath('(//input[starts-with(@id,"MSETT_PT_CD_")])[last()]')
     }
     get NeedApproval(){
-        return super.pathByXpath('(//input[starts-with(@id,"MSETT_PT_CNA_")])[last()]')
+        return super.pathByXpath('(//span[starts-with(@class,"MuiSwitch-root ")])[last()]')
+       // return super.pathByXpath('(//input[starts-with(@id,"MSETT_PT_CNA_")])[last()]')
     }
     get Default(){
-        return super.pathByXpath('(//input[starts-with(@id,"MSETT_PT_CDEF_")])[last()]')
+        //return super.pathByXpath('(//input[@name="defaultTerms"])[last()]')
+        return super.pathByXpath('(//span[@class="css-hyxlzm"])[last()]')
+       //return super.pathByXpath('(//input[starts-with(@id,"MSETT_PT_CD")])[last()]')
     }
-    get DeleteTerm(){
+    get DeletelastTerm(){
         return super.pathByXpath('(//button[starts-with(@id,"MSETT_PT_CDEL_")])[last()]')
     }
     get DeleteFirstTerm(){
         return super.pathByXpath('//*[@id="MSETT_PT_CDEL_0"]')
     }
+    get ErrOptionsField(){
+        return super.pathByXpath("//p[text()='Description required']")
+    }
     // Payment Terms
+    get AddPayTermBtn(){
+        return super.pathByXpath('//button[@aria-label="Add Terms"]')
+    }
     get Payment(){
         return super.pathByXpath("//div[text()='Payment Terms']")
     }
@@ -61,7 +71,8 @@ class Terms extends Page{
         return super.pathByXpath('(//div[contains(@class,"MuiCardConte")]/div[2]/div[3]/div[1]/div/ul/li/div[2])[last()]')
     }
     get Paymentgateway(){
-        return super.pathByXpath('(//input[starts-with(@id,"logo")])[last()]')
+        return super.pathByXpath('(//span[starts-with(@class,"MuiSwitch-swi")])[last()]')
+        //return super.pathByXpath('(//input[starts-with(@id,"logo")])[last()]')
     }
     get B2CTerm(){
         return super.pathByXpath('(//input[starts-with(@name,"b2C")])[last()]')
@@ -69,7 +80,7 @@ class Terms extends Page{
     get PayDefaultTerm(){
         return super.pathByXpath('(//input[starts-with(@id,"MSETT_PT_CPT_CDT_")])[last()]')
     }
-    get DeletePayterm(){
+    get DeleteastPayterm(){
         return super.pathByXpath('(//button[starts-with(@id,"MSETT_PT_CPT_CD_")])[last()]')
     }
     get DeleteFirstPayTerm(){

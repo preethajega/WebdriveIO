@@ -70,6 +70,12 @@ checkVisibleClickableMove = async (ele) => {
     await ele.click();
     await ele.setValue(value);
   }
+  // click and set value using Add value
+  clickAndAddvalue = async(ele,value) =>{
+    await ele.waitForEnabled(2000);
+    await ele.click();
+    await ele.addValue(value);
+  }
   
   // Wait for an element, check clickable before clicking
   checkVisibleClickableAndClick = async (ele) => {

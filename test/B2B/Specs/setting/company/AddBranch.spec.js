@@ -6,8 +6,8 @@ const Branch_fn= require("../../../CommonFunctions/settings/branch");
 //var Branchip= require("../../../Inputs/settings/BranchIP");
 
 
-describe('Company Page', () => {
-    it("Should allow to access login into company page ",async () => {
+describe('Branch card', () => {
+    it("Should allow to access login into Branch card ",async () => {
         await  LoginPage.open();
         await  LoginPage.login(B2B_loginIp.OwnerEmail,B2B_loginIp.OwnerPassword);  
         await  actionsWrappers.urlValidation("/dashboard");

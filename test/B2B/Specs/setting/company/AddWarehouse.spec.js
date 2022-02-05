@@ -5,8 +5,8 @@ const B2B_loginIp = require("../../../Inputs/B2B_login");
 const Warehouse_fn= require("../../../CommonFunctions/settings/warehouse");
 var Warehouseip= require("../../../Inputs/settings/WarehouseIp");
 
-describe('Company Page', () => {
-    it("Should allow to access login into company page ",async () => {
+describe('Warehouse card', () => {
+    it("Should allow to access login into warehouse card ",async () => {
         await  LoginPage.open();
         await  LoginPage.login(B2B_loginIp.OwnerEmail,B2B_loginIp.OwnerPassword);  
         await  actionsWrappers.urlValidation("/dashboard");
