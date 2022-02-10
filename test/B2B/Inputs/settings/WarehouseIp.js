@@ -9,7 +9,8 @@ function Warehouseip(){
     this.WarehouseName5="AmbaturBranch"
     this.WarehouseCode="RP123"
     this.PlantCode="RP321"
-    this.MappedAddress="Delhi"
+    this.MappedAddress1="Delhi"
+    this.MappedAdress="Chennai"
     this.SearchAddressName="Rani paints"
     this.AddressName="Madurai"
     this.AddressName1="Covai"
@@ -31,5 +32,15 @@ function Warehouseip(){
     this.DeleteAlert="Warehouse deleted succesfully"
     this.MapedDeleteAlert="Citihealth (Bangalore warhouse) warehouse mapped with Inventory cannot be deleted!!!"
     this.WHAlreadyExists="Madurai Branch already exists"
+    this.errmsgWHName='Warehouse name required'
+    this.errmsgAddressName="Address name required"
+    this.errmsgAddress="Address required"
+    this.errmsgLocality="Locality is required"
+    this.errmsgCountry="Country required"
+    this.errmsgState="State required"
+    this.errmsgPinCode="Pincode required"
+    this.errmsgDistrict="District required"
+    this.errmsgCity="City required"
+
 }
 module.exports = new Warehouseip();

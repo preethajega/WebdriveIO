@@ -1,9 +1,11 @@
 const Page = require("../../../B2B/PageObjects/page");
+const { subindustry1 } = require("../../Inputs/settings/CompanyIP");
 
 class Comp extends Page{
    
     get logoupload(){
-        return super.pathById("prefix-1")
+        return super.pathByXpath('//span[@aria-label="upload picture"]')
+       // return super.pathById("prefix-1")
     }
     get savebtn(){
         return super.pathById('loadingButton')
@@ -49,6 +51,9 @@ class Comp extends Page{
     }
     get RefelectTxt(){
         return super.pathByXpath('//div[contains(@class,"MuiGrid-root Mui")][4]/div[2]/div')
+    }
+    get errWebsite(){
+        return super.pathByXpath("//p[text()='website must be a url']")
     }
   // add warehouse card
     get Addwarehousebtn(){

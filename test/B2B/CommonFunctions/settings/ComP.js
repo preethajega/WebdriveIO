@@ -2,7 +2,6 @@ const actionWrapper = require("../../../CommonActions/ActionsWrappers");
 const Page = require("../../../B2B/PageObjects/page");
 const compIp = require("../../Inputs/settings/CompanyIP");
 const path = require("../../PageObjects/Settings/company.page");
-var CompIP= require("../../Inputs/settings/CompanyIP");
 const attchmentUpload = require("../../../CommonActions/attchmentUpload");
 const common = require("../../PageObjects/Common/commonObjects");
 const assert = require("assert");
@@ -11,31 +10,36 @@ const assert = require("assert");
 
 class Company extends Page {
  async open() {
-    super.open(CompIP.CompUrl); 
+    super.open(compIp.CompUrl); 
   }
 UploadLogo = async() =>{
     await actionWrapper.Click(path.logoupload);
-    await attchmentUpload.upload(
-        await path.logoupload,compIp.uploadimg);
+    await attchmentUpload.upload(path.logoupload,compIp.uploadimg)
     await actionWrapper.checkVisibleClickableAndClick(path.savebtn)
 }
 Updatevalue = async(path,ele,input,btn) =>{
     await actionWrapper.Click(path)
     await actionWrapper.clearAndsetValue(ele,input);
     await actionWrapper.Click(btn);
+    await actionWrapper.snackBarValidate(common.snackbar,compIp.saveAlert)
     if(await common.snackbar.isDisplayed()){
         await assert.strictEqual(
-          await common.snackbar.getText(),CompIP.saveAlert );
+          await common.snackbar.getText(),compIp.saveAlert );
     }
   }
-Updatedropdown = async(btn) =>{
-    await actionWrapper.clickSetvalueAndSelectoption(path.SubIndustry,compIp.subindustry);
-    await actionWrapper.Click(btn)
-    if(await common.snackbar.isDisplayed()){
-        await assert.strictEqual(
-          await common.snackbar.getText(),CompIP.saveAlert );
-    }
+WebsiteFieldValid = async () =>{
+  await actionWrapper.Click(path)
+  await actionWrapper.clearAndsetValue(path.website,compIp.website2)
+  await actionWrapper.Click(path.savebtn)
+  await actionWrapper.snackBarValidate(path.errWebsite,compIp.websiteErrormsg)
+  await actionWrapper.Click(path.cancelbtn)
+
 }
+Updatedropdown = async(btn) =>{
+    await actionWrapper.clearValue_selectDropdownvalue(path.SubIndustry,compIp.subindustry);
+    await actionWrapper.Click(btn)
+    await actionWrapper.snackBarValidate(common.snackbar,compIp.saveAlert)
+  }
 UpdateDisabled= async(ele,input) =>{
     await actionWrapper.Click(ele)
     if ((await ele.setValue(input)) == false) {
@@ -46,7 +50,7 @@ UpdateDisabled= async(ele,input) =>{
 }
 Acctypeinertxt = async(ele) =>{
   await actionWrapper.Click(ele)
-  await path.RefelectTxt.getText()
+  await actionWrapper.snackBarValidate(path.RefelectTxt,compIp.refelecttxt)
 }
 
 }

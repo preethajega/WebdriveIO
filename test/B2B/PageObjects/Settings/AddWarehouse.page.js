@@ -15,10 +15,12 @@ class Warehouse extends Page{
         return super.pathByName('plantCode')
     }
     get CompDefaultWarehouse(){
-        return super.pathByXpath("//li[@class='MuiListItem-container'][1]/div/div")
+        return super.pathByXpath("//li[contains(@class,'MuiListItem-co')][1]/div[2]")
+        //return super.pathByXpath("//li[@class='MuiListItem-container'][1]/div/div")
     }
     get MapwithEsixiting(){
-        return super.pathByXpath("//li[@class='MuiListItem-container'][2]/div/div")
+        return super.pathByXpath("//li[contains(@class,'MuiListItem-co')][2]/div[2]")
+        //return super.pathByXpath("//li[@class='MuiListItem-container'][2]/div/div")
     }
     get MappedAddress(){
         return super.pathById('address')
@@ -63,10 +65,10 @@ class Warehouse extends Page{
         return super.pathByName('contactNumber')
     }
     get CancelBtn(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[3]/button[1]")
+        return super.pathById('editDialogCancel')
     }
     get SaveBtn(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[3]/button[2]")
+        return super.pathById('editDialogButton')
     }
     get WarehouseTab(){
         return super.pathById('wrapped-tab-1')
@@ -75,22 +77,49 @@ class Warehouse extends Page{
         return super.pathByXpath("//tbody/tr[1]")
     }
     get MapedData(){
-        return super.pathByXpath("//tbody/tr[3]")
+        return super.pathByXpath("(//tbody/tr)[last()]")
     }
     get Editdata(){
         return super.pathByXpath("//tbody/tr[1]")
     }
     get DeleteBtn(){
-        return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiAppBar-root MuiAppBar-positionS')]/div[2]/button[1]")
+        return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiPaper-e')]/div[2]/button[1]")
     }
     get EditBtn(){
-        return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiAppBar-root MuiAppBar-positionS')]/div[2]/button[2]")
+        return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiPaper-e')]/div[2]/button[2]")
     }
     get ConformCancelBtn(){
         return super.pathByXpath('//div[contains(@class,"MuiDialogA")]/button[1]')
     }
     get ConformDeleteBtn(){
         return super.pathByXpath('//div[contains(@class,"MuiDialogA")]/button[2]')
+    }
+    get errWarehouseName(){
+        return super.pathByXpath('//p[text()="Warehouse name required"]')
+    }
+    get errAddressName(){
+        return super.pathByXpath("//p[text()='Address name required']")
+    }
+    get errAddress(){
+        return super.pathByXpath("//p[text()='Address required']")
+    }
+    get errLocality(){
+        return super.pathByXpath("//p[text()='Locality is required']")
+    }
+    get errCountry(){
+        return super.pathByXpath("//p[text()='Country required']")
+    }
+    get errState(){
+        return super.pathByXpath("//p[text()='State required']")
+    }
+    get errDistrict(){
+        return super.pathByXpath("//p[text()='District required']")
+    }
+    get errPincode(){
+        return super.pathByXpath("//p[text()='Pincode required']")
+    }
+    get errCity(){
+        return super.pathByXpath("//p[text()='City required']")
     }
 
 }

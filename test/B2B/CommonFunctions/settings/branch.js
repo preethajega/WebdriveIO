@@ -25,11 +25,8 @@ class Branch extends Page{
     // await actionsWrappers.clickSetvalueAndSelectoption(path.Warehouse,Branchip.Warehouse)
     //  await actionsWrappers.clickSetvalueAndSelectoption(path.DefaultWarehouse,Branchip.DefaultWarehouse)
     //  await actionsWrappers.clickSetvalueAndSelectoption(path.BusinessUnit,Branchip.BusinessUnit)
-      await actionsWrappers.Click(btn)     
-     if(await common.snackbar.isDisplayed()){
-        await assert.strictEqual(
-          await common.snackbar.getText(),Branchip.saveAlert );
-    } 
+      await actionsWrappers.Click(btn) 
+      await actionsWrappers.snackBarValidate(common.snackbar,Branchip.saveAlert)     
     }
     AddBranch = async(btn) =>{
      await actionsWrappers.Click(path.AddBranchbtn)
@@ -43,8 +40,8 @@ class Branch extends Page{
      await actionsWrappers.clickAndSetvalue(path.City,Branchip.city)
      await actionsWrappers.clickAndSetvalue(path.Lattitude,Branchip.Lattitude)
      await actionsWrappers.clickAndSetvalue(path.Longitude,Branchip.Longitude)
-     await actionsWrappers.scrollEleAndClick(path.Billing)
-     await actionsWrappers.scrollEleAndClick(path.Shipping)
+     /*await actionsWrappers.Click(path.Billing)
+     await actionsWrappers.Click(path.Shipping)*/
      await actionsWrappers.clickAndSetvalue(path.ABNnumber,Branchip.ABNnumber)
      await actionsWrappers.clickAndSetvalue(path.BillingCode,Branchip.BillingCode)
      await actionsWrappers.clickAndSetvalue(path.ShipingCode,Branchip.ShippingCode)
@@ -55,39 +52,34 @@ class Branch extends Page{
      // await actionsWrappers.clickSetvalueAndSelectoption(path.Warehouse,Branchip.Warehouse)
     //  await actionsWrappers.clickSetvalueAndSelectoption(path.DefaultWarehouse,Branchip.DefaultWarehouse)
     //  await actionsWrappers.clickSetvalueAndSelectoption(path.BusinessUnit,Branchip.BusinessUnit)
-    await actionsWrappers.Click(btn)     
-    if(await common.snackbar.isDisplayed()){
-       await assert.strictEqual(
-         await common.snackbar.getText(),Branchip.saveAlert );
-   } 
+      await actionsWrappers.Click(btn)    
+      await actionsWrappers.snackBarValidate(common.snackbar,Branchip.saveAlert)     
     }
     DeleteBranchAddress = async(btn) =>{
         await actionsWrappers.scrollEleAndClick(path.Deletedata)
         await actionsWrappers.Click(path.DeleteBtn)
         await actionsWrappers.Click(btn)
-        if(await common.snackbar.isDisplayed()){
-            await assert.strictEqual(
-              await common.snackbar.getText(),Branchip.DeleteAlert);
-        } 
+        await actionsWrappers.snackBarValidate(common.snackbar,Branchip.DeleteAlert)    
     }
     EditBranchAddress = async(btn) =>{
         await actionsWrappers.scrollEleAndClick(path.Editdata)
+        await browser.pause(1000)
         await actionsWrappers.Click(path.EditBtn)
         await actionsWrappers.clearValue_selectDropdownvalue(path.SearchCompname,Branchip.EditSearchCompname)
-        await actionsWrappers.Click(btn)     
-        if(await common.snackbar.isDisplayed()){
-         assert.strictEqual(
-          await common.snackbar.getText(),Branchip.saveAlert );
-    } 
+        await actionsWrappers.Click(btn) 
+        await actionsWrappers.snackBarValidate(common.snackbar,Branchip.saveAlert)    
     }
     DeleteMapppedBranch = async(btn)=>{
       await actionsWrappers.scrollEleAndClick(path.MapedData)
-        await actionsWrappers.Click(path.DeleteBtn)
-        await actionsWrappers.Click(btn)
-        if(await common.snackbar.isDisplayed()){
-            await assert.strictEqual(
-              await common.snackbar.getText(),Branchip.MapedDeleteAlert);
-        } 
+      await actionsWrappers.Click(path.DeleteBtn)
+      await actionsWrappers.Click(btn)
+      await actionsWrappers.snackBarValidate(common.snackbar,Branchip.MapedDeleteAlert)
+    }
+    FieldValid = async(Elepath,eleIp) =>{
+      await actionsWrappers.Click(path.AddBranchbtn)
+      await actionsWrappers.Click(path.SaveBtn)
+      await actionsWrappers.snackBarValidate(Elepath,eleIp)
+      await actionsWrappers.Click(path.CancelBtn)
     }
 
 }

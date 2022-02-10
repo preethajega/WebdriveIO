@@ -6,90 +6,84 @@ class Branch extends Page{
       return super.pathByXpath('//button[@aria-label="Add Branch"]')
     }
     get SearchCompname(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[1]/div/input")
+        return super.pathByName('companyName')
     }
     get searchcompnameClick(){
         return super.pathByXpath("//div[contains(@class,'pac-contai')]/div[2]/span/span")
     }
     get Branch(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[2]/div/input")
+        return super.pathByName('addressId.branchName')
     }
     get AddressLine1(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[3]/div/textarea[1]")
+        return super.pathByName('addressId.addressLine')
     }
     get AddressLine2(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[4]/div/input")
+        return super.pathByName('addressId.locality')
     }
     get Region(){
          return super.pathById('country')
-        //return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[5]/div/div[1]/div/div/button/span")
     }
     get State(){
         return super.pathById('state')
-        //return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[5]/div/div[1]/div/input[@id='state']")
     }
     get Distric(){
         return super.pathById('district')
-        //return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[5]/div[3]")
     }
     get Zipcode(){
         return super.pathByName('addressId.pinCodeId')
-        //return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[5]/div[4]")
     }
     get City(){
         return super.pathByName('addressId.city')
-        //return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[5]/div[5]")
     }
     get Lattitude(){
         return super.pathByName('addressId.lattitude')
-        //return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[5]/div/div[1]/div/input[@name='addressId.lattitude']")
     }
     get Longitude(){
         return super.pathByName('addressId.longitude')
-        //return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[5]/div[6]/div[2]")
     }
     get Billing(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[6]/div/div/label[1]/span/span[1]")
+        return super.pathByXpath('//div[contains(@class,"MuiBox-root css-vxg")]/div/div/label/span/input[@name="addressId.isBilling"]')
+       // return super.pathByName('addressId.isBilling')
     }
     get Shipping(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[6]/div/div/label[2]/span/span[1]")
+        return super.pathByXpath('//div[contains(@class,"MuiBox-root css-vxg")]/div/div/label/span/input[@name="addressId.isShipping"]')
+        //return super.pathByName('addressId.isShipping')
     }
     get ABNnumber(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[7]/div/input")
+        return super.pathByName('addressId.gst')
     }
     get BillingCode(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[8]/div[1]/div/input")
+        return super.pathByName('addressId.billingErpCode')
     }
     get ShipingCode(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[8]/div[2]/div/input")
+        return super.pathByName('addressId.shippingErpCode')
     }
     get BranchCode(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[8]/div[3]/div/input")
+        return super.pathByName('salesBranchCode')
     }
     get SalesOrgCode(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[8]/div[4]/div/input")
+        return super.pathByName('salesOrgCode')
     }
     get ContactName(){
         return super.pathByName('addressId.primaryContact')
-        }
+    }
     get PhoneNumber(){
         return super.pathByName('addressId.mobileNo')
     }
     get Warehouse(){
-       
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[10]/div[1]/div/div/input")
+        return super.pathById('wareHouses')
     }
     get DefaultWarehouse(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[10]/div[2]/div/div/input")
+        return super.pathByXpath('//div[contains(@class,"MuiDialogContent-root")]/div[10]/div[2]/div//input')
     }
     get BusinessUnit(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[2]/div[11]/div/div/div/input")
+        return super.pathById('businessUnit')
     }
     get CancelBtn(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[3]/button[1]")
+        return super.pathById('editDialogCancel')
     }
     get SaveBtn(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[3]/button[2]")
+        return super.pathById('editDialogButton')
     }
     get Deletedata(){
         return super.pathByXpath("//tbody/tr[1]")
@@ -101,16 +95,49 @@ class Branch extends Page{
         return super.pathByXpath("//tbody/tr[1]")
     }
     get DeleteBtn(){
-        return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiAppBar-root MuiAppBar-positionS')]/div[2]/button[1]")
+        return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiPaper-e')]/div[2]/button[1]")
     }
     get EditBtn(){
-        return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiAppBar-root MuiAppBar-positionS')]/div[2]/button[2]")
+        return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiPaper-e')]/div[2]/button[2]")
     }
     get ConformCancelBtn(){
         return super.pathByXpath('//div[contains(@class,"MuiDialogA")]/button[1]')
     }
     get ConformDeleteBtn(){
         return super.pathByXpath('//div[contains(@class,"MuiDialogA")]/button[2]')
+    }
+    get errBranchName(){
+        return super.pathByXpath("//p[text()='Branch Name required']")
+    }
+    get errAddress(){
+        return super.pathByXpath("//p[text()='Address required']")
+    }
+    get errLocality(){
+        return super.pathByXpath("//p[text()='Locality is required']")
+    }
+    get errCountry(){
+        return super.pathByXpath("//p[text()='Country required']")
+    }
+    get errState(){
+        return super.pathByXpath("//p[text()='State required']")
+    }
+    get errDistrict(){
+        return super.pathByXpath("//p[text()='District required']")
+    }
+    get errPincode(){
+        return super.pathByXpath("//p[text()='Pincode required']")
+    }
+    get errCity(){
+        return super.pathByXpath("//p[text()='City required']")
+    }
+    get errTax(){
+        return super.pathByXpath("//p[text()='Tax ID required']")
+    }
+    get errContactNam(){
+        return super.pathByXpath("//p[text()='Contact Name is required']")
+    }
+    get errContactNumb(){
+        return super.pathByXpath("//p[text()='Contact No is required']")
     }
 }
 
