@@ -13,12 +13,12 @@ class General extends Page {
     async open() {
         super.open(genip.genUrl); 
     }
-    Addcur = async (ele,input,btn) =>{
+    Addcur = async (ele,input,symbolpath,symbolip,btn) =>{
         await actionWrapper.Click(path.AddCurBtn)
         await actionWrapper.clickAndSetvalue(ele,input)
         await actionWrapper.Click(path.Name)
         await actionWrapper.clearValue_selectDropdownvalue(path.Format,genip.format)
-        await actionWrapper.clickAndSetvalue(path.Symbol,genip.symbol)
+        await actionWrapper.clickAndSetvalue(symbolpath,symbolip)
         await path.Symbol.keys("\uE007");
         await actionWrapper.clearAndsetValue(path.Factor,genip.factor)
         await actionWrapper.Click(btn)
@@ -27,10 +27,7 @@ class General extends Page {
         await actionWrapper.Click(path.AddCurBtn)
         await actionWrapper.clickAndSetvalue(path.Code,genip.code)
         await actionWrapper.Click(path.Name)
-        if(await common.snackbar.isDisplayed()){
-           assert.strictEqual(
-          await common.snackbar.getText(),genip.alreadyExisitsAlert);
-         } 
+        await actionWrapper.snackBarValidate(common.snackbar,genip.alreadyExisitsAlert)
         await actionWrapper.Click(path.CancelBtn)
    }
    DeleteCurr = async(ele,errormsg,errorip) =>{

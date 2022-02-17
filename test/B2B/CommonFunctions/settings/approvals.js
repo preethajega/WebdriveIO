@@ -42,6 +42,7 @@ class Approval extends Page {
         await actionWrapper.snackBarValidate(snakpath,alertip)
     }
     AddUserGrp = async(btn) =>{
+        await actionWrapper.Click(path.DeleteAprTab)
         await actionWrapper.Click(path.AddGrpbtn)
         await actionWrapper.Click(path.ReviewerBtn)
         await actionWrapper.Click(path.ApproverBtn)
@@ -52,7 +53,7 @@ class Approval extends Page {
         await actionWrapper.clickSetvalueAndSelectoption(path.Approvers,approvip.approver1)
         await actionWrapper.clickSetvalueAndSelectoption(path.DefaultAppr,approvip.approver1)
         await actionWrapper.Click(btn)
-        await actionWrapper.snackBarValidate(common.snackbar,approvip.saveAlert)
+        await actionWrapper.snackBarValidate(common.snackbar,approvip.changalert)
     }
     DeleteUserGrp = async(btn,errmesg,alertip) =>{
         await actionWrapper.Click(path.DeleUserGrpbtn)
@@ -78,7 +79,7 @@ class Approval extends Page {
         await actionWrapper.Click(path.RangTab)
         await actionWrapper.Click(path.DeleRannge)
         await actionWrapper.Click(btn)
-        await actionWrapper.snackBarValidate(common.snackbar,approvip.deleAlert)
+        await actionWrapper.snackBarValidate(common.snackbar,approvip.changalert)
     }
     EditRange = async(btn) =>{
         await actionWrapper.Click(path.RangTab)

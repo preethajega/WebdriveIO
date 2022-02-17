@@ -7,7 +7,6 @@ const team_path = require("../../PageObjects/Settings/Team.page");
 const team_fn= require("../../CommonFunctions/settings/team")
 var teamip= require("../../Inputs/settings/TeamIP");
 const common = require("../../PageObjects/Common/commonObjects");
-const ActionsWrappers = require("../../../CommonActions/ActionsWrappers");
 
 describe('Team Page', () => {
      it("Should allow to access login into Team page ",async () => {
@@ -17,36 +16,40 @@ describe('Team Page', () => {
         await  team_fn.open();
         await  actionsWrappers.urlValidation("/team/landing");
        });
-       it('should Create a user with saving',async () => {
-          await team_fn.AddUser(team_path.Email,teamip.email,team_path.Savebtn)
+      //  it('should Create a user with saving',async () => {
+      //     await team_fn.AddUser(team_path.Code,teamip.code1,team_path.Email,teamip.email,team_path.Savebtn)
+      //  });
+      //  it('should Create a user with canceling',async () => {
+      //    await team_fn.AddUser(team_path.Code,teamip.code,team_path.Email,teamip.email1,team_path.CancelBtn)
+      //    await actionsWrappers.Click(team_path.Closecard)
+      //  });
+      //  it('should validate a Name field',async() => {
+      //     await team_fn.MandatoryFieldvalid(team_path.ErrormsgName,teamip.errmdsgName)
+      //  });
+      //  it('should validate a Email field',async() => {
+      //    await team_fn.MandatoryFieldvalid(team_path.ErrormsgEmail,teamip.errmsgEmail)
+      //  });
+      //  it('should validate a Role field',async() => {
+      //    await team_fn.MandatoryFieldvalid(team_path.ErrormsgRole,teamip.errmsgRole)
+      //  });
+       it('should not allow a user to enter the same code in the Add user card ',async () => {
+         await team_fn.AlredyExistsFieldValid()
        });
-       it('should Create a user with canceling',async () => {
-         await team_fn.AddUser(team_path.Email,teamip.email1,team_path.CancelBtn)
-         await actionsWrappers.Click(team_path.Closecard)
-       });
-       it('should validate a Name field',async() => {
-          await team_fn.MandatoryFieldvalid(team_path.ErrormsgName,teamip.errmdsgName)
-       });
-       it('should validate a Email field',async() => {
-         await team_fn.MandatoryFieldvalid(team_path.ErrormsgEmail,teamip.errmsgEmail)
-       });
-       it('should validate a Role field',async() => {
-         await team_fn.MandatoryFieldvalid(team_path.ErrormsgRole,teamip.errmsgRole)
-       });
-       it('should edit the tags with cancel',async () => {
+       it('should Add the tags to the exisiting user with cancel',async () => {
          await browser.pause(2000);
-         await team_fn.AddTags(team_path.Savebtn)
-       });
-       it('should edit the tags with saving',async () => {
          await team_fn.AddTags(team_path.CancelBtn)
+       });
+       it('should Add the tags to the exisiting user with saving',async () => {
+         await team_fn.AddTags(team_path.Savebtn)
        });
 
        it('should add the Bu to the exisiting user with canceling',async () => {
          await browser.pause(2000);
-         await team_fn.AddBu(team_path.CancelBtn)
+         await team_fn.AddBu(team_path.Branch,teamip.branch1,team_path.BU,teamip.bu1,team_path.CancelBtn)
        });
        it('should add the Bu to the exisiting user with saving',async () => {
-         await team_fn.AddBu(team_path.Savebtn)
+         await actionsWrappers.Click(team_path.refershbtn)
+         await team_fn.AddBu(team_path.Branch,teamip.branch1,team_path.BU,teamip.bu1,team_path.Savebtn)
        });
        it('should delete the Tag with cancel',async () => {
          await team_fn.DeleteTag(team_path.CancelBtn)
@@ -60,6 +63,7 @@ describe('Team Page', () => {
        });
        it('should delete a Branch & BU with saving',async () => {
           await browser.pause(2000);
+          await team_fn.AddBu(team_path.Branch,teamip.branch1,team_path.BU2,teamip.bu2,team_path.Savebtn)
           await team_fn.DeleteBu(team_path.Savebtn)
        });
        

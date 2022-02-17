@@ -49,7 +49,7 @@ class Team extends Page{
         return super.pathByXpath("//p[text()='Email id already exists']")
     }
     get Editdata(){
-        return super.pathByXpath('//table/tbody/tr[12]')
+        return super.pathByXpath('(//table/tbody/tr)[last()]')
     }
     get Editdata1(){
         return super.pathByXpath('//table/tbody/tr[11]')
@@ -74,11 +74,13 @@ class Team extends Page{
     get BUAddBtn(){
         return super.pathById("addNew")
     }
-    get Branch1(){
-        return super.pathById("branch0")
+    get Branch(){
+        return super.pathByXpath('(//input[@placeholder="Search A Branch"])[last()]')
+        //return super.pathById("branch0")
     }
-    get BU1(){
-        return super.pathById("businessUnit0")
+    get BU(){
+        return super.pathByXpath('(//input[@placeholder="Search A Business Unit"])[last()]')
+        //return super.pathById("businessUnit0")
     }
     get Branch2(){
         return super.pathById("branch1")
@@ -92,8 +94,8 @@ class Team extends Page{
     get BU3(){
         return super.pathById("businessUnit2")
     }
-    get DeleteBU1(){
-        return super.pathByXpath('//div[@class="MuiCardContent-root css-2c2xgk"]/div[1]/div[2]/div[3]')
+    get DeleteBU(){
+        return super.pathByXpath('(//button[@id="deleteBU"])[last()]')
     }
     get DeleteBU2(){
         return super.pathByXpath('//div[@class="MuiCardContent-root css-2c2xgk"]/div[1]/div[3]/div[3]')

@@ -11,7 +11,10 @@ class Tag extends Page{
         return super.pathByXpath('(//*[contains(@class,"deleteIconSmall")])[1]')
     }
     get TerityDeletedata(){
-        return super.pathByXpath('(//*[contains(@class,"deleteIconSmall")])[7]')
+        return super.pathByXpath('(//*[contains(@class,"deleteIconSmall")])[3]')
+    }
+    get DeleteMapedGen(){
+        return super.pathByXpath('(//*[contains(@class,"deleteIconSmall")])[3]')
     }
     get GenDeletedata(){
         return super.pathByXpath('(//*[contains(@class,"deleteIconSmall")])[last()]')

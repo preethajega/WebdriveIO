@@ -36,7 +36,7 @@ describe('Tax Page', () => {
       it('should delete a created Tax name with cancel',async () => {
          await tax_fn.DeleteTax(tax_path.DeletlastTax,tax_path.CancelBtn,common.snackbar,taxip.saveAlert)
       });
-      it('should delete a created Tax name with cancel',async () => {
+      it('should delete a created Tax name with save',async () => {
          await tax_fn.DeleteTax(tax_path.DeletlastTax,tax_path.SavelBtn,common.snackbar,taxip.saveAlert)
       });
       it('should try to delete a mapeed Tax',async () => {
@@ -146,5 +146,18 @@ describe('Tax Page', () => {
       it('should delete a creted product tax code with save',async () => {
          await tax_fn.DeleteTax(tax_path.DeletlastTax,tax_path.SavelBtn,common.snackbar,taxip.saveAlert)
       });
+
+      // it('santy', async() => {
+      //    await tax_fn.AddTaxName(tax_path.SavelBtn)
+      //    await tax_fn.EditTaxNamefield(tax_path.SavelBtn)
+      //    await tax_fn.FieldValid(tax_path.ErrTax_exem_prod,taxip.errmsg)
+      //    await tax_fn.DeleteTax(tax_path.DeletlastTax,tax_path.SavelBtn,common.snackbar,taxip.saveAlert)
+      //    await tax_fn.MapedTaxDelete(common.snackbar,taxip.taxNameAlert)
+      //    await tax_fn.emptyfieldValid(common.snackbar,taxip.taxNameEmpAlert)
+      //    await tax_fn.AddTaxName(tax_path.SavelBtn)
+
+
+
+      // });
 
 });

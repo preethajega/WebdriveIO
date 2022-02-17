@@ -35,7 +35,8 @@ class Approval extends Page{
         return super.pathByXpath("//p[text()='Name required']")
     }
     get DeleteAprTab(){
-        return super.pathByXpath('(//div[@class="scrollbar-container ps"]/div)[last()]')
+        return super.pathByXpath('(//ul[contains(@class,"MuiList-root MuiList-dense")]/div/div)[last()]')
+        //return super.pathByXpath('(//div[@class="scrollbar-container ps"]/div)[last()]')
     }
  //Add group card
     get GrpTab(){
