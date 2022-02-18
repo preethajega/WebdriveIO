@@ -46,6 +46,53 @@ describe('Branch card', () => {
         await browser.refresh()
         await Branch_fn.EditBranchAddress(Branch_path.SaveBtn)
     });
+        it('should delete a selected Address with CancelBtn',async () => {
+        await Branch_fn.DeleteBranchAddress(Branch_path.ConformCancelBtn)   
+    });
+    it('should delete a selected Address with DeleteBtn',async () => {
+        await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
+        await browser.pause(1000)
+    });
+    it('should try to delete a mapped Brach with cancel',async () => {
+        await browser.pause(1000)
+         await Branch_fn.DeleteMapppedBranch(Branch_path.ConformCancelBtn)
+    });
+    it('should try to delete a mapped Brach with save',async () => {
+        await browser.pause(1000)
+        await Branch_fn.DeleteMapppedBranch(Branch_path.ConformDeleteBtn)
+    });
+    it('should validate a Branch Name field',async () => {
+        await browser.pause(1000)
+        await Branch_fn.FieldValid(Branch_path.errBranchName,Branchip.errmsgBranchName)
+    });
+    it('should Add a new Branch with cancel',async () => {
+        await Branch_fn.AddBranch(Branch_path.CancelBtn)
+    });
+
+    it('should delete a selected Address with CabcelBtn',async () => {
+        await Branch_fn.DeleteBranchAddress(Branch_path.ConformCancelBtn)   
+    });
+    it('should delete a selected Address with DeleteBtn',async () => {
+        await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
+        await browser.pause(1000)
+    });
+
+    it('should Add a new branch with AutoFill & saving', async() => {
+        await browser.pause(1000)
+        await Branch_fn.AddBranchByAutoFill(Branch_path.SaveBtn);
+    });
+    it('should Add a new branch with AutoFill & cancel', async() => {
+        await browser.pause(2000)
+        await Branch_fn.AddBranchByAutoFill(Branch_path.CancelBtn);
+    });
+    it('should edit the selected Branch with canceling',async () => {
+        await browser.pause(1000)
+        await Branch_fn.EditBranchAddress(Branch_path.CancelBtn)
+    });
+    it('should edit the selected Branch with Save',async () => {
+        await browser.refresh()
+        await Branch_fn.EditBranchAddress(Branch_path.SaveBtn)
+    });
         it('should delete a selected Address with CabcelBtn',async () => {
         await Branch_fn.DeleteBranchAddress(Branch_path.ConformCancelBtn)   
     });

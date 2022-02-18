@@ -13,9 +13,11 @@ class Company extends Page {
     super.open(compIp.CompUrl); 
   }
 UploadLogo = async() =>{
-    await actionWrapper.Click(path.logoupload);
+    await browser.pause(2000);    
     await attchmentUpload.upload(path.logoupload,compIp.uploadimg)
-    await actionWrapper.checkVisibleClickableAndClick(path.savebtn)
+    await browser.pause(2000);  
+    await actionWrapper.Click(path.savebtn);
+    await actionWrapper.snackBarValidate(common.snackbar,compIp.saveAlert)
 }
 Updatevalue = async(path,ele,input,btn) =>{
     await actionWrapper.Click(path)

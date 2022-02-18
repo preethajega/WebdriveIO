@@ -53,10 +53,10 @@ class Branch extends Page{
         return super.pathByName('addressId.gst')
     }
     get BillingCode(){
-        return super.pathByName('addressId.billingErpCode')
+        return super.pathByName('addressId.billToCode')
     }
     get ShipingCode(){
-        return super.pathByName('addressId.shippingErpCode')
+        return super.pathByName('addressId.shipToCode')
     }
     get BranchCode(){
         return super.pathByName('salesBranchCode')

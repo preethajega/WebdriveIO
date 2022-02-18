@@ -4,8 +4,8 @@ const { subindustry1 } = require("../../Inputs/settings/CompanyIP");
 class Comp extends Page{
    
     get logoupload(){
-        return super.pathByXpath('//span[@aria-label="upload picture"]')
-       // return super.pathById("prefix-1")
+        return super.pathByXpath('//h5[contains(text(),"Details")]/following::input[1]')
+ 
     }
     get savebtn(){
         return super.pathById('loadingButton')
