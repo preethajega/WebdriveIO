@@ -14,71 +14,71 @@ describe('Warehouse card', () => {
         await actionsWrappers.urlValidation("/company");
     });
 
-    // it('should add a Warehouse with MapedExisitingAddress by saving', async () => {
-    //     await Warehouse_fn.AddWarehousebyMappingExisitingAddress(Warehouse_path.WarehouseName,
-    //         Warehouseip.WarehouseName, Warehouse_path.SaveBtn)
-    // });
-    // it('should add a Warehouse with MapedExisitingAddress by canceling', async () => {
-    //     await Warehouse_fn.AddWarehousebyMappingExisitingAddress(Warehouse_path.WarehouseName,
-    //         Warehouseip.WarehouseName1, Warehouse_path.CancelBtn)
-    // });
+    it('should add a Warehouse with MapedExisitingAddress by saving', async () => {
+        await Warehouse_fn.AddWarehousebyMappingExisitingAddress(Warehouse_path.WarehouseName,
+            Warehouseip.WarehouseName, Warehouse_path.SaveBtn)
+    });
+    it('should add a Warehouse with MapedExisitingAddress by canceling', async () => {
+        await Warehouse_fn.AddWarehousebyMappingExisitingAddress(Warehouse_path.WarehouseName,
+            Warehouseip.WarehouseName1, Warehouse_path.CancelBtn)
+    });
 
-    // it('should not allow a user to add the same warehouse name again', async () => {
-    //     await Warehouse_fn.AlreadyExistWarehouse()
-    // });
-    // it('should delete a warehouse with CancelBtn', async () => {
-    //     await Warehouse_fn.DeleteWarehouse(Warehouse_path.Deletedata, Warehouse_path.ConformCancelBtn)
-    // });
-    // it('should delete a warehouse with DeleteBtn', async () => {
-    //     await Warehouse_fn.DeleteWarehouse(Warehouse_path.Deletedata, Warehouse_path.ConformDeleteBtn)
-    // });
+    it('should not allow a user to add the same warehouse name again', async () => {
+        await Warehouse_fn.AlreadyExistWarehouse()
+    });
+    it('should delete a warehouse with CancelBtn', async () => {
+        await Warehouse_fn.DeleteWarehouse(Warehouse_path.Deletedata, Warehouse_path.ConformCancelBtn)
+    });
+    it('should delete a warehouse with DeleteBtn', async () => {
+        await Warehouse_fn.DeleteWarehouse(Warehouse_path.Deletedata, Warehouse_path.ConformDeleteBtn)
+    });
 
-    // it('should add a Warehouse Manual by saving', async () => {
-    //     await Warehouse_fn.AddWarehouseManual(Warehouse_path.WarehouseName,
-    //         Warehouseip.WarehouseName2, Warehouse_path.SaveBtn)
-    // });
-    // it('should add a Warehouse Manual by canceling', async () => {
-    //     await Warehouse_fn.AddWarehouseManual(Warehouse_path.WarehouseName,
-    //         Warehouseip.WarehouseName3, Warehouse_path.CancelBtn)
-    //     await browser.pause(1000);
-    // });
+    it('should add a Warehouse Manual by saving', async () => {
+        await Warehouse_fn.AddWarehouseManual(Warehouse_path.WarehouseName,
+            Warehouseip.WarehouseName2, Warehouse_path.SaveBtn)
+    });
+    it('should add a Warehouse Manual by canceling', async () => {
+        await Warehouse_fn.AddWarehouseManual(Warehouse_path.WarehouseName,
+            Warehouseip.WarehouseName3, Warehouse_path.CancelBtn)
+        await browser.pause(1000);
+    });
 
-    // it('should delete a warehouse with CancelBtn', async () => {
-    //     await Warehouse_fn.DeleteWarehouse(Warehouse_path.Deletedata, Warehouse_path.ConformCancelBtn)
-    // });
-    // it('should delete a warehouse with DeleteBtn', async () => {
-    //     await Warehouse_fn.DeleteWarehouse(Warehouse_path.Deletedata, Warehouse_path.ConformDeleteBtn)
-    //     await browser.pause(1000);
-    // });
+    it('should delete a warehouse with CancelBtn', async () => {
+        await Warehouse_fn.DeleteWarehouse(Warehouse_path.Deletedata, Warehouse_path.ConformCancelBtn)
+    });
+    it('should delete a warehouse with DeleteBtn', async () => {
+        await Warehouse_fn.DeleteWarehouse(Warehouse_path.Deletedata, Warehouse_path.ConformDeleteBtn)
+        await browser.pause(1000);
+    });
 
-    // it('should add a Warehouse with Autofill by saving', async () => {
-    //     await Warehouse_fn.AddWarehouseAutofillAddress(Warehouse_path.WarehouseName,
-    //         Warehouseip.WarehouseName4, Warehouse_path.SaveBtn)
-    // });
-    // it('should add a Warehouse with Autofill by canceling', async () => {
-    //     await Warehouse_fn.AddWarehouseAutofillAddress(Warehouse_path.WarehouseName,
-    //         Warehouseip.WarehouseName5, Warehouse_path.CancelBtn)
-    //     await browser.pause(1000);
-    // });
-    // it('should Edit the warehouse with SaveBtn', async () => {
-    //     await browser.pause(1000);
-    //     await Warehouse_fn.EditWarehouse(Warehouse_path.SaveBtn)
-    // });
-    // it('should Edit the warehouse with cancelBtn', async () => {
-    //     await Warehouse_fn.EditWarehouse(Warehouse_path.CancelBtn)
-    // });
-    // it('should delete a warehouse with DeleteBtn', async () => {
-    //     await browser.refresh()
-    //     await Warehouse_fn.DeleteWarehouse(Warehouse_path.Deletedata,Warehouse_path.ConformDeleteBtn)
-    // });
-    // it('should try to delete a mapped Warehouse with cancel', async () => {
-    //     await browser.pause(1000);
-    //     await Warehouse_fn.DeleteMapppedWH(Warehouse_path.ConformCancelBtn)
-    // });
-    // it('should try to delete a mapped Warehouse with save', async () => {
-    //     await browser.pause(1000);
-    //     await Warehouse_fn.DeleteMapppedWH(Warehouse_path.ConformDeleteBtn)
-    // });
+    it('should add a Warehouse with Autofill by saving', async () => {
+        await Warehouse_fn.AddWarehouseAutofillAddress(Warehouse_path.WarehouseName,
+            Warehouseip.WarehouseName4, Warehouse_path.SaveBtn)
+    });
+    it('should add a Warehouse with Autofill by canceling', async () => {
+        await Warehouse_fn.AddWarehouseAutofillAddress(Warehouse_path.WarehouseName,
+            Warehouseip.WarehouseName5, Warehouse_path.CancelBtn)
+        await browser.pause(1000);
+    });
+    it('should Edit the warehouse with SaveBtn', async () => {
+        await browser.pause(1000);
+        await Warehouse_fn.EditWarehouse(Warehouse_path.SaveBtn)
+    });
+    it('should Edit the warehouse with cancelBtn', async () => {
+        await Warehouse_fn.EditWarehouse(Warehouse_path.CancelBtn)
+    });
+    it('should delete a warehouse with DeleteBtn', async () => {
+        await browser.refresh()
+        await Warehouse_fn.DeleteWarehouse(Warehouse_path.Deletedata,Warehouse_path.ConformDeleteBtn)
+    });
+    it('should try to delete a mapped Warehouse with cancel', async () => {
+        await browser.pause(1000);
+        await Warehouse_fn.DeleteMapppedWH(Warehouse_path.ConformCancelBtn)
+    });
+    it('should try to delete a mapped Warehouse with save', async () => {
+        await browser.pause(1000);
+        await Warehouse_fn.DeleteMapppedWH(Warehouse_path.ConformDeleteBtn)
+    });
 
     it('should validate a Warehouse Name field', async () => {
         await browser.pause(1000)
