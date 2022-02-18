@@ -2,7 +2,7 @@ function Taxip(){
     const path = require('path');
     this.taxUrl="/settings/tax"
     this.taxName="IGST"
-    this.taxname2="VAT"
+    this.taxname2="SGST"
     this.taxname3="CGST"
     this.rate="5"
     this.rate2="10"

@@ -116,70 +116,70 @@ describe("Sanity test check",async() => {
     })
 
 
-//     it("Create and delete the Category",async()=>{
+    it("Create and delete the Category",async()=>{
        
-//       let AddCategoery=await $('//span[text()="Add category"]');
-//       let catName = await $('//input[@name="name"]');
-//       let Department  =await $('//span[text()="Department"]');
-//       let save=await $('//span[text()="Save"]');
-//       let Cancel =await $('//span[text()="Cancel"]');
-//       let EditCategory=await $('(//*[@aria-label="edit"])[last()]');
-//       let DeleteCategoery = await $('(//*[@aria-label="delete"])[last()]');
-//       let Yes = await $('#yes');
-//       let snackbar = await $('#client-snackbar');
+      let AddCategoery=await $('//span[text()="Add category"]');
+      let catName = await $('//input[@name="name"]');
+      let Department  =await $('//span[text()="Department"]');
+      let save=await $('//span[text()="Save"]');
+      let Cancel =await $('//span[text()="Cancel"]');
+      let EditCategory=await $('(//*[@aria-label="edit"])[last()]');
+      let DeleteCategoery = await $('(//*[@aria-label="delete"])[last()]');
+      let Yes = await $('#yes');
+      let snackbar = await $('#client-snackbar');
 
 
 
-//     await browser.url("/categories");
-//     await browser.pause(3000);
-//      await AddCategoery.click();
-//       await browser.pause(2000);
-//       await catName.click();
-//       await catName.keys(["\uE009", "a"]);
-//       await catName.keys("\uE003");
-//       await browser.pause(2000);
-//       await catName.setValue("bocsh");
+    await browser.url("/categories");
+    await browser.pause(3000);
+     await AddCategoery.click();
+      await browser.pause(2000);
+      await catName.click();
+      await catName.keys(["\uE009", "a"]);
+      await catName.keys("\uE003");
+      await browser.pause(2000);
+      await catName.setValue("bocsh");
 
-//     let catIcon=await $('//h6[text()="Icon"]/following::input[1]');
-//     await catIcon.scrollIntoView();
+    let catIcon=await $('//h6[text()="Icon"]/following::input[1]');
+    await catIcon.scrollIntoView();
 
-//       await browser.execute(
-//         (el) => el.style.display = 'block',
-//         await catIcon );
-//         await catIcon.waitForDisplayed();
-//         await catIcon.setValue(imageUpload);
-//         await browser.pause(4000);
-//         await save.click();       
-// await assert.strictEqual(await snackbar.getText(),"Saved successfully");
+      await browser.execute(
+        (el) => el.style.display = 'block',
+        await catIcon );
+        await catIcon.waitForDisplayed();
+        await catIcon.setValue(imageUpload);
+        await browser.pause(4000);
+        await save.click();       
+await assert.strictEqual(await snackbar.getText(),"Saved successfully");
 
-// /*Edit category 
-//         await browser.pause(2000);
-//  await newCategory.click();  
-//   await EditCategory.click();
-//       await browser.pause(2000);
-//       let catImage=await $('//h6[text()="Image"]/following::input[1]');
-//    await  catImage.scrollIntoView();
-//       await browser.execute(
-//             (el) => el.style.display = 'block',
-//       await catImage );
-//       await catImage.waitForDisplayed();
-//        await browser.pause(2000);
-//    await catImage.setValue(imageUpload);
-//       await browser.pause(2000);
-//        await save.scrollIntoView();
-//          await browser.pause(4000);
-//      await save.click();
-// await assert.strictEqual(await snackbar.getText(),"Saved successfully");*/
-// /*Delete category */
-// await browser.pause(2000);
-// await  DeleteCategoery.scrollIntoView();
-// await DeleteCategoery.click();
-//       await browser.pause(2000);
-//       await Yes.click();
-//           await browser.pause(2000);
-// await assert.strictEqual(await snackbar.getText(),"Deleted successfully");
+/*Edit category 
+        await browser.pause(2000);
+ await newCategory.click();  
+  await EditCategory.click();
+      await browser.pause(2000);
+      let catImage=await $('//h6[text()="Image"]/following::input[1]');
+   await  catImage.scrollIntoView();
+      await browser.execute(
+            (el) => el.style.display = 'block',
+      await catImage );
+      await catImage.waitForDisplayed();
+       await browser.pause(2000);
+   await catImage.setValue(imageUpload);
+      await browser.pause(2000);
+       await save.scrollIntoView();
+         await browser.pause(4000);
+     await save.click();
+await assert.strictEqual(await snackbar.getText(),"Saved successfully");*/
+/*Delete category */
+await browser.pause(2000);
+await  DeleteCategoery.scrollIntoView();
+await DeleteCategoery.click();
+      await browser.pause(2000);
+      await Yes.click();
+          await browser.pause(2000);
+await assert.strictEqual(await snackbar.getText(),"Deleted successfully");
 
-//     });
+    });
 
     it("Create and delete the product",async()=>{
        

@@ -15,86 +15,86 @@ describe('Branch card', () => {
         await  actionsWrappers.urlValidation("/company");
         });
 
-    // it('should Add a new Branch with saving',async () => {
-    //     await Branch_fn.AddBranch(Branch_path.SaveBtn)
-    // });
-    // it('should Add a new Branch with cancel',async () => {
-    //     await Branch_fn.AddBranch(Branch_path.CancelBtn)
-    // });
+    it('should Add a new Branch with saving',async () => {
+        await Branch_fn.AddBranch(Branch_path.SaveBtn)
+    });
+    it('should Add a new Branch with cancel',async () => {
+        await Branch_fn.AddBranch(Branch_path.CancelBtn)
+    });
 
-    // it('should delete a selected Address with CabcelBtn',async () => {
-    //     await Branch_fn.DeleteBranchAddress(Branch_path.ConformCancelBtn)   
-    // });
-    // it('should delete a selected Address with DeleteBtn',async () => {
-    //     await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
-    //     await browser.pause(1000)
-    // });
-
-    // it('should Add a new branch with AutoFill & saving', async() => {
-    //     await browser.pause(1000)
-    //     await Branch_fn.AddBranchByAutoFill(Branch_path.SaveBtn);
-    // });
-    // it('should Add a new branch with AutoFill & cancel', async() => {
-    //     await browser.pause(2000)
-    //     await Branch_fn.AddBranchByAutoFill(Branch_path.CancelBtn);
-    // });
-    // it('should edit the selected Branch with canceling',async () => {
-    //     await browser.pause(1000)
-    //     await Branch_fn.EditBranchAddress(Branch_path.CancelBtn)
-    // });
-    // it('should edit the selected Branch with Save',async () => {
-    //     await browser.refresh()
-    //     await Branch_fn.EditBranchAddress(Branch_path.SaveBtn)
-    // });
-    //     it('should delete a selected Address with CabcelBtn',async () => {
-    //     await Branch_fn.DeleteBranchAddress(Branch_path.ConformCancelBtn)   
-    // });
-    // it('should delete a selected Address with DeleteBtn',async () => {
-    //     await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
-    //     await browser.pause(1000)
-    // });
-    // it('should try to delete a mapped Brach with cancel',async () => {
-    //     await browser.pause(1000)
-    //      await Branch_fn.DeleteMapppedBranch(Branch_path.ConformCancelBtn)
-    // });
-    // it('should try to delete a mapped Brach with save',async () => {
-    //     await browser.pause(1000)
-    //     await Branch_fn.DeleteMapppedBranch(Branch_path.ConformDeleteBtn)
-    // });
-    it('should validate a Branch Name field',async () => {
+    it('should delete a selected Address with CabcelBtn',async () => {
+        await Branch_fn.DeleteBranchAddress(Branch_path.ConformCancelBtn)   
+    });
+    it('should delete a selected Address with DeleteBtn',async () => {
+        await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
         await browser.pause(1000)
-        await Branch_fn.FieldValid(Branch_path.errBranchName,Branchip.errmsgBranchName)
     });
-    it('should validate a Address field',async () => {
-        await Branch_fn.FieldValid(Branch_path.errAddress,Branchip.errmsgAddress)
+
+    it('should Add a new branch with AutoFill & saving', async() => {
+        await browser.pause(1000)
+        await Branch_fn.AddBranchByAutoFill(Branch_path.SaveBtn);
     });
-    it('should validate a Locality field',async () => {
-        await Branch_fn.FieldValid(Branch_path.errLocality,Branchip.errmsgLocality)
+    it('should Add a new branch with AutoFill & cancel', async() => {
+        await browser.pause(2000)
+        await Branch_fn.AddBranchByAutoFill(Branch_path.CancelBtn);
     });
-    it('should validate a Country field',async () => {
-        await Branch_fn.FieldValid(Branch_path.errCountry,Branchip.errmsgCountry)
+    it('should edit the selected Branch with canceling',async () => {
+        await browser.pause(1000)
+        await Branch_fn.EditBranchAddress(Branch_path.CancelBtn)
     });
-    it('should validate a State field',async () => {
-        await Branch_fn.FieldValid(Branch_path.errState,Branchip.errmsgState)
+    it('should edit the selected Branch with Save',async () => {
+        await browser.refresh()
+        await Branch_fn.EditBranchAddress(Branch_path.SaveBtn)
     });
-    it('should validate a District field',async () => {
-        await Branch_fn.FieldValid(Branch_path.errDistrict,Branchip.errmsgDistrict)
+        it('should delete a selected Address with CabcelBtn',async () => {
+        await Branch_fn.DeleteBranchAddress(Branch_path.ConformCancelBtn)   
     });
-    it('should validate a Pincode field',async () => {
-        await Branch_fn.FieldValid(Branch_path.errPincode,Branchip.errmsgPinCode)
+    it('should delete a selected Address with DeleteBtn',async () => {
+        await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
+        await browser.pause(1000)
     });
-    it('should validate a City field',async () => {
-        await Branch_fn.FieldValid(Branch_path.errCity,Branchip.errmsgCity)
+    it('should try to delete a mapped Brach with cancel',async () => {
+        await browser.pause(1000)
+         await Branch_fn.DeleteMapppedBranch(Branch_path.ConformCancelBtn)
     });
-    it('should validate a Tax field',async () => {
-        await Branch_fn.FieldValid(Branch_path.errTax,Branchip.errmsgTax)
+    it('should try to delete a mapped Brach with save',async () => {
+        await browser.pause(1000)
+        await Branch_fn.DeleteMapppedBranch(Branch_path.ConformDeleteBtn)
     });
-    it('should validate a Contact Name field',async () => {
-        await Branch_fn.FieldValid(Branch_path.errContactNam,Branchip.errmsgContactName)
-    });
-    it('should validate a Contact Number field',async () => {
-        await Branch_fn.FieldValid(Branch_path.errContactNumb,Branchip.errmsgContactNumb)
-    });
+    // it('should validate a Branch Name field',async () => {
+    //     await browser.pause(1000)
+    //     await Branch_fn.FieldValid(Branch_path.errBranchName,Branchip.errmsgBranchName)
+    // });
+    // it('should validate a Address field',async () => {
+    //     await Branch_fn.FieldValid(Branch_path.errAddress,Branchip.errmsgAddress)
+    // });
+    // it('should validate a Locality field',async () => {
+    //     await Branch_fn.FieldValid(Branch_path.errLocality,Branchip.errmsgLocality)
+    // });
+    // it('should validate a Country field',async () => {
+    //     await Branch_fn.FieldValid(Branch_path.errCountry,Branchip.errmsgCountry)
+    // });
+    // it('should validate a State field',async () => {
+    //     await Branch_fn.FieldValid(Branch_path.errState,Branchip.errmsgState)
+    // });
+    // it('should validate a District field',async () => {
+    //     await Branch_fn.FieldValid(Branch_path.errDistrict,Branchip.errmsgDistrict)
+    // });
+    // it('should validate a Pincode field',async () => {
+    //     await Branch_fn.FieldValid(Branch_path.errPincode,Branchip.errmsgPinCode)
+    // });
+    // it('should validate a City field',async () => {
+    //     await Branch_fn.FieldValid(Branch_path.errCity,Branchip.errmsgCity)
+    // });
+    // it('should validate a Tax field',async () => {
+    //     await Branch_fn.FieldValid(Branch_path.errTax,Branchip.errmsgTax)
+    // });
+    // it('should validate a Contact Name field',async () => {
+    //     await Branch_fn.FieldValid(Branch_path.errContactNam,Branchip.errmsgContactName)
+    // });
+    // it('should validate a Contact Number field',async () => {
+    //     await Branch_fn.FieldValid(Branch_path.errContactNumb,Branchip.errmsgContactNumb)
+    // });
 
     // it('santy',async () => {
     //     await Branch_fn.AddBranch(Branch_path.SaveBtn)
