@@ -13,7 +13,7 @@ class Term extends Page {
     async open() {
         super.open(termip.termUrl); 
     }
-    AddTerm = async(tab,ele,eleip,btn)=>{
+    AddTerm = async(tab,ele,eleip)=>{
         await browser.refresh()
         await actionWrapper.Click(tab)
         await browser.pause(1000);
@@ -23,9 +23,16 @@ class Term extends Page {
         await actionWrapper.Click(path.NeedApproval)
         // await browser.pause(2000)
         // await actionWrapper.Click(path.Default)
+    }
+    termSnakBarValid= async(btn)=>{
         await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(common.snackbar,termip.saveAlert)
     }
+    InsPFTerms = async() =>{
+        await actionWrapper.clearAndsetValue()
+        await actionWrapper.clearAndsetValue()
+    }
+
     FieldVallid = async(btn,snakpath,snakip) =>{
         await actionWrapper.scrollEle(btn)
         await actionWrapper.Click(btn)

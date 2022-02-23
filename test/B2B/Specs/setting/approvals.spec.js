@@ -16,38 +16,38 @@ describe('Approval Page', () => {
     await approval_fn.open();
     await actionsWrappers.urlValidation("/approvals");
   });
-  // ***************** create Group Name card ***************************
-  // it('shoud allow a user to create a Approver Group with cancel', async () => {
-  //   await approval_fn.CreateApprGrp(approval_path.ConfcancelBtn)
-  // });
-  // it('shoud allow a user to create a Approver Group with save', async () => {
-  //   await approval_fn.CreateApprGrp(approval_path.ConfSavelBtn)
-  // });
+ /* ***************** create Group Name card ***************************   */
+  it('shoud allow a user to create a Approver Group with cancel', async () => {
+    await approval_fn.CreateApprGrp(approval_path.ConfcancelBtn)
+  });
+  it('shoud allow a user to create a Approver Group with save', async () => {
+    await approval_fn.CreateApprGrp(approval_path.ConfSavelBtn)
+  });
 
-  // it('should validate the appprover group name field in Create Approver Card', async () => {
-  //   await approval_fn.ApproverGrpfieldValid()
-  // });
-  // it('should edit the Approver Group Name Field with cancel', async () => {
-  //   await approval_fn.EditApprGrp(approval_path.EditAprgrp, approval_path.ConfcancelBtn,
-  //     common.snackbar, approvalip.saveAlert)
-  // });
-  // it('should edit the Approver Group Name Field with save', async () => {
-  //   await approval_fn.EditApprGrp(approval_path.EditAprgrp, approval_path.ConfSavelBtn,
-  //     common.snackbar, approvalip.saveAlert)
-  // });
-  // it('should delete the Created Approver Group with Cancel', async () => {
-  //   await browser.pause(2000)
-  //   await approval_fn.Delete_Edit_ApprGrp(approval_path.DeleteApr, approval_path.ConfcancelBtn,
-  //     common.snackbar, approvalip.deleAlert)
-  // });
-  // it('should delete the Created Approver Group with save', async () => {
-  //   await approval_fn.Delete_Edit_ApprGrp(approval_path.DeleteApr, approval_path.ConfDeleBtn,
-  //     common.snackbar, approvalip.deleAlert)
-  // });
-  // it('shoud allow a user to create a Approver Group with save', async () => {
-  //   await browser.pause(2000)
-  //   await approval_fn.CreateApprGrp(approval_path.ConfSavelBtn)
-  // });
+  it('should validate the appprover group name field in Create Approver Card', async () => {
+    await approval_fn.ApproverGrpfieldValid()
+  });
+  it('should edit the Approver Group Name Field with cancel', async () => {
+    await approval_fn.EditApprGrp(approval_path.EditAprgrp, approval_path.ConfcancelBtn,
+      common.snackbar, approvalip.saveAlert)
+  });
+  it('should edit the Approver Group Name Field with save', async () => {
+    await approval_fn.EditApprGrp(approval_path.EditAprgrp, approval_path.ConfSavelBtn,
+      common.snackbar, approvalip.saveAlert)
+  });
+  it('should delete the Created Approver Group with Cancel', async () => {
+    await browser.pause(2000)
+    await approval_fn.Delete_Edit_ApprGrp(approval_path.DeleteApr, approval_path.ConfcancelBtn,
+      common.snackbar, approvalip.deleAlert)
+  });
+  it('should delete the Created Approver Group with save', async () => {
+    await approval_fn.Delete_Edit_ApprGrp(approval_path.DeleteApr, approval_path.ConfDeleBtn,
+      common.snackbar, approvalip.deleAlert)
+  });
+  it('shoud allow a user to create a Approver Group with save', async () => {
+    await browser.pause(2000)
+    await approval_fn.CreateApprGrp(approval_path.ConfSavelBtn)
+  });
 
   /* ************** Approver User Group Card ********************************* */
   it('should create a new User group with cancel', async () => {

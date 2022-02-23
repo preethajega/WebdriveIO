@@ -25,16 +25,12 @@ class Terms extends Page{
     }
     get TermName(){
         return super.pathByXpath('(//input[starts-with(@name,"termData[")])[last()]')
-        //return super.pathByXpath('(//input[starts-with(@id,"MSETT_PT_CD_")])[last()]')
     }
     get NeedApproval(){
         return super.pathByXpath('(//span[starts-with(@class,"MuiSwitch-root ")])[last()]')
-       // return super.pathByXpath('(//input[starts-with(@id,"MSETT_PT_CNA_")])[last()]')
     }
     get Default(){
-        //return super.pathByXpath('(//input[@name="defaultTerms"])[last()]')
         return super.pathByXpath('(//span[@class="css-hyxlzm"])[last()]')
-       //return super.pathByXpath('(//input[starts-with(@id,"MSETT_PT_CD")])[last()]')
     }
     get DeletelastTerm(){
         return super.pathByXpath('(//button[starts-with(@id,"MSETT_PT_CDEL_")])[last()]')
@@ -45,7 +41,17 @@ class Terms extends Page{
     get ErrOptionsField(){
         return super.pathByXpath("//p[text()='Description required']")
     }
-    // Payment Terms
+    get Isneeded(){
+        return super.pathByXpath('(//div[contains(@class,"MuiBox-root css-1k")]/label/span[contains(@class,"MuiSwi")])[last()]')
+    }
+/* **************** INSURANCE,P&F Terms  ************************ */
+    get Value(){
+        return super.pathByXpath('(//input[contains(@name,"Value")])[last()]')
+    }
+    get Percent(){
+        return super.pathByXpath('(//input[contains(@name,"Percentage")])[last()]')
+    }
+/* **************** Payment Terms  ************************ */
     get AddPayTermBtn(){
         return super.pathByXpath('//button[@aria-label="Add Terms"]')
     }
@@ -72,7 +78,6 @@ class Terms extends Page{
     }
     get Paymentgateway(){
         return super.pathByXpath('(//span[starts-with(@class,"MuiSwitch-swi")])[last()]')
-        //return super.pathByXpath('(//input[starts-with(@id,"logo")])[last()]')
     }
     get B2CTerm(){
         return super.pathByXpath('(//input[starts-with(@name,"b2C")])[last()]')

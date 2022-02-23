@@ -19,11 +19,13 @@ describe('Terms Page', () => {
 //  ******************  DELIVERY TERM CARD  **************************
       it('should create a new Delivery Term with save',async () => {
          await browser.pause(1000)
-         await term_fn.AddTerm(term_path.Delivery,term_path.TermName,termip.delivery,term_path.Savebtn)
+         await term_fn.AddTerm(term_path.Delivery,term_path.TermName,termip.delivery)
+         await term_fn.termSnakBarValid(term_path.Savebtn)
       });
       it('should create a new Delivery Term with cancel',async () => {
          await browser.pause(1000)
-         await term_fn.AddTerm(term_path.Delivery,term_path.TermName,termip.delivery1,term_path.CancelBtn)
+         await term_fn.AddTerm(term_path.Delivery,term_path.TermName,termip.delivery1)
+         await term_fn.termSnakBarValid(term_path.CancelBtn)
       }); 
       it('should validate a Delivery Terms field',async () => {
          await browser.pause(1000)

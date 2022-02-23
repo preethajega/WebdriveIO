@@ -10,11 +10,9 @@ class General extends Page{
     }
     get Name(){
         return super.pathByXpath('//div[@role="dialog"]/div[2]/div[2]/div/input')
-        //return super.pathByName('description')
     }
     get Format(){
         return super.pathByXpath('//div[@role="dialog"]/div[2]/div[3]/div/div/input')
-        //return super.pathById("mui-84691")
     }
     get Symbol(){
         return super.pathByXpath('//div[@role="dialog"]/div[2]/div[4]/div/div/input')

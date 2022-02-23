@@ -50,6 +50,7 @@ describe('Branch card', () => {
         await Branch_fn.DeleteBranchAddress(Branch_path.ConformCancelBtn)   
     });
     it('should delete a selected Address with DeleteBtn',async () => {
+        await browser.pause(1000)
         await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
         await browser.pause(1000)
     });

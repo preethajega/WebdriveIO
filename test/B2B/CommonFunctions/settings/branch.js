@@ -57,21 +57,21 @@ class Branch extends Page{
     }
     DeleteBranchAddress = async(btn) =>{
         await actionsWrappers.scrollEleAndClick(path.Deletedata)
-        await actionsWrappers.Click(path.DeleteBtn)
+        await actionsWrappers.scrollEleAndClick(path.DeleteBtn)
         await actionsWrappers.Click(btn)
         await actionsWrappers.snackBarValidate(common.snackbar,Branchip.DeleteAlert)    
     }
     EditBranchAddress = async(btn) =>{
         await actionsWrappers.scrollEleAndClick(path.Editdata)
         await browser.pause(1000)
-        await actionsWrappers.Click(path.EditBtn)
+        await actionsWrappers.scrollEleAndClick(path.EditBtn)
         await actionsWrappers.clearValue_selectDropdownvalue(path.SearchCompname,Branchip.EditSearchCompname)
         await actionsWrappers.Click(btn) 
         await actionsWrappers.snackBarValidate(common.snackbar,Branchip.saveAlert)    
     }
     DeleteMapppedBranch = async(btn)=>{
       await actionsWrappers.scrollEleAndClick(path.MapedData)
-      await actionsWrappers.Click(path.DeleteBtn)
+      await actionsWrappers.scrollEleAndClick(path.DeleteBtn)
       await actionsWrappers.Click(btn)
       await actionsWrappers.snackBarValidate(common.snackbar,Branchip.MapedDeleteAlert)
     }
