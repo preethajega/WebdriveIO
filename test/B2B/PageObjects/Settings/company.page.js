@@ -1,5 +1,4 @@
 const Page = require("../../../B2B/PageObjects/page");
-const { subindustry1 } = require("../../Inputs/settings/CompanyIP");
 
 class Comp extends Page{
    

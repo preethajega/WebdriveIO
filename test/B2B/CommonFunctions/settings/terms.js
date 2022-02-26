@@ -13,13 +13,14 @@ class Term extends Page {
     async open() {
         super.open(termip.termUrl); 
     }
-    AddTerm = async(tab,ele,eleip)=>{
+    AddTerm = async(tab,ele,eleip,codepath,codeip)=>{
         await browser.refresh()
         await actionWrapper.Click(tab)
         await browser.pause(1000);
         await actionWrapper.Click(path.AddBtn)
         await browser.pause(2000);
         await actionWrapper.clickAndSetvalue(ele,eleip)
+        await actionWrapper.clickAndSetvalue(codepath,codeip)
         await actionWrapper.Click(path.NeedApproval)
         // await browser.pause(2000)
         // await actionWrapper.Click(path.Default)
@@ -28,9 +29,9 @@ class Term extends Page {
         await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(common.snackbar,termip.saveAlert)
     }
-    InsPFTerms = async() =>{
-        await actionWrapper.clearAndsetValue()
-        await actionWrapper.clearAndsetValue()
+    InsTerms = async(valpath,valip,percepath,percentip) =>{
+        await actionWrapper.clearAndsetValue(valpath,valip)
+        await actionWrapper.clearAndsetValue(percepath,percentip)
     }
 
     FieldVallid = async(btn,snakpath,snakip) =>{
@@ -40,12 +41,13 @@ class Term extends Page {
         await actionWrapper.snackBarValidate(snakpath,snakip)
         await actionWrapper.Click(path.CancelBtn)
     }
-    AllreadyExistOption = async(ele,eleip,snakpath1,snakip1) =>{
+    AllreadyExistOption = async(tab,ele,eleip,snakpath1,snakip1) =>{
+        await browser.refresh()
+        await actionWrapper.Click(tab)
         await actionWrapper.Click(path.AddBtn)
         await actionWrapper.clickAndSetvalue(ele,eleip)
         await actionWrapper.Click(path.NeedApproval)
         await actionWrapper.snackBarValidate(snakpath1,snakip1)
-        await browser.pause(2000);
         await actionWrapper.Click(path.CancelBtn)
     }
     emptyTermVaid = async()=>{
@@ -62,6 +64,7 @@ class Term extends Page {
     MapedDeletTerm = async(btn,snakpath2,snakip2) =>{
         await actionWrapper.Click(path.DeleteFirstTerm)
         await actionWrapper.Click(btn)
+        await browser.pause(6000)
         await actionWrapper.snackBarValidate(snakpath2,snakip2)
     }
     AddpayTerm = async(ele,eleip,btn) =>{

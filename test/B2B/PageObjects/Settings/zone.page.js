@@ -21,7 +21,7 @@ class Zone extends Page{
         return super.pathByName('zoneName')
     }
     get IsEnabled(){
-        return super.pathById('enabled')
+        return super.pathByXpath('//div[contains(@class,"MuiListItemS")]')
     }
     get Branch(){
         return super.pathByXpath('(//input[contains(@name,"branchId")])[last()]')
@@ -58,6 +58,15 @@ class Zone extends Page{
     }
     get CancelBtn(){
         return super.pathByXpath('//button[@aria-label="cancel"]')
+    }
+    get errBranch(){
+        return super.pathByXpath('//p[text()="Required"]')
+    }
+    get DeleData(){
+        return super.pathByXpath('(//div[@class="scrollbar-container ps"]/div)[last()]')
+    }
+    get StayOnPage(){
+        return super.pathByXpath('//div[@class="SnackbarItem-action"]/button[1]')
     }
 
 }

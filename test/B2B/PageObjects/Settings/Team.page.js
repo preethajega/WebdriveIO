@@ -52,7 +52,7 @@ class Team extends Page{
         return super.pathByXpath('(//table/tbody/tr)[last()]')
     }
     get Editdata1(){
-        return super.pathByXpath('//table/tbody/tr[11]')
+        return super.pathByXpath('//table/tbody/tr[22]')
     }
     get UserInviteBtn(){
         return super.pathByXpath('//button[@aria-label="Invite"]')
@@ -69,30 +69,16 @@ class Team extends Page{
         return super.pathByXpath('//input[@placeholder="Search"]')
     }
     get DeleteTag(){
-        return super.pathByXpath('//div[@role="combobox"]/div/div/div[3]/button[@aria-label="Clear"]')
+        return super.pathByXpath('//div[contains(@class,"MuiContainer-root MuiContainer-m")]/div[2]//button[@aria-label="Clear"]')
     }
     get BUAddBtn(){
         return super.pathById("addNew")
     }
     get Branch(){
         return super.pathByXpath('(//input[@placeholder="Search A Branch"])[last()]')
-        //return super.pathById("branch0")
     }
     get BU(){
         return super.pathByXpath('(//input[@placeholder="Search A Business Unit"])[last()]')
-        //return super.pathById("businessUnit0")
-    }
-    get Branch2(){
-        return super.pathById("branch1")
-    }
-    get BU2(){
-        return super.pathById("businessUnit1")
-    }
-    get Branch3(){
-        return super.pathById("branch2")
-    }
-    get BU3(){
-        return super.pathById("businessUnit2")
     }
     get DeleteBU(){
         return super.pathByXpath('(//button[@id="deleteBU"])[last()]')
@@ -107,7 +93,7 @@ class Team extends Page{
         return super.pathById('branch2-helper-text')
     }
     get MoreOptionbtn (){
-        return super.pathByXpath('//button[@aria-label="moreOptions"]')
+        return super.pathByXpath("//button[@aria-label='moreOptions']")
     }
     get Activatebtn(){
         return super.pathByXpath("//span[text()='Activate']")
@@ -130,7 +116,12 @@ class Team extends Page{
     get Reinvitebtn(){
         return super.pathByXpath("//span[text()='Reinvite']")
     }
-   
+   get errMail(){
+       return super.pathByXpath('//p[text()="Email id already exists"]')
+   }
+   get InvaliMail(){
+       return super.pathByXpath('//p[text()="Invalid email id"]')
+   }
 
 
 }

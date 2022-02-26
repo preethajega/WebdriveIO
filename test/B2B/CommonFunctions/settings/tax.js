@@ -84,7 +84,7 @@ class Tax extends Page {
         await actionWrapper.clickAndSetvalue(path.ProTaxCode,taxip.proTaxcode)
         await actionWrapper.clickAndSetvalue(path.ProDescrp,taxip.prodescription)
         await actionWrapper.clickSetvalueAndSelectoption(path.ProBtwState,taxip.taxName)
-        await actionWrapper.clickSetvalueAndSelectoption(path.ProwithinState,taxip.taxname2)
+        await actionWrapper.clickSetvalueAndSelectoption(path.ProwithinState,taxip.taxname)
         await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(common.snackbar,taxip.saveAlert)
     }

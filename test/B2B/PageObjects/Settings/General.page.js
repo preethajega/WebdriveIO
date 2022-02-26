@@ -21,10 +21,10 @@ class General extends Page{
         return super.pathByName("factor")
     }
     get CancelBtn(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[3]/button[1]")
+        return super.pathByXpath('//button[@aria-label="cancel"]')
     }
     get SaveBtn(){
-        return super.pathByXpath("//div[contains(@class,'MuiPaper-root MuiDi')]/div[3]/button[2]")
+        return super.pathById("loadingButton")
     }
     get Deletebtn(){
         return super.pathById('Currency_5')

@@ -25,7 +25,7 @@ checkVisibleClickableMove = async (ele) => {
   };
   // scroll into view and click an element
   scrollEleAndClick = async(ele)=>{
-    await ele.waitForDisplayed(1000);
+    await ele.waitForDisplayed(2000);
     await ele.scrollIntoView();
     await ele.click();
   }

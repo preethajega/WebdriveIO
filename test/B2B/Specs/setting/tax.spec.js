@@ -104,6 +104,7 @@ describe('Tax Page', () => {
       });
       it('should validate a field without entering any values in product tax code card',async () => {
           await tax_fn.emptyfieldValid(common.snackbar,taxip.protaxcodeEmpAlert)
+          await browser.pause(1000)
       });
       it('should try to delete a mapeed Product Tax Code',async () => {
             await tax_fn.MapedTaxDelete(common.snackbar,taxip.proTaxcodeAlert)
@@ -113,16 +114,19 @@ describe('Tax Page', () => {
          await tax_fn.DeleteTax(tax_path.DeletlastTax,tax_path.CancelBtn,common.snackbar,taxip.saveAlert)
       });
       it('should delete a creted product tax code with save',async () => {
+         await browser.pause(1000)
          await tax_fn.DeleteTax(tax_path.DeletlastTax,tax_path.SavelBtn,common.snackbar,taxip.saveAlert)
       });
       it('should create a new Product Tax Code with save',async () => {
          await browser.pause(1000)
          await tax_fn.AddProTaxCode(tax_path.SavelBtn)
+         await browser.pause(1000)
       });
    // *************    TAX EXEMPTION CARD        *************************
       it('should create a new Tax Excemption & Excemption for Customer button with cancel ',async () => {
-          await actionsWrappers.Click(tax_path.TaxExcemTab)
+         await actionsWrappers.Click(tax_path.TaxExcemTab)
          await tax_fn.AddTaxExcem(tax_path.CustmerRadioBtn,tax_path.CancelBtn)
+         await browser.pause(1000)
       });
       it('should create a new Tax Excemption & Excemption for Customer button with save ',async () => {
          await tax_fn.AddTaxExcem(tax_path.CustmerRadioBtn,tax_path.SavelBtn)

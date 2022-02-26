@@ -16,15 +16,15 @@ describe('Terms Page', () => {
         await  term_fn.open();
         await  actionsWrappers.urlValidation("/terms");
        });
-//  ******************  DELIVERY TERM CARD  **************************
+/*  ******************  DELIVERY TERM CARD  ************************* */
       it('should create a new Delivery Term with save',async () => {
          await browser.pause(1000)
-         await term_fn.AddTerm(term_path.Delivery,term_path.TermName,termip.delivery)
+         await term_fn.AddTerm(term_path.Delivery,term_path.TermName,termip.delivery,term_path.TermCode,termip.deliverycode)
          await term_fn.termSnakBarValid(term_path.Savebtn)
       });
       it('should create a new Delivery Term with cancel',async () => {
          await browser.pause(1000)
-         await term_fn.AddTerm(term_path.Delivery,term_path.TermName,termip.delivery1)
+         await term_fn.AddTerm(term_path.Delivery,term_path.TermName,termip.delivery1,term_path.TermCode,termip.deliverycode1)
          await term_fn.termSnakBarValid(term_path.CancelBtn)
       }); 
       it('should validate a Delivery Terms field',async () => {
@@ -34,6 +34,12 @@ describe('Terms Page', () => {
       it('should not allow a user to save a field without entering any values inDeliveryTerms Card',async () => {
          await term_fn.emptyTermVaid()
       });
+    /*  it('should not allow a user to enter the same option name in Delivery Term name',async () => {
+         await term_fn.AllreadyExistOption(term_path.Delivery,term_path.TermName,termip.delivery,term_path.Savebtn,common.snackbar,termip.deliveryAlert)
+      });
+      it('should not allow a user to enter the same option name in Delivery Term name',async () => {
+         await term_fn.AllreadyExistOption(term_path.Delivery,term_path.TermCode,termip.deliverycode,term_path.Savebtn,common.snackbar,termip.codeAlert)
+      }); */
       it('should delete a Creted Delivery Term with cancel',async () => {
          await browser.pause(1000)
          await term_fn.DeletTerm(term_path.CancelBtn,common.snackbar,termip.saveAlert)
@@ -41,21 +47,20 @@ describe('Terms Page', () => {
       it('should delete a Creted Delivery Term with save',async () => {
          await term_fn.DeletTerm(term_path.Savebtn,common.snackbar,termip.saveAlert)
       });
-      // it('should not allow a user to enter the same option name in Delivery Term',async () => {
-      //    await term_fn.AllreadyExistOption(term_path.TermName,termip.delivery,term_path.Savebtn,common.snackbar,termip.termAlreExistAlert)
-      // });
       it('should not allow a user to delete a maped Delivery Term with save',async () => {
          await term_fn.MapedDeletTerm(term_path.Savebtn,common.snackbar,termip.termErrAlert)
       });
       
-//  ******************  MODE OF DISPATCH TERM CARD **************************
+/*  ******************  MODE OF DISPATCH TERM CARD ************************** */
      it('should create a new Mode Of Dispatch Term with save',async () => {
          await browser.pause(1000)
-         await term_fn.AddTerm(term_path.Mode,term_path.TermName,termip.mode,term_path.Savebtn)
+         await term_fn.AddTerm(term_path.Mode,term_path.TermName,termip.mode,term_path.ModeTerm,termip.modecode)
+         await term_fn.termSnakBarValid(term_path.Savebtn)
       });
       it('should create a new  Mode Of Dispatch Term with cancel',async () => {
          await browser.pause(1000)
-         await term_fn.AddTerm(term_path.Mode,term_path.TermName,termip.mode1,term_path.CancelBtn)
+         await term_fn.AddTerm(term_path.Mode,term_path.TermName,termip.mode1,term_path.ModeTerm,termip.modecode1)
+         await term_fn.termSnakBarValid(term_path.CancelBtn)
       }); 
       it('should validate a  Mode Of Dispatch Terms field',async () => {
          await browser.pause(1000)
@@ -71,20 +76,27 @@ describe('Terms Page', () => {
       it('should delete a Creted  Mode Of Dispatch Term with save',async () => {
          await term_fn.DeletTerm(term_path.Savebtn,common.snackbar,termip.saveAlert)
       });
-      // it('should not allow a user to enter the same option name in Delivery Term',async () => {
-      //    await term_fn.AllreadyExistOption(term_path.TermName,termip.delivery,term_path.Savebtn,common.snackbar,termip.termAlreExistAlert)
-      // });
+    /*  it('should not allow a user to enter the same option name in Delivery Term name',async () => {
+         await term_fn.AllreadyExistOption(term_path.Delivery,term_path.TermName,termip.delivery,term_path.Savebtn,common.snackbar,termip.deliveryAlert)
+      });
+      it('should not allow a user to enter the same option name in Delivery Term name',async () => {
+         await term_fn.AllreadyExistOption(term_path.Delivery,term_path.TermCode,termip.deliverycode,term_path.Savebtn,common.snackbar,termip.codeAlert)
+      }); */
       it('should not allow a user to delete a maped  Mode Of Dispatch Term with save',async () => {
          await term_fn.MapedDeletTerm(term_path.Savebtn,common.snackbar,termip.termErrAlert)
       });
-//  ******************  FREIGHT CHARGES TERM CARD **************************
+/*  ******************  FREIGHT CHARGES TERM CARD ************************* */
       it('should create a new freight charges Term with save',async () => {
          await browser.pause(1000)
-         await term_fn.AddTerm(term_path.Freight,term_path.TermName,termip.freight,term_path.Savebtn)
+         await term_fn.AddTerm(term_path.Freight,term_path.TermName,termip.freight,term_path.FrightTerm,termip.freightcode)
+         await actionsWrappers.Click(term_path.FreightDefault)
+         await term_fn.termSnakBarValid(term_path.Savebtn)
       });
       it('should create a new freight charges Term with cancel',async () => {
          await browser.pause(1000)
-         await term_fn.AddTerm(term_path.Freight,term_path.TermName,termip.freight1,term_path.CancelBtn)
+         await term_fn.AddTerm(term_path.Freight,term_path.TermName,termip.freight1,term_path.FrightTerm,termip.freightcode1)
+         await actionsWrappers.Click(term_path.FreightDefault)
+         await term_fn.termSnakBarValid(term_path.CancelBtn)
       }); 
       it('should validate a freight charges Terms field',async () => {
          await browser.pause(1000)
@@ -100,20 +112,27 @@ describe('Terms Page', () => {
       it('should delete a Creted freight charges Term with save',async () => {
          await term_fn.DeletTerm(term_path.Savebtn,common.snackbar,termip.saveAlert)
       });
-      // it('should not allow a user to enter the same option name in freight charges Term',async () => {
-      //    await term_fn.AllreadyExistOption(term_path.TermName,termip.delivery,term_path.Savebtn,common.snackbar,termip.termAlreExistAlert)
-      // });
+    /*  it('should not allow a user to enter the same option name in Delivery Term name',async () => {
+         await term_fn.AllreadyExistOption(term_path.Delivery,term_path.TermName,termip.delivery,term_path.Savebtn,common.snackbar,termip.deliveryAlert)
+      });
+      it('should not allow a user to enter the same option name in Delivery Term name',async () => {
+         await term_fn.AllreadyExistOption(term_path.Delivery,term_path.TermCode,termip.deliverycode,term_path.Savebtn,common.snackbar,termip.codeAlert)
+      }); */
       it('should not allow a user to delete a maped freight charges Term with save',async () => {
          await term_fn.MapedDeletTerm(term_path.Savebtn,common.snackbar,termip.termErrAlert)
       });
-//  ******************  INSURANCE TERM CARD  **************************
+/*  ******************  INSURANCE TERM CARD  ************************* */
       it('should create a new Insurance Term with save',async () => {
          await browser.pause(1000)
-         await term_fn.AddTerm(term_path.Insurance,term_path.TermName,termip.insurance,term_path.Savebtn)
+         await term_fn.AddTerm(term_path.Insurance,term_path.TermName,termip.insurance,term_path.InsuranceTerm,termip.insurancecode)
+         await term_fn.InsTerms(term_path.Value,termip.value,term_path.Percent,termip.percent)
+         await term_fn.termSnakBarValid(term_path.Savebtn)
       });
       it('should create a new Insurance Term with cancel',async () => {
          await browser.pause(1000)
-         await term_fn.AddTerm(term_path.Insurance,term_path.TermName,termip.insurance1,term_path.CancelBtn)
+         await term_fn.AddTerm(term_path.Insurance,term_path.TermName,termip.insurance1,term_path.InsuranceTerm,termip.insurancecode1)
+         await term_fn.InsTerms(term_path.Value,termip.value2,term_path.Percent,termip.percent2)
+         await term_fn.termSnakBarValid(term_path.CancelBtn)
       }); 
       it('should validate a Insurance Terms field',async () => {
          await browser.pause(1000)
@@ -129,20 +148,27 @@ describe('Terms Page', () => {
       it('should delete a Creted Insurance Term with save',async () => {
          await term_fn.DeletTerm(term_path.Savebtn,common.snackbar,termip.saveAlert)
       });
-      // it('should not allow a user to enter the same option name in Insurance Term',async () => {
-      //    await term_fn.AllreadyExistOption(term_path.TermName,termip.delivery,term_path.Savebtn,common.snackbar,termip.termAlreExistAlert)
-      // });
+    /*  it('should not allow a user to enter the same option name in Delivery Term name',async () => {
+         await term_fn.AllreadyExistOption(term_path.Delivery,term_path.TermName,termip.delivery,term_path.Savebtn,common.snackbar,termip.deliveryAlert)
+      });
+      it('should not allow a user to enter the same option name in Delivery Term name',async () => {
+         await term_fn.AllreadyExistOption(term_path.Delivery,term_path.TermCode,termip.deliverycode,term_path.Savebtn,common.snackbar,termip.codeAlert)
+      }); */
       it('should not allow a user to delete a maped Insurance Term with save',async () => {
          await term_fn.MapedDeletTerm(term_path.Savebtn,common.snackbar,termip.termErrAlert)
       });
-//  ******************  PACKANGING & FORWARDING TERM CARD  **************************
+/*  ******************  PACKANGING & FORWARDING TERM CARD  ************************* */
       it('should create a new Packanging & Forwarding Term with save',async () => {
          await browser.pause(1000)
-         await term_fn.AddTerm(term_path.Packing,term_path.TermName,termip.packing,term_path.Savebtn)
+         await term_fn.AddTerm(term_path.Packing,term_path.TermName,termip.packing,term_path.PFTerm,termip.PFcode)
+         await actionsWrappers.clickAndSetvalue(term_path.Percent,termip.percent)
+         await term_fn.termSnakBarValid(term_path.Savebtn)
       });
       it('should create a new Packanging & Forwarding  Term with cancel',async () => {
          await browser.pause(1000)
-         await term_fn.AddTerm(term_path.Packing,term_path.TermName,termip.packing1,term_path.CancelBtn)
+         await term_fn.AddTerm(term_path.Packing,term_path.TermName,termip.packing1,term_path.PFTerm,termip.PFcode1)
+         await actionsWrappers.clickAndSetvalue(term_path.Percent,termip.percent2)
+         await term_fn.termSnakBarValid(term_path.CancelBtn)
       }); 
       it('should validate a Packanging & Forwarding  Terms field',async () => {
          await browser.pause(1000)
@@ -158,21 +184,28 @@ describe('Terms Page', () => {
       it('should delete a Creted Packanging & Forwarding  Term with save',async () => {
          await term_fn.DeletTerm(term_path.Savebtn,common.snackbar,termip.saveAlert)
       });
-      // it('should not allow a user to enter the same option name in Packanging & Forwarding  Term',async () => {
-      //    await term_fn.AllreadyExistOption(term_path.TermName,termip.delivery,term_path.Savebtn,common.snackbar,termip.termAlreExistAlert)
-      // });
+    /*  it('should not allow a user to enter the same option name in Delivery Term name',async () => {
+         await term_fn.AllreadyExistOption(term_path.Delivery,term_path.TermName,termip.delivery,term_path.Savebtn,common.snackbar,termip.deliveryAlert)
+      });
+      it('should not allow a user to enter the same option name in Delivery Term name',async () => {
+         await term_fn.AllreadyExistOption(term_path.Delivery,term_path.TermCode,termip.deliverycode,term_path.Savebtn,common.snackbar,termip.codeAlert)
+      }); */
       it('should not allow a user to delete a maped Packanging & Forwarding  Term with save',async () => {
          await term_fn.MapedDeletTerm(term_path.Savebtn,common.snackbar,termip.termErrAlert)
       });
 
-//  ******************  WARRENTY TERM CARD  **************************
+/*  ******************  WARRENTY TERM CARD  ************************* */
       it('should create a new Warrenty Term with save',async () => {
          await browser.pause(1000)
-         await term_fn.AddTerm(term_path.Warranty,term_path.TermName,termip.warrenty,term_path.Savebtn)
+         await term_fn.AddTerm(term_path.Warranty,term_path.TermName,termip.warrenty,term_path.WarrantyTerm,
+            termip.warrentycode)
+         await term_fn.termSnakBarValid(term_path.Savebtn)
       });
       it('should create a new Warrenty Term with cancel',async () => {
          await browser.pause(1000)
-         await term_fn.AddTerm(term_path.Warranty,term_path.TermName,termip.warrenty1,term_path.CancelBtn)
+         await term_fn.AddTerm(term_path.Warranty,term_path.TermName,termip.warrenty1,term_path.WarrantyTerm,
+            termip.warrentycode1)
+         await term_fn.termSnakBarValid(term_path.CancelBtn)
       }); 
       it('should validate a Warrenty Terms field',async () => {
          await browser.pause(1000)
@@ -188,13 +221,16 @@ describe('Terms Page', () => {
       it('should delete a Creted Warrenty Term with save',async () => {
          await term_fn.DeletTerm(term_path.Savebtn,common.snackbar,termip.saveAlert)
       });
-      // it('should not allow a user to enter the same option name in Warrenty Term',async () => {
-      //    await term_fn.AllreadyExistOption(term_path.TermName,termip.delivery,term_path.Savebtn,common.snackbar,termip.termAlreExistAlert)
-      // });
+    /*  it('should not allow a user to enter the same option name in Delivery Term name',async () => {
+         await term_fn.AllreadyExistOption(term_path.Delivery,term_path.TermName,termip.delivery,term_path.Savebtn,common.snackbar,termip.deliveryAlert)
+      });
+      it('should not allow a user to enter the same option name in Delivery Term name',async () => {
+         await term_fn.AllreadyExistOption(term_path.Delivery,term_path.TermCode,termip.deliverycode,term_path.Savebtn,common.snackbar,termip.codeAlert)
+      }); */
       it('should not allow a user to delete a maped Warrenty Term with save',async () => {
          await term_fn.MapedDeletTerm(term_path.Savebtn,common.snackbar,termip.termErrAlert)
       });
-// ******************  PAYMENT TERM CARD  **************************
+/* ******************  PAYMENT TERM CARD  ************************* */
       it('should create a new Payment term with save',async () => {
          await term_fn.AddpayTerm(term_path.PaymentTerm,termip.paymentterm,term_path.Savebtn)
       });
@@ -225,12 +261,10 @@ describe('Terms Page', () => {
       it('should not allow a user to delete a maped Payment Term ',async () => {
          await term_fn.MapedDeletPayTerm(term_path.Savebtn,common.snackbar,termip.saveAlert)
       });
-      it('should not allow a user to enter same payment term value in pymentTerm Card',async () => {
-        // await browser.refresh()
-         // await actionsWrappers.Click(term_path.Payment)
+     /* it('should not allow a user to enter same payment term value in pymentTerm Card',async () => {
          await browser.pause(1000)
          await term_fn.AllreadyExistPayOption(term_path.PaymentTerm,termip.paymentterm,common.snackbar,termip.alreExixt)
-      });  
+      }); */  
       it('should delete a created Payment Term with cancel',async () => {
          await browser.pause(1000)
          await term_fn.DeletPayTerm(term_path.CancelBtn,common.snackbar,termip.saveAlert)

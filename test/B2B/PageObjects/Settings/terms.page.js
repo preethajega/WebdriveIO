@@ -24,8 +24,27 @@ class Terms extends Page{
         return super.pathByXpath("//div[text()='Warranty Terms']")
     }
     get TermName(){
-        return super.pathByXpath('(//input[starts-with(@name,"termData[")])[last()]')
+        return super.pathByXpath('(//input[contains(@name,"description")])[last()]')
     }
+    get TermCode(){
+        return super.pathByXpath('(//input[contains(@name,"deliveryTermsCode")])[last()]')
+    }
+    get ModeTerm(){
+        return super.pathByXpath('(//input[contains(@name,"dispatchInstructionsCode")])[last()]')
+    }
+    get FrightTerm(){
+        return super.pathByXpath('(//input[contains(@name,"freightCode")])[last()]')
+    }
+    get InsuranceTerm(){
+        return super.pathByXpath('(//input[contains(@name,"insuranceCode")])[last()]')
+    }
+    get PFTerm(){
+        return super.pathByXpath('(//input[contains(@name,"packageForwardingCode")])[last()]')
+    }
+    get WarrantyTerm(){
+        return super.pathByXpath('(//input[contains(@name,"warrantyCode")])[last()]')
+    }
+
     get NeedApproval(){
         return super.pathByXpath('(//span[starts-with(@class,"MuiSwitch-root ")])[last()]')
     }
@@ -43,6 +62,9 @@ class Terms extends Page{
     }
     get Isneeded(){
         return super.pathByXpath('(//div[contains(@class,"MuiBox-root css-1k")]/label/span[contains(@class,"MuiSwi")])[last()]')
+    }
+    get FreightDefault(){
+        return super.pathByXpath('(//div[@class="MuiBox-root css-1p8uycm"]/label)[last()]')
     }
 /* **************** INSURANCE,P&F Terms  ************************ */
     get Value(){
