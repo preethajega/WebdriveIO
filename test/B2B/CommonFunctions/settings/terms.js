@@ -98,7 +98,9 @@ class Term extends Page {
         await actionWrapper.snackBarValidate(common.snackbar,termip.emptyPayAlert)
         await actionWrapper.Click(path.CancelBtn)
     }
-    AllreadyExistPayOption = async(ele,eleip,snakpath1,snakip1) =>{
+    AllreadyExistPayOption = async(tab,ele,eleip,snakpath1,snakip1) =>{
+        await browser.refresh()
+        await actionWrapper.Click(tab)
         await actionWrapper.scrollEleAndClick(path.AddPayTermBtn)
         await actionWrapper.clickAndSetvalue(ele,eleip)
         await actionWrapper.Click(path.NeedAppro)

@@ -49,6 +49,7 @@ describe('General Page', () => {
    });
    /* ********************* CREATE CURRENCY CARD ********************** */
    it('should create a new currency with saving ', async () => {
+      await browser.refresh()
       await gen_fn.Addcur(gen_path.Code, genip.code, gen_path.Symbol, genip.symbol, gen_path.SaveBtn)
    });
    it('should create a new currency with cancel ', async () => {
@@ -58,9 +59,13 @@ describe('General Page', () => {
       await gen_fn.AlreadyExistCur()
    });
    it('should edit a Exisiting Currency with saving', async () => {
+      await browser.pause(2000)
+      await actionsWrappers.scrollEle(gen_path.EditCode)
       await gen_fn.EditCurr(gen_path.EditCode, genip.editcode, gen_path.EditSavebtn)
    });
    it('should edit a Exisiting Currency with canceling', async () => {
+      await browser.pause(2000)
+      await actionsWrappers.scrollEle(gen_path.EditCode)
       await gen_fn.EditCurr(gen_path.EditCode, genip.editcode1, gen_path.EditCancelbtn)
    });
    it('should validate code field', async () => {
@@ -71,50 +76,62 @@ describe('General Page', () => {
    });
    it('should validate a Symbol field', async () => {
       await gen_fn.Fieldvalidate(gen_path.EditSymbol, gen_path.ErrormsgSymbol, genip.errormsgSymbol)
-   });
-   it('should validate a Factor field', async () => {
-      await gen_fn.Fieldvalidate(gen_path.EditFactor, gen_path.ErrormsgFactor, genip.errormsgFactor)
+      await browser.pause(3000)
    });
    it('should not allow a user to delete a mapped currency', async () => {
       await gen_fn.DeleteCurr(gen_path.MapedDeleteBtn, common.snackbar, genip.mappedDeleteAlert)
    });
+/*   it('should validate a Factor field', async () => {
+      await browser.refresh()
+      await actionsWrappers.scrollEle(gen_path.EditFactor)
+      await gen_fn.Fieldvalidate(gen_path.EditFactor, gen_path.ErrormsgFactor, genip.errormsgFactor)
+   }); */
    it('should delete a currency', async () => {
       await gen_fn.DeleteCurr(gen_path.Deletebtn, common.snackbar, genip.alert)
    });
    /* ********************* REGIONAL SETTING CARD ********************** */
    it('should validate a Decimal Roundoff field', async () => {
+      await actionsWrappers.scrollEle(gen_path.RoundOff)
       await gen_fn.Fieldvalidate(gen_path.RoundOff, gen_path.ErrorRoundOff, genip.errormsgRoundoff)
    });
    it('should edit the decimal RoundOff field with cancel', async () => {
+      await actionsWrappers.scrollEle(gen_path.RoundOff)
       await gen_fn.EditAddtionalsetting(gen_path.RoundOff, genip.roundOff, gen_path.EditCancelbtn,
          common.snackbar, genip.alert)
    });
    it('should edit the decimal RoundOff field with save', async () => {
+      await actionsWrappers.scrollEle(gen_path.RoundOff)
       await gen_fn.EditAddtionalsetting(gen_path.RoundOff, genip.roundOff, gen_path.EditSavebtn,
          common.snackbar, genip.alert)
    });
    it('should edit the Date & display Format with cancel', async () => {
-      await gen_fn.EditRegionalSetting(gen_path.DateDiaplay, genip.date, gen_path.EditCancelbtn,
+      await actionsWrappers.scrollEle(gen_path.DateDiaplay)
+      await gen_fn.EditRegionalSetting(gen_path.DateDiaplay,gen_path.DateDiaplay, genip.date, gen_path.EditCancelbtn,
          common.snackbar, genip.alert)
    });
    it('should edit the Date & display Format with save', async () => {
-      await gen_fn.EditRegionalSetting(gen_path.DateDiaplay, genip.date, gen_path.EditSavebtn,
+      await actionsWrappers.scrollEle(gen_path.DateDiaplay)
+      await gen_fn.EditRegionalSetting(gen_path.DateDiaplay,gen_path.DateDiaplay, genip.date, gen_path.EditSavebtn,
          common.snackbar, genip.alert)
    });
    it('should edit the Time & display Format with cancel', async () => {
-      await gen_fn.EditRegionalSetting(gen_path.TimeDisplay, genip.time, gen_path.EditCancelbtn,
+      await actionsWrappers.scrollEle(gen_path.TimeDisplay)
+      await gen_fn.EditRegionalSetting(gen_path.TimeDisplay,gen_path.TimeDisplay, genip.time, gen_path.EditCancelbtn,
          common.snackbar, genip.alert)
    });
    it('should edit the Time & display Format with save', async () => {
-      await gen_fn.EditRegionalSetting(gen_path.TimeDisplay, genip.time, gen_path.EditSavebtn,
+      await actionsWrappers.scrollEle(gen_path.TimeDisplay)
+      await gen_fn.EditRegionalSetting(gen_path.TimeDisplay,gen_path.TimeDisplay, genip.time, gen_path.EditSavebtn,
          common.snackbar, genip.alert)
    });
    it('should edit the  Time zone Format with cancel', async () => {
-      await gen_fn.EditRegionalSetting(gen_path.TimeZone, genip.timezone, gen_path.EditCancelbtn,
+      await actionsWrappers.scrollEle(gen_path.TimeZone)
+      await gen_fn.EditRegionalSetting(gen_path.TimeZone,gen_path.TimeZone, genip.timezone, gen_path.EditCancelbtn,
          common.snackbar, genip.alert)
    });
    it('should edit the  Time zone Format with save', async () => {
-      await gen_fn.EditRegionalSetting(gen_path.TimeZone, genip.timezone, gen_path.EditSavebtn,
+      await actionsWrappers.scrollEle(gen_path.TimeZone)
+      await gen_fn.EditRegionalSetting(gen_path.TimeZone,gen_path.TimeZone, genip.timezone, gen_path.EditSavebtn,
          common.snackbar,genip.alert)
    });
    // it('santy', async () => {

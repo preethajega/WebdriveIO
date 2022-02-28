@@ -233,7 +233,7 @@ class Custom extends Page{
         // return super.pathByXpath('//span[text()="Tax ID / GST#"]/following::input[4]')
     }
     get TaxText(){
-        // return super.pathByXpath('//div[contains(@class,"MuiDialogC")]/div[7]/label')
+        return super.pathByXpath('//div[contains(@class,"MuiDialogC")]/div[7]/label')
     }
 
 }

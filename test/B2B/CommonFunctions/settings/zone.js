@@ -11,8 +11,8 @@ class Zone extends Page {
     async open() {
         super.open(zoneip.zoneUrl); 
     }
-    AddZone = async(btn)=>{
-        await browser.pause(4000)
+    AddZone = async()=>{
+        await browser.pause(5000)
         await actionWrapper.Click(path.AddZone)
         await browser.pause(2000)
         await actionWrapper.Click(path.DeleData)
@@ -29,17 +29,15 @@ class Zone extends Page {
         await actionWrapper.clickSetvalueAndSelectoption(path.Distric,zoneip.District)
         await actionWrapper.Click(path.AddStateBtn)
         await actionWrapper.clickAndSetvalue(path.Pincode,zoneip.postalcode)
-        await actionWrapper.Click(btn)
     }
     snakvalid = async(btn,snakpath,snakip)=>{
         await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(snakpath,snakip)
     }
-    Deletezone= async(btn)=>{
+    Deletezone= async()=>{
         await actionWrapper.Click(path.DeleData)
         await actionWrapper.Click(path.MoreOption)
         await actionWrapper.Click(path.DeleteZone)
-        await actionWrapper.Click(btn)
     }
     MandtoryFieldvalid = async()=>{
         await actionWrapper.Click(path.AddZone)

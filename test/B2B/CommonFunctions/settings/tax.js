@@ -21,11 +21,14 @@ class Tax extends Page {
         await actionWrapper.snackBarValidate(common.snackbar,taxip.saveAlert)
     }
     DeleteTax = async(ele,btn,snakpath,snakip) =>{
+        await browser.pause(2000)
         await actionWrapper.Click(ele)
+        await browser.pause(1000)
         await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(snakpath,snakip)
     }
     emptyfieldValid = async(snakpath,snakip)=>{
+        await browser.pause(2000)
         await actionWrapper.Click(path.Addbtn)
         await actionWrapper.Click(path.Addbtn)
         await actionWrapper.snackBarValidate(snakpath,snakip)
@@ -49,6 +52,7 @@ class Tax extends Page {
         await actionWrapper.snackBarValidate(common.snackbar,taxip.saveAlert)
     }
     MapedTaxDelete = async(snakpath,snakip) =>{
+        await browser.pause(2000)
         await actionWrapper.Click(path.DeleteFirstTax)
         await actionWrapper.snackBarValidate(snakpath,snakip)
     }
@@ -80,6 +84,7 @@ class Tax extends Page {
         await actionWrapper.snackBarValidate(common.snackbar,taxip.Taxgrpalert)
     }
     AddProTaxCode = async(btn) =>{
+        await browser.pause(2000)
         await actionWrapper.Click(path.Addbtn)
         await actionWrapper.clickAndSetvalue(path.ProTaxCode,taxip.proTaxcode)
         await actionWrapper.clickAndSetvalue(path.ProDescrp,taxip.prodescription)
@@ -98,21 +103,23 @@ class Tax extends Page {
         await actionWrapper.snackBarValidate(path.ErrTax_exem_prod,taxip.errmsg)
         await actionWrapper.Click(path.DeletlastTax)
     }
-    AddTaxExcem = async(ele,btn)=>{
+    AddTaxExcem = async(excempath,excemip,ele,btn)=>{
+        await browser.refresh()
+        await actionWrapper.Click(path.TaxExcemTab)
         await actionWrapper.Click(path.Addbtn)
-        await actionWrapper.clickAndSetvalue(path.ExempName,taxip.taxexcemption)
+        await actionWrapper.clickAndSetvalue(excempath,excemip)
         await actionWrapper.Click(ele)
         await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(common.snackbar,taxip.saveAlert)
     }
     TaxExcemfieldvalid = async()=>{
         await actionWrapper.Click(path.Addbtn)
-        await actionWrapper.Click(path.CustmerRadBtn)
+        await actionWrapper.Click(path.CustmerRadioBtn)
         await actionWrapper.Click(path.SavelBtn)
         await actionWrapper.snackBarValidate(path.ErrTax_exem_prod,taxip.errmsg)
         await actionWrapper.Click(path.DeletlastTax)
         await actionWrapper.Click(path.Addbtn)
-        await actionWrapper.clickAndSetvalue(path.ExempName)
+        await actionWrapper.clickAndSetvalue(path.ExempName,taxip.taxexcemption)
         await actionWrapper.Click(path.SavelBtn)
         await actionWrapper.snackBarValidate(path.ErrTax_exem_prod,taxip.errmsg)
         await actionWrapper.Click(path.DeletlastTax)

@@ -20,7 +20,7 @@ function Compip() {
     this.errorAlert=""
     this.comperrormsg="Company Name required"
     this.websiteErrormsg='website must be a url'
-
+    this.errMsgcompname="Company Name required"
 
 
 }

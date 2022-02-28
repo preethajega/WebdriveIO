@@ -20,7 +20,7 @@ function Genip() {
     this.editfactor="0.001"
     this.editformat="1,999.999"
     this.roundOff="2"
-    this.date='22/0/202'
+    this.date='1/'
     this.time="12"
     this.timezone="(GMT+04:00) Ye"
     this.alert="Changes saved successfully"

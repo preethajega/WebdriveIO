@@ -88,10 +88,12 @@ class Tax extends Page{
         return super.pathByXpath('(//input[contains(@name,"taxExemptName")])[last()]')
     }
     get CustmerRadioBtn(){
-        return super.pathByXpath('(//input[@value="customer"])[last()]')
+        return super.pathByXpath('(//fieldset[contains(@class,"MuiFormContr")]/div/label/span[1])[3]')
+        // return super.pathByXpath('(//input[@value="customer"])[last()]')
     }
     get ItemRadioBtn(){
-        return super.pathByXpath('(//input[@name="position"][@value="item"])[last()]')
+        return super.pathByXpath('(//fieldset[contains(@class,"MuiFormContr")]/div/label/span[1])[last()]')
+        // return super.pathByXpath('(//input[@name="position"][@value="item"])[last()]')
     }
    
 

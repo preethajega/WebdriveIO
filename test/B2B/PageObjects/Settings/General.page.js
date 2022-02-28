@@ -9,13 +9,13 @@ class General extends Page{
         return super.pathByName('currencyCode')
     }
     get Name(){
-        return super.pathByXpath('//div[@role="dialog"]/div[2]/div[2]/div/input')
+        return super.pathByXpath('//input[@name="description"]')
     }
     get Format(){
-        return super.pathByXpath('//div[@role="dialog"]/div[2]/div[3]/div/div/input')
+        return super.pathByXpath('(//input[@name="priceFormat"])[last()]')
     }
     get Symbol(){
-        return super.pathByXpath('//div[@role="dialog"]/div[2]/div[4]/div/div/input')
+        return super.pathByXpath('(//input[@name="currencyFormat"])[last()]')
     }
     get Factor(){
         return super.pathByName("factor")
@@ -24,45 +24,43 @@ class General extends Page{
         return super.pathByXpath('//button[@aria-label="cancel"]')
     }
     get SaveBtn(){
-        return super.pathById("loadingButton")
+        return super.pathByXpath('//button[@aria-label="Save"]')
     }
     get Deletebtn(){
-        return super.pathById('Currency_5')
+        return super.pathByXpath('(//button[starts-with(@id,"Currency")])[last()]')
     }
     get MapedDeleteBtn(){
-        return super.pathById('Currency_1')
+        return super.pathByXpath('(//button[starts-with(@id,"Currency")])[1]')
     }
     get EditCode(){
-        return super.pathByName("currencyDetail[5].currencyCode")
+        return super.pathByXpath('(//input[contains(@name,"currencyCode")])[last()]')
     }
     get EditFactor(){
-        return super.pathByName('currencyFactor[5].factor')
+        return super.pathByName('(//input[contains(@name,"factor")])[last()]')
     }
     get EditFormat(){
-        return super.pathByXpath('//div[3]/div/div[2]/div/div[6]/div/div/div//div/input[@name="priceFormat"]')
+        return super.pathByXpath('(//input[@name="priceFormat"])[last()]')
     }
     get EditSymbol(){
-        return super.pathByXpath('//div[3]/div/div[2]/div/div[6]/div/div/div//div/input[@name="currencyFormat"]')
+        return super.pathByXpath('(//input[contains(@name,"currencyFormat")])[last()]')
     }
     get EditSavebtn(){
-        return super.pathByXpath('//button[@aria-label="Save"]')
-        //return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiAppBar-root MuiAppBar-positionF')][4]/div/button[2]")
+        return super.pathByXpath('(//button[text()="Save"])[last()]')
     }
     get EditCancelbtn(){
-        return super.pathByXpath('//button[@aria-label="cancel"]')
-        //return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiAppBar-root MuiAppBar-positionF')][4]/div/button[1]")
+        return super.pathByXpath('(//button[text()="Cancel"])[last()]')
     }
     get ErrormsgCode(){
-        return super.pathByXpath('//div[contains(@class,"MuiDialogConte")]/div[1]/p')
+        return super.pathByXpath('//p[text()="Currency code required"]')
     }
     get ErrormsgName(){
-        return super.pathByXpath('//div[contains(@class,"MuiDialogConte")]/div[2]/p')
+        return super.pathByXpath('//p[text()="Name required"]')
     }
     get ErrormsgSymbol(){
         return super.pathByXpath("//span[text()='Required']")
     }
     get ErrormsgFactor(){
-        return super.pathByXpath('//div[contains(@class,"MuiDialogConte")]/div[5]/p')
+        return super.pathByXpath('//p[text()="Conversion factor required"]')
     }
     get CompIdentifier(){
         return super.pathByName('companyIdentifier')
@@ -90,13 +88,16 @@ class General extends Page{
         return super.pathByXpath("//p[text()='Round off required']")
     }
     get DateDiaplay(){
-        return super.pathByName('dateFormatId')
+        return super.pathByXpath('//input[@name="dateFormatId"]')
+        // return super.pathByName('dateFormatId')
     }
     get TimeDisplay(){
-        return super.pathByName('timeFormat')
+        return super.pathByXpath('//input[@name="timeFormat"]')
+        // return super.pathByName('timeFormat')
     }
     get TimeZone(){
-        return super.pathByName('timeZone')
+        return super.pathByXpath('//input[@name="timeZone"]')
+        // return super.pathByName('timeZone')
     }
 }
 module.exports = new General();

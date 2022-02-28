@@ -12,6 +12,7 @@ function Zone(){
     this.postalcode="625531"
     this.saveAlert="Changes saved successfully"
     this.deleteAlert="Zone deleted successfully"
+    this.errbranch="Required"
 
 }
 module.exports = new Zone();

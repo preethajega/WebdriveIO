@@ -2,7 +2,7 @@ const url = require('./url')
 
 exports.config = {
     specs: [
-         './test/B2B/Specs/setting/custom.spec.js'
+         './test/B2B/Specs/setting/*'
         
         
     ],
@@ -52,7 +52,8 @@ exports.config = {
     reporters: ['spec'],
   mochaOpts: {
         ui: 'bdd',
-        timeout: 1200000
+        timeout: 1200000,
+        require: ['@babel/register'],
     },
 
 }

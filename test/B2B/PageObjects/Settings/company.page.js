@@ -54,6 +54,9 @@ class Comp extends Page{
     get errWebsite(){
         return super.pathByXpath("//p[text()='website must be a url']")
     }
+    get errCompName(){
+        return super.pathByXpath('//p[text()="Company Name required"]')
+    }
   // add warehouse card
     get Addwarehousebtn(){
         return super.pathByXpath('//button[@aria-label="Add Warehouse"]')
@@ -88,7 +91,7 @@ class Comp extends Page{
 
    //warehouse xpath
     get WHcheckbox(){
-    return super.pathByXpath('//table/tbody/tr/td[1]')
+        return super.pathByXpath('//table/tbody/tr/td[1]')
     }
     get warehouse(){
         return super.pathByXpath('//table/tbody/tr/td[2]')

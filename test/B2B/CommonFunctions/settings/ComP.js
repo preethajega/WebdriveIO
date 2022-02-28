@@ -19,8 +19,7 @@ UploadLogo = async() =>{
     await actionWrapper.Click(path.savebtn);
     await actionWrapper.snackBarValidate(common.snackbar,compIp.saveAlert)
 }
-Updatevalue = async(path,ele,input,btn) =>{
-    await actionWrapper.Click(path)
+Updatevalue = async(ele,input,btn) =>{
     await actionWrapper.clearAndsetValue(ele,input);
     await actionWrapper.Click(btn);
     await actionWrapper.snackBarValidate(common.snackbar,compIp.saveAlert)
@@ -30,26 +29,28 @@ Updatevalue = async(path,ele,input,btn) =>{
     }
   }
 WebsiteFieldValid = async () =>{
-  await actionWrapper.Click(path)
   await actionWrapper.clearAndsetValue(path.website,compIp.website2)
   await actionWrapper.Click(path.savebtn)
   await actionWrapper.snackBarValidate(path.errWebsite,compIp.websiteErrormsg)
   await actionWrapper.Click(path.cancelbtn)
-
+}
+fieldValid = async(ele,errpath,Errormsg)=>{
+  await actionWrapper.clearValues(ele)
+  await actionWrapper.Click(path.savebtn)
+  await actionWrapper.snackBarValidate(errpath,Errormsg)
+  await actionWrapper.Click(path.cancelbtn)
 }
 Updatedropdown = async(btn) =>{
-    await actionWrapper.clearValue_selectDropdownvalue(path.SubIndustry,compIp.subindustry);
+    await actionWrapper.clickSetvalueAndSelectoption(path.SubIndustry,compIp.subindustry);
     await actionWrapper.Click(btn)
     await actionWrapper.snackBarValidate(common.snackbar,compIp.saveAlert)
   }
 UpdateDisabled= async(ele,input) =>{
     await actionWrapper.Click(ele)
-    if ((await ele.setValue(input)) == false) {
+    if ((await ele.setValue(input)) === false) {
       return true
     }
-   
-    //await expect(elem).toBeEnabled()
-}
+   }
 Acctypeinertxt = async(ele) =>{
   await actionWrapper.Click(ele)
   await actionWrapper.snackBarValidate(path.RefelectTxt,compIp.refelecttxt)

@@ -12,6 +12,7 @@ function Taxip(){
     this.proTaxcode="TX001"
     this.prodescription="Tabs"
     this.taxexcemption="Export Dealer"
+    this.taxexcemption2="Import Dealer"
     this.errmsg="Required"
     this.saveAlert="Changes saved successfully"
     this.taxNameEmpAlert="Tax name/rate shouldn't be empty"

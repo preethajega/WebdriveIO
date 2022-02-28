@@ -113,9 +113,6 @@ describe('Customization Page', () => {
    });
    /*  ******************** Optional Btn ****************** */
    it('should chamge the all the Customization label into optional with cancel ', async () => {
-      if (condition) {
-         
-      }
       await custom_fn.Status(custom_path.BranchOpt, custom_path.AddressOpt, custom_path.LocalityOpt, custom_path.CityOpt, custom_path.DistrOpt, custom_path.StateOpt,
          custom_path.PincodeOpt, custom_path.CountryOpt, custom_path.PrimContactNoOpt, custom_path.ContactNoOpt, custom_path.TaxOpt)
       await custom_fn.snakBarValid(custom_path.CancelBtn)

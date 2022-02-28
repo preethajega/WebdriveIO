@@ -85,18 +85,22 @@ describe('Team Page', () => {
     await team_fn.InviteUser()
   });
   it('should Inactive the user with cancel', async () => {
+    await browser.pause(2000);
     await team_fn.statusUser(team_path.Inactivebtn, team_path.ConfcancelBtn, common.snackbar, teamip.inactivealert)
   });
   it('should Inactive the user with save', async () => {
+    await browser.pause(1000);
     await team_fn.statusUser(team_path.Inactivebtn, team_path.ConfYesBtn, common.snackbar, teamip.inactivealert)
   });
   it('should Reinvite a user with save', async () => {
     await team_fn.ReinvieUser()
   });
   it('should activate the user with cancel', async () => {
+    await browser.pause(2000);
     await team_fn.statusUser(team_path.Activatebtn, team_path.ConfcancelBtn, common.snackbar, teamip.activatealert)
   });
   it('should activate the user with ', async () => {
+    await browser.pause(1000);
     await team_fn.statusUser(team_path.Activatebtn, team_path.ConfYesBtn, common.snackbar, teamip.activatealert)
   });
 

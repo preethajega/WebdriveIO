@@ -4,6 +4,8 @@ const Branch_path = require("../../../PageObjects/Settings/AddBranch.page");
 const actionsWrappers = require("../../../../CommonActions/ActionsWrappers");
 const Branch_fn= require("../../../CommonFunctions/settings/branch");
 var Branchip= require("../../../Inputs/settings/BranchIP");
+const custom_fn = require("../../../CommonFunctions/settings/custom")
+const custom_path = require("../../../PageObjects/Settings/custom.page");
 
 
 describe('Branch card', () => {
@@ -15,52 +17,59 @@ describe('Branch card', () => {
         await  actionsWrappers.urlValidation("/company");
         });
 
-    it('should Add a new Branch with saving',async () => {
-        await Branch_fn.AddBranch(Branch_path.SaveBtn)
-    });
-    it('should Add a new Branch with cancel',async () => {
-        await Branch_fn.AddBranch(Branch_path.CancelBtn)
-    });
+    // it('should Add a new Branch with saving',async () => {
+    //     await Branch_fn.AddBranch(Branch_path.SaveBtn)
+    // });
+    // it('should Add a new Branch with cancel',async () => {
+    //     await Branch_fn.AddBranch(Branch_path.CancelBtn)
+    // });
 
-    it('should delete a selected Address with CabcelBtn',async () => {
-        await Branch_fn.DeleteBranchAddress(Branch_path.ConformCancelBtn)   
-    });
-    it('should delete a selected Address with DeleteBtn',async () => {
-        await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
-        await browser.pause(1000)
-    });
+    // it('should delete a selected Address with CabcelBtn',async () => {
+    //     await Branch_fn.DeleteBranchAddress(Branch_path.ConformCancelBtn)   
+    // });
+    // it('should delete a selected Address with DeleteBtn',async () => {
+    //     await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
+    //     await browser.pause(1000)
+    // });
 
-    it('should Add a new branch with AutoFill & saving', async() => {
-        await browser.pause(1000)
-        await Branch_fn.AddBranchByAutoFill(Branch_path.SaveBtn);
-    });
-    it('should Add a new branch with AutoFill & cancel', async() => {
-        await browser.pause(2000)
-        await Branch_fn.AddBranchByAutoFill(Branch_path.CancelBtn);
-    });
-    it('should edit the selected Branch with canceling',async () => {
-        await browser.pause(1000)
-        await Branch_fn.EditBranchAddress(Branch_path.CancelBtn)
-    });
-    it('should edit the selected Branch with Save',async () => {
-        await browser.refresh()
-        await Branch_fn.EditBranchAddress(Branch_path.SaveBtn)
-    });
-        it('should delete a selected Address with CabcelBtn',async () => {
-        await Branch_fn.DeleteBranchAddress(Branch_path.ConformCancelBtn)   
-    });
-    it('should delete a selected Address with DeleteBtn',async () => {
-        await browser.pause(1000)
-        await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
-        await browser.pause(1000)
-    });
-    it('should try to delete a mapped Brach with cancel',async () => {
-        await browser.pause(1000)
-         await Branch_fn.DeleteMapppedBranch(Branch_path.ConformCancelBtn)
-    });
-    it('should try to delete a mapped Brach with save',async () => {
-        await browser.pause(1000)
-        await Branch_fn.DeleteMapppedBranch(Branch_path.ConformDeleteBtn)
+    // it('should Add a new branch with AutoFill & saving', async() => {
+    //     await browser.pause(1000)
+    //     await Branch_fn.AddBranchByAutoFill(Branch_path.SaveBtn);
+    // });
+    // it('should Add a new branch with AutoFill & cancel', async() => {
+    //     await browser.pause(2000)
+    //     await Branch_fn.AddBranchByAutoFill(Branch_path.CancelBtn);
+    // });
+    // it('should edit the selected Branch with canceling',async () => {
+    //     await browser.pause(1000)
+    //     await Branch_fn.EditBranchAddress(Branch_path.CancelBtn)
+    // });
+    // it('should edit the selected Branch with Save',async () => {
+    //     await browser.refresh()
+    //     await Branch_fn.EditBranchAddress(Branch_path.SaveBtn)
+    // });
+    //     it('should delete a selected Address with CabcelBtn',async () => {
+    //     await Branch_fn.DeleteBranchAddress(Branch_path.ConformCancelBtn)   
+    // });
+    // it('should delete a selected Address with DeleteBtn',async () => {
+    //     await browser.pause(1000)
+    //     await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
+    //     await browser.pause(1000)
+    // });
+    // it('should try to delete a mapped Brach with cancel',async () => {
+    //     await browser.pause(1000)
+    //      await Branch_fn.DeleteMapppedBranch(Branch_path.ConformCancelBtn)
+    // });
+    // it('should try to delete a mapped Brach with save',async () => {
+    //     await browser.pause(1000)
+    //     await Branch_fn.DeleteMapppedBranch(Branch_path.ConformDeleteBtn)
+    // });
+    it('should change the custom Settings mode Optional into Required',async () => {
+        await actionsWrappers.scrollEleAndClick(custom_path.CustomTab)
+            await custom_fn.Status(custom_path.BranchReq, custom_path.AddressReq, custom_path.LocalityReq, custom_path.CityReq, custom_path.DistrReq, custom_path.StateReq,
+               custom_path.PincodeReq, custom_path.CountryReq, custom_path.PrimContactNoReq, custom_path.ContactNoReq, custom_path.TaxReq)
+            await custom_fn.snakBarValid(custom_path.SavelBtn)
+        await actionsWrappers.scrollEleAndClick(custom_path.CompTab)
     });
     it('should validate a Branch Name field',async () => {
         await browser.pause(1000)
@@ -95,6 +104,14 @@ describe('Branch card', () => {
     });
     it('should validate a Contact Number field',async () => {
         await Branch_fn.FieldValid(Branch_path.errContactNumb,Branchip.errmsgContactNumb)
+    });
+
+    it('should change the Customization mode into Optional',async () => {
+        await actionsWrappers.scrollEleAndClick(custom_path.CustomTab)
+        await custom_fn.Status(custom_path.BranchOpt, custom_path.AddressOpt, custom_path.LocalityOpt, custom_path.CityOpt, custom_path.DistrOpt, custom_path.StateOpt,
+            custom_path.PincodeOpt, custom_path.CountryOpt, custom_path.PrimContactNoOpt, custom_path.ContactNoOpt, custom_path.TaxOpt)
+         await custom_fn.snakBarValid(custom_path.SavelBtn) 
+         await actionsWrappers.scrollEleAndClick(custom_path.CompTab)  
     });
 
     // it('santy',async () => {
