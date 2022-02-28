@@ -10,5 +10,37 @@ class Custom extends Page {
     async open() {
         super.open(customip.customUrl); 
     }
+    snakBarValid= async(btn)=>{
+        await actionWrapper.Click(btn)
+        await actionWrapper.snackBarValidate(common.snackbar,customip.saveAlert)
+        await browser.pause(2000)
+    }
+    labelCheck = async(textpath,textip,clearPath)=>{
+        await browser.pause(1000)
+        await actionWrapper.scrollEleAndClick(path.CompTab)
+        await actionWrapper.Click(path.AddBranchbtn)
+        await actionWrapper.snackBarValidate(textpath,textip)
+        await actionWrapper.Click(path.CancelBtn)
+        await browser.pause(2000)
+        await actionWrapper.scrollEleAndClick(path.CustomTab)
+        await actionWrapper.clearValues(clearPath)
+        await actionWrapper.Click(path.SavelBtn)
+        await browser.pause(2000)
+    }
+    Status = async(branchpath,addresspath,loalitypath,citypath,districtpath,
+        statepath,pincodepath,countrypath,primContactpath,contactpath,taxpath)=>{
+        await actionWrapper.Click(branchpath)
+        await actionWrapper.Click(addresspath)
+        await actionWrapper.Click(loalitypath)
+        await actionWrapper.Click(citypath)
+        await actionWrapper.Click(districtpath)
+        await actionWrapper.Click(statepath)
+        await actionWrapper.Click(pincodepath)
+        await actionWrapper.Click(countrypath)
+        await actionWrapper.Click(primContactpath)
+        await actionWrapper.Click(contactpath)
+        await actionWrapper.Click(taxpath)
+    }
+
 }
 module.exports = new Custom();
