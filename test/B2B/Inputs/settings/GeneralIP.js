@@ -3,9 +3,11 @@ function Genip() {
     this.genUrl="/settings/general"
     this.compid="SSI"
     this.compid1="SI"
+    this.orginalCompid="MBM"
     this.mail="preetha@apptino.com"
     this.mail1="zen@gmail.com"
     this.invalidmail="adtional setting"
+    this.orginalMail="admin@apptino.com"
     this.code ="AMD"
     this.code1="CHF"
     this.Name="Doller"
@@ -20,9 +22,13 @@ function Genip() {
     this.editfactor="0.001"
     this.editformat="1,999.999"
     this.roundOff="2"
-    this.date='1/'
+    this.originalroundOff="1"
+    this.date='2022/'
+    this.orginaldate='1/'
     this.time="12"
+    this.originaltime="24"
     this.timezone="(GMT+04:00) Ye"
+    this.orginaltimezone="chennai"
     this.alert="Changes saved successfully"
     this.alreadyExisitsAlert="Currency code already exist"
     this.errorCodeMsg='Currency code required'

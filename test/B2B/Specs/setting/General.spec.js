@@ -81,11 +81,11 @@ describe('General Page', () => {
    it('should not allow a user to delete a mapped currency', async () => {
       await gen_fn.DeleteCurr(gen_path.MapedDeleteBtn, common.snackbar, genip.mappedDeleteAlert)
    });
-/*   it('should validate a Factor field', async () => {
-      await browser.refresh()
-      await actionsWrappers.scrollEle(gen_path.EditFactor)
-      await gen_fn.Fieldvalidate(gen_path.EditFactor, gen_path.ErrormsgFactor, genip.errormsgFactor)
-   }); */
+   /*   it('should validate a Factor field', async () => {
+         await browser.refresh()
+         await actionsWrappers.scrollEle(gen_path.EditFactor)
+         await gen_fn.Fieldvalidate(gen_path.EditFactor, gen_path.ErrormsgFactor, genip.errormsgFactor)
+      }); */
    it('should delete a currency', async () => {
       await gen_fn.DeleteCurr(gen_path.Deletebtn, common.snackbar, genip.alert)
    });
@@ -106,33 +106,51 @@ describe('General Page', () => {
    });
    it('should edit the Date & display Format with cancel', async () => {
       await actionsWrappers.scrollEle(gen_path.DateDiaplay)
-      await gen_fn.EditRegionalSetting(gen_path.DateDiaplay,gen_path.DateDiaplay, genip.date, gen_path.EditCancelbtn,
+      await gen_fn.EditRegionalSetting(gen_path.DateDiaplay, gen_path.DateDiaplay, genip.date, gen_path.EditCancelbtn,
          common.snackbar, genip.alert)
    });
    it('should edit the Date & display Format with save', async () => {
       await actionsWrappers.scrollEle(gen_path.DateDiaplay)
-      await gen_fn.EditRegionalSetting(gen_path.DateDiaplay,gen_path.DateDiaplay, genip.date, gen_path.EditSavebtn,
+      await gen_fn.EditRegionalSetting(gen_path.DateDiaplay, gen_path.DateDiaplay, genip.date, gen_path.EditSavebtn,
          common.snackbar, genip.alert)
    });
    it('should edit the Time & display Format with cancel', async () => {
       await actionsWrappers.scrollEle(gen_path.TimeDisplay)
-      await gen_fn.EditRegionalSetting(gen_path.TimeDisplay,gen_path.TimeDisplay, genip.time, gen_path.EditCancelbtn,
+      await gen_fn.EditRegionalSetting(gen_path.TimeDisplay, gen_path.TimeDisplay, genip.time, gen_path.EditCancelbtn,
          common.snackbar, genip.alert)
    });
    it('should edit the Time & display Format with save', async () => {
       await actionsWrappers.scrollEle(gen_path.TimeDisplay)
-      await gen_fn.EditRegionalSetting(gen_path.TimeDisplay,gen_path.TimeDisplay, genip.time, gen_path.EditSavebtn,
+      await gen_fn.EditRegionalSetting(gen_path.TimeDisplay, gen_path.TimeDisplay, genip.time, gen_path.EditSavebtn,
          common.snackbar, genip.alert)
    });
    it('should edit the  Time zone Format with cancel', async () => {
       await actionsWrappers.scrollEle(gen_path.TimeZone)
-      await gen_fn.EditRegionalSetting(gen_path.TimeZone,gen_path.TimeZone, genip.timezone, gen_path.EditCancelbtn,
+      await gen_fn.EditRegionalSetting(gen_path.TimeZone, gen_path.TimeZone, genip.timezone, gen_path.EditCancelbtn,
          common.snackbar, genip.alert)
    });
    it('should edit the  Time zone Format with save', async () => {
       await actionsWrappers.scrollEle(gen_path.TimeZone)
-      await gen_fn.EditRegionalSetting(gen_path.TimeZone,gen_path.TimeZone, genip.timezone, gen_path.EditSavebtn,
-         common.snackbar,genip.alert)
+      await gen_fn.EditRegionalSetting(gen_path.TimeZone, gen_path.TimeZone, genip.timezone, gen_path.EditSavebtn,
+         common.snackbar, genip.alert)
+   });
+   it('should change the all the changed data to orginal', async () => {
+      await browser.refresh()
+      await gen_fn.EditAddtionalsetting(gen_path.CompIdentifier, genip.orginalCompid, gen_path.EditSavebtn,
+         common.snackbar, genip.alert)
+      await gen_fn.EditAddtionalsetting(gen_path.DefaultMailId, genip.orginalMail, gen_path.EditSavebtn,
+         common.snackbar, genip.alert)
+      await gen_fn.EditAddtionalsetting(gen_path.RoundOff, genip.originalroundOff, gen_path.EditSavebtn,
+         common.snackbar, genip.alert)
+      await actionsWrappers.scrollEle(gen_path.DateDiaplay)
+      await gen_fn.EditRegionalSetting(gen_path.DateDiaplay, gen_path.DateDiaplay, genip.orginaldate, gen_path.EditSavebtn,
+         common.snackbar, genip.alert)
+      await actionsWrappers.scrollEle(gen_path.TimeDisplay)
+      await gen_fn.EditRegionalSetting(gen_path.TimeDisplay, gen_path.TimeDisplay, genip.originaltime, gen_path.EditSavebtn,
+         common.snackbar, genip.alert)
+      await actionsWrappers.scrollEle(gen_path.TimeZone)
+      await gen_fn.EditRegionalSetting(gen_path.TimeZone, gen_path.TimeZone, genip.orginaltimezone, gen_path.EditSavebtn,
+         common.snackbar, genip.alert)
    });
    // it('santy', async () => {
    //    await gen_fn.EditAddtionalsetting(gen_path.CompIdentifier,genip.compid,gen_path.EditSavebtn,

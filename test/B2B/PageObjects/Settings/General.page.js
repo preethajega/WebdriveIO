@@ -80,7 +80,6 @@ class General extends Page{
     get Finicalyear(){
         return super.pathByName('finStartMonth')
     }
-
     get RoundOff(){
         return super.pathByName('roundOff')
     }
@@ -89,15 +88,12 @@ class General extends Page{
     }
     get DateDiaplay(){
         return super.pathByXpath('//input[@name="dateFormatId"]')
-        // return super.pathByName('dateFormatId')
     }
     get TimeDisplay(){
         return super.pathByXpath('//input[@name="timeFormat"]')
-        // return super.pathByName('timeFormat')
     }
     get TimeZone(){
         return super.pathByXpath('//input[@name="timeZone"]')
-        // return super.pathByName('timeZone')
     }
 }
 module.exports = new General();
