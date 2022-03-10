@@ -22,6 +22,12 @@ get submit(){
 get yes(){
     return super.pathById('yes');
 }
+get CancelBtn(){
+    return super.pathByXpath('//button[@aria-label="cancel"]')
+}
+get SaveBtn(){
+    return super.pathByXpath('//button[@aria-label="Save"]')
+}
 get cancelDailog(){
     return super.pathById('editDialogCancel');
 }

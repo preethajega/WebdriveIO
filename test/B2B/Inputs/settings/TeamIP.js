@@ -7,6 +7,8 @@ function Teamip(){
     this.phNum="866732881"
     this.email="preetha@gmail.com"
     this.email1="demo1@gmail.com"
+    this.email2="preeyhas@gmail.com"
+    this.email3="testers@gmail.com"
     this.invalidmail="application"
     this.jobtitle="QA"
     this.depart="Testing"

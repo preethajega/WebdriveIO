@@ -12,21 +12,17 @@ class Company extends Page {
  async open() {
     super.open(compIp.CompUrl); 
   }
-UploadLogo = async() =>{
+UploadLogo = async(btn) =>{
     await browser.pause(2000);    
     await attchmentUpload.upload(path.logoupload,compIp.uploadimg)
     await browser.pause(2000);  
-    await actionWrapper.Click(path.savebtn);
-    await actionWrapper.snackBarValidate(common.snackbar,compIp.saveAlert)
+    await actionWrapper.Click(btn);
+    // await actionWrapper.snackBarValidate(common.snackbar,compIp.saveAlert)
 }
 Updatevalue = async(ele,input,btn) =>{
     await actionWrapper.clearAndsetValue(ele,input);
     await actionWrapper.Click(btn);
     await actionWrapper.snackBarValidate(common.snackbar,compIp.saveAlert)
-    if(await common.snackbar.isDisplayed()){
-        await assert.strictEqual(
-          await common.snackbar.getText(),compIp.saveAlert );
-    }
   }
 WebsiteFieldValid = async () =>{
   await actionWrapper.clearAndsetValue(path.website,compIp.website2)

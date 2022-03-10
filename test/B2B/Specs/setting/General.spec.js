@@ -50,10 +50,10 @@ describe('General Page', () => {
    /* ********************* CREATE CURRENCY CARD ********************** */
    it('should create a new currency with saving ', async () => {
       await browser.refresh()
-      await gen_fn.Addcur(gen_path.Code, genip.code, gen_path.Symbol, genip.symbol, gen_path.SaveBtn)
+      await gen_fn.Addcur(gen_path.Code, genip.code,genip.nameip1, gen_path.Symbol, genip.symbol, gen_path.SaveBtn)
    });
    it('should create a new currency with cancel ', async () => {
-      await gen_fn.Addcur(gen_path.Code, genip.code1, gen_path.Symbol, genip.symbol1, gen_path.CancelBtn)
+      await gen_fn.Addcur(gen_path.Code, genip.code1,genip.nameip2 ,gen_path.Symbol, genip.symbol1, gen_path.CancelBtn)
    });
    it('should not allow a user to enter Exisiting currency', async () => {
       await gen_fn.AlreadyExistCur()

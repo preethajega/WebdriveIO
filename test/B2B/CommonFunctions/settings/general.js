@@ -13,10 +13,10 @@ class General extends Page {
     async open() {
         super.open(genip.genUrl); 
     }
-    Addcur = async (ele,input,symbolpath,symbolip,btn) =>{
+    Addcur = async (ele,input,nameip,symbolpath,symbolip,btn) =>{
         await actionWrapper.Click(path.AddCurBtn)
         await actionWrapper.clickAndSetvalue(ele,input)
-        await actionWrapper.Click(path.Name)
+        await actionWrapper.clearAndsetValue(path.Name,nameip)
         await actionWrapper.clearValue_selectDropdownvalue(path.Format,genip.format)
         await actionWrapper.clickAndSetvalue(symbolpath,symbolip)
         await path.Symbol.keys("\uE007");

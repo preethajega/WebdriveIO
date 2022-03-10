@@ -69,7 +69,8 @@ class Term extends Page {
     }
     AddpayTerm = async(ele,eleip,btn) =>{
         await browser.refresh()
-        await browser.pause(2000)
+        await actionWrapper.Click(path.Payment)
+        await browser.refresh()
         await actionWrapper.Click(path.Payment)
         await actionWrapper.scrollEleAndClick(path.AddPayTermBtn)
         await actionWrapper.clickAndSetvalue(ele,eleip)
@@ -81,6 +82,7 @@ class Term extends Page {
         await actionWrapper.Click(path.Paymentgateway)
         await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(common.snackbar,termip.saveAlert)
+        await browser.pause(2000)
     }
     DeletPayTerm = async(btn,snakpath2,snakip2) =>{
         await actionWrapper.scrollEleAndClick(path.DeleteastPayterm)

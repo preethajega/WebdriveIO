@@ -15,10 +15,10 @@ class Custom extends Page {
         await actionWrapper.snackBarValidate(common.snackbar,customip.saveAlert)
         await browser.pause(2000)
     }
-    labelCheck = async(textpath,textip,clearPath)=>{
+    labelCheck = async(btn,textpath,textip,clearPath)=>{
         await browser.pause(1000)
-        await actionWrapper.scrollEleAndClick(path.CompTab)
-        await actionWrapper.Click(path.AddBranchbtn)
+        // await actionWrapper.scrollEleAndClick(path.CompTab)
+        await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(textpath,textip)
         await actionWrapper.Click(path.CancelBtn)
         await browser.pause(2000)

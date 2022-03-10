@@ -19,75 +19,86 @@ describe('Customization Page', () => {
    it('should change the Branch Label Text with save', async () => {
       await actionsWrappers.clickAndSetvalue(custom_path.BranchLabel, customip.branch)
       await custom_fn.snakBarValid(custom_path.SavelBtn)
-      await custom_fn.labelCheck(custom_path.BranchText, customip.branchText, custom_path.BranchLabel)
+      await actionsWrappers.scrollEleAndClick(custom_path.CompTab)
+      await custom_fn.labelCheck(custom_path.AddBranchbtn,custom_path.BranchText, customip.branchText, custom_path.BranchLabel)
    });
    it('should change the Address Line Label Text with save', async () => {
       await browser.pause(2000)
       await actionsWrappers.clickAndSetvalue(custom_path.AddressLabel, customip.address)
       await custom_fn.snakBarValid(custom_path.SavelBtn)
-      await custom_fn.labelCheck(custom_path.AddressText, customip.addressText, custom_path.AddressLabel)
+      await actionsWrappers.scrollEleAndClick(custom_path.CompTab)
+      await custom_fn.labelCheck(custom_path.AddBranchbtn,custom_path.AddressText, customip.addressText, custom_path.AddressLabel)
    });
    it('should change the Locality Label Text with save', async () => {
       await browser.pause(2000)
       await actionsWrappers.clickAndSetvalue(custom_path.LocalityLabel, customip.locality)
       await custom_fn.snakBarValid(custom_path.SavelBtn)
-      await custom_fn.labelCheck(custom_path.LocalityText, customip.localityText, custom_path.LocalityLabel)
+      await actionsWrappers.scrollEleAndClick(custom_path.CompTab)
+      await custom_fn.labelCheck(custom_path.AddBranchbtn,custom_path.LocalityText, customip.localityText, custom_path.LocalityLabel)
    });
 
    it('should change the city Label Text with save', async () => {
       await browser.pause(2000)
       await actionsWrappers.clickAndSetvalue(custom_path.CityLabel, customip.city)
       await custom_fn.snakBarValid(custom_path.SavelBtn)
-      await custom_fn.labelCheck(custom_path.CityText, customip.cityText, custom_path.CityLabel)
+      await actionsWrappers.scrollEleAndClick(custom_path.CompTab)
+      await custom_fn.labelCheck(custom_path.AddBranchbtn,custom_path.CityText, customip.cityText, custom_path.CityLabel)
    });
 
    it('should change the District Label Text with save', async () => {
       await browser.pause(2000)
       await actionsWrappers.clickAndSetvalue(custom_path.DistrLabel, customip.district)
       await custom_fn.snakBarValid(custom_path.SavelBtn)
-      await custom_fn.labelCheck(custom_path.DistrictText, customip.districtText, custom_path.DistrLabel)
+      await actionsWrappers.scrollEleAndClick(custom_path.CompTab)
+      await custom_fn.labelCheck(custom_path.AddBranchbtn,custom_path.DistrictText, customip.districtText, custom_path.DistrLabel)
    });
 
    it('should change the State Label Text with save', async () => {
       await browser.pause(2000)
       await actionsWrappers.clickAndSetvalue(custom_path.StateLabel, customip.state)
       await custom_fn.snakBarValid(custom_path.SavelBtn)
-      await custom_fn.labelCheck(custom_path.StateText, customip.stateText, custom_path.StateLabel)
+      await actionsWrappers.scrollEleAndClick(custom_path.CompTab)
+      await custom_fn.labelCheck(custom_path.AddBranchbtn,custom_path.StateText, customip.stateText, custom_path.StateLabel)
    });
 
    it('should change the Pincode Label Text with save', async () => {
       await browser.pause(2000)
       await actionsWrappers.clickAndSetvalue(custom_path.PincodeLabel, customip.pincode)
       await custom_fn.snakBarValid(custom_path.SavelBtn)
-      await custom_fn.labelCheck(custom_path.PincodeText, customip.pincodeText, custom_path.PincodeLabel)
+      await actionsWrappers.scrollEleAndClick(custom_path.CompTab)
+      await custom_fn.labelCheck(custom_path.AddBranchbtn,custom_path.PincodeText, customip.pincodeText, custom_path.PincodeLabel)
    });
 
    it('should change the Country Label Text with save', async () => {
       await browser.pause(2000)
       await actionsWrappers.clickAndSetvalue(custom_path.CountryLabel, customip.country)
       await custom_fn.snakBarValid(custom_path.SavelBtn)
-      await custom_fn.labelCheck(custom_path.CountryText, customip.countryText, custom_path.CountryLabel)
+      await actionsWrappers.scrollEleAndClick(custom_path.CompTab)
+      await custom_fn.labelCheck(custom_path.AddBranchbtn,custom_path.CountryText, customip.countryText, custom_path.CountryLabel)
    });
 
    it('should change the Primary Contact Label Text with save', async () => {
       await browser.pause(2000)
       await actionsWrappers.clickAndSetvalue(custom_path.PrimContactNoLabel, customip.primaryContact)
       await custom_fn.snakBarValid(custom_path.SavelBtn)
-      await custom_fn.labelCheck(custom_path.PrimaryContactText, customip.primaryContactText, custom_path.PrimContactNoLabel)
+      await actionsWrappers.scrollEleAndClick(custom_path.CompTab)
+      await custom_fn.labelCheck(custom_path.AddBranchbtn,custom_path.PrimaryContactText, customip.primaryContactText, custom_path.PrimContactNoLabel)
    });
 
    it('should change the Contact No Label Text with save', async () => {
       await browser.pause(2000)
       await actionsWrappers.clickAndSetvalue(custom_path.ContactNoLabel, customip.contactNo)
       await custom_fn.snakBarValid(custom_path.SavelBtn)
-      await custom_fn.labelCheck(custom_path.ContactNoText, customip.contactNoText, custom_path.ContactNoLabel)
+      await actionsWrappers.scrollEleAndClick(custom_path.CompTab)
+      await custom_fn.labelCheck(custom_path.AddBranchbtn,custom_path.ContactNoText, customip.contactNoText, custom_path.ContactNoLabel)
    });
 
    it('should change the Tax Label Text with save', async () => {
       await browser.pause(2000)
       await actionsWrappers.clickAndSetvalue(custom_path.TaxLabel, customip.tax)
       await custom_fn.snakBarValid(custom_path.SavelBtn)
-      await custom_fn.labelCheck(custom_path.TaxText, customip.taxText, custom_path.TaxLabel)
+      await actionsWrappers.scrollEleAndClick(custom_path.CompTab)
+      await custom_fn.labelCheck(custom_path.AddBranchbtn,custom_path.TaxText, customip.taxText, custom_path.TaxLabel)
    });
    /*  ******************** Required Btn ****************** */
    it('should chamge the all the Customization label into Required with cancel ', async () => {

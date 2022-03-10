@@ -30,7 +30,7 @@ function Buip() {
     this.errorMsg1="Name required"
     this.divMapeAlert="Division mapped with product cannot be deleted!!!"
     this.buMapAlert="Business unit mapped with Branch cannot be deleted."
-    this.channelMapAlert=""
+    this.channelMapAlert="Channel code already exist."
     this.emptyAlert="Please fill all required fields"
     this.divNameExitAlert="Division name already exist."
     this.divCodeExitAlert="Division code already exist."

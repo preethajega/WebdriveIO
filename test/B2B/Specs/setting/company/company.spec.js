@@ -18,7 +18,8 @@ describe('Company Page', () => {
         await actionsWrappers.urlValidation("/company");
     });
     it('should Validate a company details by updating a Logo with valid files', async () => {
-        await Comp_fn.UploadLogo();
+        await Comp_fn.UploadLogo(Comp_path.savebtn);
+        await actionsWrappers.snackBarValidate(common.snackbar,compIp.saveAlert)
     });
     it('should validate a company details by updating a CompanyName with saving', async () => {
         await Comp_fn.Updatevalue(Comp_path.CompName, Compip.compname, Comp_path.savebtn);

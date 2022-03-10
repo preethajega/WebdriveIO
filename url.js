@@ -2,6 +2,7 @@ module.exports={
 
     new:'https://new.bcommerce.in',
     dev:'https://dev.myapptino.com',
+    dev1:'https://dev1.myapptino.com',
     dev3:'https://dev3.myapptino.com',
     demo:'https://demo.myapptino.com',
     ptc:'https://stark.myapptino.com',

@@ -10,6 +10,8 @@ function Genip() {
     this.orginalMail="admin@apptino.com"
     this.code ="AMD"
     this.code1="CHF"
+    this.nameip1="Armenian dram"
+    this.nameip2="Swiss franc"
     this.Name="Doller"
     this.code1="ZAR"
     this.factor ="0.16"
@@ -24,7 +26,7 @@ function Genip() {
     this.roundOff="2"
     this.originalroundOff="1"
     this.date='2022/'
-    this.orginaldate='1/'
+    this.orginaldate='/'
     this.time="12"
     this.originaltime="24"
     this.timezone="(GMT+04:00) Ye"

@@ -109,12 +109,12 @@ describe("Division & BU Page", () => {
   });
   it('should update the created BU with cancel', async () => {
     await browser.refresh()
-    await BU_fn.UpdateBU(bu_path.Name, BUip.buName1, bu_path.Code, BUip.buCode2,
+    await BU_fn.UpdateBU(bu_path.Name, BUip.buName1, bu_path.Code, BUip.buCode3,
       bu_path.priority, BUip.priority1, bu_path.cancelbtn)
   });
   it('should update the created BU with save', async () => {
     await browser.refresh()
-    await BU_fn.UpdateBU(bu_path.Name, BUip.buName1, bu_path.Code, BUip.buCode2,
+    await BU_fn.UpdateBU(bu_path.Name, BUip.buName1, bu_path.Code, BUip.buCode3,
       bu_path.priority, BUip.priority1, bu_path.savebtn)
   });
   it('should validate a BU name field', async () => {
