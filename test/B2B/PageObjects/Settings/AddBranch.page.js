@@ -98,7 +98,8 @@ class Branch extends Page{
         return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiPaper-e')]/div[2]/button[1]")
     }
     get EditBtn(){
-        return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiPaper-e')]/div[2]/button[2]")
+        return super.pathByXpath('//button[text()="Edit"]')
+        // return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiPaper-e')]/div[2]/button[2]")
     }
     get ConformCancelBtn(){
         return super.pathByXpath('//div[contains(@class,"MuiDialogA")]/button[1]')

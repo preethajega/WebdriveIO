@@ -4,8 +4,8 @@ const bu_path = require("../../PageObjects/Settings/Businessunit.page");
 const LoginPage = require("../../PageObjects/Login.page");
 const B2B_loginIp = require("../../Inputs/B2B_login");
 const actionsWrappers = require("../../../CommonActions/ActionsWrappers");
-const BU_fn = require("../../CommonFunctions/settings/Bu");
-var BUip = require("../../Inputs/settings/BuIp");
+const BU_fn = require("../../CommonFunctions/settings/BusinessUnit");
+var BUip = require("../../Inputs/settings/BuisinessUnitIp");
 const common = require("../../PageObjects/Common/commonObjects");
 
 

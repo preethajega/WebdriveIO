@@ -2,7 +2,7 @@ const actionWrapper = require("../../../CommonActions/ActionsWrappers");
 const Page = require("../../../B2B/PageObjects/page");
 const customerip = require("../../Inputs/Customers/customerIP");
 const path = require("../../PageObjects/Customers/customer.page");
-const custompath = require("../../PageObjects/Settings/custom.page");
+const custompath = require("../../PageObjects/Settings/customization.page");
 const branchpath = require("../../PageObjects/Settings/AddBranch.page");
 const Branchip= require("../../Inputs/settings/BranchIP");
 const teampath = require("../../PageObjects/Settings/Team.page");
@@ -132,10 +132,14 @@ class customer extends Page {
         await actionWrapper.Click(path.ClearAll)
         await actionWrapper.Click(path.ApplyBtn)
     }
-    EditCompOverView = async(Elepath,EleIp,Ele2Path,Ele2Ip)=>{
+    EditFieldCompOverView = async(Elepath,EleIp)=>{
         await actionWrapper.Click(path.EditCustOverview)
         await actionWrapper.clearAndsetValue(Elepath,EleIp)
-        await actionWrapper.clickSetvalueAndSelectoption(Ele2Path,Ele2Ip)
+    }
+    EditDropDownCompOverView = async(Clpath,Ele2Path,Ele2Ip)=>{
+        await actionWrapper.Click(path.EditCustOverview)
+        await actionWrapper.clearValues(Clpath)
+        await actionWrapper.clickSetvalueAndSelectSecondOption(Ele2Path,Ele2Ip)
     }
     PageInationValid = async(perPagePath,elem,eleIp)=>{
         await actionWrapper.Click(path.RowPerPage)
@@ -146,14 +150,12 @@ class customer extends Page {
     }
     labelCheck = async(btn,textpath,textip)=>{
         await browser.pause(1000)
-        // await actionWrapper.scrollEleAndClick(path.CompTab)
         await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(textpath,textip)
         await actionWrapper.Click(teampath.CancelBtn)
         await browser.pause(2000)
     }
     clearLabel= async(clearPath)=>{
-        // await actionWrapper.scrollEleAndClick(path.CustomTab)
         await actionWrapper.clearValues(clearPath)
         await actionWrapper.Click(teampath.Savebtn)
         await browser.pause(2000)

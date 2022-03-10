@@ -4,8 +4,8 @@ const Branch_path = require("../../../PageObjects/Settings/AddBranch.page");
 const actionsWrappers = require("../../../../CommonActions/ActionsWrappers");
 const Branch_fn= require("../../../CommonFunctions/settings/branch");
 var Branchip= require("../../../Inputs/settings/BranchIP");
-const custom_fn = require("../../../CommonFunctions/settings/custom")
-const custom_path = require("../../../PageObjects/Settings/custom.page");
+const custom_fn = require("../../../CommonFunctions/settings/customization")
+const custom_path = require("../../../PageObjects/Settings/customization.page");
 
 
 describe('Branch card', () => {

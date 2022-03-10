@@ -1,7 +1,7 @@
 const actionWrapper = require("../../../CommonActions/ActionsWrappers");
 const Page = require("../../../B2B/PageObjects/page");
 const path = require("../../PageObjects/Settings/Businessunit.page");
-var BUip= require("../../Inputs/settings/BuIp");
+var BUip= require("../../Inputs/settings/BuisinessUnitIp");
 const common = require("../../PageObjects/Common/commonObjects");
 const assert = require("assert");
 

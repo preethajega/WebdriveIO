@@ -36,8 +36,9 @@ fieldValid = async(ele,errpath,Errormsg)=>{
   await actionWrapper.snackBarValidate(errpath,Errormsg)
   await actionWrapper.Click(path.cancelbtn)
 }
-Updatedropdown = async(btn) =>{
-    await actionWrapper.clickSetvalueAndSelectoption(path.SubIndustry,compIp.subindustry);
+Updatedropdown = async(subIndPath,SubIndustrypath,subindustryIP,btn) =>{
+    await actionWrapper.clearValues(subIndPath)
+    await actionWrapper.clickSetvalueAndSelectSecondOption(SubIndustrypath,subindustryIP)
     await actionWrapper.Click(btn)
     await actionWrapper.snackBarValidate(common.snackbar,compIp.saveAlert)
   }

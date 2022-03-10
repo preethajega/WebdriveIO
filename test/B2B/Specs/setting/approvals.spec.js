@@ -5,7 +5,7 @@ const B2B_loginIp = require("../../Inputs/B2B_login");
 const actionsWrappers = require("../../../CommonActions/ActionsWrappers");
 const approval_path = require("../../PageObjects/Settings/Approvals.page");
 const approval_fn = require("../../CommonFunctions/settings/approvals")
-var approvalip = require("../../Inputs/settings/AproveIP");
+var approvalip = require("../../Inputs/settings/AprovalIP");
 const common = require("../../PageObjects/Common/commonObjects");
 
 describe('Approval Page', () => {

@@ -31,6 +31,9 @@ class Customer extends Page{
     get ClearAll(){
         return super.pathByXpath('//button[@aria-label="clearAll"]')
     }
+    get ProtalAcees(){
+        return super.pathByXpath('//div[contains(@class,"MuiListItemSecon")]')
+    }
 
 
 /* ******************** CREATE CUSTOMER CARD *********************** */  
@@ -102,13 +105,14 @@ class Customer extends Page{
         return super.pathByName('accountTypeId.name')
     }
     get SubIndustry(){
-        return super.pathByName('subIndustryId')
+        return super.pathByXpath('//input[@name="subIndustryId"]')
+        // return super.pathByName('subIndustryId')
     }
     get AccOwner(){
         // return super.pathByXpath('//label[text()="Account Owner"]/following-sibling::div')
         return super.pathByXpath('(//input[@placeholder="Search for Users"])[1]')
     }
-    get SuppOwner(){
+    get SupportOwner(){
         return super.pathByXpath('(//input[@placeholder="Search for Users"])[last()]')
     }
     get CraeteUser(){

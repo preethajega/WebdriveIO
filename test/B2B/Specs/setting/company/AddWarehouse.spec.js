@@ -4,8 +4,8 @@ const LoginPage = require("../../../PageObjects/Login.page");
 const B2B_loginIp = require("../../../Inputs/B2B_login");
 const Warehouse_fn = require("../../../CommonFunctions/settings/warehouse");
 var Warehouseip = require("../../../Inputs/settings/WarehouseIp");
-const custom_fn = require("../../../CommonFunctions/settings/custom")
-const custom_path = require("../../../PageObjects/Settings/custom.page");
+const custom_fn = require("../../../CommonFunctions/settings/customization")
+const custom_path = require("../../../PageObjects/Settings/customization.page");
 
 describe('Warehouse card', () => {
     it("Should allow to access login into warehouse card ", async () => {

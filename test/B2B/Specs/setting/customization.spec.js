@@ -3,9 +3,9 @@ const path = require("path");
 const LoginPage = require("../../PageObjects/Login.page");
 const B2B_loginIp = require("../../Inputs/B2B_login");
 const actionsWrappers = require("../../../CommonActions/ActionsWrappers");
-const custom_path = require("../../PageObjects/Settings/custom.page");
-const custom_fn = require("../../CommonFunctions/settings/custom")
-var customip = require("../../Inputs/settings/customIP");
+const custom_path = require("../../PageObjects/Settings/customization.page");
+const custom_fn = require("../../CommonFunctions/settings/customization")
+var customip = require("../../Inputs/settings/customizationIP");
 const common = require("../../PageObjects/Common/commonObjects");
 
 describe('Customization Page', () => {

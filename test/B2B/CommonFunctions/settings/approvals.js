@@ -1,6 +1,6 @@
 const actionWrapper = require("../../../CommonActions/ActionsWrappers");
 const Page = require("../../../B2B/PageObjects/page");
-const approvip = require("../../Inputs/settings/AproveIP");
+const approvip = require("../../Inputs/settings/AprovalIP");
 const path = require("../../PageObjects/Settings/Approvals.page");
 const attchmentUpload = require("../../../CommonActions/attchmentUpload");
 const common = require("../../PageObjects/Common/commonObjects");

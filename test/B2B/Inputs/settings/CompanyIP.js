@@ -4,10 +4,15 @@ function Compip() {
     this.uploadimg = path.join(__dirname,'./../../../FileUtils/Growmax PWA Icon 500x500.png');
     this.compname = "aru pvt ltd"
     this.compname1 = "arupvtltd"
+    this.OrgComName="Growmax"
+    this.OrgWebSite="https://www.apptino.com.in"
+    this.orgEbno="GM321"
+    this.orgSubIndustry="Distributors - Industrial"
     this.ebno ="3421"
     this.ebno1 ="342111"
     this.subindustry1='Aerospace & Defence'
-    this.subindustry='consumer'
+    this.subindustry='Consumer Retailing'
+    this.subindustry1='Automobile Manufacturers'
     this.acctype="buyer"
     this.website="https://www.aru.com.in"
     this.website1="https://www.growmax.com.in"

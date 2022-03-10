@@ -4,16 +4,19 @@ const B2B_loginIp = require("../../Inputs/B2B_login");
 var customerip = require("../../Inputs/Customers/customerIP");
 const customer_fn = require("../../CommonFunctions/Customers/customer")
 const customer_path = require("../../PageObjects/Customers/customer.page");
-const custom_fn = require("../../CommonFunctions/settings/custom")
-const custom_path = require("../../PageObjects/Settings/custom.page");
-var customip = require("../../Inputs/settings/customIP");
+const custom_fn = require("../../CommonFunctions/settings/customization")
+const custom_path = require("../../PageObjects/Settings/customization.page");
+var customip = require("../../Inputs/settings/customizationIP");
 const branchpath = require("../../PageObjects/Settings/AddBranch.page");
+const Branch_fn= require("../../../CommonFunctions/settings/branch");
 const Branchip= require("../../Inputs/settings/BranchIP");
 const teampath = require("../../PageObjects/Settings/Team.page");
 const teamip = require("../../Inputs/settings/TeamIP");
 const common = require("../../PageObjects/Common/commonObjects");
-const Comp_fn = require("../../CommonFunctions/settings/ComP");
+const Comp_fn = require("../../CommonFunctions/settings/Company");
 const Comp_path = require("../../PageObjects/Settings/company.page");
+var Compip = require("../../Inputs/settings/CompanyIP");
+
 
 
 
@@ -274,11 +277,16 @@ describe('Customer page', () => {
         await customer_fn.AddUser(teampath.Name,teamip.name,teampath.MobileNo,teamip.phNum,teampath.Email,teamip.email,teampath.JobTitle,teamip.jobtitle,
             teampath.Department,teamip.depart,teampath.Role,customerip.Role)
         await customer_fn.snakbar(branchpath.SaveBtn,common.snackbar,customerip.UserSaveAlert)
+        await browser.pause(3000)
+    });
+    it('should edit the selected Branch with Save',async () => {
+        await Branch_fn.EditBranchAddress(branchpath.SaveBtn)
     });
     it('should Invite a User',async () => {
         await browser.pause(3000)
         await actionsWrappers.Click(customer_path.InviteBtn)
         await actionsWrappers.snackBarValidate(common.snackbar,teamip.invitealert) 
+        await browser.pause(3000)
     });
     it('should ReInvite a User',async () => {
         await browser.pause(3000)
@@ -288,17 +296,19 @@ describe('Customer page', () => {
     it('should delete a created User with confirm delete in the Customer page',async () => {
         await customer_fn.Edit_DeleUser(customer_path.EditLastUser,customer_path.DeleMailbtn)
         await customer_fn.snakbar(teampath.ConfYesBtn,common.snackbar,customerip.UserDeleAlert)
+        await browser.pause(3000)
     });
     it('should Edit the Preference Terms',async () => {
         await actionsWrappers.Click(customer_path.PreferenceTab)
         await customer_fn.EditPreference(customer_path.PF,customer_path.PF,customerip.pf)
         await customer_fn.snakbar(teampath.Savebtn,common.snackbar,customerip.TermsUpdateAlert)
+        await browser.pause(3000)
     });
     it('should Edit Other Settings in Preference Tab',async () => {
         await customer_fn.OtherSettings()
         await customer_fn.snakbar(teampath.Savebtn,common.snackbar,customerip.TermsUpdateAlert)
     });
-    it('shoud Add the Tx Exemption to the Customers',async () => {
+    it('shoud Add the Tax Exemption to the Customers',async () => {
         await customer_fn.TaxExemp(customer_path.TaxexemField,customerip.TaxExemField)
         await customer_fn.snakbar(teampath.Savebtn,common.snackbar,customerip.TermsUpdateAlert)
     });
@@ -317,7 +327,8 @@ describe('Customer page', () => {
         await customer_fn.snakbar(branchpath.ConformDeleteBtn,common.snackbar,customerip.cusDeleAlert)                    
     });
     it('should remove the Appliyed Filter',async () => {
-        await browser.pause(1000)
+        await browser.refresh()
+        // await browser.pause(1000)
         await customer_fn.ClearFilter()
         await actionsWrappers.Click(teampath.Closecard)
     });
@@ -332,11 +343,13 @@ describe('Customer page', () => {
     it('should remove the Appliyed Filter',async () => {
         await browser.pause(1000)
         await customer_fn.ClearFilter()
-        await actionsWrappers.Click(teampath.Closecard)
+        await actionsWrappers.Click(teampath.refershbtn)
+        // await actionsWrappers.Click(teampath.Closecard)
     });
     it('should filter Using a Customer Name',async () => {
         await browser.pause(2000)
         await customer_fn.FilterDropDown(customer_path.CusName,customerip.cusName2,customer_path.ApplyBtn)
+                await actionsWrappers.Click(customer_path.EditFirstData)
     });
     it('should Uplaod the logo in the customer OverView Card',async () => {
         await actionsWrappers.Click(customer_path.EditFirstData)
@@ -344,9 +357,41 @@ describe('Customer page', () => {
         await Comp_fn.UploadLogo(branchpath.SaveBtn)
         await actionsWrappers.snackBarValidate(common.snackbar,customerip.comUpdateAlert)
     });
-    it('should Edit the Company Overview Details Name & Account Owner',async () => {
+    it('should Edit the Company Overview Details Name',async () => {
         await browser.pause(3000)
-        await customer_fn.EditCompOverView(customer_path.CustName,customerip.cusName2,customer_path.AccOwner,customerip.cusName1)
+        await customer_fn.EditFieldCompOverView(customer_path.CustName,customerip.cusName2)
+        await browser.pause(3000)
+        await customer_fn.snakbar(branchpath.SaveBtn,common.snackbar,customerip.comUpdateAlert)
+    });
+    it('should Edit the Company Overview Details Tax',async () => {
+        await browser.pause(3000)
+        await customer_fn.EditFieldCompOverView(customer_path.TaxId,customerip.taxId)
+        await browser.pause(3000)
+        await customer_fn.snakbar(branchpath.SaveBtn,common.snackbar,customerip.comUpdateAlert)
+    });
+    it('should validate a company details updating website a values with saving', async () => {
+        await actionsWrappers.Click(customer_path.EditCustOverview)
+        await Comp_fn.Updatevalue(Comp_path.website, Compip.website, branchpath.SaveBtn);
+    });
+    it('should validate a company details website by invalid inputs', async () => {
+        await actionsWrappers.Click(customer_path.EditCustOverview)
+        await Comp_fn.WebsiteFieldValid()
+    });
+    it('should Edit the Company Overview Details Account Owner',async () => {
+        await browser.pause(3000)
+        await customer_fn.EditDropDownCompOverView(customer_path.AccOwner,customer_path.AccOwner,customerip.cusName1)
+        await browser.pause(3000)
+        await customer_fn.snakbar(branchpath.SaveBtn,common.snackbar,customerip.comUpdateAlert)
+    });
+    it('should Edit the Company Overview Details Support Owner',async () => {
+        await browser.pause(3000)
+        await customer_fn.EditDropDownCompOverView(customer_path.SupportOwner,customer_path.SupportOwner,customerip.cusName1)
+        await browser.pause(3000)
+        await customer_fn.snakbar(branchpath.SaveBtn,common.snackbar,customerip.comUpdateAlert)
+    });
+    it('should Edit the Company Overview Details SubIndustry Owner',async () => {
+        await browser.pause(3000)
+        await customer_fn.EditDropDownCompOverView(customer_path.SubIndustry,customer_path.SubIndustry,customerip.subIndustry)
         await browser.pause(3000)
         await customer_fn.snakbar(branchpath.SaveBtn,common.snackbar,customerip.comUpdateAlert)
     });
@@ -355,6 +400,12 @@ describe('Customer page', () => {
         await customer_fn.ClearFilter()
         await browser.pause(1000)
         await actionsWrappers.Click(teampath.Closecard)
+    });
+    it('should Apply a filter using a Status',async () => {
+        
+    });
+    it('should Apply a Filter ', () => {
+        
     });
     it('should change the pagination 20 Rows into 50 rows',async () => {
         await customer_fn.PageInationValid(customer_path.FityRows,customer_path.PageText,customerip.fiyText)

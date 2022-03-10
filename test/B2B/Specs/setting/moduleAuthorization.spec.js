@@ -4,8 +4,8 @@ const LoginPage = require("../../PageObjects/Login.page");
 const B2B_loginIp = require("../../Inputs/B2B_login");
 const actionsWrappers = require("../../../CommonActions/ActionsWrappers");
 const moduleAuth_path = require("../../PageObjects/Settings/ModuleAuth.page");
-const moduleAuth_fn = require("../../CommonFunctions/settings/ModuleAuth")
-var moduleAuthip = require("../../Inputs/settings/ModuleAuthIP");
+const moduleAuth_fn = require("../../CommonFunctions/settings/ModuleAuthorization")
+var moduleAuthip = require("../../Inputs/settings/ModuleAuthorizationIP");
 const common = require("../../PageObjects/Common/commonObjects");
 
 describe('ModuleAuthorization Page', () => {

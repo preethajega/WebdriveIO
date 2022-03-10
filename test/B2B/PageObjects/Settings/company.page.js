@@ -7,7 +7,9 @@ class Comp extends Page{
  
     }
     get savebtn(){
-        return super.pathById('loadingButton')
+        return super.pathByXpath('//button[text()="Save"]')
+        // return super.pathByXpath('//button[@aria-label="save"]')
+        // return super.pathById('loadingButton')
     }
     get cancelbtn(){
         return super.pathByXpath('//button[@aria-label="cancel"]')
@@ -34,7 +36,7 @@ class Comp extends Page{
         return super.pathByXpath("//div[contains(@class,'MuiForm')]/following::div[contains(@class,'MuiAutocomplete-e')]")
     }
     get SubIndustry(){
-        return super.pathByName('subIndustryId')
+        return super.pathByXpath('//input[@name="subIndustryId"]')
     }
     get SubIndustryoption(){
         return super.pathByXpath("//ul[@id='mui-85097-popup']/li[1]")
