@@ -3,8 +3,8 @@ const Page = require("../../../B2B/PageObjects/page");
 class Comp extends Page{
    
     get logoupload(){
+        // return super.pathByXpath('//span[@aria-label="upload picture"]')
         return super.pathByXpath('//h5[contains(text(),"Details")]/following::input[1]')
- 
     }
     get savebtn(){
         return super.pathByXpath('//button[text()="Save"]')

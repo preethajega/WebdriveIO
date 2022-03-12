@@ -19,6 +19,9 @@ class Customer extends Page{
     get State(){
         return super.pathByXpath('//div[@class="MuiBox-root css-87igiv"][2]/div[2]//input')
     }
+    get country(){
+        return super.pathByXpath('//div[@class="MuiBox-root css-87igiv"][2]/div[3]//input')
+    }
     get ApplyBtn(){
         return super.pathById('filterApply')
     }
@@ -32,7 +35,19 @@ class Customer extends Page{
         return super.pathByXpath('//button[@aria-label="clearAll"]')
     }
     get ProtalAcees(){
-        return super.pathByXpath('//div[contains(@class,"MuiListItemSecon")]')
+        return super.pathByXpath('//div[contains(@class,"MuiListItemSecon")]//input')
+    }
+    get ActiveText(){
+        return super.pathByXpath("(//p[text()='Active'])[1]")
+    }
+    get InvitedText(){
+        return super.pathByXpath("(//p[text()='Invited'])[1]")
+    }
+    get StateTNText(){
+        return super.pathByXpath("(//td[text()='Tamil Nadu'])[1]")
+    }
+    get ProtalAcessText(){
+        return super.pathByXpath("(//p[text()='Yes'])[1]")
     }
 
 
@@ -172,6 +187,25 @@ class Customer extends Page{
     get UncheckAllBtn(){
         return super.pathByXpath('//button[@aria-label="uncheck"]')
     }
+    get tags(){
+        return super.pathByXpath('//input[@name="tags"]')
+    }
+    get Zone(){
+        return super.pathByXpath('//label[text()="Zone Name"]/following-sibling::div/input')
+    }
+    get SoldToCode(){
+        return super.pathByName("addressId.soldToCode")
+    }
+    get VendorCode(){
+        return super.pathByName('addressId.vendorID')
+    }
+    get BillTo(){
+        return super.pathByName("addressId.billToCode")
+    }
+    get ShipTo(){
+        return super.pathByName("addressId.shipToCode")
+    }
+
 
 /* ******************** PREFERENCE CARD *********************** */  
 /* ******************** TERMS DEFAULT SETTINGS CARD *********************** */  

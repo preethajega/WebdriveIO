@@ -46,6 +46,11 @@ class customer extends Page {
         await actionWrapper.clickAndSetvalue(valpath,valIp)
         await actionWrapper.Click(Btn)
     }
+    FilterusingProtalAcess = async(Btn)=>{
+        await actionWrapper.Click(path.FilterBtn)
+        await actionWrapper.Click(path.ProtalAcees)
+        await actionWrapper.Click(Btn)
+    }
     FilterDropDown = async(valpath,valIp,Btn)=>{
         await actionWrapper.Click(path.FilterBtn)
         await actionWrapper.clickSetvalueAndSelectoption(valpath,valIp)
@@ -159,6 +164,18 @@ class customer extends Page {
         await actionWrapper.clearValues(clearPath)
         await actionWrapper.Click(teampath.Savebtn)
         await browser.pause(2000)
+    }
+    EditAddressCard = async(EditdataPth,TagPath,TagIp,zonePath,zoneIp,soldCodePath,soldCodeIp,vendorPath,vendorIp,
+        BillToPath,BillToIp,shipToPath,shipToIp)=>{
+        await actionWrapper.scrollEleAndClick(EditdataPth)
+        await browser.pause(1000)
+        await actionsWrappers.scrollEleAndClick(path.EditBtn)
+        await actionWrapper.clickSetvalueAndSelectoption(TagPath,TagIp)
+        await actionWrapper.clickSetvalueAndSelectoption(zonePath,zoneIp)
+        await actionWrapper.clearAndsetValue(soldCodePath,soldCodeIp)
+        await actionWrapper.clearAndsetValue(vendorPath,vendorIp)
+        await actionWrapper.clearAndsetValue(BillToPath,BillToIp)
+        await actionWrapper.clearAndsetValue(shipToPath,shipToIp)
     }
     
 

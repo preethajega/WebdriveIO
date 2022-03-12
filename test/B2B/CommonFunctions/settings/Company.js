@@ -17,12 +17,11 @@ UploadLogo = async(btn) =>{
     await attchmentUpload.upload(path.logoupload,compIp.uploadimg)
     await browser.pause(2000);  
     await actionWrapper.Click(btn);
-    // await actionWrapper.snackBarValidate(common.snackbar,compIp.saveAlert)
 }
-Updatevalue = async(ele,input,btn) =>{
-    await actionWrapper.clearAndsetValue(ele,input);
+Updatevalue = async(ele,input,btn,snakpath,snakip) =>{
+    await actionWrapper.clearAndsetValue(ele,input)
     await actionWrapper.Click(btn);
-    await actionWrapper.snackBarValidate(common.snackbar,compIp.saveAlert)
+    await actionWrapper.snackBarValidate(snakpath,snakip)
   }
 WebsiteFieldValid = async () =>{
   await actionWrapper.clearAndsetValue(path.website,compIp.website2)
