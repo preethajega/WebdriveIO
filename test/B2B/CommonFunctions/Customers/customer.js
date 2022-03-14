@@ -169,7 +169,7 @@ class customer extends Page {
         BillToPath,BillToIp,shipToPath,shipToIp)=>{
         await actionWrapper.scrollEleAndClick(EditdataPth)
         await browser.pause(1000)
-        await actionsWrappers.scrollEleAndClick(path.EditBtn)
+        await actionWrapper.scrollEleAndClick(path.EditBtn)
         await actionWrapper.clickSetvalueAndSelectoption(TagPath,TagIp)
         await actionWrapper.clickSetvalueAndSelectoption(zonePath,zoneIp)
         await actionWrapper.clearAndsetValue(soldCodePath,soldCodeIp)

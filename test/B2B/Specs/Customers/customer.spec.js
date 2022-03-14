@@ -240,6 +240,7 @@ describe('Customer page', () => {
         await customer_fn.FilterSetValue(customer_path.City, customerip.city, customer_path.ApplyBtn)
     });
     it('should Invite the user while staying on the Landing page', async () => {
+        await browser.pause(4000)
         await actionsWrappers.Click(customer_path.UserInvite)
         await actionsWrappers.snackBarValidate(common.snackbar, teamip.invitealert)
     });
