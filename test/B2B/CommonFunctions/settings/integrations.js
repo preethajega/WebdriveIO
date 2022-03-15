@@ -4,8 +4,7 @@ const path = require("../../PageObjects/Settings/integrations.page");
 var integrationIp= require("../../Inputs/settings/integrations.Ip");
 const common = require("../../PageObjects/Common/commonObjects");
 const assert = require("assert");
-
-
+// import {expect} from 'chai';
 
 class integration extends Page {
 
@@ -50,11 +49,16 @@ class integration extends Page {
         await actionWrapper.Click(btn)
         await browser.pause(2000)
     }
-    CCAvenuMandatoryFieldValid = async(gateWayPath,EnablePath,Clpath,snakPth,snakip,)=>{
+    PaymentGatewayMandatoryFieldValid = async(gateWayPath,EnablePath,Clpath,snakPth,snakip)=>{
         await actionWrapper.Click(path.PaymentGateWayTab)
         await actionWrapper.Click(gateWayPath)
+        if (await (expect(EnablePath).toBeEnabled() === true)) {
+            return true;
+        }
+        else{
+            await actionWrapper.Click(EnablePath)
+        }
         
-        await actionWrapper.Click(EnablePath)
         await actionWrapper.clearValues(Clpath)
         await actionWrapper.Click(common.SaveBtn)
         await actionWrapper.snackBarValidate(snakPth,snakip)
