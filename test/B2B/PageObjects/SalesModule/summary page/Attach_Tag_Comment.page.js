@@ -42,6 +42,15 @@ class AttachTagCommentPage extends Page {
     Tag = async (Tagpath, TagIp) => {
         await actionWrapper.clearValueAndSetValueSelectDropdown(Tagpath, TagIp)
     }
+    currency = async()=>{
+        await actionWrapper.clearValueAndSetValueSelectDropdown(currPath,currIp)
+    }
+    AttachmentUplaod = async()=>{
+        await browser.pause(2000);    
+        await attchmentUpload.upload(Attachpath,AttachIp)
+        await browser.pause(2000);  
+    }
+
 
 }
 module.exports = new AttachTagCommentPage();

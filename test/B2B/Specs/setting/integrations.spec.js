@@ -58,46 +58,46 @@ describe('Company Page', () => {
             integration_path.WorkingKey, integrtionip.WorkingKey, common.SaveBtn)
     });
 
-    /* *****************  RAZOR PAY FIELD VALIDATION ******************* */
-    it('should validate a RazorPay API key filed vaildation',async () => {
-        await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.RazorPayExpand,integration_path.RazorEnable,
-            integration_path.APIKey,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
-    });
-    it('should validate a RazorPay Secret key filed vaildation',async () => {
-        await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.RazorPayExpand,integration_path.RazorEnable,
-            integration_path.SecretKey,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
-    });
-    /* *****************  STRIPE  FIELD VALIDATION ******************* */
-    it('should validate a Stripe Publishable key filed vaildation',async () => {
-        await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.StripeExpand,integration_path.StripeEnable,
-            integration_path.PublishKey,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
-    });
-    it('should validate a Stripe Secret key filed vaildation',async () => {
-        await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.StripeExpand,integration_path.StripeEnable,
-            integration_path.StripeSecretKey,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
-    });
-    it('should validate a Stripe Publishable key filed vaildation',async () => {
-        await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.StripeExpand,integration_path.StripeEnable,
-            integration_path.PublishKey1,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
-    });
-    it('should validate a Stripe Secret key filed vaildation',async () => {
-        await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.StripeExpand,integration_path.StripeEnable,
-            integration_path.StripeSecretKey1,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
-    });
+    // /* *****************  RAZOR PAY FIELD VALIDATION ******************* */
+    // it('should validate a RazorPay API key filed vaildation',async () => {
+    //     await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.RazorPayExpand,integration_path.RazorEnable,
+    //         integration_path.APIKey,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
+    // });
+    // it('should validate a RazorPay Secret key filed vaildation',async () => {
+    //     await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.RazorPayExpand,integration_path.RazorEnable,
+    //         integration_path.SecretKey,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
+    // });
+    // /* *****************  STRIPE  FIELD VALIDATION ******************* */
+    // it('should validate a Stripe Publishable key filed vaildation',async () => {
+    //     await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.StripeExpand,integration_path.StripeEnable,
+    //         integration_path.PublishKey,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
+    // });
+    // it('should validate a Stripe Secret key filed vaildation',async () => {
+    //     await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.StripeExpand,integration_path.StripeEnable,
+    //         integration_path.StripeSecretKey,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
+    // });
+    // it('should validate a Stripe Publishable key filed vaildation',async () => {
+    //     await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.StripeExpand,integration_path.StripeEnable,
+    //         integration_path.PublishKey1,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
+    // });
+    // it('should validate a Stripe Secret key filed vaildation',async () => {
+    //     await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.StripeExpand,integration_path.StripeEnable,
+    //         integration_path.StripeSecretKey1,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
+    // });
 
-    /* *****************  CC AVENU FIELD VALIDATION ******************* */
-    it('should validate a CC Avenue MerchantId filed vaildation',async () => {
-        await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.CCAvenueExpand,integration_path.CCAvenuEnable,
-            integration_path.MerchantId,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
-    });
-    it('should validate a CC Avenue Acces Code filed vaildation',async () => {
-        await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.CCAvenueExpand,integration_path.CCAvenuEnable,
-            integration_path.AccesCode,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
-    });
-    it('should validate a CC Avenue MerchantId filed vaildation',async () => {
-        await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.CCAvenueExpand,integration_path.CCAvenuEnable,
-            integration_path.WorkingKey,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
-    });
+    // /* *****************  CC AVENU FIELD VALIDATION ******************* */
+    // it('should validate a CC Avenue MerchantId filed vaildation',async () => {
+    //     await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.CCAvenueExpand,integration_path.CCAvenuEnable,
+    //         integration_path.MerchantId,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
+    // });
+    // it('should validate a CC Avenue Acces Code filed vaildation',async () => {
+    //     await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.CCAvenueExpand,integration_path.CCAvenuEnable,
+    //         integration_path.AccesCode,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
+    // });
+    // it('should validate a CC Avenue MerchantId filed vaildation',async () => {
+    //     await integrtion_fn.PaymentGatewayMandatoryFieldValid(integration_path.CCAvenueExpand,integration_path.CCAvenuEnable,
+    //         integration_path.WorkingKey,integration_path.ErrCCAvenuMsg,integrtionip.errCCAvenuMsg)
+    // });
 
     it('should change the all the Changed data into orginal payment Gateway Method ', async () => {
         await browser.refresh();

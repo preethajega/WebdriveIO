@@ -46,6 +46,7 @@ checkVisibleClickableMove = async (ele) => {
   clearValueAndSetValueSelectDropdown =  async(ele,value)=>{
     await ele.waitForDisplayed(2000);
     await ele.scrollIntoView();
+    await ele.click();
     await ele.clearValue();
     await ele.setValue(value);
     await browser.pause(1000);
