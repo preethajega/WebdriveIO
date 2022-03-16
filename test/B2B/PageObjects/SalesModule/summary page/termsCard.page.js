@@ -1,4 +1,10 @@
 const Page = require("../../../PageObjects/page");
+const actionWrapper = require("../../../../CommonActions/ActionsWrappers");
+const compIp = require("../../Inputs/settings/CompanyIP");
+const attchmentUpload = require("../../../../CommonActions/attchmentUpload");
+const common = require("../../../PageObjects/Common/commonObjects");
+const assert = require("assert");
+
 
 class TermsCard extends Page{
     get DeleiverTerm(){
@@ -30,19 +36,10 @@ class TermsCard extends Page{
 module.exports = new(TermsCard);
 
 
-const actionWrapper = require("../../../../CommonActions/ActionsWrappers");
-const compIp = require("../../Inputs/settings/CompanyIP");
-const attchmentUpload = require("../../../../CommonActions/attchmentUpload");
-const common = require("../../../PageObjects/Common/commonObjects");
-const assert = require("assert");
-
-
-
 class termsCard extends Page {
 
-    TermsActions =async(termPath,termPath,termIp)=>{
-        await actionWrapper.clearValues(termPath)
-        await actionWrapper.clickSetvalueAndSelectoption(termPath,termIp)
+    TermsActions =async(termPath,termIp)=>{
+        await actionWrapper.clearValueAndSetValueSelectDropdown(termPath,termIp)
     }
 
 }
