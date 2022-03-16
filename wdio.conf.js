@@ -3,7 +3,11 @@ const url = require('./url')
 exports.config = {
     specs: [
         //  './test/B2B/Specs/Customers/customer.spec.js',
-         './test/B2B/Specs/setting/integrations.spec.js',
+        //  './test/B2B/Specs/setting/team.spec.js',
+         './test/B2B/Specs/setting/moduleAuthorization.spec.js',
+        //  './test/B2B/Specs/setting/terms.spec.js',
+
+
         
     ],
     // Patterns to exclude.

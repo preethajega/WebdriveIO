@@ -42,6 +42,18 @@ checkVisibleClickableMove = async (ele) => {
       await msgalert.getText(),ipalert);
    } 
   }
+  //clear a value then click an element then set the value
+  clearValueAndSetValueSelectDropdown =  async(ele,value)=>{
+    await ele.waitForDisplayed(2000);
+    await ele.scrollIntoView();
+    await ele.click();
+    await ele.clearValue();
+    await ele.setValue(value);
+    await browser.pause(1000);
+    await ele.keys("\uE015");
+    await browser.pause(1000);
+    await ele.keys("\uE007");
+  }
   // click a element & set the value & click the first option using keyboard 
   clickSetvalueAndSelectoption= async(ele,value) =>{
     await ele.waitForDisplayed(2000);
