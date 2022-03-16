@@ -52,17 +52,18 @@ class integration extends Page {
     PaymentGatewayMandatoryFieldValid = async(gateWayPath,EnablePath,Clpath,snakPth,snakip)=>{
         await actionWrapper.Click(path.PaymentGateWayTab)
         await actionWrapper.Click(gateWayPath)
-        if (await (expect(EnablePath).toBeEnabled() === true)) {
-            return true;
-        }
-        else{
-            await actionWrapper.Click(EnablePath)
-        }
-        
-        await actionWrapper.clearValues(Clpath)
-        await actionWrapper.Click(common.SaveBtn)
-        await actionWrapper.snackBarValidate(snakPth,snakip)
-        await actionWrapper.Click(common.CancelBtn)
+        await browser.pause(2000); 
+        if(await (expect(EnablePath).toBeEnabled() === false)){
+            await actionWrapper.checkClickableAndClick(EnablePath)
+            await actionWrapper.clearValues(Clpath)
+            await actionWrapper.Click(common.SaveBtn)
+            await actionWrapper.snackBarValidate(snakPth,snakip)
+            await actionWrapper.Click(common.CancelBtn)
+        }  else {
+            await actionWrapper.Click(common.SaveBtn)
+            await actionWrapper.snackBarValidate(snakPth,snakip)
+        }    
+       
     }
 
 }
