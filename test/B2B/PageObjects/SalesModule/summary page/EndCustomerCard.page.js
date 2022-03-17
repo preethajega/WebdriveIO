@@ -4,7 +4,11 @@ class EndCustomerCard extends Page{
 
 /* ************* QUOTE VAIDITY DATE ************* */
     get validFrom(){
-        return super.pathByName
+        return super.pathByXpath('(//*[text()="Quote Validity"]/following::input[1])[last()]');
+    } 
+
+    get validTo(){
+        return super.pathByXpath('(//*[text()="Quote Validity"]/following::input[2])[last()]');
     } 
     get reorderBtn(){
         return super.pathById('reorder')

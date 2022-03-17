@@ -45,7 +45,7 @@ get endDatepicker(){
     return super.pathByXpath('//*[@id="date-picker-inline-ed"]/following::button[1]');
 }
 get startDate() {
-    return  super.pathById('#date-picker-inline-sd')
+    return  super.pathById('date-picker-inline-sd')
 }
 get endDate() {
     return super.pathById('date-picker-inline-ed')
