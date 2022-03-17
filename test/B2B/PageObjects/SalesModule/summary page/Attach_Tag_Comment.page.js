@@ -1,9 +1,4 @@
 const Page = require("../../../PageObjects/page");
-const actionWrapper = require("../../../../CommonActions/ActionsWrappers");
-const compIp = require("../../Inputs/settings/CompanyIP");
-const attchmentUpload = require("../../../../CommonActions/attchmentUpload");
-const common = require("../../../PageObjects/Common/commonObjects");
-const assert = require("assert");
 
 class AttachTagComment extends Page {
 
@@ -14,10 +9,34 @@ class AttachTagComment extends Page {
     get QuoteOrderAttach() {
         return super.pathByXpath('//span[@role="button"]')
     }
+    get attachDeleFirst(){
+        return super.pathByXpath('(//button[@aria-label="delete"])[1]')
+    }
+    get attachDeleLast(){
+        return super.pathByXpath('(//button[@aria-label="delete"])[last()]')
+    }
+    get ConfCancelBtn(){
+        return super.pathByXpath('//button[@aria-label="cancel"]')
+    }
+    get ConfYesBtn(){
+        return super.pathByXpath('//button[@aria-label="Yes"]')
+    }
 
     /* ************* TAG CARD ************* */
     get Tag() {
         return super.pathByXpath('//input[@id="tags-outlined"]')
+    }
+    get TagEdit(){
+        return super.pathByXpath('//div[@class="MuiBox-root css-k008qs"]/button')
+    }
+    get TagSave(){
+        return super.pathByXpath('(//div[@class="MuiBox-root css-k008qs"]/button)[last()]')
+    }
+    get TagCancel(){
+        return super.pathByXpath('(//div[@class="MuiBox-root css-k008qs"]/button)[1]')
+    }
+    get clearAllTag(){
+        return super.pathByXpath('//*[@placeholder="Search for tags"]/following-sibling::div/button[@title="Clear"]')
     }
 
     /* ************* COMMENTS CARD ************* */
@@ -32,25 +51,11 @@ class AttachTagComment extends Page {
     get currency() {
         return super.pathById('currencyDashboard')
     }
-
-
+    get currencyClear(){
+        return super.pathByXpath('(//label[text()="Currency"]/following::div/button[1])[1]')
+    }
+    get CurrFactor(){
+        return super.pathByName('cfactor')
+    }
 }
-module.exports = new(AttachTagComment);
-
-class AttachTagCommentPage extends Page {
-
-    Tag = async (Tagpath, TagIp) => {
-        await actionWrapper.clearValueAndSetValueSelectDropdown(Tagpath, TagIp)
-    }
-    currency = async()=>{
-        await actionWrapper.clearValueAndSetValueSelectDropdown(currPath,currIp)
-    }
-    AttachmentUplaod = async()=>{
-        await browser.pause(2000);    
-        await attchmentUpload.upload(Attachpath,AttachIp)
-        await browser.pause(2000);  
-    }
-
-
-}
-module.exports = new AttachTagCommentPage();
+module.exports = new AttachTagComment();
