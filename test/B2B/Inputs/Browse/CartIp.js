@@ -5,10 +5,10 @@ function cartPageInput() {
     this.custProdid="123";
     this.custProdprice="1000";
     this.ProdName="Apple";
-    this.itemName="laptop";
+    this.itemName="801 chair";
     this.ProdQty="10";
     this.LeadName = 'sanity';
-    this.BuyerName = 'Enterprise';
+    this.BuyerName = 'Apptino';
     this.CompanyName = "apptino software";
     this.ContactPerson = "fred";
     this.CustomerEmail = "fred@gmail.com";

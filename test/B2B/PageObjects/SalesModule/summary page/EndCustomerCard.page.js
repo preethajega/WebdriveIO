@@ -16,10 +16,6 @@ class EndCustomerCard extends Page{
         return super.pathByXpath('(//*[text()="Valid from"]/following::button[1])[last()]')
     }
     get reorderBtn(){
-<<<<<<< HEAD
-        return super.pathById('reorder');
-    }    
-=======
         return super.pathById('reorder')
     }   
     get RequiredDateSidNav(){
@@ -37,7 +33,6 @@ class EndCustomerCard extends Page{
     get DatePath(){
         return super.pathByXpath('//div[@role="row"][3]/div[3]')
     }
->>>>>>> 2093fcae4ba6ec4dc3f6712dff0a59e9f3d3f7a9
 
 /* ************* SPR FIELDS  ************* */
 

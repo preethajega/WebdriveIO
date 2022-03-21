@@ -30,7 +30,7 @@ class AddProduct {
   // Navigate cart page & clear cart
   ClickAndclearCart = async (productId) => {
     await actionWrapper.checkVisibleClickableAndClick(await path.cartIcon);
-    await browser.pause(2000);
+    await browser.pause(4000);
     if (await path.mycart.isExisting()) {
       await actionWrapper.checkVisibleClickableAndClick(await path.moreOptions);
       await browser.pause(2000);
@@ -42,7 +42,7 @@ class AddProduct {
 // to select products in cart page with search value
 selectProducts = async (productId) => {
   await actionWrapper.selectfirstDropdownValue(
-    await path.cartSearch,productId,await path.searchResultsImage
+    await path.cartSearch,productId,await path.resultImage
   );
 };
 

@@ -26,7 +26,7 @@ get getQuote() {
 
 
   get searchResultsImage() {
-    return super.pathByXpath('//div[@class="MuiPaper-root MuiPaper-elevation1"]/div/ul/div[1]');
+    return super.pathByXpath('//*[@placeholder="Search for products"]/following::div[4]');
   }
 
   get addToCartBtnInSearchResults() {
@@ -38,7 +38,7 @@ get getQuote() {
   }
 
   get resultImage() {
-    return super.pathByXpath('//*[@id="root"]/header/div/div[2]/div/div/div[3]/div/div/div/div[1]/div[1]');
+    return super.pathByXpath('//*[@class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 css-1gbi9qn"]//div/ul/div[1]');
   }
 
   get displayName() {
@@ -142,7 +142,7 @@ get message(){
 
 
 get mycart (){
-  return super.pathByXpath('//div[contains(@class,"Paper-root jss")]');
+  return super.pathByXpath('//div[contains(@class,"item MuiGrid-grid-md-9 ")]');
   }
 
 get moreOptions (){
