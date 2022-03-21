@@ -13,7 +13,8 @@ get getQuote() {
 }
 
   get cartIcon() {
-    return super.pathByCss('#cartIcon');
+    return super.pathByXpath('(//div[@class="MuiBox-root css-q04doh"]//button)[2]')
+    // return super.pathByCss('#cartIcon');
   }
 
   get searchBox() {

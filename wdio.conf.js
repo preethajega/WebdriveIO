@@ -2,8 +2,17 @@ const url = require('./url')
 
 exports.config = {
     specs: [
+<<<<<<< HEAD
          './test/B2B/PageObjects/common/commonObjects'
         
+=======
+        // './test/B2B/Specs/salesModule/summaryPage/sample.spec.js',
+        //  './test/B2B/Specs/salesModule/summary page/sample.spec.js',
+        //  './test/B2B/Specs/setting/team.spec.js',
+        //  './test/B2B/Specs/setting/*',
+         './test/B2B/Specs/Cart/Cart.spec.js',
+
+>>>>>>> 2093fcae4ba6ec4dc3f6712dff0a59e9f3d3f7a9
 
         
     ],

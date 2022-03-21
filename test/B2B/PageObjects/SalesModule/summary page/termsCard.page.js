@@ -36,11 +36,3 @@ class TermsCard extends Page{
 module.exports = new(TermsCard);
 
 
-class termsCard extends Page {
-
-    TermsActions =async(termPath,termIp)=>{
-        await actionWrapper.clearValueAndSetValueSelectDropdown(termPath,termIp)
-    }
-
-}
-module.exports = new termsCard();

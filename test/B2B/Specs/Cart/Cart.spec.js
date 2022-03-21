@@ -7,7 +7,6 @@ const B2B_loginIp = require("../../Inputs/B2B_login");
 const actionsWrappers = require("../../../CommonActions/ActionsWrappers");
 const cart_fn= require("../../CommonFunctions/AddingProductToCart/AddingProductToCart");
 var CartIp= require("../../Inputs/Browse/CartIp");
-const { buyerAlert } = require("../../Inputs/Browse/CartIp");
 
 
 describe("cart Page", () => {
