@@ -171,7 +171,7 @@ get alertPaymentmode(){
         await this.paymentDate
     )
     await actionwrappers.checkClickableAndClick(
-        await commonObjects.CurrentDate
+        await commonObjects.nextDate
     )
     
 

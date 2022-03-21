@@ -34,8 +34,36 @@ get cancelDailog(){
 get acceptDailog(){
     return super.pathById('editDialogButton');
 }
-get CurrentDate(){
-    return super.pathByCss('[class="MuiButtonBase-root MuiIconButton-root MuiPickersDay-day MuiPickersDay-current MuiPickersDay-daySelected"]');
+get nextDate(){
+    return super.pathByXpath('//button[contains(@class,"Mui-selected MuiPickersDay-dayWithMargin ")]/following::button[1])]');
+}
+
+ selectCustomDate(date){
+     return super.pathByXpath(`//button[contains(@class,"MuiPickersDay-dayWithMargin") and text()="${date}"]`)
+ }
+
+
+
+get selectedYear(){
+    return super.pathByXpath('//button[contains(@class,"yearButton Mui-selected")]');
+
+}
+
+get selectedMonth(){
+    return super.pathByXpath('//button[contains(@class,"PrivatePickersMonth-root Mui-selected ")]');
+
+}
+
+get openYearview(){
+    return super.pathByXpath('//button[contains(@aria-label,"switch to year view")]');
+}
+
+get nextMonth(){
+    return super.pathByXpath('//*[@title="Next month"]');
+}
+
+get prevMonth(){
+    return super.pathByXpath('//*[@title="Previous month"]');
 }
 get snackbar(){
     return super.pathById('notistack-snackbar');

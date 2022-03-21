@@ -11,7 +11,7 @@ class EndCustomerCard extends Page{
         return super.pathByXpath('(//*[text()="Quote Validity"]/following::input[2])[last()]');
     } 
     get reorderBtn(){
-        return super.pathById('reorder')
+        return super.pathById('reorder');
     }    
 
 /* ************* SPR FIELDS  ************* */
