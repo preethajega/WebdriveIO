@@ -52,6 +52,24 @@ class EndCustomerCard extends Page{
         return super.pathByXpath('//label[text()="Competitors"]/following-sibling::div//button[@title="Clear"]')
     }
 
+
+    get ErrReqDate(){
+        return super.pathByXpath('//p[text()="Provide required delivery date"]')
+    }
+    get ErrCusName(){
+        return super.pathByXpath('//p[text()="End customer name is required"]')
+    }
+    get ErrProjectName(){
+        return super.pathByXpath('//p[text()="Project name is required"]')
+    }
+    get ErrCompetitor(){
+        return super.pathByXpath('//p[text()="Competitor name(s) is required"]')
+    }
+    get ErrPriceJustification(){
+        return super.pathByXpath('//p[text()="Price justification is required"]')
+    }
+
+
 }
 module.exports = new(EndCustomerCard);
 

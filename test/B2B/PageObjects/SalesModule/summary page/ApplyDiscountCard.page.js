@@ -3,11 +3,30 @@ const Page = require("../../../PageObjects/page");
 class ApplyDiscount extends Page{
 
 
+    get TargetDiscount(){
+        return super.pathByXpath('//button[text()="Target Discount"]')
+    }
+    get AddOnDiscount(){
+        return super.pathByXpath('//button[text()="Add On Discount"]')
+    }
+    get ByAmountBtn(){
+        return super.pathByXpath('//button[text()="By Amount"]')
+    }
+    get ByDiscountBtn(){
+        return super.pathByXpath('//button[text()="By Discount %"]')
+    }
+
     get ApplyDisReset(){
         return super.pathByXpath('//div[@class="MuiBox-root css-138dq1"]/button[1]')
     }
-    get AapplyDisApply(){
+    get ApplyDisApply(){
         return super.pathByXpath('//div[@class="MuiBox-root css-138dq1"]/button[2]')
+    }
+    get ByDiscountInput(){
+        return super.pathByXpath('//div[@class="MuiBox-root css-3mvcpe"]//input')
+    }
+    get ByAmountInput(){
+        return super.pathByXpath('//div[@class="MuiBox-root css-1djk842"]//input')
     }
     get RoundUpMinusTwo(){
         return super.pathById('Btn-2')
