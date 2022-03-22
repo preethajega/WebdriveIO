@@ -176,7 +176,7 @@ markAsdeliveredFn = async()=>{
     await actionwrappers.checkEnabledAndSetValue(
         await this.deliveryNote,B2C_OrdersIp.deliveryNote);
     await actionwrappers.checkClickableAndClick(await this.deliveryDate);  
-    await actionwrappers.checkClickableAndClick(await common_path.CurrentDate);
+    await actionwrappers.checkClickableAndClick(await common_path.nextDate);
     await actionwrappers.checkClickableAndClick(await common_path.acceptDailog);
     await browser.pause(5000);
     assert.strictEqual(await common_path.snackbar.getText(),

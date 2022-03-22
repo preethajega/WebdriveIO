@@ -21,7 +21,7 @@ describe("cart Page", () => {
             await  cart_fn.selectProducts(CartIp.itemName);
             await assert.strictEqual(
                 await common.snackbar.getText(),CartIp.cartAlert);
-            await actionsWrappers.isNotEmpty_clearValue(await cart_path.selectbuyer);
+            await actionsWrappers.clearValues(await cart_path.selectbuyer);
             await  cart_fn.carttoSummary(CartIp.BuyerName,await cart_path.createQuote);
             await  actionsWrappers.urlValidation("/quote-summary");    
             await  cart_path.open(CartIp.cartUrl);   
@@ -33,6 +33,9 @@ describe("cart Page", () => {
        
         it("Proceed with empty qty ",async () => {
             await  cart_path.open(CartIp.cartUrl);
+            await  cart_fn.ClickAndclearCart();
+            await  cart_fn.selectProducts(CartIp.itemName);
+            await browser.pause(2000);
             await  actionsWrappers.clearValues(await cart_path.qty);
         /*To aviod toaster issue pause is used */    
             await browser.pause(3000);
@@ -45,8 +48,9 @@ describe("cart Page", () => {
 
          it("Add More prodcuts to cart & Proceed with empty customer ",async () => {      
             await browser.pause(3000);
+            await  cart_fn.ClickAndclearCart();
             await cart_fn.selectProducts(CartIp.ProdName);
-            await actionsWrappers.isNotEmpty_clearValue(await cart_path.selectbuyer);
+            await actionsWrappers.clearValues(await cart_path.selectbuyer);
             await browser.pause(2000);
             await  actionsWrappers.checkVisibleClickableAndClick(await cart_path.createQuote);
             await browser.pause(2000);

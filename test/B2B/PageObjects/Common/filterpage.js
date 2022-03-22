@@ -51,8 +51,8 @@ get endDate() {
     return super.pathById('date-picker-inline-ed')
 }
 
-get currentDate(){
-    return super.pathByCss('[class="MuiButtonBase-root MuiIconButton-root MuiPickersDay-day MuiPickersDay-current MuiPickersDay-daySelected"]');
+get nextDate(){
+    return super.pathByXpath('//button[contains(@class,"Mui-selected MuiPickersDay-dayWithMargin")]');
 }
 get startValue() {
      return super.pathById('svalue');

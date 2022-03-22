@@ -52,7 +52,7 @@ async ShippmentFn(ele){
     await actionwrappers.checkEnabledAndSetValue(await this.deliveryType,
         shippmentIp.deliveryType);
     await actionwrappers.checkClickableAndClick(await this.shipmentDate);
-    await actionwrappers.checkClickableAndClick(await commonObjects.CurrentDate);
+    await actionwrappers.checkClickableAndClick(await commonObjects.nextDate);
     await actionwrappers.checkClickableAndClick(await commonObjects.acceptDailog);
     await browser.pause(5000);
     assert.strictEqual(await commonObjects.snackbar.getText(),

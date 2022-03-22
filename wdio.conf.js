@@ -7,9 +7,6 @@ exports.config = {
         //  './test/B2B/Specs/setting/team.spec.js',
          './test/B2B/Specs/setting/*',
         //  './test/B2B/Specs/Cart/Cart.spec.js',
-
-
-        
     ],
     // Patterns to exclude.
     exclude: [
