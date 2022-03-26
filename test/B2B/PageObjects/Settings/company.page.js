@@ -8,7 +8,6 @@ class Comp extends Page{
     }
     get savebtn(){
         return super.pathByXpath('//button[text()="Save"]')
-        // return super.pathByXpath('//button[@aria-label="save"]')
         // return super.pathById('loadingButton')
     }
     get cancelbtn(){

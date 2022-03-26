@@ -23,9 +23,9 @@ Updatevalue = async(ele,input,btn,snakpath,snakip) =>{
     await actionWrapper.Click(btn);
     await actionWrapper.snackBarValidate(snakpath,snakip)
   }
-WebsiteFieldValid = async () =>{
+WebsiteFieldValid = async (confsaveBtn) =>{
   await actionWrapper.clearAndsetValue(path.website,compIp.website2)
-  await actionWrapper.Click(path.savebtn)
+  await actionWrapper.Click(confsaveBtn)
   await actionWrapper.snackBarValidate(path.errWebsite,compIp.websiteErrormsg)
   await actionWrapper.Click(path.cancelbtn)
 }

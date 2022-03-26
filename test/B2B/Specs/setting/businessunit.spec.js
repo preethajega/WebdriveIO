@@ -151,10 +151,10 @@ describe("Division & BU Page", () => {
     await BU_fn.EmptyAlert(bu_path.ChannelTab, bu_path.AddBtn)
   });
   it('should update the created Division with cancel', async () => {
-    await BU_fn.UpdateDiv_Cha(bu_path.NameDiv_Cha, BUip.chaname1, bu_path.codeDiv_Cha, BUip.chanCode1, bu_path.cancelbtn)
+    await BU_fn.UpdateDiv_Cha(bu_path.NameDiv_Cha, BUip.chaname1, bu_path.codeDiv_Cha, BUip.chanCode2, bu_path.cancelbtn)
   });
   it('should update the created Division with save', async () => {
-    await BU_fn.UpdateDiv_Cha(bu_path.NameDiv_Cha, BUip.chaname1, bu_path.codeDiv_Cha, BUip.chanCode1, bu_path.savebtn)
+    await BU_fn.UpdateDiv_Cha(bu_path.NameDiv_Cha, BUip.chaname1, bu_path.codeDiv_Cha, BUip.chanCode2, bu_path.savebtn)
   });
   it('should try to delete the mapped Division with save', async () => {
     await BU_fn.DeleteBU_div_cha(bu_path.ChannelTab, bu_path.delefirstDiv_Cha, bu_path.savebtn,

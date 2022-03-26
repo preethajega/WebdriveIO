@@ -48,7 +48,7 @@ describe('Company Page', () => {
         await Comp_fn.Updatevalue(Comp_path.website, Compip.website1, Comp_path.cancelbtn,common.snackbar,Compip.saveAlert);
     });
     it('should validate a company details website by invalid inputs', async () => {
-        await Comp_fn.WebsiteFieldValid()
+        await Comp_fn.WebsiteFieldValid(Comp_path.savebtn)
     });
     it('should not allow a user to save the Company Name field without entering any values', async () => {
         await Comp_fn.fieldValid(Comp_path.CompName, Comp_path.errCompName, Compip.errMsgcompname)

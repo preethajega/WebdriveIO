@@ -177,6 +177,14 @@ class customer extends Page {
         await actionWrapper.clearAndsetValue(BillToPath,BillToIp)
         await actionWrapper.clearAndsetValue(shipToPath,shipToIp)
     }
+    SearchBarValid = async(searchPath,SearchIp,snakpath,snakip)=>{
+        await browser.pause(1000)
+        await actionWrapper.clickAndSetvalue(searchPath,SearchIp)
+        await browser.pause(1000)
+        await actionWrapper.snackBarValidate(snakpath,snakip)
+        await actionWrapper.Click(path.SearchBarClose)
+        await browser.pause(1000)
+    }
     
 
 }

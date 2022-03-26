@@ -2,6 +2,22 @@ const Page = require("../../../B2B/PageObjects/page");
 
 class Customer extends Page{
 
+/* ******************** SEARCH BAR VALID PATHS *********************** */  
+    get SearchBar(){
+        return super.pathByXpath('//input[contains(@placeholder,"city, state & etc")]')
+    }
+    get SearchBarClose(){
+        return super.pathByXpath('//button[@aria-label="clear"]')
+    }
+    get CheckTxtCity(){
+        return super.pathByXpath('//td[text()="chennai"]')
+    }
+    get CheckTxtCusName(){
+        return super.pathByXpath("(//td[text()='Apptino'])[1]")
+    }
+    get CheckTxtERPCode(){
+        return super.pathByXpath("(//td[text()='C102780'])[1]")
+    }
 
 /* ******************** FILTER CARD *********************** */  
     get FilterBtn(){
@@ -35,7 +51,7 @@ class Customer extends Page{
         return super.pathByXpath('//button[@aria-label="clearAll"]')
     }
     get ProtalAcees(){
-        return super.pathByXpath('//div[contains(@class,"MuiListItemSecon")]//input')
+        return super.pathByXpath('//div[contains(@class,"MuiListItemSecon")]//label')
     }
     get ActiveText(){
         return super.pathByXpath("(//p[text()='Active'])[1]")
@@ -121,10 +137,8 @@ class Customer extends Page{
     }
     get SubIndustry(){
         return super.pathByXpath('//input[@name="subIndustryId"]')
-        // return super.pathByName('subIndustryId')
     }
     get AccOwner(){
-        // return super.pathByXpath('//label[text()="Account Owner"]/following-sibling::div')
         return super.pathByXpath('(//input[@placeholder="Search for Users"])[1]')
     }
     get SupportOwner(){
@@ -146,10 +160,16 @@ class Customer extends Page{
     get PreferenceTab(){
         return super.pathById('simple-tab-2')
     }
+    get CofDeleBtn(){
+        return super.pathById('yes')
+    }
+    get ConfCancelBtn(){
+        return super.pathByXpath('//button[@aria-label="cancel"]')
+    }
 
 /* ******************** CONTACTS CARD *********************** */ 
     get InviteBtn(){
-        return super.pathByXpath('(//tbody/tr)[last()]/td[7]')
+        return super.pathByXpath('(//tbody/tr)[last()]/td[7]/button')
     } 
     get EditLastUser(){
         return super.pathByXpath('(//tbody/tr)[last()]/td[1]')
@@ -158,7 +178,7 @@ class Customer extends Page{
         return super.pathByXpath('(//tbody/tr)[1]/td[1]')
     }
     get UserInvite(){
-        return super.pathByXpath('(//tbody/tr)[1]/td[7]')
+        return super.pathByXpath('(//tbody/tr)[1]/td[7]/button')
     }
     get Editlastdata(){
         return super.pathByXpath('//tbody/tr[last()]')
@@ -174,6 +194,10 @@ class Customer extends Page{
     }
     get MoreOption(){
         return super.pathByXpath('//button[@aria-label="moreOption"]')
+    }
+    get confSaveBtn(){
+        return super.pathByXpath('//button[@aria-label="save"]')
+
     }
 
 
@@ -213,7 +237,7 @@ class Customer extends Page{
         return super.pathByXpath('//input[@name="deliveryTermsId"]')
     }
     get Payment(){
-    return super.pathByXpath('//input[@name="paymentTermsId"]')
+        return super.pathByXpath('//input[@name="paymentTermsId"]')
     }
     get Warrenty(){
         return super.pathByXpath('//input[@name="warrantyId"]')

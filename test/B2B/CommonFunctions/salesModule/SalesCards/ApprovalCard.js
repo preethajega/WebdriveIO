@@ -9,10 +9,6 @@ const assert = require("assert");
 
 class ApprovalsCard extends Page {
 
-    async open() {
-        super.open(Approvalip.approvUrl); 
-    }
-
     AddApproval = async(approvalPath,ApprovalIp)=>{
         await browser.pause(1000)
         await actionWrapper.clearValueAndSetValueSelectDropdown(approvalPath,ApprovalIp)
