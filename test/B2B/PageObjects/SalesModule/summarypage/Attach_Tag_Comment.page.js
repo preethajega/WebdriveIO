@@ -44,7 +44,7 @@ class AttachTagComment extends Page {
 
     /* ************* APPROVAL CARD ************* */
     get ApprovalGrp() {
-        return super.pathById('ApprovalGroup')
+        return super.pathByXpath('//input[@id="ApprovalGroup"]')
     }
 
     /* ************* CURRENCY CARD ************* */

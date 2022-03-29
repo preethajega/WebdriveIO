@@ -23,7 +23,8 @@ class Approval extends Page{
         return super.pathByXpath('//button[@aria-label="Delete"]')
     }
     get ConfcancelBtn(){
-        return super.pathByXpath('//button[@aria-label="cancel"]')
+        return super.pathByXpath('//button[text()="Cancel"]')
+        // return super.pathByXpath('//button[@aria-label="cancel"]')
     }
     get ConfSavelBtn(){
         return super.pathByXpath('//button[@aria-label="Save"]')

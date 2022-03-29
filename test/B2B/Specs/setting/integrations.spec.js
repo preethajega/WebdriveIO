@@ -9,8 +9,8 @@ var integrtionip = require("../../Inputs/settings/integrations.Ip");
 const imageUpload = path.join(__dirname, '../../../FileUtils/profilepic.png');
 const common = require("../../PageObjects/Common/commonObjects");
 
-describe('Company Page', () => {
-    it("Should allow to access login into company page ", async () => {
+describe('Integrations Page', () => {
+    it("Should allow to access login into Integration page ", async () => {
         await LoginPage.open();
         await LoginPage.login(B2B_loginIp.OwnerEmail, B2B_loginIp.OwnerPassword);
         await actionsWrappers.urlValidation("/dashboard");

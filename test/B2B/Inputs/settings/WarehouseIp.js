@@ -30,7 +30,7 @@ function Warehouseip(){
     this.ContactNumber="983222"
     this.SaveAlert="Saved Successfully"
     this.DeleteAlert="Warehouse deleted succesfully"
-    this.MapedDeleteAlert="Citihealth (Bangalore warhouse) warehouse mapped with Inventory cannot be deleted!!!"
+    this.MapedDeleteAlert="Coimbatore warehouse mapped with Inventory cannot be deleted!!!"
     this.WHAlreadyExists="Madurai Branch already exists"
     this.errmsgWHName='Warehouse name required'
     this.errmsgAddressName="Address name required"

@@ -25,6 +25,10 @@ function SellerInfoip(){
     this.channel="MTO"
     this.channel1="MTS"
     this.channel2="ODINARY"
+    this.warehouse="HO"
+    this.warehouse1="Coimbatore"
+    this.warehouse2="theni"
+    this.warehouse3="Chennai"
 
 
 

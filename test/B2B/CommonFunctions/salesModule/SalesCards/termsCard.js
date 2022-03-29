@@ -1,3 +1,4 @@
+const Page = require("../../../../B2B/PageObjects/page");
 const actionWrapper = require("../../../../CommonActions/ActionsWrappers");
 const compIp = require("../../Inputs/settings/CompanyIP");
 const attchmentUpload = require("../../../../CommonActions/attchmentUpload");

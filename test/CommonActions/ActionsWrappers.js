@@ -54,6 +54,7 @@ checkVisibleClickableMove = async (ele) => {
     await browser.pause(1000);
     await ele.keys("\uE007");
   }
+  
   // click a element & set the value & click the first option using keyboard 
   clickSetvalueAndSelectoption= async(ele,value) =>{
     await ele.waitForDisplayed(2000);
@@ -270,7 +271,9 @@ navigateTo= async(Url)=>{
   //to scroll the page
   scrollEle = async (ele)=>{
     await  browser.pause(2000);
-    await ele.scrollIntoView();
+    await ele.scrollIntoView( 
+      {block: "start",
+       behavior: "smooth",});
   };
  
   eleDisplayed = async (ele) =>{
@@ -289,6 +292,14 @@ navigateTo= async(Url)=>{
       await ele.click(); 
      }
 
+  }
+
+  //hover method
+  hoverElement = async(ele,ele1)=>{
+   await ele.waitForDisplayed(2000);
+   await ele.click({action: 'moveTo',x:20,right:10});
+   await  browser.pause(2000);
+   await ele1.click();
   }
 
 

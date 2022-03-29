@@ -78,7 +78,7 @@ describe('Warehouse card', () => {
         await Warehouse_fn.DeleteMapppedWH(Warehouse_path.ConformCancelBtn)
     });
     it('should try to delete a mapped Warehouse with save', async () => {
-        await browser.pause(1000);
+        await browser.pause(2000);
         await Warehouse_fn.DeleteMapppedWH(Warehouse_path.ConformDeleteBtn)
     });
 
