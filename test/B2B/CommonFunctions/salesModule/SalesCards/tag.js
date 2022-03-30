@@ -1,9 +1,9 @@
 const Page = require("../../../../B2B/PageObjects/page");
 const actionWrapper = require("../../../../CommonActions/ActionsWrappers");
-const compIp = require("../../Inputs/settings/CompanyIP");
+// const compIp = require("../../Inputs/settings/CompanyIP");
 const attchmentUpload = require("../../../../CommonActions/attchmentUpload");
 const common = require("../../../PageObjects/Common/commonObjects");
-const path = require("../../../PageObjects/SalesModule/summary page/Attach_Tag_Comment.page");
+const path = require("../../../PageObjects/SalesModule/summarypage/Attach_Tag_Comment.page");
 const assert = require("assert");
 
 
@@ -14,6 +14,10 @@ class TagCard extends Page {
         await actionWrapper.clearValueAndSetValueSelectDropdown(Tagpath, TagIp)
         await actionWrapper.Click(tagpath)
     }
+    // TagValidation=async(sumbitBtn,snakpath,snakip)=>{
+    //     // await actionWrapper.Click(sumbitBtn)
+    //     await actionWrapper.snackBarValidate(snakpath,snakip)
+    // } 
     AddTagDetailsPage =async(tagpath,tagip,btn,snakpath,snakip)=>{
         await actionWrapper.Click(path.TagEdit)
         await actionWrapper.clickSetvalueAndSelectoption(tagpath,tagip)

@@ -61,7 +61,7 @@ describe('General Page', () => {
    it('should edit a Exisiting Currency with saving', async () => {
       await browser.pause(2000)
       await actionsWrappers.scrollEle(gen_path.EditCode)
-      await gen_fn.EditCurr(gen_path.EditCode, genip.editcode, gen_path.EditSavebtn)
+      await gen_fn.EditCurr(gen_path.EditCode, genip.editcode2, gen_path.EditSavebtn)
    });
    it('should edit a Exisiting Currency with canceling', async () => {
       await browser.pause(2000)

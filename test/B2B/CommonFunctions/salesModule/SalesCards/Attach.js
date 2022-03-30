@@ -8,8 +8,9 @@ const assert = require("assert");
 
 class AttachCard extends Page {
 
-    AttachmentUplaod = async(attach,Attachpath,AttachIp)=>{
-        await actionWrapper.Click(attach)
+    AttachmentUplaod = async(Attachpath,AttachIp)=>{
+        await Window.scrollTo( {block: "start",behavior: "smooth",});
+        // await actionWrapper.scrollEle(attach)
         await browser.pause(2000);    
         await attchmentUpload.upload(Attachpath,AttachIp)
         await browser.pause(2000);  

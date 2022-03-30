@@ -38,6 +38,9 @@ class AttachTagComment extends Page {
     get clearAllTag(){
         return super.pathByXpath('//*[@placeholder="Search for tags"]/following-sibling::div/button[@title="Clear"]')
     }
+    get ErrMsgTag(){
+        return super.pathByXpath('//p[text()="Tag(s) is required"]')
+    }
 
     /* ************* COMMENTS CARD ************* */
 

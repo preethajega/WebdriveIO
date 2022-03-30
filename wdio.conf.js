@@ -2,10 +2,11 @@ const url = require('./url')
 
 exports.config = {
     specs: [
-        // './test/B2B/Specs/salesModule/summaryPage/sample.spec.js',
-        //  './test/B2B/Specs/setting/tax.spec.js',
-        //  './test/B2B/Specs/setting/moduleAuthorization.spec.js',
-        //  './test/B2B/Specs/setting/zone.spec.js',
+        // './test/B2B/Specs/setting/company/AddBranch.spec.js',
+        //  './test/B2B/Specs/setting/terms.spec.js',
+        //  './test/B2B/Specs/setting/.spec.js',
+        //  './test/B2B/Specs/setting/integrations.spec.js',
+        //  './test/B2B/Specs/setting/team.spec.js',
         //  './test/B2B/Specs/Customers/customer.spec.js',
          './test/B2B/Specs/salesModule/sample.spec.js',
         //  './test/B2B/Specs/Cart/Cart.spec.js',

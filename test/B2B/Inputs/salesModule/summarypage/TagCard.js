@@ -4,6 +4,7 @@ function Approvalip(){
     this.tag="new"
     this.tag1="2022"
     this.tag2="trend"
+    this.ErrtagAlert="Tag(s) is required"
 
 }
 module.exports = new Approvalip();

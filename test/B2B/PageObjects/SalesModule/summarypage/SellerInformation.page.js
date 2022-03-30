@@ -3,7 +3,6 @@ const Page = require("../../../../B2B/PageObjects/page");
 class SellerInfo extends Page{
 /* *************** SELLER INFORMATION CARD **************** */
     get EditBtn(){
-        // return super.pathByXpath('(//div[@class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-9 css-1qpeb93"])[1]/button[2]')
         return super.pathByXpath('//button[contains(@class,"MuiIconButton-sizeMedium css-1yjqef3")]')
     }
     get EditWareHouseBtn(){
@@ -28,7 +27,7 @@ class SellerInfo extends Page{
         return super.pathByXpath('//h6[text()="Account Owner"]/following::input')
     }
     get AccountOwnerTxt(){
-        return super.pathByXpath('//h5[text()="Account Owner"]/following::span[1]')
+        return super.pathByXpath('//h5[text()="Account Owner"]/following::div[1]')
     }
     /* **************** BUSINESS UNIT PART ******************* */
 
@@ -45,7 +44,7 @@ class SellerInfo extends Page{
         return super.pathByXpath('//h6[text()="Business Unit"]/following::input')
     }
     get BUTxt(){
-        return super.pathByXpath('//h5[text()="Business Unit"]/following::h6[1]')
+        return super.pathByXpath('//h5[text()="Business Unit"]/following::div[1]')
     }
 /* **************** SALES BRANCH PART ******************* */
 
@@ -59,7 +58,7 @@ class SellerInfo extends Page{
         return super.pathByXpath('//h6[text()="Sales Branch"]/following::input')
     }
     get SalesTxt(){
-        return super.pathByXpath('//h5[text()="Sales Branch"]/following::span[1]')
+        return super.pathByXpath('//h5[text()="Sales Branch"]/following::div[1]')
     }
     get SalesEle(){
         return super.pathByXpath('//h5[text()="Sales Branch"]')
@@ -79,7 +78,6 @@ class SellerInfo extends Page{
         return super.pathByXpath('//h6[text()="Division"]/following::input')
     }
     get DivisionTxt(){
-        // return super.pathByXpath('//h5[text()="Division"]/following::div[1]')
         return super.pathByXpath('//h5[text()="Division"]/following::p[1]')
     }
 /* **************** CHANNEL PART ******************* */
@@ -96,7 +94,7 @@ class SellerInfo extends Page{
         return super.pathByXpath('//h6[text()="Channel"]/following::input')
     }
     get ChannelTxt(){
-        return super.pathByXpath('//h5[text()="Channel"]/following::h6[1]')
+        return super.pathByXpath('//h5[text()="Channel"]/following::div[1]')
     }
 /* **************** WAREHOUSE PART ******************* */
     get WarehouseSelect(){
@@ -112,7 +110,7 @@ class SellerInfo extends Page{
         return super.pathByXpath('//h6[text()="Warehouse"]/following::input')
     }
     get WarehouseTxt(){
-        return super.pathByXpath('//h4[text()="Warehouse"]/following::span[1]')
+        return super.pathByXpath('//h4[text()="Warehouse"]/following::div[1]')
     }
    
 

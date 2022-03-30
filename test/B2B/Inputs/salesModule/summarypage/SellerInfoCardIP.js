@@ -29,6 +29,12 @@ function SellerInfoip(){
     this.warehouse1="Coimbatore"
     this.warehouse2="theni"
     this.warehouse3="Chennai"
+    this.EmptyDivisionAlert="No Division assigned"
+    this.EmptyBUAlert="No Business Unit assigned"
+    this.EmptyChannelAlert="No Channel assigned"
+    this.EmptyWarehouseAlert="No warehouse assigned"
+
+    this.errAlertAccountOwner="Minimum 1 account owner is requried"
 
 
 

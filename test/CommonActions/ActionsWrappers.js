@@ -271,7 +271,7 @@ navigateTo= async(Url)=>{
   //to scroll the page
   scrollEle = async (ele)=>{
     await  browser.pause(2000);
-    await ele.scrollIntoView( 
+    await ele.scrollTo( 
       {block: "start",
        behavior: "smooth",});
   };
@@ -293,7 +293,12 @@ navigateTo= async(Url)=>{
      }
 
   }
+//Move To action elemet
+MoveTo = async(ele)=>{
+  await ele.waitForDisplayed(2000);
+  await ele.click({action: 'moveTo',x:20,right:10})
 
+}
   //hover method
   hoverElement = async(ele,ele1)=>{
    await ele.waitForDisplayed(2000);

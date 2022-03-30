@@ -20,6 +20,7 @@ function Genip() {
     this.format="1 999,99"
     this.editcode="GBP"
     this.editcode1="CHF"
+    this.editcode2="ZAR"
     this.editsymbol="GBP £"
     this.editfactor="0.001"
     this.editformat="1,999.999"
