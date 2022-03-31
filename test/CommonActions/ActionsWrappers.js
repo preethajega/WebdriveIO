@@ -271,9 +271,10 @@ navigateTo= async(Url)=>{
   //to scroll the page
   scrollEle = async (ele)=>{
     await  browser.pause(2000);
-    await ele.scrollTo( 
-      {block: "start",
-       behavior: "smooth",});
+    await ele.scrollIntoView();
+    // await ele.scrollIntoView( 
+    //   {block: "end",
+    //    behavior: "smooth",});
   };
  
   eleDisplayed = async (ele) =>{

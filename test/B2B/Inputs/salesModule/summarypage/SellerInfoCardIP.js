@@ -8,6 +8,7 @@ function SellerInfoip(){
     this.salesBranch4="head office"
     this.salesBranch5="Coimbatore"
     this.salesBranch6="Trichy"
+    this.salesBranch7="Delhi"
     this.AccountOwnner="PreethaAdmin"
     this.AccountOwnner1="yeshayahu.janson@alldrys.com"
     this.AccountOwnner2="preetha"
@@ -33,6 +34,8 @@ function SellerInfoip(){
     this.EmptyBUAlert="No Business Unit assigned"
     this.EmptyChannelAlert="No Channel assigned"
     this.EmptyWarehouseAlert="No warehouse assigned"
+    this.UpdateBUAlertText1='Update New Business Unit?'
+    this.UpdateBUAlertText='UPDATE NEW BUSINESSUNIT UNIT?'
 
     this.errAlertAccountOwner="Minimum 1 account owner is requried"
 

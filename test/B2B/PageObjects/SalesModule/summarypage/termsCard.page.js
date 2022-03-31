@@ -1,6 +1,6 @@
 const Page = require("../../../PageObjects/page");
 const actionWrapper = require("../../../../CommonActions/ActionsWrappers");
-const compIp = require("../../Inputs/settings/CompanyIP");
+// const compIp = require("../../Inputs/settings/CompanyIP");
 const attchmentUpload = require("../../../../CommonActions/attchmentUpload");
 const common = require("../../../PageObjects/Common/commonObjects");
 const assert = require("assert");
@@ -17,7 +17,7 @@ class TermsCard extends Page{
         return super.pathById('warrantyId')
     }
     get PFTerm(){
-        return super.pathById('packageForwardingId')
+        return super.pathById('pkgFwdId')
     }
     get ModeOfDispatchTerm(){
         return super.pathById('dispatchInstructionsId')
@@ -29,7 +29,7 @@ class TermsCard extends Page{
         return super.pathById('insuranceId')
     }
     get AddtionalTerm(){
-        return super.pathByName('additionalTerms')
+        return super.pathByXpath('//textarea[@name="additionalTerms"]')
     }
 
 }

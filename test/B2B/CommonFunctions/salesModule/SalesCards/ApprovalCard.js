@@ -15,10 +15,10 @@ class ApprovalsCard extends Page {
         await actionWrapper.clearValue_selectDropdownvalue(approvalPath,ApprovalIp)
         await browser.pause(1000)
     }
-    QuoteBtnIdentify = async(sumbitBtn,ReqApprovalBtn,CreateQuoteBtn)=>{
+    QuoteBtnIdentify = async(sumbitBtn,sumbitiP,ReqApprovalBtn,CreateQuoteBtn)=>{
         //  console.log(await sumbitBtn.getText());
 
-        if ((await sumbitBtn.getText()) === "Request Approval") {
+        if ((await sumbitBtn.getText()) === sumbitiP) {
             await actionWrapper.Click(ReqApprovalBtn)
         }
         else{

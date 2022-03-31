@@ -11,6 +11,12 @@ class SellerInfo extends Page{
     get EditSideNaveBtn(){
         return super.pathByXpath('(//button[contains(@class,"MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPri")])[2]')
     }
+    get ConfYes(){
+        return super.pathByXpath('//button[@id="yes"]')
+    }
+    get Confcancel(){
+        return super.pathByXpath('//button[@aria-label="cancel"]')
+    }
 
 /* **************** ACCOUNT OWNER PART ******************* */
 
@@ -46,6 +52,9 @@ class SellerInfo extends Page{
     get BUTxt(){
         return super.pathByXpath('//h5[text()="Business Unit"]/following::div[1]')
     }
+    get updateBUAlert(){
+        return super.pathByXpath('//h2[text()="Update New Business Unit? "]')
+    }
 /* **************** SALES BRANCH PART ******************* */
 
     get SalesBranchSelect(){
@@ -78,7 +87,7 @@ class SellerInfo extends Page{
         return super.pathByXpath('//h6[text()="Division"]/following::input')
     }
     get DivisionTxt(){
-        return super.pathByXpath('//h5[text()="Division"]/following::p[1]')
+        return super.pathByXpath('//h5[text()="Division"]/following::div[1]')
     }
 /* **************** CHANNEL PART ******************* */
     get ChannelSelect(){

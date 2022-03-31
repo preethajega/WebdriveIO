@@ -1,6 +1,9 @@
 const Page = require("../../../PageObjects/page");
 
 class QuotePage extends Page{
+    get CreateOrREqApproveBtn(){
+        return super.pathByXpath('//div[contains(@class,"css-6tsndk")]/button[2]')
+    }
     get CreateQuoteBtn(){
         return super.pathByXpath('//button[@aria-label="Create Quote"]')
     }
@@ -13,24 +16,11 @@ class QuotePage extends Page{
     get ReqApprovalQuoteName(){
         return super.pathByName('quoteName')
     }
-    get ErrReqApprovalQuoteName(){
-        return super.pathByXpath('//p[text()="Quote name required"]')
-    }   
-    get ErrApprover(){
-        return super.pathByXpath('//p[text()="Select a approver"]')
-    }
-    get ErrComment(){
-        return super.pathByXpath('//p[text()="Comments is required"]')
-    }
-
-
+   
+/*********************** Quote PopUp card *********************** */
     get QuoteName(){
         return super.pathById('name')
     }
-    get ErrQuoteName(){
-        return super.pathByXpath('//p[text()="Name is required"]')
-    }
-
     get ApproverInput1(){
         return super.pathByName('approvalList[0].user')
     }
@@ -51,6 +41,21 @@ class QuotePage extends Page{
     }
     get ConfBtn(){
         return super.pathById('editDialogButton')
+    }
+    get ErrQuoteName(){
+        return super.pathByXpath('//p[text()="Name is required"]')
+    }
+    get ErrReqApprovalQuoteName(){
+        return super.pathByXpath('//p[text()="Quote name required"]')
+    }   
+    get ErrApprover(){
+        return super.pathByXpath('//p[text()="Select a approver"]')
+    }
+    get ErrComment(){
+        return super.pathByXpath('//p[text()="Comments is required"]')
+    }
+    get QuoteConfWindow(){
+        return super.pathByXpath('//div[@aria-describedby="dialog-description"]/h2/div')
     }
 
 

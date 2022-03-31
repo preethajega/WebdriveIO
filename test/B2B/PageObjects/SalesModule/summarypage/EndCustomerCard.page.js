@@ -24,6 +24,9 @@ class EndCustomerCard extends Page{
     get RequiredDate(){
         return super.pathByXpath('(//label[text()="Required Date"])[last()]')
     } 
+    get RequoredDateIcon(){
+        return super.pathByXpath('//label[text()="Required Date"]/following::button[@aria-label="Choose date"]')
+    }
     get NextMonthBtn(){
         return super.pathByXpath('//button[@title="Next month"]')
     }
@@ -33,9 +36,18 @@ class EndCustomerCard extends Page{
     get DatePath(){
         return super.pathByXpath('//div[@role="row"][3]/div[3]')
     }
+    get DatePath1(){
+        return super.pathByXpath('//div[@role="row"][2]/div[3]')
+    }
+
+    get RequiredDeliveryDate(){
+        return super.pathByXpath('//p[text()="Provide required delivery date"]')
+    }
 
 /* ************* SPR FIELDS  ************* */
-
+    get EndCusRefeNum(){
+        return super.pathByName('Reference')
+    }
     get EndCusName(){
         return super.pathByName('sprDetails.companyName')
     }

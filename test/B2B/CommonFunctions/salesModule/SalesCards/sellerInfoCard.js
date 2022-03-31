@@ -35,10 +35,12 @@ class SellerInfoCard extends Page {
         hoverEleclick1,editbtn1,inputPath1,InputIp1,Confbtn1)=>{
         if ((await ele.getText()) === ele1ip) {
            await this.EditSellerInfo1(hoverEleclick,editbtn,inputPath,InputIp,Confbtn)
+           await browser.pause(2000)
         }
         else
         {
             await this.EditSellerInfo(hoverEleclick1,editbtn1,inputPath1,InputIp1,Confbtn1)
+            await browser.pause(2000)
         }
     }
     changeBillToShipTo =async(BillShipBtn,selectData,btn)=>{
@@ -47,5 +49,16 @@ class SellerInfoCard extends Page {
         await actionWrapper.Click(selectData)
         await actionWrapper.Click(btn)
     }
+    UpadateBuAlert = async(update,Updateip)=>{
+        if ($( "#my-popup-popup" ).hasClass("ui-popup-active")) {
+        // if ($(".ui-page-active .ui-popup-active").length > 0) {
+            if ((await update.getText()) === Updateip) {
+                await actionWrapper.Click(path.ConfYes)
+            }
+        }
+        else{
+            return true;
+        }
+    } 
 }
 module.exports = new SellerInfoCard();
