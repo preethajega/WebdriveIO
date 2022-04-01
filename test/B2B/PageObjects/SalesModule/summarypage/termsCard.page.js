@@ -20,7 +20,7 @@ class TermsCard extends Page{
         return super.pathById('pkgFwdId')
     }
     get ModeOfDispatchTerm(){
-        return super.pathById('dispatchInstructionsId')
+        return super.pathByXpath('//input[@id="dispatchInstructionsId"]')
     }
     get FreightTerm(){
         return super.pathById('freightId')

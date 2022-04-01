@@ -1,7 +1,8 @@
-let today =  new Date().toISOString().replace(/\/|-|:|/g,'');
+let today =  new Date().toISOString().replace(/\/|-|:|/g,'').slice(4,-7);
 
 function QuoteIP(){
     const path = require('path');
+    this.QuoteDetailsPageUrl="/Quotes/Quote-landing"
     this.ReqApprovalBtnTxt="REQUEST APPROVAL"
     this.CreateQuoteBtnTxt="CREATE QUOTE"
     this.QuoteName="Automation"+today+"Quote"
@@ -13,6 +14,9 @@ function QuoteIP(){
     this.ApproverName4="yeshayahu"
     this.ApproverName5="madhan"
     this.CreateQuoteText="Create Quote"
-
+    this.ErrMsgcreateQuoteName="Name is required"
+    this.ErrMsgReqApprovalQuoteName="Quote name required"
+    this.ErrMsgApprover="Select a approver"
+    this.ErrMsgCommentName="Comments is required"
 }
 module.exports = new QuoteIP();

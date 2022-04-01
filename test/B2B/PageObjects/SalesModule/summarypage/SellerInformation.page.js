@@ -17,6 +17,9 @@ class SellerInfo extends Page{
     get Confcancel(){
         return super.pathByXpath('//button[@aria-label="cancel"]')
     }
+    get PopupBU(){
+        return super.pathByXpath('(//div[@role="dialog"])[last()]')
+    }
 
 /* **************** ACCOUNT OWNER PART ******************* */
 

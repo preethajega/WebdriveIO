@@ -24,8 +24,8 @@ class EndCustomerCard extends Page{
     get RequiredDate(){
         return super.pathByXpath('(//label[text()="Required Date"])[last()]')
     } 
-    get RequoredDateIcon(){
-        return super.pathByXpath('//label[text()="Required Date"]/following::button[@aria-label="Choose date"]')
+    get RequiredDateIcon(){
+        return super.pathByXpath('(//label[text()="Required Date"]/following::button[@aria-label="Choose date"])[last()]')
     }
     get NextMonthBtn(){
         return super.pathByXpath('//button[@title="Next month"]')

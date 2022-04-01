@@ -50,9 +50,11 @@ class SellerInfoCard extends Page {
         await actionWrapper.Click(btn)
     }
     UpadateBuAlert = async(update,Updateip)=>{
-        if ($( "#my-popup-popup" ).hasClass("ui-popup-active")) {
-        // if ($(".ui-page-active .ui-popup-active").length > 0) {
+        if ((await path.PopupBU.isDisplayed())=== true) {
+            await browser.pause(2000)
+            // if ($(".ui-page-active .ui-popup-active").length > 0) {
             if ((await update.getText()) === Updateip) {
+                await browser.pause(1000)
                 await actionWrapper.Click(path.ConfYes)
             }
         }

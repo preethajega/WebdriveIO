@@ -41,7 +41,11 @@ describe("cart Page", () => {
     await LoginPage.login(B2B_loginIp.OwnerEmail, B2B_loginIp.OwnerPassword);
     await actionsWrappers.urlValidation("/dashboard");
   })
-
+  // it('should navigate to the Quotes landing page',async () => {
+  //   await browser.pause(2000)
+  //   await Quote_fn.open();
+  //   await actionsWrappers.urlValidation("/Quotes/Quote-landing");
+  // });
   it("cart to summary page ", async () => {
     await browser.refresh()
     await cart_fn.ClickAndclearCart();
@@ -206,31 +210,32 @@ describe("cart Page", () => {
   //   await browser.pause(2000)
   //   await attach_fn.AttachmentUplaod(approval_path.QuoteOrderAttach, attachIp.uploadfile)
   // });
-  // it('should Add a Tag in the Quote Summary Page', async () => {
-  //   await browser.pause(2000)
-  //   await actionsWrappers.MoveTo(approval_path.Tag)
-  //   await Tag_fn.Tag(approval_path.Tag, TagIp.tag, approval_path.Tag)
-  // });
   
-   it('should change the sellerInformation salesBranch with confirm select button', async () => {
-    await browser.pause(2000)
-    await sellerInfo_fn.EditSellerInfo(sellerInfo_path.SalesTxt, sellerInfo_path.EditBtn,
-      sellerInfo_path.SalesBranchInput, sellerInfoIp.salesBranch1, sellerInfo_path.SalesBranchSelect)
-
-    await sellerInfo_fn.UpadateBuAlert(sellerInfo_path.updateBUAlert,sellerInfoIp.UpdateBUAlertText)
-    await browser.pause(4000)
-  });
+  
+  //  it('should change the sellerInformation salesBranch with confirm select button', async () => {
+  //   await browser.pause(2000)
+  //   await sellerInfo_fn.EditSellerInfo(sellerInfo_path.SalesTxt, sellerInfo_path.EditBtn,
+  //     sellerInfo_path.SalesBranchInput, sellerInfoIp.salesBranch1, sellerInfo_path.SalesBranchSelect)
+  //   await sellerInfo_fn.UpadateBuAlert(sellerInfo_path.updateBUAlert,sellerInfoIp.UpdateBUAlertText)
+  //   await browser.pause(4000)
+  // });
 
 
   it('should add Required date to the Quote summary page',async () => {
       await browser.pause(4000)
-      await EndCustomer_fn.DateSelecter(EndCustomer_path.RequoredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath)
+      await actionsWrappers.scrollEle(EndCustomer_path.RequiredDate)
+      await EndCustomer_fn.DateSelecter(EndCustomer_path.RequiredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath)
     });
   //  it('should validate a Tag field',async () => {
   //    await browser.pause(2000)
   //    await Quote_fn.QuoteBtnIdentify(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval)
   //    await actionsWrappers.snackBarValidate(approval_path.ErrMsgTag,TagIp.ErrtagAlert)
   //  });
+   it('should Add a Tag in the Quote Summary Page', async () => {
+    await browser.pause(2000)
+    await actionsWrappers.MoveTo(approval_path.Tag)
+    await Tag_fn.Tag(approval_path.Tag, TagIp.tag, approval_path.Tag)
+  });
   // it('should Change the Delivery Terms',async () => {
   //   await browser.pause(2000)
   //   await Term_fn.TermsActions(Term_path.DeleiverTerm,TermIp.deliverTerm)
@@ -257,7 +262,7 @@ describe("cart Page", () => {
   // });
   // it('should Change the Insurance Terms',async () => {
   //   await browser.pause(2000)
-  //   await Term_fn.TermsActions(Term_path.InsuranceTerm,TermIp.insuranceTerm1)
+  //   await Term_fn.TermsActions(Term_path.InsuranceTerm,TermIp.insuranceTerm)
   // });
   // it('should Change the Addtional Term Terms',async () => {
   //   await browser.pause(2000)
@@ -335,7 +340,27 @@ describe("cart Page", () => {
   //     EndCustomer_path.PriceJustification,EndCustomerIp.PriceJustification)
   // });
   // it('should create a Quote',async () => {
-  //   await Quote_fn.QuoteBtnIdentify
+  //   await Quote_fn.QuotePopUP(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval,
+  //     QuoteBtnPath.QuoteConfWindow,QuoteIp.CreateQuoteText,QuoteBtnPath.CreateQuoteName,QuoteIp.QuoteName,QuoteBtnPath.ConfBtn,
+  //     QuoteBtnPath.ReqApprovalQuoteName,QuoteIp.QuoteName,QuoteBtnPath.Comments,QuoteIp.comments,QuoteBtnPath.ConfBtn)
   // });
+//   it('should validate a mandatory field in the POPUP window which is opend',async () => {
+//     await browser.pause(4000)
+//     await Quote_fn.PopUPFieldValidation(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval,
+//       QuoteBtnPath.QuoteConfWindow,QuoteIp.CreateQuoteText,QuoteBtnPath.ConfBtn,QuoteBtnPath.ErrQuoteName,QuoteIp.ErrMsgcreateQuoteName,QuoteBtnPath.ConfCancel,
+//       QuoteBtnPath.Approval2,QuoteBtnPath.ApproverInput1,QuoteBtnPath.ConfBtn,QuoteBtnPath.ErrApprover,QuoteIp.ErrMsgApprover,
+//       QuoteBtnPath.ApproverInput2,QuoteBtnPath.ConfBtn,QuoteBtnPath.ErrApprover,QuoteIp.ErrMsgApprover,
+//       QuoteBtnPath.ApproverInput1,QuoteBtnPath.ConfBtn,QuoteBtnPath.ErrApprover,QuoteIp.ErrMsgApprover,
+//       QuoteBtnPath.ConfBtn,QuoteBtnPath.ErrReqApprovalQuoteName,QuoteIp.ErrMsgReqApprovalQuoteName,
+//       QuoteBtnPath.ErrComment,QuoteIp.ErrMsgCommentName,QuoteBtnPath.ConfCancel)
+// });
+it('should save a Quote as a Draft in Quote Summary Page',async () => {
+  await Quote_fn.saveAsDraft(QuoteBtnPath.SaveAsDraft,QuoteBtnPath.CreateQuoteName,QuoteIp.QuoteName,QuoteBtnPath.ConfBtn)
+});
+it('should validate that crated quote is placed on the landing page',async () => {
+  await Quote_fn.QuoteNameValidation(QuoteBtnPath.QuoteOrderEditFirst,QuoteBtnPath.QuoteOrderNameInput,QuoteIp.QuoteName)
+  await browser.pause(5000)
+});
+
 
 });
