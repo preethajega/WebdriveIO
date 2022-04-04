@@ -5,6 +5,7 @@ const attchmentUpload = require("../../../../CommonActions/attchmentUpload");
 const common = require("../../../PageObjects/Common/commonObjects");
 const path = require("../../../PageObjects/SalesModule/summarypage/SellerInformation.page");
 const assert = require("assert");
+const { BU } = require("../../../Inputs/salesModule/summarypage/SellerInfoCardIP");
 
 
 
@@ -31,8 +32,9 @@ class SellerInfoCard extends Page {
         await actionWrapper.Click(Confbtn)
         await browser.pause(1000)
     }
-    checkingValue =async(ele,ele1ip,hoverEleclick,editbtn,inputPath,InputIp,Confbtn,
+    checkingValue =async(BU,ele,ele1ip,hoverEleclick,editbtn,inputPath,InputIp,Confbtn,
         hoverEleclick1,editbtn1,inputPath1,InputIp1,Confbtn1)=>{
+        if ((await BU.isDisplayed())=== true) {
         if ((await ele.getText()) === ele1ip) {
            await this.EditSellerInfo1(hoverEleclick,editbtn,inputPath,InputIp,Confbtn)
            await browser.pause(2000)
@@ -43,6 +45,7 @@ class SellerInfoCard extends Page {
             await browser.pause(2000)
         }
     }
+    }
     changeBillToShipTo =async(BillShipBtn,selectData,btn)=>{
         await actionWrapper.Click(BillShipBtn)
         await browser.pause(3000)
@@ -50,9 +53,11 @@ class SellerInfoCard extends Page {
         await actionWrapper.Click(btn)
     }
     UpadateBuAlert = async(update,Updateip)=>{
-        if ($( "#my-popup-popup" ).hasClass("ui-popup-active")) {
-        // if ($(".ui-page-active .ui-popup-active").length > 0) {
+        if ((await path.PopupBU.isDisplayed())=== true) {
+            await browser.pause(2000)
+            // if ($(".ui-page-active .ui-popup-active").length > 0) {
             if ((await update.getText()) === Updateip) {
+                await browser.pause(1000)
                 await actionWrapper.Click(path.ConfYes)
             }
         }
@@ -60,5 +65,7 @@ class SellerInfoCard extends Page {
             return true;
         }
     } 
+
+    
 }
 module.exports = new SellerInfoCard();

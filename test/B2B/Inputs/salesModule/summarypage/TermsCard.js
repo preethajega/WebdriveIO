@@ -8,7 +8,7 @@ function Approvalip(){
     this.warrantyTerm="6 Months From Date of Invoice "
     this.warrantyTerm1="1 Years From Date of Invoice "
     this.PFTerms="10% of total value"
-    this.PFTerm1="20% of total value"
+    this.PFTerm1="20 % of total value"
     this.ModeOFDispatchTerm2="Door Delivery"
     this.ModeOFDispatchTerm="By Air"
     this.ModeOFDispatchTerm1="By Road"

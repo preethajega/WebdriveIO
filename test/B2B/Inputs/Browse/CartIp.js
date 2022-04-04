@@ -10,6 +10,7 @@ function cartPageInput() {
     this.LeadName = 'sanity';
     this.BuyerName = 'Apptino';
     this.BuyerName1="preetha";
+    this.BuyerName3="Zoho";
     this.CompanyName = "apptino software";
     this.ContactPerson = "fred";
     this.CustomerEmail = "fred@gmail.com";

@@ -18,8 +18,11 @@ class QuotePage extends Page{
     }
    
 /*********************** Quote PopUp card *********************** */
-    get QuoteName(){
+    get CreateQuoteName(){
         return super.pathById('name')
+    }
+    get ReqApprovalQuoteName(){
+        return super.pathByName('quoteName')
     }
     get ApproverInput1(){
         return super.pathByName('approvalList[0].user')
@@ -32,6 +35,12 @@ class QuotePage extends Page{
     }
     get ApproverClear2(){
         return super.pathByXpath('//input[@name="approvalList[1].user"]/following::button[@title="Clear"]')
+    }
+    get Approval1(){
+        return super.pathByXpath('//div[@class="MuiBox-root css-kmnzss"]')
+    }
+    get Approval2(){
+        return super.pathByXpath('(//div[contains(@class,"css-1r09u4m")])[last()]//div[@class="MuiBox-root css-k008qs"]')
     }
     get Comments(){
         return super.pathByName('initiatedComments')
@@ -58,6 +67,22 @@ class QuotePage extends Page{
         return super.pathByXpath('//div[@aria-describedby="dialog-description"]/h2/div')
     }
 
+    /***************** QUOTE DETAIL PAGE *************** */
+    get QuoteOrderNameEditIcon(){
+        return super.pathByXpath('(//div[@class="MuiBox-root css-70qvj9"])[2]/div')
+    }
+    get QuoteOrderNameInput(){
+        return super.pathById("inlineEdit")
+    }
+    get QuoteOrderConfyesBtn(){
+        return super.pathById('inlineButton')
+    }
+    get QuoteOrderConfCancelBtn(){
+        return super.pathById('inlineCancel')
+    }
+    get QuoteOrderEditFirst(){
+        return super.pathByXpath('//tbody/tr[1]')
+    }
 
 
    

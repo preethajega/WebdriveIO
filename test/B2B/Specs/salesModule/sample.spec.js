@@ -42,10 +42,32 @@ describe("cart Page", () => {
     await LoginPage.login(B2B_loginIp.OwnerEmail, B2B_loginIp.OwnerPassword);
     await actionsWrappers.urlValidation("/dashboard");
   })
-
+  // it("Should allow to access login Buyer Side", async () => {
+  //   await LoginPage.open();
+  //   await LoginPage.login(B2B_loginIp.Buyer3Email, B2B_loginIp.Buyer3Password);
+  //   await actionsWrappers.urlValidation("//dev3.myapptino.com/");
+  // })
+  // it("cart to summary page Buyer Side", async () => {
+  //   await browser.refresh()
+  //   await cart_fn.ClickAndclearCart(cart_path.BuyerHomePageCartIcon);
+  //   await cart_fn.selectProducts(CartIp.itemName);
+  //   await browser.pause(3000)
+  //   await assert.strictEqual(
+  //     await common.snackbar.getText(), CartIp.cartAlert);
+  //   await actionsWrappers.checkVisibleClickableAndClick(cart_path.createQuote);
+  //   await actionsWrappers.urlValidation("/quote-summary");
+  // })
+  /* It will directly take us Quotes Landing Page */
+  // it('should navigate to the Quotes landing page',async () => {
+  // await LoginPage.open();
+  // await LoginPage.login(B2B_loginIp.OwnerEmail, B2B_loginIp.OwnerPassword);
+  // await actionsWrappers.urlValidation("/dashboard");
+  //   await Quote_fn.open();
+  //   await actionsWrappers.urlValidation("/Quotes/Quote-landing");
+  // });
   it("cart to summary page ", async () => {
     await browser.refresh()
-    await cart_fn.ClickAndclearCart();
+    await cart_fn.ClickAndclearCart(cart_path.cartIcon);
     await cart_fn.selectProducts(CartIp.itemName);
     await browser.pause(3000)
     await assert.strictEqual(
@@ -55,6 +77,7 @@ describe("cart Page", () => {
     await actionsWrappers.urlValidation("/quote-summary");
     await actionsWrappers.scrollEle(prodTable_path.discount(0));
   })
+  /* ************************ It should change the Approval Group ************************* */
   // it('should change a Approval Group', async () => {
   //   await browser.pause(4000)
   //   await approval_fn.AddApproval(approval_path.ApprovalGrp, approvalIp.approvalName1)
@@ -63,6 +86,7 @@ describe("cart Page", () => {
   //   await browser.pause(4000)
   //   await approval_fn.AddApproval(approval_path.ApprovalGrp, approvalIp.approvalName3)
   // });
+  /* ************************ It should work on Currency Fields ************************ */
   // it('should add a Currency', async () => {
   //   await browser.pause(2000)
   //   await currency_fn.Addcurrency(currency_path.currency, currencyIp.currencyValue)
@@ -71,6 +95,7 @@ describe("cart Page", () => {
   //   await browser.pause(2000)
   //   await currency_fn.DeleCurrency()
   // });
+  /* ************************ SellerInformation Card validations ************************ */
   // it('should change the sellerInformation salesBranch with confirm select button', async () => {
   //   await browser.pause(2000)
   //   await sellerInfo_fn.EditSellerInfo(sellerInfo_path.SalesTxt, sellerInfo_path.EditBtn,
@@ -118,11 +143,11 @@ describe("cart Page", () => {
   //   await sellerInfo_fn.EditSellerInfo(sellerInfo_path.ChannelTxt, sellerInfo_path.EditBtn,
   //     sellerInfo_path.ChannelInput, sellerInfoIp.channel, sellerInfo_path.ChannelSelect)
   // });
-  // it('should chnage the sellerInformation Channel with confirm close button', async () => {
-  //   await browser.pause(2000)
-  //   await sellerInfo_fn.EditSellerInfo(sellerInfo_path.ChannelTxt, sellerInfo_path.EditBtn,
-  //     sellerInfo_path.ChannelInput, sellerInfoIp.channel1, sellerInfo_path.ChannelClose)
-  // });
+  it('should chnage the sellerInformation Channel with confirm close button', async () => {
+    await browser.pause(2000)
+    await sellerInfo_fn.EditSellerInfo(sellerInfo_path.ChannelTxt, sellerInfo_path.EditBtn,
+      sellerInfo_path.ChannelInput, sellerInfoIp.channel1, sellerInfo_path.ChannelClose)
+  });
 
   // it('should change the sellerInformation warehouse with confirm select button', async () => {
   //   await browser.pause(2000)
@@ -167,33 +192,33 @@ describe("cart Page", () => {
   // });
   // it('should check the sellerInformation BusinessUnit if there  is no values it should Add the value to the BusinessUnit', async () => {
   //   await browser.pause(3000)
-  //   await sellerInfo_fn.checkingValue(sellerInfo_path.BUTxt, sellerInfoIp.EmptyBUAlert, sellerInfo_path.BUTxt, sellerInfo_path.EditBtn,
+  //   await sellerInfo_fn.checkingValue(sellerInfo_path.BUTxt,sellerInfo_path.BUTxt, sellerInfoIp.EmptyBUAlert, sellerInfo_path.BUTxt, sellerInfo_path.EditBtn,
   //     sellerInfo_path.BUInput, sellerInfoIp.BU, sellerInfo_path.BUSelect,
   //     sellerInfo_path.BUTxt, sellerInfo_path.EditBtn,
   //     sellerInfo_path.BUInput, sellerInfoIp.BU1, sellerInfo_path.BUSelect)
   // });
   // it('should check the sellerInformation Division if there  is no values it should Add the value to the Division', async () => {
   //   await browser.pause(3000)
-  //   await sellerInfo_fn.checkingValue(sellerInfo_path.DivisionTxt, sellerInfoIp.EmptyDivisionAlert, sellerInfo_path.DivisionTxt, sellerInfo_path.EditBtn,
+  //   await sellerInfo_fn.checkingValue(sellerInfo_path.DivisionTxt,sellerInfo_path.DivisionTxt, sellerInfoIp.EmptyDivisionAlert, sellerInfo_path.DivisionTxt, sellerInfo_path.EditBtn,
   //     sellerInfo_path.DivisionInput, sellerInfoIp.Division1, sellerInfo_path.DivisionSelect,
   //     sellerInfo_path.DivisionTxt, sellerInfo_path.EditBtn,
   //     sellerInfo_path.DivisionInput, sellerInfoIp.Division2, sellerInfo_path.DivisionSelect)
   // });
   // it('should check the sellerInformation channel if there  is no values it should Add the value to the channel', async () => {
   //   await browser.pause(3000)
-  //   await actionsWrappers.MoveTo(sellerInfo_path.ChannelTxt)
-  //   await sellerInfo_fn.checkingValue(sellerInfo_path.ChannelTxt, sellerInfoIp.EmptyChannelAlert, sellerInfo_path.ChannelTxt, sellerInfo_path.EditBtn,
+  //   await sellerInfo_fn.checkingValue(sellerInfo_path.ChannelTxt,sellerInfo_path.ChannelTxt, sellerInfoIp.EmptyChannelAlert, sellerInfo_path.ChannelTxt, sellerInfo_path.EditBtn,
   //     sellerInfo_path.ChannelInput, sellerInfoIp.channel2, sellerInfo_path.ChannelSelect,
   //     sellerInfo_path.ChannelTxt, sellerInfo_path.EditBtn,
   //     sellerInfo_path.ChannelInput, sellerInfoIp.channel2, sellerInfo_path.ChannelSelect)
   // });
   // it('should check the sellerInformation warehouse if there  is no values it should Add the value to the warehouse', async () => {
   //   await browser.pause(3000)
-  //   await sellerInfo_fn.checkingValue(sellerInfo_path.WarehouseTxt, sellerInfoIp.EmptyWarehouseAlert, sellerInfo_path.WarehouseTxt, sellerInfo_path.EditWareHouseBtn,
+  //   await sellerInfo_fn.checkingValue(sellerInfo_path.WarehouseTxt,sellerInfo_path.WarehouseTxt, sellerInfoIp.EmptyWarehouseAlert, sellerInfo_path.WarehouseTxt, sellerInfo_path.EditWareHouseBtn,
   //     sellerInfo_path.WarehouseInput, sellerInfoIp.warehouse1, sellerInfo_path.WarehouseSelect,
   //     sellerInfo_path.WarehouseTxt, sellerInfo_path.EditBtn,
   //     sellerInfo_path.WarehouseInput, sellerInfoIp.warehouse2, sellerInfo_path.WarehouseSelect)
   // });
+  /* ************************ BillTo ShipTo validations ************************ */
   // // it('should change the Billing Address in Quote page',async () => {
   // //   await browser.pause(2000)
   // //   await sellerInfo_fn.changeBillToShipTo(sellerInfo_path.BillToQuoteSidNavBtn,sellerInfo_path.selectData2,
@@ -204,10 +229,12 @@ describe("cart Page", () => {
   // //   await sellerInfo_fn.changeBillToShipTo(sellerInfo_path.ShipToBtn,sellerInfo_path.selectData2,
   // //     sellerInfo_path.ConfOkBillShip)
   // // });
+  /* ************************ Attachment Validations ************************ */
   // it('should Add a Attcahment in the Quote summary page', async () => {
   //   await browser.pause(2000)
   //   await attach_fn.AttachmentUplaod(approval_path.QuoteOrderAttach, attachIp.uploadfile)
   // });
+<<<<<<< HEAD
   // it('should Add a Tag in the Quote Summary Page', async () => {
   //   await browser.pause(2000)
   //   await actionsWrappers.MoveTo(approval_path.Tag)
@@ -228,11 +255,29 @@ describe("cart Page", () => {
   //     await browser.pause(4000)
   //     await EndCustomer_fn.DateSelecter(EndCustomer_path.RequoredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath)
   //   });
+=======
+
+
+  //  it('should change the sellerInformation salesBranch with confirm select button', async () => {
+  //   await browser.pause(2000)
+  //   await sellerInfo_fn.EditSellerInfo(sellerInfo_path.SalesTxt, sellerInfo_path.EditBtn,
+  //     sellerInfo_path.SalesBranchInput, sellerInfoIp.salesBranch1, sellerInfo_path.SalesBranchSelect)
+  //   await sellerInfo_fn.UpadateBuAlert(sellerInfo_path.updateBUAlert,sellerInfoIp.UpdateBUAlertText)
+  //   await browser.pause(4000)
+  // });
+  /* ************************ Validate the Tag Fields ************************ */
+>>>>>>> a5e7a15dbe603e54196292157a904303ac7cc3e9
   //  it('should validate a Tag field',async () => {
   //    await browser.pause(2000)
   //    await Quote_fn.QuoteBtnIdentify(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval)
   //    await actionsWrappers.snackBarValidate(approval_path.ErrMsgTag,TagIp.ErrtagAlert)
   //  });
+  //  it('should Add a Tag in the Quote Summary Page', async () => {
+  //   await browser.pause(2000)
+  //   await actionsWrappers.MoveTo(approval_path.Tag)
+  //   await Tag_fn.Tag(approval_path.Tag, TagIp.tag, approval_path.Tag)
+  // });
+  /* ************************ validate the Terms Cards ************************ */
   // it('should Change the Delivery Terms',async () => {
   //   await browser.pause(2000)
   //   await Term_fn.TermsActions(Term_path.DeleiverTerm,TermIp.deliverTerm)
@@ -259,12 +304,13 @@ describe("cart Page", () => {
   // });
   // it('should Change the Insurance Terms',async () => {
   //   await browser.pause(2000)
-  //   await Term_fn.TermsActions(Term_path.InsuranceTerm,TermIp.insuranceTerm1)
+  //   await Term_fn.TermsActions(Term_path.InsuranceTerm,TermIp.insuranceTerm)
   // });
   // it('should Change the Addtional Term Terms',async () => {
   //   await browser.pause(2000)
   //   await Term_fn.AddtionalTerm(Term_path.AddtionalTerm,TermIp.AddtionalTerm)
   // });
+  /*Validation a Apply Discount Card */
   // it('should ApplyDiscount By Amount',async () => {
   //   await browser.pause(2000)
   //   await ApplyDiscount_fn.ApplyDiscBYAmount(ApplyDiscount_path.ByAmountBtn,ApplyDiscount_path.ByAmountInput,ApplyDiscountIp.ByAmount,ApplyDiscount_path.ApplyDisApply)
@@ -319,10 +365,8 @@ describe("cart Page", () => {
   //     await browser.pause(4000)
   //    await EndCustomer_fn.DateSelecter(EndCustomer_path.validTill,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath)
   //   });
-  // it('should add Required date to the Quote summary page',async () => {
-  //   await browser.pause(4000)
-  //   await EndCustomer_fn.DateSelecter(EndCustomer_path.RequoredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath)
-  // });
+  /************************* End Customer Field Validations ************************ */
+  
   //   it('should not allow a user select a Valid Till date is LeserThen Vaild From date',async () => {
   //     await browser.pause(4000)
   //     await EndCustomer_fn.DateSelecter(EndCustomer_path.validFrom,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath) 
@@ -330,14 +374,50 @@ describe("cart Page", () => {
   //     await actionsWrappers.Click(QuoteBtnPath.RequestApproval)
   //     await actionsWrappers.snackBarValidate(common.snackbar,EndCustomerIp.ErrMsgEndCusTillDate)
   //   });
-  
   // it('should fill the SPR fields to the Quote summary page',async () => {
   //   await browser.pause(4000)
   //   await EndCustomer_fn.SPRFieldsFill(EndCustomer_path.EndCusRefeNum,EndCustomerIp.EndCusRefNum,EndCustomer_path.EndCusName,EndCustomerIp.EndCusName,EndCustomer_path.ProjectName,EndCustomerIp.EndCusProject,EndCustomer_path.CompetitorName,EndCustomerIp.EndCusCompititers,
   //     EndCustomer_path.PriceJustification,EndCustomerIp.PriceJustification)
   // });
-  // it('should create a Quote',async () => {
-  //   await Quote_fn.QuoteBtnIdentify
+  // it('should validate a Mandatory SPR fields in the Quote Summary Page',async () => {
+  //    await Quote_fn.QuoteBtnIdentify(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval)
+  //    await EndCustomer_fn.SPRFieldValidate(EndCustomer_path.ErrCusName,EndCustomer_path.ErrCusName,EndCustomerIp.ErrMsgEndCusName)
+  //    await EndCustomer_fn.SPRFieldValidate(EndCustomer_path.ErrProjectName,EndCustomer_path.ErrProjectName,EndCustomerIp.ErrMsgProjectName)
+  //    await EndCustomer_fn.SPRFieldValidate(EndCustomer_path.ErrCompetitor,EndCustomer_path.ErrCompetitor,EndCustomerIp.ErrMsgCompetitors)
+  //    await EndCustomer_fn.SPRFieldValidate(EndCustomer_path.ErrPriceJustification,EndCustomer_path.ErrPriceJustification,EndCustomerIp.ErrMsgPriceJustification)
+  //   });
+  // it('should add Required date to the Quote summary page',async () => {
+  //   await browser.pause(4000)
+  //   await actionsWrappers.scrollEle(EndCustomer_path.RequiredDate)
+  //   await EndCustomer_fn.DateSelecter(EndCustomer_path.RequiredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath)
   // });
+  /* ************************ Creating a Quote validations ************************ */
+  // it('should create a Quote',async () => {
+  //   await Quote_fn.QuotePopUP(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval,
+  //     QuoteBtnPath.QuoteConfWindow,QuoteIp.CreateQuoteText,QuoteBtnPath.CreateQuoteName,QuoteIp.QuoteName,QuoteBtnPath.ConfBtn,
+  //     QuoteBtnPath.ReqApprovalQuoteName,QuoteIp.QuoteName,QuoteBtnPath.Comments,QuoteIp.comments,QuoteBtnPath.ConfBtn)
+  // });
+  //   it('should validate a mandatory field in the POPUP window which is opend',async () => {
+  //     await browser.pause(4000)
+  //     await Quote_fn.PopUPFieldValidation(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval,
+  //       QuoteBtnPath.QuoteConfWindow,QuoteIp.CreateQuoteText,QuoteBtnPath.ConfBtn,QuoteBtnPath.ErrQuoteName,QuoteIp.ErrMsgcreateQuoteName,QuoteBtnPath.ConfCancel,
+  //       QuoteBtnPath.Approval2,QuoteBtnPath.ApproverInput1,QuoteBtnPath.ConfBtn,QuoteBtnPath.ErrApprover,QuoteIp.ErrMsgApprover,
+  //       QuoteBtnPath.ApproverInput2,QuoteBtnPath.ConfBtn,QuoteBtnPath.ErrApprover,QuoteIp.ErrMsgApprover,
+  //       QuoteBtnPath.ApproverInput1,QuoteBtnPath.ConfBtn,QuoteBtnPath.ErrApprover,QuoteIp.ErrMsgApprover,
+  //       QuoteBtnPath.ConfBtn,QuoteBtnPath.ErrReqApprovalQuoteName,QuoteIp.ErrMsgReqApprovalQuoteName,
+  //       QuoteBtnPath.ErrComment,QuoteIp.ErrMsgCommentName,QuoteBtnPath.ConfCancel)
+  // });
+  // it('should save a Quote as a Draft in Quote Summary Page',async () => {
+  //   await Quote_fn.saveAsDraft(QuoteBtnPath.SaveAsDraft,QuoteBtnPath.CreateQuoteName,QuoteIp.QuoteName,QuoteBtnPath.ConfBtn)
+  // });
+  // it('should validate that crated quote is placed on the landing page',async () => {
+  //   await Quote_fn.QuoteNameValidation(QuoteBtnPath.QuoteOrderEditFirst,QuoteBtnPath.QuoteOrderNameInput,QuoteIp.QuoteName)
+  //   await browser.pause(5000)
+  // });
+  it('should print a value',async () => {
+    // await actionsWrappers.MoveTo(ApplyDiscount_path.TotalTextValue)
+    await ApplyDiscount_fn.ApplyDiscountAmountValid(ApplyDiscount_path.TotalTextValue)
+  });
+
 
 });

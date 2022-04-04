@@ -27,6 +27,19 @@ class ApplyDiscountCard extends Page {
         await actionWrapper.Click(RoundUpBtn)
         await actionWrapper.Click(ApplyOrResetBtn)
     }
+    ApplyDiscountAmountValid = async(value)=>{
+        const text = value.getText()
+        console.log(text)
+
+        // if ((await value.getText()) === amount) {
+        //     return true;
+        // }
+        // else{
+        //     return false;
+        // }
+             
+        
+    }
 
 
 }

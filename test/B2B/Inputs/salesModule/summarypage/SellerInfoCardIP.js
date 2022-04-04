@@ -34,9 +34,9 @@ function SellerInfoip(){
     this.EmptyBUAlert="No Business Unit assigned"
     this.EmptyChannelAlert="No Channel assigned"
     this.EmptyWarehouseAlert="No warehouse assigned"
-    this.UpdateBUAlertText1='Update New Business Unit?'
-    this.UpdateBUAlertText='UPDATE NEW BUSINESSUNIT UNIT?'
-
+    this.UpdateBUAlertText='Update New Business Unit?'
+    this.UpdateBUAlertText1='UPDATE NEW BUSINESSUNIT UNIT?'
+    this.updateBuCancelAlert="No business unit assigned to this branch or product"
     this.errAlertAccountOwner="Minimum 1 account owner is requried"
 
 
