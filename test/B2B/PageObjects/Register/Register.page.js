@@ -18,7 +18,7 @@ const Page = require("../../../B2B/PageObjects/page");
    get emailId() { 
     return super.pathByName('userEmail'); 
   }
-  get mailExisits() { 
+  get mailExists() { 
     return super.pathByXpath('//p[text()="Email already exists"]'); 
   }
   get invaildMail() { 
@@ -89,6 +89,10 @@ get Required(){
 }
 get sucess(){
   return super.pathByXpath('//h6[text()=" Successfully Registered"]');
+}
+get alreadyCustomer(){
+  return super.pathByXpath('//a[text()="Already have an account?"]');
+   
 }
 }
 
