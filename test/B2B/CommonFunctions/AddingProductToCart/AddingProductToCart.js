@@ -28,8 +28,8 @@ class AddProduct {
 
 
   // Navigate cart page & clear cart
-  ClickAndclearCart = async (productId) => {
-    await actionWrapper.checkVisibleClickableAndClick(await path.cartIcon);
+  ClickAndclearCart = async (cartIconpath) => {
+    await actionWrapper.checkVisibleClickableAndClick(await cartIconpath);
     await browser.pause(4000);
     if (await path.mycart.isExisting()) {
       await actionWrapper.checkVisibleClickableAndClick(await path.moreOptions);

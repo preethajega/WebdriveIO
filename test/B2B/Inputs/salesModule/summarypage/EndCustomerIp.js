@@ -14,5 +14,9 @@ function EndCusip(){
     this.EndCusPriceJustification="Give me on this Amount"
     this.EndCusPriceJustification1="I have Accepted from client for this Amount Only"
     this.ErrMsgEndCusTillDate="End date can't be before start date"
+    this.ErrMsgEndCusName="End customer name is required"
+    this.ErrMsgProjectName="Project name is required"
+    this.ErrMsgCompetitors="Competitor name(s) is required"
+    this.ErrMsgPriceJustification="Price justification is required"
 }
 module.exports = new EndCusip();

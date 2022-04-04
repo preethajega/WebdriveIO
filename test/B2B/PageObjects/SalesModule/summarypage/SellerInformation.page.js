@@ -2,6 +2,9 @@ const Page = require("../../../../B2B/PageObjects/page");
 
 class SellerInfo extends Page{
 /* *************** SELLER INFORMATION CARD **************** */
+    get PTCEditBtn(){
+        return super.pathByXpath('//button[contains(@class,"css-y66283")]')
+    }
     get EditBtn(){
         return super.pathByXpath('//button[contains(@class,"MuiIconButton-sizeMedium css-1yjqef3")]')
     }

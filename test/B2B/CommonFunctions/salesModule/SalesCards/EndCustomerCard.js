@@ -30,6 +30,10 @@ class EndCusCard extends Page {
         await actionWrapper.clearValueAndSetValueSelectDropdown(competitorpath,competitorIp)
         await actionWrapper.clearAndsetValue(PriceJustifiPath,PriceJustifiIp)
     }
+    SPRFieldValidate = async(fieldPath,Fieldpaths,snakip)=>{
+        await actionWrapper.MoveTo(fieldPath)
+        await actionWrapper.snackBarValidate(Fieldpaths,snakip)
+    }
 
 }
 module.exports = new EndCusCard();

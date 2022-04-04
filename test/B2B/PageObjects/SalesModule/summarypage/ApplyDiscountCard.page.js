@@ -55,6 +55,22 @@ class ApplyDiscount extends Page{
     get RoundUpApply(){
         return super.pathByXpath('//div[@class="MuiBox-root css-1rxpjkd"]/button[2]')
     }
+    /********************** PRICE DETAILS CARD ********************** */
+    get TotalTextValue(){
+        return super.pathByXpath('//h5[text()="Total"]/following::h5[1]')
+    }
+    get TaxAbleAmountTxtValue(){
+        return super.pathByXpath('//h5[text()="Taxable Amount"]/following::h6[1]')
+    }
+    get SubTotalTxtValue(){
+        return super.pathByXpath('//h5[text()="Subtotal"]/following::h6[1]')
+    }
+    get ShippingChargeTxtValue(){
+        return super.pathByXpath('(//h5[text()="Shipping Charges"]/following::h6)[5]')
+    }
+    get PFTextvalue(){
+        return super.pathByXpath('(//h5[text()="P&F Rate"]/following::h6[3])[1]')
+    }
 }
 
 module.exports = new ApplyDiscount();
