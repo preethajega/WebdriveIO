@@ -32,6 +32,7 @@ const ApplyDiscountIp = require("../../Inputs/salesModule/summarypage/ApplyDisco
 const EndCustomer_path = require("../../PageObjects/SalesModule/summarypage/EndCustomerCard.page");
 const EndCustomer_fn = require("../../CommonFunctions/salesModule/SalesCards/EndCustomerCard")
 const EndCustomerIp = require("../../Inputs/salesModule/summarypage/EndCustomerIp")
+const prodTable_path = require("../../PageObjects/SalesModule/summarypage/ProductTable.page");
 
 
 
@@ -74,6 +75,7 @@ describe("cart Page", () => {
     await actionsWrappers.clearValues(await cart_path.selectbuyer);
     await cart_fn.carttoSummary(CartIp.BuyerName1, await cart_path.createQuote);
     await actionsWrappers.urlValidation("/quote-summary");
+    await actionsWrappers.scrollEle(prodTable_path.discount(0));
   })
   /* ************************ It should change the Approval Group ************************* */
   // it('should change a Approval Group', async () => {
@@ -232,6 +234,28 @@ describe("cart Page", () => {
   //   await browser.pause(2000)
   //   await attach_fn.AttachmentUplaod(approval_path.QuoteOrderAttach, attachIp.uploadfile)
   // });
+<<<<<<< HEAD
+  // it('should Add a Tag in the Quote Summary Page', async () => {
+  //   await browser.pause(2000)
+  //   await actionsWrappers.MoveTo(approval_path.Tag)
+  //   await Tag_fn.Tag(approval_path.Tag, TagIp.tag, approval_path.Tag)
+  // });
+  
+  //  it('should change the sellerInformation salesBranch with confirm select button', async () => {
+  //   await browser.pause(2000)
+  //   await sellerInfo_fn.EditSellerInfo(sellerInfo_path.SalesTxt, sellerInfo_path.EditBtn,
+  //     sellerInfo_path.SalesBranchInput, sellerInfoIp.salesBranch1, sellerInfo_path.SalesBranchSelect)
+
+  //   await sellerInfo_fn.UpadateBuAlert(sellerInfo_path.updateBUAlert,sellerInfoIp.UpdateBUAlertText)
+  //   await browser.pause(4000)
+  // });
+
+
+  // it('should add Required date to the Quote summary page',async () => {
+  //     await browser.pause(4000)
+  //     await EndCustomer_fn.DateSelecter(EndCustomer_path.RequoredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath)
+  //   });
+=======
 
 
   //  it('should change the sellerInformation salesBranch with confirm select button', async () => {
@@ -242,6 +266,7 @@ describe("cart Page", () => {
   //   await browser.pause(4000)
   // });
   /* ************************ Validate the Tag Fields ************************ */
+>>>>>>> a5e7a15dbe603e54196292157a904303ac7cc3e9
   //  it('should validate a Tag field',async () => {
   //    await browser.pause(2000)
   //    await Quote_fn.QuoteBtnIdentify(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval)
