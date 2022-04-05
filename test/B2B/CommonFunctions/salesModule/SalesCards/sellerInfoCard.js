@@ -5,7 +5,6 @@ const attchmentUpload = require("../../../../CommonActions/attchmentUpload");
 const common = require("../../../PageObjects/Common/commonObjects");
 const path = require("../../../PageObjects/SalesModule/summarypage/SellerInformation.page");
 const assert = require("assert");
-const { BU } = require("../../../Inputs/salesModule/summarypage/SellerInfoCardIP");
 
 
 

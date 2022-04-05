@@ -28,9 +28,26 @@ class ApplyDiscountCard extends Page {
         await actionWrapper.Click(ApplyOrResetBtn)
     }
     ApplyDiscountAmountValid = async(value)=>{
-        const text = value.getText()
-        console.log(text)
+        await actionWrapper.Click(value)
+        await console.log(typeof  "₹1,090.32");
 
+        const text = value.getText()
+        // const Text1 = console.log(Array.prototype.slice.call(text, 1));
+       const Text1 = Object.fromEntries(Object.entries(text).slice(1));
+        // // (/\/|-|:|/g,''
+        // if ((await typeof text) === "string"){
+        //     console.log("str is a string type");
+        // }
+        // if ((await typeof text) === "number"){
+        //     console.log("num is a number type");
+        // }
+        // if ((await typeof text) === "undefined"){
+        //     console.log("str is a undefined type");
+        // }
+        
+        // const text1 = text.trim(1);
+        await console.log(Text1);
+        
         // if ((await value.getText()) === amount) {
         //     return true;
         // }

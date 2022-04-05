@@ -72,20 +72,14 @@ describe("cart Page", () => {
     await browser.pause(3000)
     await assert.strictEqual(
       await common.snackbar.getText(), CartIp.cartAlert);
-    await actionsWrappers.clearValues(await cart_path.selectbuyer);
-    await cart_fn.carttoSummary(CartIp.BuyerName1, await cart_path.createQuote);
-    await actionsWrappers.urlValidation("/quote-summary");
-    await browser.pause(2000);
-    await actionsWrappers.clearAndsetValue(prodTable_path.discount(0),20);
-    
-    
+    // await actionsWrappers.clearValues(await cart_path.selectbuyer);
+    // await cart_fn.carttoSummary(CartIp.BuyerName1, await cart_path.createQuote);
+    // await actionsWrappers.urlValidation("/quote-summary");
+    // await actionsWrappers.scrollEle(prodTable_path.discount(0));
   })
- /* ************************ It should change the Discount percentage ************************* */
-// it('should change a Discount percentage', async () => {
-//   prodTable_fn.ProdTableclearAndSetvalue(prodTable_path.discount(0),20);
-//   });
-
-
+  it('should add the product and Upadate the Quanty',async () => {
+    await cart_fn.SerchProdUpdateQuanty(CartIp.itemName1,CartIp.ProdQty,CartIp.ProdQty1)
+  });
   /* ************************ It should change the Approval Group ************************* */
   it('should change a Approval Group', async () => {
     await browser.pause(4000)
@@ -243,7 +237,10 @@ describe("cart Page", () => {
   //   await browser.pause(2000)
   //   await attach_fn.AttachmentUplaod(approval_path.QuoteOrderAttach, attachIp.uploadfile)
   // });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 72c3999565f4dc13c5585a98a39752829aebacfa
   // it('should Add a Tag in the Quote Summary Page', async () => {
   //   await browser.pause(2000)
   //   await actionsWrappers.MoveTo(approval_path.Tag)
