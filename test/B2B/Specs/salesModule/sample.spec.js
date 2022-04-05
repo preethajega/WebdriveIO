@@ -234,7 +234,6 @@ describe("cart Page", () => {
   //   await browser.pause(2000)
   //   await attach_fn.AttachmentUplaod(approval_path.QuoteOrderAttach, attachIp.uploadfile)
   // });
-<<<<<<< HEAD
   // it('should Add a Tag in the Quote Summary Page', async () => {
   //   await browser.pause(2000)
   //   await actionsWrappers.MoveTo(approval_path.Tag)
@@ -255,7 +254,6 @@ describe("cart Page", () => {
   //     await browser.pause(4000)
   //     await EndCustomer_fn.DateSelecter(EndCustomer_path.RequoredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath)
   //   });
-=======
 
 
   //  it('should change the sellerInformation salesBranch with confirm select button', async () => {
@@ -266,7 +264,6 @@ describe("cart Page", () => {
   //   await browser.pause(4000)
   // });
   /* ************************ Validate the Tag Fields ************************ */
->>>>>>> a5e7a15dbe603e54196292157a904303ac7cc3e9
   //  it('should validate a Tag field',async () => {
   //    await browser.pause(2000)
   //    await Quote_fn.QuoteBtnIdentify(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval)
