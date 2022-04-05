@@ -237,10 +237,6 @@ describe("cart Page", () => {
   //   await browser.pause(2000)
   //   await attach_fn.AttachmentUplaod(approval_path.QuoteOrderAttach, attachIp.uploadfile)
   // });
-<<<<<<< HEAD
-
-=======
->>>>>>> 72c3999565f4dc13c5585a98a39752829aebacfa
   // it('should Add a Tag in the Quote Summary Page', async () => {
   //   await browser.pause(2000)
   //   await actionsWrappers.MoveTo(approval_path.Tag)
