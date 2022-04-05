@@ -185,7 +185,11 @@ commonEnquiryFields = async(ContactNo,Attchment,alertmsg)  =>{
   );
   await this.EnquiryValidation(alertmsg);
 }
-
+/* search for products & update a quanty */
+SerchProdUpdateQuanty = async()=>{
+  await this.selectProducts(productId,quantityIP)
+  await actionWrapper.clearAndsetValue(path.quantity,quantityIP)
+}  
 }
 
 
