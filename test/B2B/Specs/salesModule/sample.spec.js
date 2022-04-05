@@ -33,7 +33,7 @@ const EndCustomer_path = require("../../PageObjects/SalesModule/summarypage/EndC
 const EndCustomer_fn = require("../../CommonFunctions/salesModule/SalesCards/EndCustomerCard")
 const EndCustomerIp = require("../../Inputs/salesModule/summarypage/EndCustomerIp")
 const prodTable_path = require("../../PageObjects/SalesModule/summarypage/ProductTable.page");
-
+const prodTable_fn = require("../../CommonFunctions/salesModule/SalesCards/ProductTable");
 
 
 describe("cart Page", () => {
@@ -75,17 +75,26 @@ describe("cart Page", () => {
     await actionsWrappers.clearValues(await cart_path.selectbuyer);
     await cart_fn.carttoSummary(CartIp.BuyerName1, await cart_path.createQuote);
     await actionsWrappers.urlValidation("/quote-summary");
-    await actionsWrappers.scrollEle(prodTable_path.discount(0));
+    await browser.pause(2000);
+    await actionsWrappers.clearAndsetValue(prodTable_path.discount(0),20);
+    
+    
   })
+ /* ************************ It should change the Discount percentage ************************* */
+// it('should change a Discount percentage', async () => {
+//   prodTable_fn.ProdTableclearAndSetvalue(prodTable_path.discount(0),20);
+//   });
+
+
   /* ************************ It should change the Approval Group ************************* */
-  // it('should change a Approval Group', async () => {
-  //   await browser.pause(4000)
-  //   await approval_fn.AddApproval(approval_path.ApprovalGrp, approvalIp.approvalName1)
-  // });
-  // it('should change a Approval Group', async () => {
-  //   await browser.pause(4000)
-  //   await approval_fn.AddApproval(approval_path.ApprovalGrp, approvalIp.approvalName3)
-  // });
+  it('should change a Approval Group', async () => {
+    await browser.pause(4000)
+    await approval_fn.AddApproval(approval_path.ApprovalGrp, approvalIp.approvalName1)
+  });
+  it('should change a Approval Group', async () => {
+    await browser.pause(4000)
+    await approval_fn.AddApproval(approval_path.ApprovalGrp, approvalIp.approvalName3)
+  });
   /* ************************ It should work on Currency Fields ************************ */
   // it('should add a Currency', async () => {
   //   await browser.pause(2000)
@@ -143,11 +152,11 @@ describe("cart Page", () => {
   //   await sellerInfo_fn.EditSellerInfo(sellerInfo_path.ChannelTxt, sellerInfo_path.EditBtn,
   //     sellerInfo_path.ChannelInput, sellerInfoIp.channel, sellerInfo_path.ChannelSelect)
   // });
-  it('should chnage the sellerInformation Channel with confirm close button', async () => {
-    await browser.pause(2000)
-    await sellerInfo_fn.EditSellerInfo(sellerInfo_path.ChannelTxt, sellerInfo_path.EditBtn,
-      sellerInfo_path.ChannelInput, sellerInfoIp.channel1, sellerInfo_path.ChannelClose)
-  });
+  // it('should chnage the sellerInformation Channel with confirm close button', async () => {
+  //   await browser.pause(2000)
+  //   await sellerInfo_fn.EditSellerInfo(sellerInfo_path.ChannelTxt, sellerInfo_path.EditBtn,
+  //     sellerInfo_path.ChannelInput, sellerInfoIp.channel1, sellerInfo_path.ChannelClose)
+  // });
 
   // it('should change the sellerInformation warehouse with confirm select button', async () => {
   //   await browser.pause(2000)
@@ -234,7 +243,7 @@ describe("cart Page", () => {
   //   await browser.pause(2000)
   //   await attach_fn.AttachmentUplaod(approval_path.QuoteOrderAttach, attachIp.uploadfile)
   // });
-<<<<<<< HEAD
+
   // it('should Add a Tag in the Quote Summary Page', async () => {
   //   await browser.pause(2000)
   //   await actionsWrappers.MoveTo(approval_path.Tag)
@@ -255,7 +264,6 @@ describe("cart Page", () => {
   //     await browser.pause(4000)
   //     await EndCustomer_fn.DateSelecter(EndCustomer_path.RequoredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath)
   //   });
-=======
 
 
   //  it('should change the sellerInformation salesBranch with confirm select button', async () => {
@@ -266,7 +274,6 @@ describe("cart Page", () => {
   //   await browser.pause(4000)
   // });
   /* ************************ Validate the Tag Fields ************************ */
->>>>>>> a5e7a15dbe603e54196292157a904303ac7cc3e9
   //  it('should validate a Tag field',async () => {
   //    await browser.pause(2000)
   //    await Quote_fn.QuoteBtnIdentify(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval)
@@ -414,10 +421,10 @@ describe("cart Page", () => {
   //   await Quote_fn.QuoteNameValidation(QuoteBtnPath.QuoteOrderEditFirst,QuoteBtnPath.QuoteOrderNameInput,QuoteIp.QuoteName)
   //   await browser.pause(5000)
   // });
-  it('should print a value',async () => {
-    // await actionsWrappers.MoveTo(ApplyDiscount_path.TotalTextValue)
-    await ApplyDiscount_fn.ApplyDiscountAmountValid(ApplyDiscount_path.TotalTextValue)
-  });
+  // it('should print a value',async () => {
+  //   // await actionsWrappers.MoveTo(ApplyDiscount_path.TotalTextValue)
+  //   await ApplyDiscount_fn.ApplyDiscountAmountValid(ApplyDiscount_path.TotalTextValue)
+  // });
 
 
 });

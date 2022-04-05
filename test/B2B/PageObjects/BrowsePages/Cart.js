@@ -19,8 +19,8 @@ get getQuote() {
     return super.pathByXpath('(//div[@class="css-1ossqnk"]//button)[3]')
   }
   get cartIcon() {
-    return super.pathByXpath('(//div[@class="MuiBox-root css-q04doh"]//button)[2]')
-    // return super.pathByCss('#cartIcon');
+   // return super.pathByXpath('(//div[@class="MuiBox-root css-q04doh"]//button)[2]')
+     return super.pathByCss('#cartIcon');
   }
 
   get searchBox() {
