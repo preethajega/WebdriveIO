@@ -6,7 +6,7 @@ function cartPageInput() {
     this.custProdprice="1000";
     this.ProdName="Apple";
     this.itemName="801 chair";
-    this.itemName="FG100129"
+    this.itemName1="FG100129"
     this.ProdQty="10";
     this.ProdQty1="21";
     this.ProdQty2="5";

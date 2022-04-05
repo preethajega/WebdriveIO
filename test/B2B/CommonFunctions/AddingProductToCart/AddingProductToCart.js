@@ -4,7 +4,6 @@ const assert = require("assert");
 const common = require("../../PageObjects/Common/commonObjects");
 var CartIP = require("../../Inputs/Browse/CartIp");
 const attchmentUpload = require("../../../CommonActions/attchmentUpload");
-const CartIp = require("../../Inputs/Browse/CartIp");
 const { uploadExcel } = require("../../Inputs/Browse/CartIp");
 
 class AddProduct {
@@ -127,7 +126,7 @@ selectProducts = async (productId) => {
     );
 
     await actionWrapper.ClickElementAndkeyboardVal(
-      await path.source,CartIp.Source
+      await path.source,CartIP.Source
     );
 
     await this.commonEnquiryFields(ContactNo,Attchment,alertmsg);
@@ -186,10 +185,15 @@ commonEnquiryFields = async(ContactNo,Attchment,alertmsg)  =>{
   await this.EnquiryValidation(alertmsg);
 }
 /* search for products & update a quanty */
-SerchProdUpdateQuanty = async()=>{
-  await this.selectProducts(productId,quantityIP)
-  await actionWrapper.clearAndsetValue(path.quantity,quantityIP)
-}  
+  SerchProdUpdateQuanty = async(productId,quantityIP,quantityIP1)=>{
+
+    await this.selectProducts(productId)
+    await actionWrapper.clearAndsetValue(path.quantity,quantityIP)
+    await browser.pause(1000)
+    if (await common.snackbar === CartIP.qtyAlert) {
+      await actionWrapper.clearAndsetValue(path.quantity,quantityIP1)
+    }
+  }  
 }
 
 
