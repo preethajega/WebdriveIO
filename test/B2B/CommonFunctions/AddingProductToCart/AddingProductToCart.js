@@ -189,7 +189,7 @@ commonEnquiryFields = async(ContactNo,Attchment,alertmsg)  =>{
 
     await this.selectProducts(productId)
     await actionWrapper.clearAndsetValue(path.quantity,quantityIP)
-    await browser.pause(1000)
+    await browser.pause(2000)
     if (await common.snackbar === CartIP.qtyAlert) {
       await actionWrapper.clearAndsetValue(path.quantity,quantityIP1)
     }

@@ -1,3 +1,4 @@
+let today =  new Date().toISOString().replace(/\/|-|:|/g,'');
 const path = require('path');
 function Teamip(){
     this.teamUrl="/settings/team/landing"
@@ -5,10 +6,10 @@ function Teamip(){
     this.code="ECP123"
     this.code1="PS123"
     this.phNum="866732881"
-    this.email="preetha@gmail.com"
-    this.email1="demo1@gmail.com"
-    this.email2="preeyhas@gmail.com"
-    this.email3="testers@gmail.com"
+    this.email="preetha"+today+"@gmail.com"
+    this.email1="demo1"+today+"@gmail.com"
+    this.email2="preeyhas"+today+"@gmail.com"
+    this.email3="testers"+today+"@gmail.com"
     this.invalidmail="application"
     this.jobtitle="QA"
     this.depart="Testing"

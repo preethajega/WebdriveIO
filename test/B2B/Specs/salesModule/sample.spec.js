@@ -72,14 +72,14 @@ describe("cart Page", () => {
     await browser.pause(3000)
     await assert.strictEqual(
       await common.snackbar.getText(), CartIp.cartAlert);
-    // await actionsWrappers.clearValues(await cart_path.selectbuyer);
-    // await cart_fn.carttoSummary(CartIp.BuyerName1, await cart_path.createQuote);
-    // await actionsWrappers.urlValidation("/quote-summary");
+    await actionsWrappers.clearValues(await cart_path.selectbuyer);
+    await cart_fn.carttoSummary(CartIp.BuyerName1, await cart_path.createQuote);
+    await actionsWrappers.urlValidation("/quote-summary");
     // await actionsWrappers.scrollEle(prodTable_path.discount(0));
   })
-  it('should add the product and Upadate the Quanty',async () => {
-    await cart_fn.SerchProdUpdateQuanty(CartIp.itemName1,CartIp.ProdQty,CartIp.ProdQty1)
-  });
+  // it('should add the product and Upadate the Quanty',async () => {
+  //   await cart_fn.SerchProdUpdateQuanty(CartIp.itemName1,CartIp.ProdQty,CartIp.ProdQty1)
+  // });
   /* ************************ It should change the Approval Group ************************* */
   it('should change a Approval Group', async () => {
     await browser.pause(4000)
@@ -386,11 +386,11 @@ describe("cart Page", () => {
   //    await EndCustomer_fn.SPRFieldValidate(EndCustomer_path.ErrCompetitor,EndCustomer_path.ErrCompetitor,EndCustomerIp.ErrMsgCompetitors)
   //    await EndCustomer_fn.SPRFieldValidate(EndCustomer_path.ErrPriceJustification,EndCustomer_path.ErrPriceJustification,EndCustomerIp.ErrMsgPriceJustification)
   //   });
-  // it('should add Required date to the Quote summary page',async () => {
-  //   await browser.pause(4000)
-  //   await actionsWrappers.scrollEle(EndCustomer_path.RequiredDate)
-  //   await EndCustomer_fn.DateSelecter(EndCustomer_path.RequiredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath)
-  // });
+  it('should add Required date to the Quote summary page',async () => {
+    await browser.pause(4000)
+    await actionsWrappers.scrollEle(EndCustomer_path.RequiredDate)
+    await EndCustomer_fn.DateSelecter(EndCustomer_path.RequiredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath)
+  });
   /* ************************ Creating a Quote validations ************************ */
   // it('should create a Quote',async () => {
   //   await Quote_fn.QuotePopUP(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval,

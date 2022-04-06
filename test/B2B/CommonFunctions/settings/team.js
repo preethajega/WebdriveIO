@@ -125,7 +125,7 @@ class Team extends Page {
     }
     statusUser = async(statusbtn,confbtn,snackpath,alertip)=>{
         await browser.pause(2000)
-        await actionWrapper.scrollEleAndClick(path.Editdata1)
+        await actionWrapper.scrollEleAndClick(path.Editdata)
         await browser.pause(2000)
         // await actionWrapper.Click(path.refershbtn)
         await actionWrapper.Click(path.MoreOptionbtn)
