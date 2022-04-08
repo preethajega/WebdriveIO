@@ -9,7 +9,7 @@ exports.config = {
         //  './test/B2B/Specs/setting/team.spec.js',
         //  './test/B2B/Specs/setting/appSetup.spec.js',
         //  './test/B2B/Specs/Customers/customer.spec.js',
-         './test/B2B/Specs/salesModule/RFQquote.spec.js',
+         './test/B2B/Specs/salesModule/Quotes/Buyer/RFQBuyerQuote.spec.js'
         //  './test/B2B/Specs/Cart/Cart.spec.js',
     ],
     // Patterns to exclude.

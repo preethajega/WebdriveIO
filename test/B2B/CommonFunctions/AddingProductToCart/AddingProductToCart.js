@@ -185,15 +185,18 @@ commonEnquiryFields = async(ContactNo,Attchment,alertmsg)  =>{
   await this.EnquiryValidation(alertmsg);
 }
 /* search for products & update a quanty */
-  SerchProdUpdateQuanty = async(productId,quantityIP,quantityIP1)=>{
+  SerchProdUpdateQuanty = async(productId,quantityIP)=>{
 
     await this.selectProducts(productId)
     await actionWrapper.clearAndsetValue(path.quantity,quantityIP)
     await browser.pause(2000)
+  }  
+  /* update Quanty alert */
+  UpdateQuantyAlert = async(quantityIP1)=>{
     if (await common.snackbar === CartIP.qtyAlert) {
       await actionWrapper.clearAndsetValue(path.quantity,quantityIP1)
     }
-  }  
+  }
 }
 
 

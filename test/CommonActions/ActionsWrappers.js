@@ -179,7 +179,7 @@ checkVisibleClickableMove = async (ele) => {
   selectfirstDropdownValue = async (ele1,input,ele2) =>{
     await ele1.waitForDisplayed(2000);
     await ele1.setValue(input);
-    await browser.pause(2000);
+    await browser.pause(3000);
     await ele2.waitForClickable({ timeout: 2000 });
     await ele2.click();
 

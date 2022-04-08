@@ -85,6 +85,10 @@ class QuotePage extends Page{
     }
 
 
-   
+   /***************** BUYER XAPTHS FOR QUOTES PAGE ********************* */
+
+   get BuyerReqForQuoteBtn(){
+       return super.pathByXpath('//button[@aria-label="Request for quote"]')
+   }
 }
 module.exports = new QuotePage();

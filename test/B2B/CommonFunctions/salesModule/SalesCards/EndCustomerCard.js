@@ -72,6 +72,18 @@ class EndCusCard extends Page {
             }
         }
     }
+    /************ BUYER SIDE METHOD ************ */
+
+    RequiredDateFieldBuyer = async(btnpath,validFromPath,NextMonBtn,datepath)=>{
+        await actionWrapper.Click(btnpath)
+        if ((await common.snackbar.getText()) === EndCusip.ReqDeliveryDate) {
+            await browser.pause(3000)
+            await actionWrapper.scrollEle(EndCustomer_path.RequiredDate)
+            await browser.pause(2000)
+            this.DateSelecter(validFromPath,NextMonBtn,datepath)       
+        }
+    }
+
 
 }
 module.exports = new EndCusCard();
