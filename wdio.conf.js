@@ -3,13 +3,22 @@ const url = require('./url')
 exports.config = {
     specs: [
         // './test/B2B/Specs/setting/company/AddWarehouse.spec.js',
+// './test/B2B/Specs/setting/tag.spec.js',
+// './test/B2B/Specs/setting/tax.spec.js',
+'./test/B2B/Specs/setting/zone.spec.js',
+
+// './test/B2B/Specs/setting/team.spec.js',
+
+
+
+
         //  './test/B2B/Specs/setting/terms.spec.js',
         //  './test/B2B/Specs/setting/zone.spec.js',
         //  './test/B2B/Specs/setting/tax.spec.js',
         //  './test/B2B/Specs/setting/team.spec.js',
         //  './test/B2B/Specs/setting/appSetup.spec.js',
         //  './test/B2B/Specs/Customers/customer.spec.js',
-         './test/B2B/Specs/salesModule/Quotes/Buyer/RFQBuyerQuote.spec.js'
+        //  './test/B2B/Specs/salesModule/Quotes/Buyer/RFQBuyerQuote.spec.js'
         //  './test/B2B/Specs/Cart/Cart.spec.js',
     ],
     // Patterns to exclude.

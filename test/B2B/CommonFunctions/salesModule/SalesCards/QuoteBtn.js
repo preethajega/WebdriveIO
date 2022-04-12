@@ -4,6 +4,8 @@ const Quoteip = require("../../../Inputs/salesModule/summarypage/QuoteBTnsIp");
 const attchmentUpload = require("../../../../CommonActions/attchmentUpload");
 const common = require("../../../PageObjects/Common/commonObjects");
 const path = require("../../../PageObjects/SalesModule/summarypage/quoteBtn.pag");
+const EndCustomer_path = require("../../../PageObjects/SalesModule/summarypage/EndCustomerCard.page");
+
 const assert = require("assert");
 
 
@@ -110,6 +112,7 @@ class QuoteBtnCard extends Page {
         }
 
     }
+   
 
    
    

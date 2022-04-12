@@ -71,6 +71,13 @@ class ApplyDiscount extends Page{
     get PFTextvalue(){
         return super.pathByXpath('(//h5[text()="P&F Rate"]/following::h6[3])[1]')
     }
+    /*********** BUYER APPLY DISCOUNT CARD ************* */
+    get TargetDiscount(){
+        return super.pathByName("sprDetails.sprRequestedDiscount")
+    }
+    get TargetPrice(){
+        return super.pathByName('sprDetails.targetPrice')
+    }
 }
 
 module.exports = new ApplyDiscount();

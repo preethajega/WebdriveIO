@@ -9,7 +9,7 @@ function EndCusip(){
     this.EndCusName1="Raja"
     this.EndCusProject="Metal"
     this.EndCusProject1="Rubber"
-    this.EndCusCompititers="FNP"
+    this.EndCusCompititers="FNP-P"
     this.EndCusCompititers1="SSN"
     this.ReqDeliveryDate ="Provide required delivery date"
     this.EndCusPriceJustification="Give me on this Amount"

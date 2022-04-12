@@ -83,7 +83,32 @@ class EndCusCard extends Page {
             this.DateSelecter(validFromPath,NextMonBtn,datepath)       
         }
     }
+    QuoteEditSpr = async(btnpath,CusNumPath1,CusNumPath,CusNumIp,CusNamePath,CusNameIp,ProjectNamePath,ProjectNameIp,competitorpath,
+        competitorIp,PriceJustifiPath,PriceJustifiIp)=>{
+        await actionWrapper.Click(btnpath)
+        await browser.pause(2000)
+        if ((await EndCustomer_path.ErrCusName.isDisplayed()) === true ) {
+            await browser.pause(2000)
+            await actionWrapper.MoveTo(CusNumPath1)
+            await this.BuyerSPRFieldsFill(CusNumPath,CusNumIp,CusNamePath,CusNameIp,ProjectNamePath,ProjectNameIp,
+                competitorpath,competitorIp,PriceJustifiPath,PriceJustifiIp)
+        }
+    }
+    BuyerSPRFieldsFill =async(CusNumPath,CusNumIp,CusNamePath,CusNameIp,ProjectNamePath,ProjectNameIp,competitorpath,competitorIp,
+        PriceJustifiPath,PriceJustifiIp)=>{
+        await actionWrapper.clickAndSetvalue(CusNumPath,CusNumIp)
+        await browser.pause(2000)
+        await actionWrapper.clickAndSetvalue(CusNamePath,CusNameIp)
+        await browser.pause(2000)
+        await actionWrapper.clickAndSetvalue(ProjectNamePath,ProjectNameIp)
+        await browser.pause(2000)
+        // await actionWrapper.MoveTo(competitorpath)
+        await browser.pause(2000)
+        await actionWrapper.clickSetvalueAndSelectoption1(competitorpath,competitorIp)
+        await browser.pause(2000)
+        await actionWrapper.clickAndSetvalue(PriceJustifiPath,PriceJustifiIp)
 
+    }
 
 }
 module.exports = new EndCusCard();

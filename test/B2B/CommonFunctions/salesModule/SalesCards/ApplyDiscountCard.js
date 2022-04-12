@@ -57,6 +57,10 @@ class ApplyDiscountCard extends Page {
              
         
     }
+    ApplyTargetPriceOrDisc = async(TargetPriceDiscountPath1,TargetPriceDiscountPath,TagetPriceDiscountIp)=>{
+        await actionWrapper.MoveTo(TargetPriceDiscountPath1)
+        await actionWrapper.clearAndsetValue(TargetPriceDiscountPath,TagetPriceDiscountIp)
+    }
 
 
 }

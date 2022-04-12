@@ -30,194 +30,194 @@ describe('Customer page', () => {
     });
     /* ****************** validation about without default mail in customers ******************* */
 
-    it('should create user without Default user with Cancel', async () => {
-        await customer_fn.AddCustomer(branchpath.SearchCompname, Branchip.searchcompname1, customer_path.BranchName, Branchip.BranchName,
-            customer_path.TaxNum, customerip.TaxId, customer_path.BusinessType, customerip.BuType, customer_path.Currency, customerip.Curr)
-        await browser.pause(2000)
-        await customer_fn.snakbar(branchpath.CancelBtn, common.snackbar, customerip.cusSaveAlert)
-    });
-    it('should create user without Default user with save', async () => {
-        await customer_fn.AddCustomer(branchpath.SearchCompname, Branchip.searchcompname1, customer_path.BranchName, Branchip.BranchName,
-            customer_path.TaxNum, customerip.TaxId, customer_path.BusinessType, customerip.BuType, customer_path.Currency, customerip.Curr)
-        await browser.pause(2000)
-        await customer_fn.snakbar(branchpath.SaveBtn, common.snackbar, customerip.cusSaveAlert)
-    });
-    it('should filter the Customer using City', async () => {
-        await browser.pause(2000)
-        await customer_fn.FilterSetValue(customer_path.City, customerip.city1, customer_path.ApplyBtn)
-    });
-    it('should delete a created Customer with confirm cancel', async () => {
-        await actionsWrappers.Click(customer_path.EditFirstData)
-        await customer_fn.DeleCus()
-        await customer_fn.snakbar(branchpath.ConformCancelBtn, common.snackbar, customerip.cusDeleAlert)
-    });
-    it('should delete a created Customer with confirm Delete', async () => {
-        await customer_fn.DeleCus()
-        await customer_fn.snakbar(branchpath.ConformDeleteBtn, common.snackbar, customerip.cusDeleAlert)
-    });
-    it('should remove the Appliyed Filter', async () => {
-        await browser.pause(1000)
-        await customer_fn.ClearFilter()
-    });
-    /* ****************** validation about fileds in create Customer card ******************* */
+    // it('should create user without Default user with Cancel', async () => {
+    //     await customer_fn.AddCustomer(branchpath.SearchCompname, Branchip.searchcompname1, customer_path.BranchName, Branchip.BranchName,
+    //         customer_path.TaxNum, customerip.TaxId, customer_path.BusinessType, customerip.BuType, customer_path.Currency, customerip.Curr)
+    //     await browser.pause(2000)
+    //     await customer_fn.snakbar(branchpath.CancelBtn, common.snackbar, customerip.cusSaveAlert)
+    // });
+    // it('should create user without Default user with save', async () => {
+    //     await customer_fn.AddCustomer(branchpath.SearchCompname, Branchip.searchcompname1, customer_path.BranchName, Branchip.BranchName,
+    //         customer_path.TaxNum, customerip.TaxId, customer_path.BusinessType, customerip.BuType, customer_path.Currency, customerip.Curr)
+    //     await browser.pause(2000)
+    //     await customer_fn.snakbar(branchpath.SaveBtn, common.snackbar, customerip.cusSaveAlert)
+    // });
+    // it('should filter the Customer using City', async () => {
+    //     await browser.pause(2000)
+    //     await customer_fn.FilterSetValue(customer_path.City, customerip.city1, customer_path.ApplyBtn)
+    // });
+    // it('should delete a created Customer with confirm cancel', async () => {
+    //     await actionsWrappers.Click(customer_path.EditFirstData)
+    //     await customer_fn.DeleCus()
+    //     await customer_fn.snakbar(branchpath.ConformCancelBtn, common.snackbar, customerip.cusDeleAlert)
+    // });
+    // it('should delete a created Customer with confirm Delete', async () => {
+    //     await customer_fn.DeleCus()
+    //     await customer_fn.snakbar(branchpath.ConformDeleteBtn, common.snackbar, customerip.cusDeleAlert)
+    // });
+    // it('should remove the Appliyed Filter', async () => {
+    //     await browser.pause(1000)
+    //     await customer_fn.ClearFilter()
+    // });
+    // /* ****************** validation about fileds in create Customer card ******************* */
 
-    it('should validate a BusinessType Field in Create Customer Card', async () => {
-        await customer_fn.CusMandatoryValid(customer_path.ErrBusinessType, customerip.errBusinessType)
-    });
-    it('should validate a Currency Field in Create Customer Card', async () => {
-        await customer_fn.CusMandatoryValid(customer_path.ErrCurrency, customerip.errCurrency)
-    });
-    it('should change the custom Settings mode Optional into Required', async () => {
-        await custom_fn.open();
-        await custom_fn.Status(custom_path.BranchReq, custom_path.AddressReq, custom_path.LocalityReq, custom_path.CityReq, custom_path.DistrReq, custom_path.StateReq,
-            custom_path.PincodeReq, custom_path.CountryReq, custom_path.PrimContactNoReq, custom_path.ContactNoReq, custom_path.TaxReq)
-        await custom_fn.snakBarValid(custom_path.SavelBtn)
-        await customer_fn.open();
-    });
-    it('should validate a Branch Name field', async () => {
-        await browser.pause(1000)
-        await customer_fn.CusMandatoryValid(branchpath.errBranchName, Branchip.errmsgBranchName)
-    });
-    it('should validate a Address field', async () => {
-        await customer_fn.CusMandatoryValid(branchpath.errAddress, Branchip.errmsgAddress)
-    });
-    it('should validate a Locality field', async () => {
-        await customer_fn.CusMandatoryValid(branchpath.errLocality, Branchip.errmsgLocality)
-    });
-    it('should validate a Country field', async () => {
-        await customer_fn.CusMandatoryValid(branchpath.errCountry, Branchip.errmsgCountry)
-    });
-    it('should validate a State field', async () => {
-        await customer_fn.CusMandatoryValid(branchpath.errState, Branchip.errmsgState)
-    });
-    it('should validate a District field', async () => {
-        await customer_fn.CusMandatoryValid(branchpath.errDistrict, Branchip.errmsgDistrict)
-    });
-    it('should validate a Pincode field', async () => {
-        await customer_fn.CusMandatoryValid(branchpath.errPincode, Branchip.errmsgPinCode)
-    });
-    it('should validate a City field', async () => {
-        await customer_fn.CusMandatoryValid(branchpath.errCity, Branchip.errmsgCity)
-    });
-    it('should validate a Tax field', async () => {
-        await customer_fn.CusMandatoryValid(branchpath.errTax, Branchip.errmsgTax)
-    });
-    it('should validate a Contact Name field', async () => {
-        await customer_fn.CusMandatoryValid(branchpath.errContactNam, Branchip.errmsgContactName)
-    });
-    it('should validate a Contact Number field', async () => {
-        await customer_fn.CusMandatoryValid(branchpath.errContactNumb, Branchip.errmsgContactNumb)
-    });
-    it('should change the Customization mode into Optional', async () => {
-        await custom_fn.open();
-        await custom_fn.Status(custom_path.BranchOpt, custom_path.AddressOpt, custom_path.LocalityOpt, custom_path.CityOpt, custom_path.DistrOpt, custom_path.StateOpt,
-            custom_path.PincodeOpt, custom_path.CountryOpt, custom_path.PrimContactNoOpt, custom_path.ContactNoOpt, custom_path.TaxOpt)
-        await custom_fn.snakBarValid(custom_path.SavelBtn)
-        await customer_fn.open();
-    });
+    // it('should validate a BusinessType Field in Create Customer Card', async () => {
+    //     await customer_fn.CusMandatoryValid(customer_path.ErrBusinessType, customerip.errBusinessType)
+    // });
+    // it('should validate a Currency Field in Create Customer Card', async () => {
+    //     await customer_fn.CusMandatoryValid(customer_path.ErrCurrency, customerip.errCurrency)
+    // });
+    // it('should change the custom Settings mode Optional into Required', async () => {
+    //     await custom_fn.open();
+    //     await custom_fn.Status(custom_path.BranchReq, custom_path.AddressReq, custom_path.LocalityReq, custom_path.CityReq, custom_path.DistrReq, custom_path.StateReq,
+    //         custom_path.PincodeReq, custom_path.CountryReq, custom_path.PrimContactNoReq, custom_path.ContactNoReq, custom_path.TaxReq)
+    //     await custom_fn.snakBarValid(custom_path.SavelBtn)
+    //     await customer_fn.open();
+    // });
+    // it('should validate a Branch Name field', async () => {
+    //     await browser.pause(1000)
+    //     await customer_fn.CusMandatoryValid(branchpath.errBranchName, Branchip.errmsgBranchName)
+    // });
+    // it('should validate a Address field', async () => {
+    //     await customer_fn.CusMandatoryValid(branchpath.errAddress, Branchip.errmsgAddress)
+    // });
+    // it('should validate a Locality field', async () => {
+    //     await customer_fn.CusMandatoryValid(branchpath.errLocality, Branchip.errmsgLocality)
+    // });
+    // it('should validate a Country field', async () => {
+    //     await customer_fn.CusMandatoryValid(branchpath.errCountry, Branchip.errmsgCountry)
+    // });
+    // it('should validate a State field', async () => {
+    //     await customer_fn.CusMandatoryValid(branchpath.errState, Branchip.errmsgState)
+    // });
+    // it('should validate a District field', async () => {
+    //     await customer_fn.CusMandatoryValid(branchpath.errDistrict, Branchip.errmsgDistrict)
+    // });
+    // it('should validate a Pincode field', async () => {
+    //     await customer_fn.CusMandatoryValid(branchpath.errPincode, Branchip.errmsgPinCode)
+    // });
+    // it('should validate a City field', async () => {
+    //     await customer_fn.CusMandatoryValid(branchpath.errCity, Branchip.errmsgCity)
+    // });
+    // it('should validate a Tax field', async () => {
+    //     await customer_fn.CusMandatoryValid(branchpath.errTax, Branchip.errmsgTax)
+    // });
+    // it('should validate a Contact Name field', async () => {
+    //     await customer_fn.CusMandatoryValid(branchpath.errContactNam, Branchip.errmsgContactName)
+    // });
+    // it('should validate a Contact Number field', async () => {
+    //     await customer_fn.CusMandatoryValid(branchpath.errContactNumb, Branchip.errmsgContactNumb)
+    // });
+    // it('should change the Customization mode into Optional', async () => {
+    //     await custom_fn.open();
+    //     await custom_fn.Status(custom_path.BranchOpt, custom_path.AddressOpt, custom_path.LocalityOpt, custom_path.CityOpt, custom_path.DistrOpt, custom_path.StateOpt,
+    //         custom_path.PincodeOpt, custom_path.CountryOpt, custom_path.PrimContactNoOpt, custom_path.ContactNoOpt, custom_path.TaxOpt)
+    //     await custom_fn.snakBarValid(custom_path.SavelBtn)
+    //     await customer_fn.open();
+    // });
 
-    /* ****************** validation about fileds of Label in create Customer card ******************* */
+    // /* ****************** validation about fileds of Label in create Customer card ******************* */
 
-    it('should change the Branch Label Text with save', async () => {
-        await custom_fn.open();
-        await actionsWrappers.clickAndSetvalue(custom_path.BranchLabel, customip.branch)
-        await custom_fn.snakBarValid(custom_path.SavelBtn)
-        await customer_fn.open();
-        await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.BranchText, customip.branchText)
-        await custom_fn.open();
-        await customer_fn.clearLabel(custom_path.BranchLabel)
-    });
-    it('should change the Address Line Label Text with save', async () => {
-        await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.AddressLabel, customip.address)
-        await custom_fn.snakBarValid(custom_path.SavelBtn)
-        await customer_fn.open();
-        await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.AddressText, customip.addressText)
-        await custom_fn.open();
-        await customer_fn.clearLabel(custom_path.AddressLabel)
-    });
-    it('should change the Locality Label Text with save', async () => {
-        await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.LocalityLabel, customip.locality)
-        await custom_fn.snakBarValid(custom_path.SavelBtn)
-        await customer_fn.open();
-        await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.LocalityText, customip.localityText)
-        await custom_fn.open();
-        await customer_fn.clearLabel(custom_path.LocalityLabel)
-    });
-    it('should change the city Label Text with save', async () => {
-        await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.CityLabel, customip.city)
-        await custom_fn.snakBarValid(custom_path.SavelBtn)
-        await customer_fn.open();
-        await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.CityText, customip.cityText)
-        await custom_fn.open();
-        await customer_fn.clearLabel(custom_path.CityLabel)
-    });
-    it('should change the District Label Text with save', async () => {
-        await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.DistrLabel, customip.district)
-        await custom_fn.snakBarValid(custom_path.SavelBtn)
-        await customer_fn.open();
-        await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.DistrictText, customip.districtText)
-        await custom_fn.open();
-        await customer_fn.clearLabel(custom_path.DistrLabel)
-    });
-    it('should change the State Label Text with save', async () => {
-        await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.StateLabel, customip.state)
-        await custom_fn.snakBarValid(custom_path.SavelBtn)
-        await customer_fn.open();
-        await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.StateText, customip.stateText)
-        await custom_fn.open();
-        await customer_fn.clearLabel(custom_path.StateLabel)
-    });
-    it('should change the Pincode Label Text with save', async () => {
-        await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.PincodeLabel, customip.pincode)
-        await custom_fn.snakBarValid(custom_path.SavelBtn)
-        await customer_fn.open();
-        await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.PincodeText, customip.pincodeText)
-        await custom_fn.open();
-        await customer_fn.clearLabel(custom_path.PincodeLabel)
-    });
-    it('should change the Country Label Text with save', async () => {
-        await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.CountryLabel, customip.country)
-        await custom_fn.snakBarValid(custom_path.SavelBtn)
-        await customer_fn.open();
-        await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.CountryText, customip.countryText)
-        await custom_fn.open();
-        await customer_fn.clearLabel(custom_path.CountryLabel)
-    });
-    it('should change the Primary Contact Label Text with save', async () => {
-        await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.PrimContactNoLabel, customip.primaryContact)
-        await custom_fn.snakBarValid(custom_path.SavelBtn)
-        await customer_fn.open();
-        await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.PrimaryContactText, customip.primaryContactText)
-        await custom_fn.open();
-        await customer_fn.clearLabel(custom_path.PrimContactNoLabel)
-    });
-    it('should change the Contact No Label Text with save', async () => {
-        await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.ContactNoLabel, customip.contactNo)
-        await custom_fn.snakBarValid(custom_path.SavelBtn)
-        await customer_fn.open();
-        await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.ContactNoText, customip.contactNoText)
-        await custom_fn.open();
-        await customer_fn.clearLabel(custom_path.ContactNoLabel)
-    });
-    it('should change the Tax Label Text with save', async () => {
-        await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.TaxLabel, customip.tax)
-        await custom_fn.snakBarValid(custom_path.SavelBtn)
-        await customer_fn.open();
-        await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.TaxText, customip.taxText)
-        await custom_fn.open();
-        await customer_fn.clearLabel(custom_path.TaxLabel)
-        await customer_fn.open();
-    });
+    // it('should change the Branch Label Text with save', async () => {
+    //     await custom_fn.open();
+    //     await actionsWrappers.clickAndSetvalue(custom_path.BranchLabel, customip.branch)
+    //     await custom_fn.snakBarValid(custom_path.SavelBtn)
+    //     await customer_fn.open();
+    //     await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.BranchText, customip.branchText)
+    //     await custom_fn.open();
+    //     await customer_fn.clearLabel(custom_path.BranchLabel)
+    // });
+    // it('should change the Address Line Label Text with save', async () => {
+    //     await browser.pause(2000)
+    //     await actionsWrappers.clickAndSetvalue(custom_path.AddressLabel, customip.address)
+    //     await custom_fn.snakBarValid(custom_path.SavelBtn)
+    //     await customer_fn.open();
+    //     await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.AddressText, customip.addressText)
+    //     await custom_fn.open();
+    //     await customer_fn.clearLabel(custom_path.AddressLabel)
+    // });
+    // it('should change the Locality Label Text with save', async () => {
+    //     await browser.pause(2000)
+    //     await actionsWrappers.clickAndSetvalue(custom_path.LocalityLabel, customip.locality)
+    //     await custom_fn.snakBarValid(custom_path.SavelBtn)
+    //     await customer_fn.open();
+    //     await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.LocalityText, customip.localityText)
+    //     await custom_fn.open();
+    //     await customer_fn.clearLabel(custom_path.LocalityLabel)
+    // });
+    // it('should change the city Label Text with save', async () => {
+    //     await browser.pause(2000)
+    //     await actionsWrappers.clickAndSetvalue(custom_path.CityLabel, customip.city)
+    //     await custom_fn.snakBarValid(custom_path.SavelBtn)
+    //     await customer_fn.open();
+    //     await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.CityText, customip.cityText)
+    //     await custom_fn.open();
+    //     await customer_fn.clearLabel(custom_path.CityLabel)
+    // });
+    // it('should change the District Label Text with save', async () => {
+    //     await browser.pause(2000)
+    //     await actionsWrappers.clickAndSetvalue(custom_path.DistrLabel, customip.district)
+    //     await custom_fn.snakBarValid(custom_path.SavelBtn)
+    //     await customer_fn.open();
+    //     await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.DistrictText, customip.districtText)
+    //     await custom_fn.open();
+    //     await customer_fn.clearLabel(custom_path.DistrLabel)
+    // });
+    // it('should change the State Label Text with save', async () => {
+    //     await browser.pause(2000)
+    //     await actionsWrappers.clickAndSetvalue(custom_path.StateLabel, customip.state)
+    //     await custom_fn.snakBarValid(custom_path.SavelBtn)
+    //     await customer_fn.open();
+    //     await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.StateText, customip.stateText)
+    //     await custom_fn.open();
+    //     await customer_fn.clearLabel(custom_path.StateLabel)
+    // });
+    // it('should change the Pincode Label Text with save', async () => {
+    //     await browser.pause(2000)
+    //     await actionsWrappers.clickAndSetvalue(custom_path.PincodeLabel, customip.pincode)
+    //     await custom_fn.snakBarValid(custom_path.SavelBtn)
+    //     await customer_fn.open();
+    //     await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.PincodeText, customip.pincodeText)
+    //     await custom_fn.open();
+    //     await customer_fn.clearLabel(custom_path.PincodeLabel)
+    // });
+    // it('should change the Country Label Text with save', async () => {
+    //     await browser.pause(2000)
+    //     await actionsWrappers.clickAndSetvalue(custom_path.CountryLabel, customip.country)
+    //     await custom_fn.snakBarValid(custom_path.SavelBtn)
+    //     await customer_fn.open();
+    //     await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.CountryText, customip.countryText)
+    //     await custom_fn.open();
+    //     await customer_fn.clearLabel(custom_path.CountryLabel)
+    // });
+    // it('should change the Primary Contact Label Text with save', async () => {
+    //     await browser.pause(2000)
+    //     await actionsWrappers.clickAndSetvalue(custom_path.PrimContactNoLabel, customip.primaryContact)
+    //     await custom_fn.snakBarValid(custom_path.SavelBtn)
+    //     await customer_fn.open();
+    //     await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.PrimaryContactText, customip.primaryContactText)
+    //     await custom_fn.open();
+    //     await customer_fn.clearLabel(custom_path.PrimContactNoLabel)
+    // });
+    // it('should change the Contact No Label Text with save', async () => {
+    //     await browser.pause(2000)
+    //     await actionsWrappers.clickAndSetvalue(custom_path.ContactNoLabel, customip.contactNo)
+    //     await custom_fn.snakBarValid(custom_path.SavelBtn)
+    //     await customer_fn.open();
+    //     await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.ContactNoText, customip.contactNoText)
+    //     await custom_fn.open();
+    //     await customer_fn.clearLabel(custom_path.ContactNoLabel)
+    // });
+    // it('should change the Tax Label Text with save', async () => {
+    //     await browser.pause(2000)
+    //     await actionsWrappers.clickAndSetvalue(custom_path.TaxLabel, customip.tax)
+    //     await custom_fn.snakBarValid(custom_path.SavelBtn)
+    //     await customer_fn.open();
+    //     await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.TaxText, customip.taxText)
+    //     await custom_fn.open();
+    //     await customer_fn.clearLabel(custom_path.TaxLabel)
+    //     await customer_fn.open();
+    // });
 
     /* ****************** validation about with default mail in customers ******************* */
 

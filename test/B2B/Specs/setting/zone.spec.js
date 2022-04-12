@@ -16,56 +16,56 @@ describe('Zone Page', () => {
         await zone_fn.open();
         await actionsWrappers.urlValidation("/zones");
     });
-    it('alert',async () => {
-        // await browser.pause(5000)
-        // await browser.refresh();
-        // await actionsWrappers.Click(zone_path.DeleData)
-        await browser.pause(10000)
-        const AlertText = browser.getAlertText()
-        console.log(AlertText)
-        // await assert.equal("Show notifications",AlertText)
-        //             await browser.acceptAlert();
+    // it('alert',async () => {
+    //     // await browser.pause(5000)
+    //     // await browser.refresh();
+    //     // await actionsWrappers.Click(zone_path.DeleData)
+    //     await browser.pause(10000)
+    //     const AlertText = browser.getAlertText()
+    //     console.log(AlertText)
+    //     // await assert.equal("Show notifications",AlertText)
+    //     //             await browser.acceptAlert();
 
-        if (await AlertText === "Show notifications") {
-            await browser.acceptAlert();
-        }
-    });
+    //     if (await AlertText === "Show notifications") {
+    //         await browser.acceptAlert();
+    //     }
+    // });
     it('should Add a new zone with cancel', async () => {
         await browser.pause(3000)
         await zone_fn.AddZone()
         await zone_fn.snakvalid(zone_path.CancelBtn, common.snackbar, zoneip.saveAlert)
     });
-    it('alert',async () => {
-        // await browser.pause(5000)
-        // await browser.refresh();
-        // await actionsWrappers.Click(zone_path.DeleData)
-        await browser.pause(10000)
-        const AlertText = browser.getAlertText()
-        console.log(AlertText)
-        // await assert.equal("Show notifications",AlertText)
-        //             await browser.acceptAlert();
+    // it('alert',async () => {
+    //     // await browser.pause(5000)
+    //     // await browser.refresh();
+    //     // await actionsWrappers.Click(zone_path.DeleData)
+    //     await browser.pause(10000)
+    //     const AlertText = browser.getAlertText()
+    //     console.log(AlertText)
+    //     // await assert.equal("Show notifications",AlertText)
+    //     //             await browser.acceptAlert();
 
-        if (await AlertText === "Show notifications") {
-            await browser.acceptAlert();
-        }
+    //     if (await AlertText === "Show notifications") {
+    //         await browser.acceptAlert();
+    //     }
+    // });
+    it('should Add a New Zone with save', async () => {
+        await zone_fn.AddZone()
+        await zone_fn.snakvalid(zone_path.saveBtn, common.snackbar, zoneip.saveAlert)
     });
-    // it('should Add a New Zone with save', async () => {
-    //     await zone_fn.AddZone()
-    //     await zone_fn.snakvalid(zone_path.saveBtn, common.snackbar, zoneip.saveAlert)
-    // });
-    // it('should delete a  created New Zone with cancel', async () => {
-    //     await zone_fn.Deletezone()
-    //     await zone_fn.snakvalid(zone_path.ConfCancelBtn, common.snackbar, zoneip.deleteAlert)
-    // });
-    // it('should delete a created New Zone with delete', async () => {
-    //     await zone_fn.Deletezone()
-    //     await zone_fn.snakvalid(zone_path.ConfDeleBtn, common.snackbar, zoneip.deleteAlert)
-    // });
-    // it('should validate a branch Field', async () => {
-    //     await zone_fn.MandtoryFieldvalid()
-    //     await zone_fn.snakvalid(zone_path.saveBtn, zone_path.errBranch, zoneip.errbranch)
-    //     await actionsWrappers.Click(zone_path.CancelBtn)
-    // });
+    it('should delete a  created New Zone with cancel', async () => {
+        await zone_fn.Deletezone()
+        await zone_fn.snakvalid(zone_path.ConfCancelBtn, common.snackbar, zoneip.deleteAlert)
+    });
+    it('should delete a created New Zone with delete', async () => {
+        await zone_fn.Deletezone()
+        await zone_fn.snakvalid(zone_path.ConfDeleBtn, common.snackbar, zoneip.deleteAlert)
+    });
+    it('should validate a branch Field', async () => {
+        await zone_fn.MandtoryFieldvalid()
+        await zone_fn.snakvalid(zone_path.saveBtn, zone_path.errBranch, zoneip.errbranch)
+        await actionsWrappers.Click(zone_path.CancelBtn)
+    });
 
 
 });

@@ -80,7 +80,13 @@ class EndCustomerCard extends Page{
     get ErrPriceJustification(){
         return super.pathByXpath('//p[text()="Price justification is required"]')
     }
-
+    /************* SPR BUYER *********** */
+    get BuyerEndCusRefNum(){
+        return super.pathByName('buyerReferenceNumber')
+    }
+    get BuyerEndCusCompitetor(){
+        return super.pathByXpath('//input[@name="sprDetails.competitorNames"]')
+    }
 
 }
 module.exports = new(EndCustomerCard);
