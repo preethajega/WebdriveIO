@@ -59,7 +59,23 @@ class SidNavPage extends Page{
     get CloseCardBtn(){
         return super.pathByXpath('//button[@aria-label="Close"]')
     }
+    get ExportBtn(){
+        return super.pathById('exportQuote')
+    }
 
+    /************** BUYER SIDNAV PATHS ************ */
+    get SubmitVersionText(){
+        return super.pathByXpath("//h2[text()='Submit new version']")
+    }
+    get CancelMsgBox(){
+        return super.pathByName('cancelMsg')
+    }
+    get DetailPageStatus(){
+        return super.pathByXpath('(//div[@class="MuiBox-root css-70qvj9"]/p)[1]')
+    }
+    get BuyerCloseCardBtn(){
+        return super.pathByXpath('//button[@aria-label="close"]')
+    }
 
 
 }

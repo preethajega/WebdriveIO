@@ -5,6 +5,9 @@ const attchmentUpload = require("../../../../CommonActions/attchmentUpload");
 const common = require("../../../PageObjects/Common/commonObjects");
 const path = require("../../../PageObjects/SalesModule/summarypage/quoteBtn.pag");
 const EndCustomer_path = require("../../../PageObjects/SalesModule/summarypage/EndCustomerCard.page");
+const EndCusip = require("../../../Inputs/salesModule/summarypage/EndCustomerIp");
+const Sidnav_path = require("../../../PageObjects/SalesModule/summarypage/sidNavQuote.page");
+const sidnavIp = require("../../../Inputs/salesModule/summarypage/sidnavIp");
 
 const assert = require("assert");
 
@@ -39,6 +42,7 @@ class QuoteBtnCard extends Page {
         await actionWrapper.clickAndSetvalue(commentName,commentIp)
         await actionWrapper.Click(ConfBtn)
     }
+
     QuotePopUP = async(sumbitBtn,sumbitIp,CreateQuoteBtn,ReqApprovalBtn,QuoteEle,quoteip,quoteName,
         quoteIp,ConfBtn,quoteName1,quoteIp1,commentName,commentIp,ConfBtn1)=>{
         this.QuoteBtnIdentify(sumbitBtn,sumbitIp,CreateQuoteBtn,ReqApprovalBtn)
@@ -112,7 +116,85 @@ class QuoteBtnCard extends Page {
         }
 
     }
-   
+    /************* BUYER SIDE METHOD FOR SIDNAVE PAGE ************* */
+    createQuote1 = async(quoteName,quoteIp,ConfBtn)=>{
+        await actionWrapper.clearAndsetValue(quoteName,quoteIp)
+        await browser.pause(3000)
+        await actionWrapper.Click(ConfBtn)
+        await browser.pause(3000)
+    }
+    createApprovalQuote1 =async(quoteName,quoteIp,commentName,commentIp,ConfBtn)=>{
+        await actionWrapper.clearAndsetValue(quoteName,quoteIp)
+        await actionWrapper.clickAndSetvalue(commentName,commentIp)
+        await actionWrapper.Click(ConfBtn)
+    }
+    QuotePopUP1 = async(sumbitBtn,sumbitIp,CreateQuoteBtn,ReqApprovalBtn,QuoteEle,quoteip,quoteName,
+        quoteIp,ConfBtn,quoteName1,quoteIp1,ConfBtn1)=>{
+        this.QuoteBtnIdentify(sumbitBtn,sumbitIp,CreateQuoteBtn,ReqApprovalBtn)
+        if ((await QuoteEle.getText()) === quoteip) {
+            await this.createQuote1(quoteName,quoteIp,ConfBtn)
+        }
+        else{
+            await this.createQuote1(quoteName1,quoteIp1,ConfBtn1)
+        }
+    }
+    Tag = async (Tagpath, TagIp,tagpath) => {
+        await actionWrapper.clearValueAndSetValueSelectDropdown(Tagpath, TagIp)
+        await actionWrapper.Click(tagpath)
+    }
+    DateSelecter = async(validFromPath,NextMonBtn,datepath)=>{
+        await actionWrapper.MoveTo(validFromPath)
+        await browser.pause(2000)
+        await actionWrapper.Click(NextMonBtn)
+        await browser.pause(1000)
+        await actionWrapper.Click(datepath)
+    }
+    RequiredDateValid = async(sumbitBtn,sumbitIp,CreateQuoteBtn,ReqApprovalBtn,validFromPath,NextMonBtn,datepath,Tagpath, TagIp,tagpath)=>{
+        await this.QuoteBtnIdentify(sumbitBtn,sumbitIp,CreateQuoteBtn,ReqApprovalBtn)
+        if (await common.snackbar.isDisplayed()){
+            if ((await common.snackbar.getText()) === EndCusip.ReqDeliveryDate) {
+                await browser.pause(2000)
+                this.DateSelecter(validFromPath,NextMonBtn,datepath)       
+            }
+            else{
+                await browser.pause(3000)
+                await this.Tag(Tagpath, TagIp,tagpath)
+            }
+        }
+    }
+    cloneQuote = async(sumbitBtn,sumbitIp,CreateQuoteBtn,ReqApprovalBtn,validFromPath,NextMonBtn,datepath,Tagpath, TagIp,tagpath,
+                sumbitBtn1,sumbitIp1,CreateQuoteBtn1,ReqApprovalBtn1,QuoteEle,quoteip,quoteName,quoteIp,ConfBtn,quoteName1,quoteIp1,ConfBtn1)=>{
+        await actionWrapper.Click(Sidnav_path.MoreOptionBtn)
+        await actionWrapper.Click(Sidnav_path.CloneBtn)
+        await browser.pause(3000)
+        await this.RequiredDateValid(sumbitBtn,sumbitIp,CreateQuoteBtn,ReqApprovalBtn,validFromPath,NextMonBtn,datepath,Tagpath, TagIp,tagpath)
+        await browser.pause(5000)
+        await this.QuotePopUP1(sumbitBtn1,sumbitIp1,CreateQuoteBtn1,ReqApprovalBtn1,QuoteEle,quoteip,quoteName,
+            quoteIp,ConfBtn,quoteName1,quoteIp1,ConfBtn1)
+
+    }
+    cancelQuote = async(EditData,moreoption,cancelQuBtn,cancelMsgPath,Cancelmsg,confBtn)=>{
+        await actionWrapper.Click(EditData)
+        await browser.pause(3000)
+        await actionWrapper.Click(moreoption)
+        await actionWrapper.Click(cancelQuBtn)
+        await actionWrapper.clickAndSetvalue(cancelMsgPath,Cancelmsg)
+        await actionWrapper.Click(confBtn)
+        await actionWrapper.snackBarValidate(common.snackbar,sidnavIp.quotecancelMsg)
+    }
+    ExportProduct = async(EditData,Exportbutton)=>{
+        await actionWrapper.Click(EditData)
+        await browser.pause(2000)
+        await actionWrapper.MoveTo(Exportbutton)
+        await actionWrapper.Click(Sidnav_path.BuyerCloseCardBtn)
+    }
+    SellerUpdate = async()=>{
+        if ((await Sidnav_path.DetailPageStatus.getText()) === "QUOTE RECEIVED") {
+            await console.log("Seller Reviewed the Quote & also Quote recevied by Buyer")
+        }
+    }
+    
+    
 
    
    

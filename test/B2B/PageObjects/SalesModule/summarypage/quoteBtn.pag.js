@@ -90,5 +90,23 @@ class QuotePage extends Page{
    get BuyerReqForQuoteBtn(){
        return super.pathByXpath('//button[@aria-label="Request for quote"]')
    }
+   get BuyerSidNavReqForQuoteBtn(){
+    return super.pathByXpath('//button[@aria-label="Request For Quote"]')
+   }
+   get SelectfirstData(){
+       return super.pathByXpath('//tbody/tr[1]')
+   }
+   get SelectLastData(){
+    return super.pathByXpath('//tbody/tr[last()]')
+   }
+   get PlaceOrderPayBtn(){
+       return super.pathByXpath('//button[@aria-label="Place Order and Pay"]')
+   }
+   get RazorPayInput(){
+       return super.pathByName('credit')
+   }
+   get PayBtn(){
+       return super.pathByXpath('//div[@class="MuiBox-root css-70qvj9"]/button')
+   }
 }
 module.exports = new QuotePage();
