@@ -21,5 +21,12 @@ class QuoteFilter extends Page {
         // await browser.pause(3000)
         // await actionWrapper.Click(confbtns)
     }
+    ClearFilter = async(filterBtn,clearallBtn,confbtn)=>{
+        await actionWrapper.Click(filterBtn)
+        await browser.pause(3000)
+        await actionWrapper.Click(clearallBtn)
+        await actionWrapper.Click(confbtn)
+
+    }
 }
 module.exports = new QuoteFilter();

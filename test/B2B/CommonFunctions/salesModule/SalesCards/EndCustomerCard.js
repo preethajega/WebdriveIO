@@ -115,6 +115,15 @@ class EndCusCard extends Page {
             await actionWrapper.Click(ConfbtnPath)
         }
     }
+    BuyerSPRFieldValid = async(CreateQuoteBtn,CusNumPath,CusNumIp,CusNamePath,CusNameIp,ProjectNamePath,ProjectNameIp,
+        competitorpath,competitorIp,PriceJustifiPath,PriceJustifiIp)=>{
+        await browser.pause(2000)
+        await actionWrapper.Click(CreateQuoteBtn)
+        if ((await common.snackbar.getText()) === "Please fill in all the required fields") {
+            await this.BuyerSPRFieldsFill(CusNumPath,CusNumIp,CusNamePath,CusNameIp,ProjectNamePath,ProjectNameIp,
+                competitorpath,competitorIp,PriceJustifiPath,PriceJustifiIp)
+        }
+    }
     
 
 }

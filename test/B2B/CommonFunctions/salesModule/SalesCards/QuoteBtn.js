@@ -16,7 +16,7 @@ const assert = require("assert");
 class QuoteBtnCard extends Page {
 
     async open() {
-        super.open(Quoteip.QuoteDetailsPageUrl); 
+        super.open(Quoteip.QuotelandingPageUrl); 
     }
 
     
@@ -192,6 +192,13 @@ class QuoteBtnCard extends Page {
         if ((await Sidnav_path.DetailPageStatus.getText()) === "QUOTE RECEIVED") {
             await console.log("Seller Reviewed the Quote & also Quote recevied by Buyer")
         }
+    }
+    UpdateQuoteName = async(EditData,EditBtn,quoteNameFieldPath,quoteNameFieldIp,confBtn)=>{
+        await actionWrapper.Click(EditData)
+        await browser.pause(2000)
+        await actionWrapper.Click(EditBtn)
+        await actionWrapper.clearAndsetValue(quoteNameFieldPath,quoteNameFieldIp)
+        await actionWrapper.Click(confBtn)
     }
     
     

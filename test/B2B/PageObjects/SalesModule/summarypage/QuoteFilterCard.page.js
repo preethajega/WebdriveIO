@@ -7,6 +7,9 @@ class QuoteFilter extends Page{
     get TempApplyBtn(){
         return super.pathById('filterApply')
     }
+    get TempClearAllBtn(){
+        return super.pathByXpath('//button[@aria-label="clearAll"]')
+    }
 
         /****************** SELLERSIDE FILTER CARD ***************** */
 

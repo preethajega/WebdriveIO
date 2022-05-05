@@ -42,18 +42,19 @@ const quotefilter_fn = require("../../../../CommonFunctions/salesModule/SalesCar
 const QuoteFilterIp = require("../../../../Inputs/salesModule/summarypage/QuoteFilterCardIp")
 const OrderFilterPath = require("../../../../PageObjects/SalesModule/summarypage/OrderFilterCard.page");
 const OrderFIlter_fn = require("../../../../CommonFunctions/salesModule/SalesCards/OrderFilterCard");
-const OrderFIlterIp = require("../../../../Inputs/salesModule/summarypage/OrderFilterCardIp")
+const OrderFIlterIp = require("../../../../Inputs/salesModule/summarypage/OrderFilterCardIp");
+const QuoteBTnsIp = require("../../../../Inputs/salesModule/summarypage/QuoteBTnsIp");
 
 
 
 describe("cart Page", () => {
 
 
-    //  it("Should allow to access login ", async () => {
-    //     await LoginPage.open();
-    //     await LoginPage.login(B2B_loginIp.Buyer3Email, B2B_loginIp.Buyer3Password);
-    //     await actionsWrappers.urlValidation("/dev3.myapptino.com/");
-    // })
+     it("Should allow to access login ", async () => {
+        await LoginPage.open();
+        await LoginPage.login(B2B_loginIp.Buyer3Email, B2B_loginIp.Buyer3Password);
+        await actionsWrappers.urlValidation("/dev3.myapptino.com/");
+    })
     // it("cart to summary page ", async () => {
     //     await cart_fn.ClickAndclearCart(cart_path.cartIcon);
     //     await browser.pause(3000)
@@ -130,18 +131,49 @@ describe("cart Page", () => {
     //     SidNavQuote_path.CancelMsgBox,SidnavIp.cancelMsg1,QuoteBtnPath.ConfBtn) 
     //   await actionsWrappers.snackBarValidate(common.snackbar,QuoteFilterIp.quotecancelMsg)
     // });
-    /******* create a Quote with SPR ******** */
-        it("cart to summary page Select product, update qty and move to quote cart and Save RFQ with SPR ", async () => {
-        await cart_fn.ClickAndclearCart(cart_path.cartIcon);
-        await browser.pause(3000)
-        await cart_fn.selectProducts(CartIp.itemName);
-        await browser.pause(3000)
-        await assert.strictEqual(
-        await common.snackbar.getText(), CartIp.cartAlert);
-        await cart_fn.SerchProdUpdateQuanty(CartIp.itemName1, CartIp.ProdQty)
-        await actionsWrappers.Click(cart_path.createQuote)
-        await cart_fn.UpdateQuantyAlert(CartIp.ProdQty1)
-    })
+  //   /******* create a Quote with SPR ******** */
+  //       it("should update qty and move to quote cart and Save RFQ with SPR ", async () => {
+  //       await cart_fn.ClickAndclearCart(cart_path.cartIcon);
+  //       await browser.pause(3000)
+  //       await cart_fn.selectProducts(CartIp.itemName);
+  //       await browser.pause(3000)
+  //       await assert.strictEqual(
+  //       await common.snackbar.getText(), CartIp.cartAlert);
+  //       // await cart_fn.SerchProdUpdateQuanty(CartIp.itemName1, CartIp.ProdQty)
+  //       await actionsWrappers.Click(cart_path.createQuote)
+  //       // await cart_fn.UpdateQuantyAlert(CartIp.ProdQty1)
+  //       await ApplyDiscount_fn.ApplyTargetPriceOrDisc(ApplyDiscount_path.TargetDiscount,ApplyDiscount_path.TargetDiscount,ApplyDiscountIp.ByDiscount)
+  //       await EndCustomer_fn.RequiredDateFieldBuyer(QuoteBtnPath.BuyerReqForQuoteBtn,
+  //         EndCustomer_path.RequiredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath)
+  //       await browser.pause(3000)
+  //       await EndCustomer_fn.BuyerSPRFieldValid(QuoteBtnPath.BuyerReqForQuoteBtn,EndCustomer_path.BuyerEndCusRefNum,EndCustomerIp.EndCusRefNum,
+  //         EndCustomer_path.EndCusName,EndCustomerIp.EndCusName,EndCustomer_path.ProjectName,EndCustomerIp.EndCusProject,EndCustomer_path.BuyerEndCusCompitetor,
+  //         EndCustomerIp.EndCusCompititers,EndCustomer_path.PriceJustification,EndCustomerIp.EndCusPriceJustification) 
+  //         await browser.pause(3000) 
+  //       await actionsWrappers.Click(QuoteBtnPath.BuyerReqForQuoteBtn)
+  //       await Quote_fn.createQuote(QuoteBtnPath.CreateQuoteName,QuoteIp.QuoteName,QuoteBtnPath.ConfBtn)
+  //       await browser.pause(3000)
+  //       await Quote_fn.QuoteNameValidation(QuoteBtnPath.QuoteOrderEditFirst,QuoteBtnPath.QuoteOrderNameInput,QuoteIp.QuoteName)
+  //   })
+  //   it('should add filter and Place order for the latest version of Quote',async () => {
+  //     await browser.pause(5000)
+  //     await quotefilter_fn.AddFilterTemp(QuotefilterPath.TempFilterBtn,QuotefilterPath.QuoteStatus,QuoteFilterIp.QuoteStatus4)
+        
+  // });
+  it('should apply fillter using QuoteName & update the Quote name & change the name into orginal name',async () => {
+    await Quote_fn.open()
+    await browser.pause(8000)
+    await quotefilter_fn.AddFilterTemp(QuotefilterPath.TempFilterBtn,QuotefilterPath.quoteName,QuoteFilterIp.QuoteNameOrginal)
+    await browser.pause(5000)
+    await Quote_fn.UpdateQuoteName(QuoteBtnPath.SelectfirstData,QuoteBtnPath.QuoteOrderNameEditIcon,QuoteBtnPath.QuoteOrderNameInput,
+      QuoteBTnsIp.EditQuoteName,QuoteBtnPath.QuoteOrderConfyesBtn)
+    await Quote_fn.QuoteNameValidation(QuoteBtnPath.QuoteOrderEditFirst,QuoteBtnPath.QuoteOrderNameInput,QuoteIp.EditQuoteName)
+    await actionsWrappers.Click(SidNavQuote_path.BuyerCloseCardBtn)
+    await quotefilter_fn.ClearFilter(QuotefilterPath.TempFilterBtn,QuotefilterPath.TempClearAllBtn,QuotefilterPath.TempApplyBtn)
+    await browser.pause(8000)
+    await Quote_fn.UpdateQuoteName(QuoteBtnPath.SelectfirstData,QuoteBtnPath.QuoteOrderNameEditIcon,QuoteBtnPath.QuoteOrderNameInput,
+      QuoteFilterIp.QuoteNameOrginal,QuoteBtnPath.QuoteOrderConfyesBtn)
+  });
 
 
     

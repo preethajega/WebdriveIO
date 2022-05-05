@@ -2,10 +2,11 @@ let today =  new Date().toISOString().replace(/\/|-|:|/g,'').slice(4,-7);
 
 function QuoteIP(){
     const path = require('path');
-    this.QuoteDetailsPageUrl="/Quotes/Quote-landing"
+    this.QuotelandingPageUrl="/Quotes/Quote-landing"
     this.ReqApprovalBtnTxt="REQUEST APPROVAL"
     this.CreateQuoteBtnTxt="CREATE QUOTE"
     this.QuoteName="Automation"+today+"Quote"
+    this.EditQuoteName ="Quote Name"+today+"Edited"
     this.comments="Automation Commenting on"+today+"Ok"
     this.ApproverName="preethaAdmin"
     this.ApproverName1="preetha"
