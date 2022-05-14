@@ -51,7 +51,7 @@ describe("cart Page", () => {
         await browser.pause(3000)
         await assert.strictEqual(
         await common.snackbar.getText(), CartIp.cartAlert);
-        await cart_fn.SerchProdUpdateQuanty(CartIp.itemName1, CartIp.ProdQty)
+        // await cart_fn.SerchProdUpdateQuanty(CartIp.itemName1, CartIp.ProdQty)
         await cart_fn.UpdateQuantyAlert(CartIp.ProdQty1)
         await actionsWrappers.clearValues(await cart_path.selectbuyer);
         await cart_fn.carttoSummary(CartIp.BuyerName1, await cart_path.createQuote);

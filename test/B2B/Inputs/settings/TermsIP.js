@@ -13,8 +13,10 @@ function Termip(){
 
     this.freight="include with product price of 2%"
     this.freight1="include with product price of2%"
-    this.freightcode="FR123"
+    this.freightcode2="FR123"
     this.freightcode1="FR321"
+    this.freightcode="FR123"
+
 
     this.insurance="Exclude small damage"
     this.insurance1="Exclude smalldamage"

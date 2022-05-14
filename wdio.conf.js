@@ -21,8 +21,9 @@ exports.config = {
         // './test/B2B/Specs/setting/team.spec.js',
         // './test/B2B/Specs/setting/terms.spec.js',
         // './test/B2B/Specs/setting/zone.spec.js',
-        //  './test/B2B/Specs/Customers/customer.spec.js',
-         './test/B2B/Specs/salesModule/Quotes/Buyer/RFQBuyerQuote.spec.js'
+         './test/B2B/Specs/Customers/customer.spec.js',
+        //  './test/B2B/Specs/salesModule/Quotes/Buyer/RFQBuyerQuote.spec.js',
+        //  './test/B2B/Specs/salesModule/Quotes/Seller/RFQSellerQuote.spec.js'
         //  './test/B2B/Specs/Cart/Cart.spec.js',
     ],
     // Patterns to exclude.
@@ -69,11 +70,11 @@ exports.config = {
     
     framework: 'mocha',
     reporters: ['spec'],
-//     reporters: [['allure', {
-//         outputDir: 'allure-results',
-//         disableWebdriverStepsReporting: true,
-//         disableWebdriverScreenshotsReporting: true,
-//     }]],
+    // reporters: [['allure', {
+    //     outputDir: 'allure-results',
+    //     disableWebdriverStepsReporting: true,
+    //     disableWebdriverScreenshotsReporting: true,
+    // }]],
 // }
   mochaOpts: {
         ui: 'bdd',
