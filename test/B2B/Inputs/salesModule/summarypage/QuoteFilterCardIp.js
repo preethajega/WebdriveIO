@@ -1,6 +1,7 @@
 function QuoteFilterIp(){
     const path = require('path');
     this.QuoteNameOrginal="Automation Quote"
+    this.RfqQname="Buyer RFQ"
     this.submitText="Submit new version"
     this.cancelMsg1="cancel the cloned quote"
     this.cancelMsg2="cancel as a Buyer"

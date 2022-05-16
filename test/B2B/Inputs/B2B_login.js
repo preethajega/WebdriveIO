@@ -8,6 +8,7 @@ function B2B_loginIp() {
     this.Buyer3Email="preetha@apptino.com"
     this.Buyer3Password="Admin@123"
     this.PTCBuyerLogin="testerpree@gmail.com"
+    this.logoutAlertMsg="Logged out successfully"
 }
 
 

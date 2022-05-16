@@ -6,12 +6,16 @@ const QuoteFIlterip = require("../../../Inputs/salesModule/summarypage/QuoteFilt
 const assert = require("assert");
 
 class QuoteFilter extends Page {
-    AddFilter=async(selectTab,filterBtn,fieldpath,filedIp,confbtns)=>{
+    AddFilter=async(selectTab,fieldpath,filedIp)=>{
         await actionWrapper.Click(selectTab)
         await browser.pause(3000)
-        await actionWrapper.Click(filterBtn)
-        await browser.pause(3000)
         await actionWrapper.clickSetvalueAndSelectoption(fieldpath,filedIp)
+        // await actionWrapper.Click(confbtns)
+    }
+    AddFilter1=async(selectTab,fieldpath,filedIp,confbtns)=>{
+        await actionWrapper.Click(selectTab)
+        await browser.pause(3000)
+        await actionWrapper.clickAndSetvalue(fieldpath,filedIp)
         await actionWrapper.Click(confbtns)
     }
     AddFilterTemp=async(filterBtn,fieldpath,filedIp)=>{

@@ -116,6 +116,21 @@ class QuoteBtnCard extends Page {
         }
 
     }
+    QuoteRequiresApproval = async(commentpath,commentip,confbtn)=>{
+        await actionWrapper.Click(Sidnav_path.RespondBtn)
+        await browser.pause(4000)
+        if ((await common.snackbar.isDisplayed()) === true) {
+            await actionWrapper.Click(path.RequestApproval)
+            await browser.pause(3000)
+            await actionWrapper.clickAndSetvalue(commentpath,commentip)
+            await actionWrapper.Click(confbtn)
+        }
+    }
+    RespondQuote = async(selectdata,commentpath,commentip,confbtn)=>{
+        await actionWrapper.Click(selectdata)
+        await browser.pause(2000)
+        await this.QuoteRequiresApproval(commentpath,commentip,confbtn)
+    }
     /************* BUYER SIDE METHOD FOR SIDNAVE PAGE ************* */
     createQuote1 = async(quoteName,quoteIp,ConfBtn)=>{
         await actionWrapper.clearAndsetValue(quoteName,quoteIp)

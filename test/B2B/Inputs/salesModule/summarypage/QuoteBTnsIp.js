@@ -5,6 +5,7 @@ function QuoteIP(){
     this.QuotelandingPageUrl="/Quotes/Quote-landing"
     this.ReqApprovalBtnTxt="REQUEST APPROVAL"
     this.CreateQuoteBtnTxt="CREATE QUOTE"
+    this.RfqQuoteName="Buyer RFQ"
     this.QuoteName="Automation"+today+"Quote"
     this.EditQuoteName ="Quote Name"+today+"Edited"
     this.comments="Automation Commenting on"+today+"Ok"
@@ -19,5 +20,6 @@ function QuoteIP(){
     this.ErrMsgReqApprovalQuoteName="Quote name required"
     this.ErrMsgApprover="Select a approver"
     this.ErrMsgCommentName="Comments is required"
+    this.ReqApprovalAlert="Quote requires approval"
 }
 module.exports = new QuoteIP();
