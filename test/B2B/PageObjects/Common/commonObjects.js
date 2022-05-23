@@ -38,6 +38,13 @@ get nextDate(){
     return super.pathByXpath('//button[contains(@class,"Mui-selected MuiPickersDay-dayWithMargin ")]/following::button[1])]');
 }
 
+get cancelTxt(){
+    return super.pathByXpath('//*[text()="Cancel"]')
+}
+get saveTxt(){
+    return super.pathByXpath('//*[text()="save"]')
+}
+
  selectCustomDate(date){
      return super.pathByXpath(`//button[contains(@class,"MuiPickersDay-dayWithMargin") and text()="${date}"]`)
  }

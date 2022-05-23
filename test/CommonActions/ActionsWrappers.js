@@ -245,7 +245,7 @@ navigateTo= async(Url)=>{
 
   //if value is empty set the value
   isEmpty_setValue = async (ele, inputValue) => {
-    if (await ele.getValue()=== "") {
+    if (await ele.getValue()==='') {
       await  ele.waitForDisplayed(2000);
       await  ele.setValue(inputValue);
     }
@@ -253,7 +253,7 @@ navigateTo= async(Url)=>{
 
   //if value is not equal to empty clear the value & set the new value else enter the new value
   isNotEmpty_clearAndsetValue = async (ele, inputValue) => {
-    if (! await ele.getValue()==="") {
+    if (await ele.getValue()!=='') {
       await ele.waitForDisplayed(4000);
       await ele.click();
       await browser.keys(["\uE009", "a"]);
@@ -315,6 +315,18 @@ MoveTo = async(ele)=>{
    await ele.click({action: 'moveTo',x:20,right:10});
    await  browser.pause(2000);
    await ele1.click();
+  }
+
+  //ClearFilter
+
+  ClearFilter =async(ele,ele2,ele3,ele4)=>{
+    await  browser.pause(10000);
+    if(await ele.isDisplayed()===true){
+      await ele2.click();
+      await ele3.click();
+      await ele4.click();
+    }
+
   }
 
 

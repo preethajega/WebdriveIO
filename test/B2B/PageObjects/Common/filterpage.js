@@ -7,6 +7,12 @@ class Filter extends Page {
   wait(){
     browser.pause(8000);
 }
+get Filter(){
+    return super.pathByXpath('//*[@aria-label="filter"]');
+}
+get filterResults(){
+    return super.pathByXpath('(//*[contains(@class,"-deleteIconSmall")])[last()]');
+}
 get status(){
     return super.pathById('checkboxes-tags-demo');
 }
@@ -61,12 +67,15 @@ get endValue() {
     return super.pathById('evalue');
 }
 get cancel() {
-    return super.pathByCss('[class="MuiButtonBase-root MuiButton-root MuiButton-outlined"]');
+    return super.pathByXpath('//*[@aria-label="cancel"]');
 }
 get clearAll() {
-    return super.pathByCss('[class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"]');
-}
+    return super.pathByXpath('//*[text()="Clear All"]')
+}   
 get save() {
     return super.pathById('filterApply');
 }
+
 }
+
+module.exports = new Filter();

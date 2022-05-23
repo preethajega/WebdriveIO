@@ -6,7 +6,6 @@ const actionsWrappers = require("../../../CommonActions/ActionsWrappers");
 const Brands_path = require("../../PageObjects/Products/Brands.page");
 const Brand_fn = require("../../CommonFunctions/Products/Brands");
 var BrandsIp = require("../../Inputs/Products/BrandsIp");
-const common = require("../../PageObjects/Common/commonObjects");
 const commonObjects = require("../../PageObjects/Common/commonObjects");
 
 describe('Brands Page', () => {
