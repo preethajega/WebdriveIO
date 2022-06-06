@@ -14,6 +14,7 @@ function Buip() {
     this.priority3="&*$"
     this.priority2="2"
     this.priority1='5'
+    this.priority4='15'
     this.buCode="BU05"
     this.buCode2="BU07"
     this.buCode4="12"

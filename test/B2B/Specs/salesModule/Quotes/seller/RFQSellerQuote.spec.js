@@ -136,7 +136,7 @@ describe("cart Page", () => {
         await actionsWrappers.Click(QuoteBtnPath.BuyerReqForQuoteBtn)
         await Quote_fn.createQuote(QuoteBtnPath.CreateQuoteName,QuoteIp.RfqQuoteName,QuoteBtnPath.ConfBtn)
         await browser.pause(9000)
-       await LogOutPage.logout(LogOutPage.logouticon,LogOutPage.logoutBtn,common.snackbar,
+        await LogOutPage.logout(LogOutPage.logouticon,LogOutPage.logoutBtn,common.snackbar,
         B2B_loginIp.logoutAlertMsg)
         await browser.pause(5000)
         await LoginPage.open();
@@ -147,8 +147,19 @@ describe("cart Page", () => {
         await quotefilter_fn.AddFilter1(QuotefilterPath.AllFilterTab,QuotefilterPath.quoteName,
         QuoteFilterIp.RfqQname,QuotefilterPath.ApplyBtn)
         await browser.pause(5000)
-        await Quote_fn.RespondQuote(QuoteBtnPath.SelectfirstData,QuoteBtnPath.Comments,QuoteBTnsIp.comments,
-            QuoteBtnPath.ConfBtn)
+        await Quote_fn.RespondReviewQuote(QuoteBtnPath.SelectfirstData,SidNavQuote_path.RespondBtn,QuoteBtnPath.RequestApproval,
+          QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn,
+      SidNavQuote_path.SubmitReviewBtn,QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn)
+      await actionsWrappers.Click(common.close)
+      });
+      it('should review the Quote as a seller',async () => {
+      await Quote_fn.open()
+      await browser.pause(5000)
+      await quotefilter_fn.MultipleFilter(QuotefilterPath.AllFilterTab,QuotefilterPath.quoteName,QuoteFilterIp.RfqQname,
+          QuotefilterPath.QuoteStatus,QuoteFilterIp.QuoteStatus8,QuotefilterPath.ApplyBtn)
+      await Quote_fn.RespondReviewQuote(QuoteBtnPath.SelectfirstData,SidNavQuote_path.ReviewBtn,SidNavQuote_path.SubmitReviewBtn,
+          QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn,
+          SidNavQuote_path.SubmitReviewBtn,QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn)
       });
 
     // it('should logged out from the application',async () => {

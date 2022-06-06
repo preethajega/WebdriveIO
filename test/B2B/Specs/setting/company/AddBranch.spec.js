@@ -24,10 +24,11 @@ describe('Branch card', () => {
         await Branch_fn.AddBranch(Branch_path.CancelBtn)
     });
 
-    it('should delete a selected Address with CabcelBtn',async () => {
-        await Branch_fn.DeleteBranchAddress(Branch_path.ConformCancelBtn)   
+    it('should delete a selected Address with CancelBtn',async () => {
+        await Branch_fn.MappedDeleteValid(Branch_path.ConformCancelBtn)
     });
     it('should delete a selected Address with DeleteBtn',async () => {
+        await Branch_fn.MappedDeleteValid(Branch_path.ConformDeleteBtn)
         await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
         await browser.pause(1000)
     });
@@ -48,11 +49,8 @@ describe('Branch card', () => {
         await browser.refresh()
         await Branch_fn.EditBranchAddress(Branch_path.SaveBtn)
     });
-        it('should delete a selected Address with CabcelBtn',async () => {
-        await Branch_fn.DeleteBranchAddress(Branch_path.ConformCancelBtn)   
-    });
     it('should delete a selected Address with DeleteBtn',async () => {
-        await browser.pause(1000)
+        await Branch_fn.MappedDeleteValid(Branch_path.ConformDeleteBtn)
         await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
         await browser.pause(1000)
     });
@@ -114,29 +112,5 @@ describe('Branch card', () => {
          await actionsWrappers.scrollEleAndClick(custom_path.CompTab)  
     });
 
-    // it('santy',async () => {
-    //     await Branch_fn.AddBranch(Branch_path.SaveBtn)
-    //     await browser.pause(1000)
-    //     await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
-    //     await browser.pause(1000)
-    //     await Branch_fn.AddBranchByAutoFill(Branch_path.SaveBtn)
-    //     await browser.refresh()
-    //     await Branch_fn.EditBranchAddress(Branch_path.SaveBtn)
-    //     await browser.pause(1000)
-    //     await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
-    //     await browser.pause(1000)
-    //     await Branch_fn.DeleteMapppedBranch(Branch_path.ConformDeleteBtn)
-    //     await Branch_fn.FieldValid(Branch_path.errBranchName,Branchip.errmsgBranchName)
-    //     await Branch_fn.FieldValid(Branch_path.errAddress,Branchip.errmsgAddress)
-    //     await Branch_fn.FieldValid(Branch_path.errLocality,Branchip.errmsgLocality)
-    //     await Branch_fn.FieldValid(Branch_path.errCountry,Branchip.errmsgCountry)
-    //     await Branch_fn.FieldValid(Branch_path.errState,Branchip.errmsgState)
-    //     await Branch_fn.FieldValid(Branch_path.errDistrict,Branchip.errmsgDistrict)
-    //     await Branch_fn.FieldValid(Branch_path.errPincode,Branchip.errmsgPinCode)
-    //     await Branch_fn.FieldValid(Branch_path.errCity,Branchip.errmsgCity)
-    //     await Branch_fn.FieldValid(Branch_path.errTax,Branchip.errmsgTax)
-    //     await Branch_fn.FieldValid(Branch_path.errContactNam,Branchip.errmsgContactName)
-    //     await Branch_fn.FieldValid(Branch_path.errContactNumb,Branchip.errmsgContactNumb)
-    // });
 
 });

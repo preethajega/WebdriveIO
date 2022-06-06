@@ -16,6 +16,9 @@ get refresh(){
 get close(){
     return super.pathByXpath('//button[@title="Close"]');
 }
+get close1(){
+    return super.pathByXpath('//button[@aria-label="Close"]');
+}
 get submit(){
     return super.pathById('loadingButton');
 }

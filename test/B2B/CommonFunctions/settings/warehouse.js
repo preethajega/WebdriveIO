@@ -12,7 +12,7 @@ class Warehouse extends Page{
       super.open(Warehouseip.WareUrl); 
     }
 
-    AddWarehousebyMappingExisitingAddress = async(ele,input,btn) =>{
+    AddWHbyMappingExisitingAddress = async(ele,input,btn) =>{
         await actionsWrappers.Click(path.AddWarehouseBtn)
         await actionsWrappers.clickAndSetvalue(ele,input)
         await actionsWrappers.clickAndSetvalue(path.WarehouseCode,Warehouseip.WarehouseCode)
@@ -24,7 +24,7 @@ class Warehouse extends Page{
         await actionsWrappers.snackBarValidate(common.snackbar,Warehouseip.SaveAlert)     
     }
 
-    AddWarehouseManual = async(ele,input,btn) =>{
+    AddWHManual = async(ele,input,btn) =>{
         await actionsWrappers.Click(path.AddWarehouseBtn)
         await actionsWrappers.clickAndSetvalue(ele,input)
         await actionsWrappers.clickAndSetvalue(path.WarehouseCode,Warehouseip.WarehouseCode)
@@ -47,7 +47,7 @@ class Warehouse extends Page{
         await actionsWrappers.snackBarValidate(common.snackbar,Warehouseip.SaveAlert)                
     }
 
-    AddWarehouseAutofillAddress = async(ele,input,btn) =>{
+    AddWHAutofillAddress = async(ele,input,btn) =>{
         await actionsWrappers.Click(path.AddWarehouseBtn)
         await actionsWrappers.clickAndSetvalue(ele,input)
         await actionsWrappers.clickAndSetvalue(path.WarehouseCode,Warehouseip.WarehouseCode)
@@ -61,14 +61,12 @@ class Warehouse extends Page{
         await actionsWrappers.snackBarValidate(common.snackbar,Warehouseip.SaveAlert)       
     }
 
-    DeleteWarehouse = async(ele,btn) =>{
-        await actionsWrappers.Click(path.WarehouseTab)
-        await actionsWrappers.Click(ele)
-        await actionsWrappers.Click(path.DeleteBtn)
+    DeleteWH = async(btn) =>{
+        await actionsWrappers.scrollEleAndClick(path.FirstDeleteBtn)
         await actionsWrappers.Click(btn)
         await actionsWrappers.snackBarValidate(common.snackbar,Warehouseip.DeleteAlert)     
     }
-    EditWarehouse = async(btn) =>{
+    EditWH = async(btn) =>{
         await actionsWrappers.Click(path.WarehouseTab)
         await actionsWrappers.scrollEleAndClick(path.Editdata)
         await actionsWrappers.Click(path.EditBtn)
@@ -79,12 +77,11 @@ class Warehouse extends Page{
     }
 
     DeleteMapppedWH = async(btn)=>{
-        await actionsWrappers.scrollEleAndClick(path.MapedData)
-        await actionsWrappers.Click(path.DeleteBtn)
+        await actionsWrappers.scrollEleAndClick(path.LastDeleteBtn)
         await actionsWrappers.Click(btn)
         await actionsWrappers.snackBarValidate(common.snackbar,Warehouseip.MapedDeleteAlert)       
       }
-    AlreadyExistWarehouse = async()=>{
+    AlreadyExistWH = async()=>{
        await actionsWrappers.Click(path.AddWarehouseBtn)
        await actionsWrappers.clickAndSetvalue(path.WarehouseName,Warehouseip.WarehouseName)
        await actionsWrappers.Click(path.WarehouseCode)

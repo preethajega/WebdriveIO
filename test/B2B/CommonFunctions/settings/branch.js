@@ -22,9 +22,9 @@ class Branch extends Page{
      await actionsWrappers.clickAndSetvalue(path.SalesOrgCode,Branchip.SalesorgCode)
      await actionsWrappers.clickAndSetvalue(path.ContactName,Branchip.ContactName)
      await actionsWrappers.clickAndSetvalue(path.PhoneNumber,Branchip.PhoneNumber)
-    // await actionsWrappers.clickSetvalueAndSelectoption(path.Warehouse,Branchip.Warehouse)
-    //  await actionsWrappers.clickSetvalueAndSelectoption(path.DefaultWarehouse,Branchip.DefaultWarehouse)
-    //  await actionsWrappers.clickSetvalueAndSelectoption(path.BusinessUnit,Branchip.BusinessUnit)
+    await actionsWrappers.clickSetvalueAndSelectoption(path.Warehouse,Branchip.Warehouse)
+     await actionsWrappers.clickSetvalueAndSelectoption(path.DefaultWarehouse,Branchip.DefaultWarehouse)
+     await actionsWrappers.clickSetvalueAndSelectoption(path.BusinessUnit,Branchip.BusinessUnit2)
       await actionsWrappers.Click(btn) 
       await actionsWrappers.snackBarValidate(common.snackbar,Branchip.saveAlert)     
     }
@@ -49,29 +49,39 @@ class Branch extends Page{
      await actionsWrappers.clickAndSetvalue(path.SalesOrgCode,Branchip.SalesorgCode)
      await actionsWrappers.clickAndSetvalue(path.ContactName,Branchip.ContactName)
      await actionsWrappers.clickAndSetvalue(path.PhoneNumber,Branchip.PhoneNumber)
-     // await actionsWrappers.clickSetvalueAndSelectoption(path.Warehouse,Branchip.Warehouse)
-    //  await actionsWrappers.clickSetvalueAndSelectoption(path.DefaultWarehouse,Branchip.DefaultWarehouse)
-    //  await actionsWrappers.clickSetvalueAndSelectoption(path.BusinessUnit,Branchip.BusinessUnit)
+     await actionsWrappers.clickSetvalueAndSelectoption(path.Warehouse,Branchip.Warehouse)
+     await actionsWrappers.clickSetvalueAndSelectoption(path.DefaultWarehouse,Branchip.DefaultWarehouse)
+     await actionsWrappers.clickSetvalueAndSelectoption(path.BusinessUnit,Branchip.BusinessUnit)
       await actionsWrappers.Click(btn)    
       await actionsWrappers.snackBarValidate(common.snackbar,Branchip.saveAlert)     
     }
+    MappedDeleteValid = async(btn)=>{
+      await actionsWrappers.scrollEleAndClick(path.FirstDeleteBtn)
+      await actionsWrappers.Click(btn)
+      await browser.pause(2000)
+      if ((common.snackbar.getValue()===Branchip.MapedBranchDeleteAlert)) {
+        await actionsWrappers.scrollEleAndDoubleClick(path.Editdata)
+        await actionsWrappers.scrollEleAndClick(path.Warehouse)
+        await actionsWrappers.Click(path.WHClearBtn)
+        await actionsWrappers.Click(path.BUClearBtn)
+        await actionsWrappers.Click(path.SaveBtn)
+      }
+
+    }
     DeleteBranchAddress = async(btn) =>{
-        await actionsWrappers.scrollEleAndClick(path.Deletedata)
-        await actionsWrappers.scrollEleAndClick(path.DeleteBtn)
+        await actionsWrappers.scrollEleAndClick(path.FirstDeleteBtn)
         await actionsWrappers.Click(btn)
         await actionsWrappers.snackBarValidate(common.snackbar,Branchip.DeleteAlert)    
     }
     EditBranchAddress = async(btn) =>{
-        await actionsWrappers.scrollEleAndClick(path.Editdata)
+        await actionsWrappers.scrollEleAndDoubleClick(path.Editdata)
         await browser.pause(1000)
-        await actionsWrappers.scrollEleAndClick(path.EditBtn)
         await actionsWrappers.clearValue_selectDropdownvalue(path.SearchCompname,Branchip.EditSearchCompname)
         await actionsWrappers.Click(btn) 
         await actionsWrappers.snackBarValidate(common.snackbar,Branchip.saveAlert)    
     }
     DeleteMapppedBranch = async(btn)=>{
-      await actionsWrappers.scrollEleAndClick(path.MapedData)
-      await actionsWrappers.scrollEleAndClick(path.DeleteBtn)
+      await actionsWrappers.scrollEleAndClick(path.LastDeleteBtn)
       await actionsWrappers.Click(btn)
       await actionsWrappers.snackBarValidate(common.snackbar,Branchip.MapedDeleteAlert)
     }

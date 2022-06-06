@@ -25,5 +25,6 @@ class Tag extends Page{
     get CancelBtn(){
         return super.pathByXpath('//button[@aria-label="cancel"]')
     }
+    
 }
 module.exports = new Tag();

@@ -94,12 +94,20 @@ class Branch extends Page{
     get Editdata(){
         return super.pathByXpath("//tbody/tr[1]")
     }
-    get DeleteBtn(){
-        return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiPaper-e')]/div[2]/button[1]")
+    get WHClearBtn(){
+        return super.pathByXpath('//input[@id="wareHouses"]/following::button[@title="Clear"][1]')
+    }
+    get BUClearBtn(){
+        return super.pathByXpath('//input[@id="wareHouses"]/following::button[@title="Clear"][3]')
     }
     get EditBtn(){
         return super.pathByXpath('(//button[text()="Edit"])[last()]')
-        // return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiPaper-e')]/div[2]/button[2]")
+    }
+    get FirstDeleteBtn(){
+        return super.pathByXpath('(//button[@aria-label="clear"])[1]')
+    }
+    get LastDeleteBtn(){
+        return super.pathByXpath('(//button[@aria-label="clear"])[last()]')
     }
     get ConformCancelBtn(){
         return super.pathByXpath('//div[contains(@class,"MuiDialogA")]/button[1]')

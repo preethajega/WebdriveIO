@@ -37,17 +37,22 @@ function Branchip() {
     this.PhoneNumber = "983222"
     this.PhoneNumber1 = "98231209"
     this.EditPhoneNumber = "87322789"
-    this.Warehouse = "Theni"
+    this.Warehouse1 = "Theni"
+    this.Warehouse = "chennai"
     this.EditWarehouse = "Trichy Branch"
     this.Warehouse="Arani Branch"
-    this.Warehouse="Gobi Branch"
-    this.Warehouse = "nagar"
+    this.Warehouse1="Gobi Branch"
+    this.Warehouse2 = "nagar"
     this.InvalidWarehouse = "covai12"
     this.DefaultWarehouse = "Theni"
-    this.BusinessUnit = "Raw matrial"
+    this.BusinessUnit = "FG"
+    this.BusinessUnit1 = "SFG"
+    this.BusinessUnit2 = "Equip"
+    this.BusinessUnit3 = "spar"
     this.saveAlert = "Saved Successfully"
     this.DeleteAlert = "Branch address deleted succesfully"
-    this.MapedDeleteAlert = "head office address mapped with BusinessUnit/WareHouse/Zone/User cannot be deleted"
+    this.MapedBranchDeleteAlert = "Theni address mapped with BusinessUnit/WareHouse/Zone/User cannot be deleted"
+    this.MapedDeleteAlert = "Chennai address mapped with BusinessUnit/WareHouse/Zone/User cannot be deleted"
     this.errmsgBranchName = "Branch Name required"
     this.errmsgAddress = "Address required"
     this.errmsgLocality = "Locality is required"
@@ -59,5 +64,9 @@ function Branchip() {
     this.errmsgTax = "Tax ID required"
     this.errmsgContactName = "Contact Name is required"
     this.errmsgContactNumb = "Contact No is required"
+
+// /*   **************** DEV Inputs      **************** */
+//     this.branch ="";
+     
 }
 module.exports = new Branchip();

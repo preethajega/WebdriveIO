@@ -15,7 +15,7 @@ function QuoteFilterIp(){
     this.QuoteStatus5="draft"
     this.QuoteStatus6="order lost"
     this.QuoteStatus7="open"
-    this.QuoteStatus8=""
+    this.QuoteStatus8="Approval In Progress"
     this.QuoteStatus9=""
     this.QuoteStatus=""
     this.QuoteStatus=""

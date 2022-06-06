@@ -3,7 +3,7 @@ const url = require('./url')
 exports.config = {
     specs: [
 
-        // './test/B2B/Specs/setting/company/AddBranch.spec.js',
+        './test/B2B/Specs/setting/company/AddBranch.spec.js',
         // './test/B2B/Specs/setting/company/AddWarehouse.spec.js',
         // './test/B2B/Specs/setting/company/company.spec.js',
         // './test/B2B/Specs/setting/API.spec.js',
@@ -23,7 +23,7 @@ exports.config = {
         // './test/B2B/Specs/setting/zone.spec.js',
         //  './test/B2B/Specs/Customers/customer.spec.js',
         //  './test/B2B/Specs/salesModule/Quotes/Buyer/RFQBuyerQuote.spec.js',
-         './test/B2B/Specs/salesModule/Quotes/Seller/RFQSellerQuote.spec.js'
+        //  './test/B2B/Specs/salesModule/Quotes/Seller/RFQSellerQuote.spec.js'
         //  './test/B2B/Specs/Cart/Cart.spec.js',
     ],
     // Patterns to exclude.

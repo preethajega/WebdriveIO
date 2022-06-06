@@ -116,20 +116,29 @@ class QuoteBtnCard extends Page {
         }
 
     }
-    QuoteRequiresApproval = async(commentpath,commentip,confbtn)=>{
-        await actionWrapper.Click(Sidnav_path.RespondBtn)
+    QuoteRequiresApproval = async(ResponReviewdBtn,SumbitRevResBtn,commentpath,commentip,confbtn,
+        SumbitRevResBtn1,commentpath1,commentip1,confbtn1)=>{
+        await actionWrapper.Click(ResponReviewdBtn)
         await browser.pause(4000)
         if ((await common.snackbar.isDisplayed()) === true) {
-            await actionWrapper.Click(path.RequestApproval)
+            await actionWrapper.Click(SumbitRevResBtn)
             await browser.pause(3000)
             await actionWrapper.clickAndSetvalue(commentpath,commentip)
             await actionWrapper.Click(confbtn)
         }
+        else{
+            await actionWrapper.Click(SumbitRevResBtn1)
+            await browser.pause(3000)
+            await actionWrapper.clickAndSetvalue(commentpath1,commentip1)
+            await actionWrapper.Click(confbtn1)
+        }
     }
-    RespondQuote = async(selectdata,commentpath,commentip,confbtn)=>{
+    RespondReviewQuote = async(selectdata,ResponReviewdBtn,SumbitRevResBtn,commentpath,commentip,confbtn,
+        SumbitRevResBtn1,commentpath1,commentip1,confbtn1)=>{
         await actionWrapper.Click(selectdata)
         await browser.pause(2000)
-        await this.QuoteRequiresApproval(commentpath,commentip,confbtn)
+        await this.QuoteRequiresApproval(ResponReviewdBtn,SumbitRevResBtn,commentpath,commentip,confbtn,
+            SumbitRevResBtn1,commentpath1,commentip1,confbtn1)
     }
     /************* BUYER SIDE METHOD FOR SIDNAVE PAGE ************* */
     createQuote1 = async(quoteName,quoteIp,ConfBtn)=>{

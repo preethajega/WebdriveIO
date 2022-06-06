@@ -18,6 +18,13 @@ class QuoteFilter extends Page {
         await actionWrapper.clickAndSetvalue(fieldpath,filedIp)
         await actionWrapper.Click(confbtns)
     }
+    MultipleFilter = async(selectTab,fieldpath,filedIp,fieldpath1,filedIp1)=>{
+        await actionWrapper.Click(selectTab)
+        await browser.pause(3000)
+        // await actionWrapper.Click(filtericon)
+        await actionWrapper.clickAndSetvalue(fieldpath,filedIp)
+        await actionWrapper.clickSetvalueAndSelectoption(fieldpath1,filedIp1)
+    }
     AddFilterTemp=async(filterBtn,fieldpath,filedIp)=>{
         await actionWrapper.Click(filterBtn)
         await browser.pause(3000)
