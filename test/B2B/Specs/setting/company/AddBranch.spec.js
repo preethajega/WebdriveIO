@@ -6,7 +6,7 @@ const Branch_fn= require("../../../CommonFunctions/settings/branch");
 var Branchip= require("../../../Inputs/settings/BranchIP");
 const custom_fn = require("../../../CommonFunctions/settings/customization")
 const custom_path = require("../../../PageObjects/Settings/customization.page");
-
+const common = require("../../../PageObjects/Common/commonObjects");
 
 describe('Branch card', () => {
     it("Should allow to access login into Branch card ",async () => {
@@ -16,19 +16,19 @@ describe('Branch card', () => {
         await  Branch_fn.open();
         await  actionsWrappers.urlValidation("/company");
         });
-
-    it('should Add a new Branch with saving',async () => {
-        await Branch_fn.AddBranch(Branch_path.SaveBtn)
-    });
     it('should Add a new Branch with cancel',async () => {
         await Branch_fn.AddBranch(Branch_path.CancelBtn)
     });
-
+    it('should Add a new Branch with saving',async () => {
+        await Branch_fn.AddBranch(Branch_path.SaveBtn)
+    });
     it('should delete a selected Address with CancelBtn',async () => {
-        await Branch_fn.MappedDeleteValid(Branch_path.ConformCancelBtn)
+        await Branch_fn.MappedDeleteValid(Branch_path.ConformCancelBtn,common.snackbar,Branchip.MapedBranchDeleteAlert)
     });
     it('should delete a selected Address with DeleteBtn',async () => {
-        await Branch_fn.MappedDeleteValid(Branch_path.ConformDeleteBtn)
+        await browser.pause(2000)
+        await Branch_fn.MappedDeleteValid(Branch_path.ConformDeleteBtn,common.snackbar,Branchip.MapedBranchDeleteAlert)
+        await browser.pause(2000)
         await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
         await browser.pause(1000)
     });
@@ -50,7 +50,7 @@ describe('Branch card', () => {
         await Branch_fn.EditBranchAddress(Branch_path.SaveBtn)
     });
     it('should delete a selected Address with DeleteBtn',async () => {
-        await Branch_fn.MappedDeleteValid(Branch_path.ConformDeleteBtn)
+        await Branch_fn.MappedDeleteValid(Branch_path.ConformDeleteBtn,common.snackbar,Branchip.MapedBranchDeleteAlert)
         await Branch_fn.DeleteBranchAddress(Branch_path.ConformDeleteBtn)
         await browser.pause(1000)
     });

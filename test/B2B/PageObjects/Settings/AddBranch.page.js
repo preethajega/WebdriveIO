@@ -67,6 +67,9 @@ class Branch extends Page{
     get ContactName(){
         return super.pathByName('addressId.primaryContact')
     }
+    get countrycode(){
+        return super.pathByName('addressId.mobileNoCallingCode')
+    }
     get PhoneNumber(){
         return super.pathByName('addressId.mobileNo')
     }
@@ -88,23 +91,23 @@ class Branch extends Page{
     get Deletedata(){
         return super.pathByXpath("//tbody/tr[1]")
     }
-    get MapedData(){
-        return super.pathByXpath("//tbody/tr[3]")
+    get SelectLastData(){
+        return super.pathByXpath("//tbody/tr[last()]")
     }
-    get Editdata(){
+    get SelectFirstdata(){
         return super.pathByXpath("//tbody/tr[1]")
     }
     get WHClearBtn(){
         return super.pathByXpath('//input[@id="wareHouses"]/following::button[@title="Clear"][1]')
     }
     get BUClearBtn(){
-        return super.pathByXpath('//input[@id="wareHouses"]/following::button[@title="Clear"][3]')
+        return super.pathByXpath('//input[@id="businessUnit"]/following::button[@title="Clear"][1]')
     }
     get EditBtn(){
         return super.pathByXpath('(//button[text()="Edit"])[last()]')
     }
     get FirstDeleteBtn(){
-        return super.pathByXpath('(//button[@aria-label="clear"])[1]')
+        return super.pathByXpath('//tbody/tr[1]//button[@aria-label="clear"]')
     }
     get LastDeleteBtn(){
         return super.pathByXpath('(//button[@aria-label="clear"])[last()]')

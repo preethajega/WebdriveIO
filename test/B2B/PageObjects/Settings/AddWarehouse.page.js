@@ -124,6 +124,9 @@ class Warehouse extends Page{
     get errCity(){
         return super.pathByXpath("//p[text()='City required']")
     }
+    get CountryCode(){
+        return super.pathByName('contactNumberCallingCode')
+    }
 
 }
 module.exports = new(Warehouse);

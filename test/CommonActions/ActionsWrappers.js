@@ -72,7 +72,7 @@ checkVisibleClickableMove = async (ele) => {
     await ele.setValue(value);
     await browser.pause(1000);
     await ele.keys("\uE015");
-    await browser.pause(1000);
+    await browser.pause(2000);
     await ele.keys("\uE007");
   }
   // click a element & set value & selct the second option using Keyboard
@@ -80,7 +80,7 @@ checkVisibleClickableMove = async (ele) => {
     await ele.waitForDisplayed(2000);
     await ele.click();
     await ele.setValue(value);
-    await browser.pause(1000);
+    await browser.pause(2000);
     await ele.keys("\uE015");
     await ele.keys("\uE015");
     await browser.pause(2000);
@@ -308,6 +308,16 @@ MoveTo = async(ele)=>{
   await ele.waitForDisplayed(2000);
   await ele.click({action: 'moveTo',x:20,right:10})
 
+}
+MoveTO1 = async(ele)=>{
+  await ele.waitForDisplayed(2000);
+  await ele.scrollIntoView(0,50);
+  await ele.moveTo()
+}
+HoverMoveTO = async(ele,ele1)=>{
+  await ele.waitForDisplayed(2000);
+  await ele.moveTo();
+  await ele1.click();
 }
   //hover method
   hoverElement = async(ele,ele1)=>{
