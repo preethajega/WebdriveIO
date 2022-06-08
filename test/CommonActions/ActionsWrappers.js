@@ -265,6 +265,11 @@ navigateTo= async(Url)=>{
       await ele.setValue(inputValue);
     }
   };
+    //clear the value using a keyboad backspace key
+  clearValueKeyboard = async(ele)=>{
+    await ele.waitForDisplayed(3000);
+    await ele.keys("\uE003");
+  }
 
   //clear the value & set the new value else enter the new value
   clearAndsetValue = async (ele, inputValue) => {

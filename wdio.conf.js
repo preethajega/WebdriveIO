@@ -4,7 +4,7 @@ exports.config = {
     specs: [
 
         // './test/B2B/Specs/setting/company/AddBranch.spec.js',
-        './test/B2B/Specs/setting/company/AddWarehouse.spec.js',
+        // './test/B2B/Specs/setting/company/AddWarehouse.spec.js',
         // './test/B2B/Specs/setting/company/company.spec.js',
         // './test/B2B/Specs/setting/API.spec.js',
         // './test/B2B/Specs/setting/approvals.spec.js',
@@ -16,7 +16,7 @@ exports.config = {
         // './test/B2B/Specs/setting/integrations.spec.js',
         // './test/B2B/Specs/setting/moduleAuthorization.spec.js',
         // './test/B2B/Specs/setting/profile.spec.js',
-        // './test/B2B/Specs/setting/tag.spec.js',
+        './test/B2B/Specs/setting/tag.spec.js',
         // './test/B2B/Specs/setting/tax.spec.js',
         // './test/B2B/Specs/setting/team.spec.js',
         // './test/B2B/Specs/setting/terms.spec.js',
