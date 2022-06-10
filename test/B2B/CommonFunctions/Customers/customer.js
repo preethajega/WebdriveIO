@@ -18,6 +18,7 @@ class customer extends Page {
     async open() {
         super.open(customerip.customUrl); 
     }
+    
     AddCustomer = async(sercompnamepath,secrchip,BranchPath,Branchip,taxpath,taxip,butypePath,buTypeIp,currpath,currIp)=>{
         await actionWrapper.Click(path.AddCustomer)
         await actionWrapper.clickSetvalueAndSelectoption(sercompnamepath,secrchip)
@@ -27,9 +28,10 @@ class customer extends Page {
         await actionWrapper.clickSetvalueAndSelectoption(currpath,currIp)
 
     }
-    AddCustDetail = async(namepath,nameip,mobileNopath,mobilenoaIp,bUmailpath,bUPath,
+    AddCustDetail = async(namepath,nameip,countryCode,CountryCode,mobileNopath,mobilenoaIp,bUmailpath,bUPath,
         rolePath,roleIp,jobTitPath,JobTitIp,DepartPath,DepartIp)=>{
         await actionWrapper.clickAndSetvalue(namepath,nameip)
+        await actionWrapper.clearValueAndSetValueSelectDropdown(countryCode,CountryCode)
         await actionWrapper.clickAndSetvalue(mobileNopath,mobilenoaIp)
         await actionWrapper.clickAndSetvalue(bUmailpath,bUPath)
         await actionWrapper.clickSetvalueAndSelectoption(rolePath,roleIp)
@@ -46,9 +48,9 @@ class customer extends Page {
         await actionWrapper.clickAndSetvalue(valpath,valIp)
         await actionWrapper.Click(Btn)
     }
-    FilterusingProtalAcess = async(Btn)=>{
+    FilterusingProtalAcess = async(ProtalDeactivateUser,Btn)=>{
         await actionWrapper.Click(path.FilterBtn)
-        await actionWrapper.Click(path.ProtalAcees)
+        await actionWrapper.Click(ProtalDeactivateUser)
         await actionWrapper.Click(Btn)
     }
     FilterDropDown = async(valpath,valIp,Btn)=>{
@@ -56,9 +58,14 @@ class customer extends Page {
         await actionWrapper.clickSetvalueAndSelectoption(valpath,valIp)
         await actionWrapper.Click(Btn)
     }
+    ActiveUserfilterValidate = async()=>{
+        await actionWrapper.Click(path.EditFirstData)
+        await actionWrapper.snackBarValidate(path.DeactivateCusText,customerip.deactivateText)
+        await actionWrapper.Click(teampath.Closecard)
+    }
     AddBranchMaual = async(Branch,BranchName,AddressLine1,AddressLine1IP,AddressLine2,AddressLine2IP,Region,Regionip,
         State,Provicence,Distric,DistrictIp,Zipcode,ZipcodeIp,City,cityIP,Lattitude,LattitudeIp,Longitude,LongitudeIp,ABNnumber,ABNnumberIp,
-        ContactName,ContactNameIp,PhoneNumber,PhoneNumberIp)=>{
+        ContactName,ContactNameIp,countryCode,CountryCode,PhoneNumber,PhoneNumberIp)=>{
         await actionWrapper.Click(path.CreateAddress)
         await actionWrapper.clickAndSetvalue(Branch,BranchName)
         await actionWrapper.clickAndSetvalue(AddressLine1,AddressLine1IP)
@@ -74,28 +81,34 @@ class customer extends Page {
         await actionWrapper.Click(path.Shipping)*/
         await actionWrapper.clickAndSetvalue(ABNnumber,ABNnumberIp)
         await actionWrapper.clickAndSetvalue(ContactName,ContactNameIp)
+        await actionWrapper.clearValueAndSetValueSelectDropdown(countryCode,CountryCode)
         await actionWrapper.clickAndSetvalue(PhoneNumber,PhoneNumberIp)   
     }
-    AddBranchAutoFill= async(SearchCompname,SearchCompnameIp,Branch,BranchName,ABNnumber,ABNnumberIp,ContactName,ContactNameIp,PhoneNumber,PhoneNumberIp)=>{
+    AddBranchAutoFill= async(SearchCompname,SearchCompnameIp,Branch,BranchName,ABNnumber,ABNnumberIp,ContactName,ContactNameIp,
+        countryCode,CountryCode,PhoneNumber,PhoneNumberIp)=>{
         await actionWrapper.Click(path.CreateAddress)
         await actionWrapper.clickSetvalueAndSelectoption(SearchCompname,SearchCompnameIp)
         await actionWrapper.clickAndSetvalue(Branch,BranchName)
         await actionWrapper.clickAndSetvalue(ABNnumber,ABNnumberIp)
         await actionWrapper.clickAndSetvalue(ContactName,ContactNameIp)
+        await actionWrapper.clearValueAndSetValueSelectDropdown(countryCode,CountryCode)
         await actionWrapper.clickAndSetvalue(PhoneNumber,PhoneNumberIp)   
     }
-    AddUser = async(Name,name,MobileNo,phNum,elepath,eleip,JobTitle,jobtitle,Department,depart,Role,role)=>{
+    AddUser = async(Name,name,countryCode,CountryCode,MobileNo,phNum,elepath,eleip,JobTitle,jobtitle,Department,depart,Role,role)=>{
         await actionWrapper.Click(path.CraeteUser)
         await actionWrapper.clickAndSetvalue(Name,name)
+        await actionWrapper.clearValueAndSetValueSelectDropdown(countryCode,CountryCode)
         await actionWrapper.clickAndSetvalue(MobileNo,phNum)
         await actionWrapper.clickAndSetvalue(elepath,eleip)
         await actionWrapper.clickAndSetvalue(JobTitle,jobtitle)
         await actionWrapper.clickAndSetvalue(Department,depart)
         await actionWrapper.clickSetvalueAndSelectSecondOption(Role,role)
     }
-    DeleBranch = async(deledata)=>{
-        await actionWrapper.Click(deledata)
-        await actionWrapper.Click(path.DeleBranchBtn)
+    DeleBranch = async(Selectdata,Selectdata1,DeleteBtn)=>{
+        await actionWrapper.MoveTO1(Selectdata)
+        await browser.pause(2000)
+        await actionWrapper.HoverMoveTO(Selectdata1,DeleteBtn)
+    
     }
     Edit_DeleUser = async(deletdata,btn)=>{
         await actionWrapper.Click(deletdata)
@@ -165,13 +178,12 @@ class customer extends Page {
         await actionWrapper.Click(teampath.Savebtn)
         await browser.pause(2000)
     }
-    EditAddressCard = async(EditdataPth,TagPath,TagIp,zonePath,zoneIp,soldCodePath,soldCodeIp,vendorPath,vendorIp,
+    EditAddressCard = async(EditdataPth,soldCodePath1,soldCodePath,soldCodeIp,vendorPath,vendorIp,
         BillToPath,BillToIp,shipToPath,shipToIp)=>{
         await actionWrapper.scrollEleAndClick(EditdataPth)
         await browser.pause(1000)
-        await actionWrapper.scrollEleAndClick(path.EditBtn)
-        await actionWrapper.clickSetvalueAndSelectoption(TagPath,TagIp)
-        await actionWrapper.clickSetvalueAndSelectoption(zonePath,zoneIp)
+        // await actionWrapper.clearValueAndSetValueSelectDropdown(zonePath,zoneIp)
+        await actionWrapper.scrollEle(soldCodePath1)
         await actionWrapper.clearAndsetValue(soldCodePath,soldCodeIp)
         await actionWrapper.clearAndsetValue(vendorPath,vendorIp)
         await actionWrapper.clearAndsetValue(BillToPath,BillToIp)

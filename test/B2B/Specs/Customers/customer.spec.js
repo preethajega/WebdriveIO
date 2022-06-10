@@ -16,7 +16,6 @@ const common = require("../../PageObjects/Common/commonObjects");
 const Comp_fn = require("../../CommonFunctions/settings/Company");
 const Comp_path = require("../../PageObjects/Settings/company.page");
 const Compip = require("../../Inputs/settings/CompanyIP");
-const { path } = require("chromedriver");
 
 
 
@@ -28,13 +27,14 @@ describe('Customer page', () => {
         await customer_fn.open();
         await actionsWrappers.urlValidation("/accounts/landing");
     });
+
     /* ****************** validation about without default mail in customers ******************* */
 
     it('should create user without Default user with Cancel', async () => {
         await customer_fn.AddCustomer(branchpath.SearchCompname, Branchip.searchcompname1, customer_path.BranchName, Branchip.BranchName,
             customer_path.TaxNum, customerip.TaxId, customer_path.BusinessType, customerip.BuType, customer_path.Currency, customerip.Curr)
-        await browser.pause(2000)
         await customer_fn.snakbar(branchpath.CancelBtn, common.snackbar, customerip.cusSaveAlert)
+        await browser.pause(3000)
     });
     it('should create user without Default user with save', async () => {
         await customer_fn.AddCustomer(branchpath.SearchCompname, Branchip.searchcompname1, customer_path.BranchName, Branchip.BranchName,
@@ -54,9 +54,11 @@ describe('Customer page', () => {
     it('should delete a created Customer with confirm Delete', async () => {
         await customer_fn.DeleCus()
         await customer_fn.snakbar(branchpath.ConformDeleteBtn, common.snackbar, customerip.cusDeleAlert)
+        await browser.pause(2000)
+        await actionsWrappers.Click(teampath.Closecard)
     });
     it('should remove the Appliyed Filter', async () => {
-        await browser.pause(1000)
+        await browser.pause(2000)
         await customer_fn.ClearFilter()
     });
     /* ****************** validation about fileds in create Customer card ******************* */
@@ -224,14 +226,14 @@ describe('Customer page', () => {
     it('should Create a New Customer with Default User and click cancel', async () => {
         await customer_fn.AddCustomer(branchpath.SearchCompname, Branchip.searchcompname, customer_path.BranchName, Branchip.BranchName,
             customer_path.TaxNum, customerip.TaxId, customer_path.BusinessType, customerip.BuType, customer_path.Currency, customerip.Curr)
-        await customer_fn.AddCustDetail(customer_path.Name, customerip.Name, customer_path.MobNo, customerip.MobNo,
+        await customer_fn.AddCustDetail(customer_path.Name, customerip.Name,customer_path.countryCode, Branchip.countrycode ,customer_path.MobNo, customerip.MobNo,
             customer_path.BusinessMail, customerip.mail1, customer_path.role, customerip.Role, customer_path.JobTitle, customerip.JobTitle, customer_path.Depart, customerip.Depart)
         await customer_fn.snakbar(branchpath.CancelBtn, common.snackbar, customerip.cusSaveAlert)
     });
     it('should Create a New Customer with Default User and click save', async () => {
         await customer_fn.AddCustomer(branchpath.SearchCompname, Branchip.searchcompname, customer_path.BranchName, Branchip.BranchName,
             customer_path.TaxNum, customerip.TaxId, customer_path.BusinessType, customerip.BuType, customer_path.Currency, customerip.Curr)
-        await customer_fn.AddCustDetail(customer_path.Name, customerip.Name, customer_path.MobNo, customerip.MobNo, customer_path.BusinessMail, customerip.mail1,
+        await customer_fn.AddCustDetail(customer_path.Name, customerip.Name, customer_path.countryCode, Branchip.countrycode,customer_path.MobNo, customerip.MobNo, customer_path.BusinessMail, customerip.mail1,
             customer_path.role, customerip.Role, customer_path.JobTitle, customerip.JobTitle, customer_path.Depart, customerip.Depart)
         await browser.pause(2000)
         await customer_fn.snakbar(branchpath.SaveBtn, common.snackbar, customerip.cusSaveAlert)
@@ -251,61 +253,63 @@ describe('Customer page', () => {
         await customer_fn.AddBranchMaual(branchpath.Branch, Branchip.BranchName, branchpath.AddressLine1, Branchip.AddressLine1,
             branchpath.AddressLine2, Branchip.AddressLine2, branchpath.Region, Branchip.Region, branchpath.State, Branchip.Provicence, branchpath.Distric,
             Branchip.District, branchpath.Zipcode, Branchip.Zipcode, branchpath.City, Branchip.city, branchpath.Lattitude, Branchip.Lattitude, branchpath.Longitude,
-            Branchip.Longitude, branchpath.ABNnumber, Branchip.ABNnumber, branchpath.ContactName, Branchip.ContactName, branchpath.PhoneNumber, Branchip.PhoneNumber)
+            Branchip.Longitude, branchpath.ABNnumber, Branchip.ABNnumber, branchpath.ContactName, Branchip.ContactName, branchpath.countrycode, Branchip.countrycode,
+            branchpath.PhoneNumber, Branchip.PhoneNumber)
         await customer_fn.snakbar(branchpath.SaveBtn, common.snackbar, customerip.AddressSaveAlert)
     });
     it('should delete a Created Branch', async () => {
         await browser.pause(2000)
-        await customer_fn.DeleBranch(customer_path.Editlastdata)
+        await customer_fn.DeleBranch(branchpath.SelectLastData,branchpath.SelectLastData,branchpath.LastDeleteBtn)
         await customer_fn.snakbar(branchpath.ConformDeleteBtn, common.snackbar, customerip.BranchDeleAlert)
     });
     it('should Add Branch to the Exisiting Cutomer by AutoFill Option', async () => {
         await customer_fn.AddBranchAutoFill(branchpath.SearchCompname, Branchip.searchcompname, branchpath.Branch, Branchip.BranchName1, branchpath.ABNnumber, Branchip.ABNnumber,
-            branchpath.ContactName, Branchip.ContactName1, branchpath.PhoneNumber, Branchip.PhoneNumber1)
+            branchpath.ContactName, Branchip.ContactName1, branchpath.PhoneNumber, Branchip.PhoneNumber1,branchpath.countrycode, Branchip.countrycode)
         await customer_fn.snakbar(branchpath.SaveBtn, common.snackbar, customerip.AddressSaveAlert)
     });
     it('should delete a Created Branch', async () => {
         await browser.pause(2000)
-        await customer_fn.DeleBranch(customer_path.Editlastdata)
+        await customer_fn.DeleBranch(branchpath.SelectLastData,branchpath.SelectLastData,branchpath.LastDeleteBtn)
         await customer_fn.snakbar(branchpath.ConformDeleteBtn, common.snackbar, customerip.BranchDeleAlert)
     });
     it('should Edit the branch Address and Add the tag,zone,SoldTo,BillTo,ShipTo,Vendor codes', async () => {
-        await customer_fn.EditAddressCard(customer_path.EditFirstData, customer_path.tags, customerip.tag,
-            customer_path.Zone, customerip.zone, customer_path.SoldToCode, customerip.SoldToCode, customer_path.VendorCode,
-            customerip.VendorCode, customer_path.BillTo, customerip.BillToCode, customer_path.ShipTo, customerip.shipToCode)
-        await customer_fn.snakbar(branchpath.SaveBtn, common.snackbar, customerip.comUpdateAlert)
+        await customer_fn.EditAddressCard(customer_path.EditFirstData,  customer_path.SoldToCode,
+            customer_path.SoldToCode, customerip.SoldToCode, customer_path.VendorCode,customerip.VendorCode, 
+            customer_path.BillTo, customerip.BillToCode, customer_path.ShipTo, customerip.shipToCode)
+        await customer_fn.snakbar(branchpath.SaveBtn, common.snackbar, customerip.compAddressAlert)
     });
     it('should not allow a user to delete a Registerd Address of Customer', async () => {
-        await customer_fn.DeleBranch(customer_path.EditFirstData)
-        await customer_fn.snakbar(branchpath.ConformDeleteBtn, common.snackbar, customerip.BranchErrAlert)
-        await actionsWrappers.Click(customer_path.UncheckAllBtn)
+        await customer_fn.DeleBranch(branchpath.SelectFirstdata,branchpath.SelectFirstdata,branchpath.FirstDeleteBtn)
+        await customer_fn.snakbar(customer_path.CofDeleBtn, common.snackbar, customerip.BranchErrAlert)
     });
     it('should Create a User to the Exisiting customer ', async () => {
-        await customer_fn.AddUser(teampath.Name, teamip.name, teampath.MobileNo, teamip.phNum, teampath.Email, customerip.mail2, teampath.JobTitle, teamip.jobtitle,
+        await customer_fn.AddUser(teampath.Name, teamip.name, teampath.CountryCode, Branchip.countrycode,teampath.MobileNo, teamip.phNum, teampath.Email, customerip.mail2, teampath.JobTitle, teamip.jobtitle,
             teampath.Department, teamip.depart, teampath.Role, customerip.Role)
         await customer_fn.snakbar(branchpath.SaveBtn, common.snackbar, customerip.UserSaveAlert)
         await browser.pause(3000)
-        await browser.refresh()
+        // await browser.refresh()
     });
    
     it('should Invite a User', async () => {
         await browser.pause(3000)
         await actionsWrappers.Click(customer_path.InviteBtn)
+        await browser.pause(2000)
         await actionsWrappers.snackBarValidate(common.snackbar, teamip.invitealert)
         await browser.pause(3000)
     });
     it('should ReInvite a User', async () => {
         await browser.pause(3000)
         await customer_fn.Edit_DeleUser(customer_path.EditLastUser, customer_path.Reinvite)
+        await browser.pause(2000)
         await actionsWrappers.snackBarValidate(common.snackbar, teamip.reinvitealert)
     });
     it('should delete a Customer who has more then one Users with confirm Delete', async () => {
         await browser.pause(2000)
         await customer_fn.DeleCus()
         await actionsWrappers.snackBarValidate(common.snackbar, customerip.MapedDeleAlert)
-        // await customer_fn.snakbar(customer_path.CofDeleBtn,)
     });
     it('should delete a created User with confirm delete in the Customer page', async () => {
+        await browser.pause(3000)
         await customer_fn.Edit_DeleUser(customer_path.EditLastUser, customer_path.DeleMailbtn)
         await customer_fn.snakbar(teampath.ConfYesBtn, common.snackbar, customerip.UserDeleAlert)
         await browser.pause(3000)
@@ -344,7 +348,8 @@ describe('Customer page', () => {
         await browser.refresh()
         await browser.pause(2000)
         await customer_fn.ClearFilter()
-        await actionsWrappers.Click(teampath.Closecard)
+        await actionsWrappers.Click(teampath.refershbtn)
+        // await actionsWrappers.Click(teampath.Closecard)
     });
     it('should filter Using a Customer Name', async () => {
         await customer_fn.FilterDropDown(customer_path.CusName, customerip.cusName1, customer_path.ApplyBtn)
@@ -370,7 +375,7 @@ describe('Customer page', () => {
 
     it('should Uplaod the logo in the customer OverView Card', async () => {
         await actionsWrappers.Click(customer_path.EditCustOverview)
-        await Comp_fn.UploadLogo(branchpath.SaveBtn)
+        await Comp_fn.UploadLogo1(branchpath.SaveBtn)
         await actionsWrappers.snackBarValidate(common.snackbar, customerip.comUpdateAlert)
     });
     it('should Edit the Company Overview Details Name', async () => {
@@ -444,7 +449,7 @@ describe('Customer page', () => {
     });
     it('should Apply a Filter using Protal Acess', async () => {
         await browser.pause(2000)
-        await customer_fn.FilterusingProtalAcess(customer_path.ApplyBtn)
+        await customer_fn.FilterusingProtalAcess(customer_path.ProtalAcees,customer_path.ApplyBtn)
     });
     it('should validate that the Filter using Status Active showing correctly', async () => {
         await actionsWrappers.snackBarValidate(customer_path.ProtalAcessText, customerip.ProtalAcessText)
@@ -453,6 +458,18 @@ describe('Customer page', () => {
         await browser.pause(1000)
         await customer_fn.ClearFilter()
     });
+    it('should Apply a Filter using Protal Acess', async () => {
+        await browser.pause(2000)
+        await customer_fn.FilterusingProtalAcess(customer_path.DeactivateCus,customer_path.ApplyBtn)
+    });
+    it('should validate that the Filter using DeActive customer is showing correctly', async () => {
+        await customer_fn.ActiveUserfilterValidate()
+    });
+    it('should remove the Appliyed Filter', async () => {
+        await browser.pause(1000)
+        await customer_fn.ClearFilter()
+    });
+
     it('should Apply a Filter using Country', async () => {
         await browser.pause(2000)
         await customer_fn.FilterSetValue(customer_path.country, customerip.country, customer_path.ApplyBtn)

@@ -1,6 +1,7 @@
+const path = require('path');
+
 let today =  new Date().toISOString().replace(/\/|-|:|/g,'');
 function Customip(){
-    const path = require('path');
     this.customUrl="/accounts/landing"
     this.TaxId="TH123"
     this.BuType="Dealer"
@@ -9,8 +10,9 @@ function Customip(){
     this.Curr1="Usd"
     this.Name="sam"
     this.Name1="Ram"
-    this.MobNo="852677"
-    this.MobNo1="12344"
+    this.countrycode="+91"
+    this.MobNo="8526779823"
+    this.MobNo1="9123449832"
     this.mail1="testing"+today+"@gmail.com"
     this.mail2="testers"+today+"@gamil.com"
     this.mail="pree"+today+"@gmail.com"
@@ -72,9 +74,11 @@ function Customip(){
     this.MapedDeleAlert="Delete the Contacts other than default email user, before deleting company"
     this.errBusinessType="Business type is required"
     this.errCurrency="Currency is required"
-    this.comUpdateAlert="Address saved successfully"
+    this.compAddressAlert='Address saved successfully'
+    this.comUpdateAlert="Company updated successfully"
     this.ActiveText="Active"
     this.ProtalAcessText="Yes"
+    this.deactivateText="Deactivated"
     this.CusNameText="Apptino"
     this.cityText="chennai"
     this.ErpCodeTxt="C102780"

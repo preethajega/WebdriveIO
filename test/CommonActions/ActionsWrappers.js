@@ -48,6 +48,7 @@ checkVisibleClickableMove = async (ele) => {
     await ele.scrollIntoView();
     await ele.click();
     await ele.clearValue();
+    await browser.pause(2000);
     await ele.setValue(value);
     await browser.pause(1000);
     await ele.keys("\uE015");

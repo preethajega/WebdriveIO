@@ -116,6 +116,7 @@ class Branch extends Page{
         return super.pathByXpath('//div[contains(@class,"MuiDialogA")]/button[1]')
     }
     get ConformDeleteBtn(){
+        // return super.pathByXpath('//button[@aria-label="Delete"]')
         return super.pathByXpath('//div[contains(@class,"MuiDialogA")]/button[2]')
     }
     get errBranchName(){

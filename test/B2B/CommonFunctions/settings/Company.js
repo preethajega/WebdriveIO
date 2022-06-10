@@ -18,6 +18,12 @@ UploadLogo = async(btn) =>{
     await browser.pause(2000);  
     await actionWrapper.Click(btn);
 }
+UploadLogo1 = async(btn) =>{
+  await browser.pause(2000);    
+  await attchmentUpload.upload(path.logoupload1,compIp.uploadimg)
+  await browser.pause(2000);  
+  await actionWrapper.Click(btn);
+}
 Updatevalue = async(ele,input,btn,snakpath,snakip) =>{
     await actionWrapper.clearAndsetValue(ele,input)
     await actionWrapper.Click(btn);

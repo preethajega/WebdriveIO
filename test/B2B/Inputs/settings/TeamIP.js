@@ -5,7 +5,7 @@ function Teamip(){
     this.name="zen"
     this.code="ECP123"
     this.code1="PS123"
-    this.phNum="866732881"
+    this.phNum="8667328810"
     this.email="preetha"+today+"@gmail.com"
     this.email1="demo1"+today+"@gmail.com"
     this.email2="preeyhas"+today+"@gmail.com"
