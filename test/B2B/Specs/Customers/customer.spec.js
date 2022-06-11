@@ -31,6 +31,7 @@ describe('Customer page', () => {
     /* ****************** validation about without default mail in customers ******************* */
 
     it('should create user without Default user with Cancel', async () => {
+        await customer_fn.ClearFilter()
         await customer_fn.AddCustomer(branchpath.SearchCompname, Branchip.searchcompname1, customer_path.BranchName, Branchip.BranchName,
             customer_path.TaxNum, customerip.TaxId, customer_path.BusinessType, customerip.BuType, customer_path.Currency, customerip.Curr)
         await customer_fn.snakbar(branchpath.CancelBtn, common.snackbar, customerip.cusSaveAlert)
@@ -73,7 +74,7 @@ describe('Customer page', () => {
         await custom_fn.open();
         await custom_fn.Status(custom_path.BranchReq, custom_path.AddressReq, custom_path.LocalityReq, custom_path.CityReq, custom_path.DistrReq, custom_path.StateReq,
             custom_path.PincodeReq, custom_path.CountryReq, custom_path.PrimContactNoReq, custom_path.ContactNoReq, custom_path.TaxReq)
-        await custom_fn.snakBarValid(custom_path.SavelBtn)
+        await custom_fn.customBtnValidation(custom_path.SavelBtn)
         await customer_fn.open();
     });
     it('should validate a Branch Name field', async () => {
@@ -114,7 +115,7 @@ describe('Customer page', () => {
         await custom_fn.open();
         await custom_fn.Status(custom_path.BranchOpt, custom_path.AddressOpt, custom_path.LocalityOpt, custom_path.CityOpt, custom_path.DistrOpt, custom_path.StateOpt,
             custom_path.PincodeOpt, custom_path.CountryOpt, custom_path.PrimContactNoOpt, custom_path.ContactNoOpt, custom_path.TaxOpt)
-        await custom_fn.snakBarValid(custom_path.SavelBtn)
+        await custom_fn.customBtnValidation(custom_path.SavelBtn)
         await customer_fn.open();
     });
 
@@ -122,7 +123,7 @@ describe('Customer page', () => {
 
     it('should change the Branch Label Text with save', async () => {
         await custom_fn.open();
-        await actionsWrappers.clickAndSetvalue(custom_path.BranchLabel, customip.branch)
+        await actionsWrappers.clearAndsetValue(custom_path.BranchLabel, customip.branch)
         await custom_fn.snakBarValid(custom_path.SavelBtn)
         await customer_fn.open();
         await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.BranchText, customip.branchText)
@@ -131,7 +132,7 @@ describe('Customer page', () => {
     });
     it('should change the Address Line Label Text with save', async () => {
         await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.AddressLabel, customip.address)
+        await actionsWrappers.clearAndsetValue(custom_path.AddressLabel, customip.address)
         await custom_fn.snakBarValid(custom_path.SavelBtn)
         await customer_fn.open();
         await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.AddressText, customip.addressText)
@@ -140,7 +141,7 @@ describe('Customer page', () => {
     });
     it('should change the Locality Label Text with save', async () => {
         await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.LocalityLabel, customip.locality)
+        await actionsWrappers.clearAndsetValue(custom_path.LocalityLabel, customip.locality)
         await custom_fn.snakBarValid(custom_path.SavelBtn)
         await customer_fn.open();
         await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.LocalityText, customip.localityText)
@@ -149,7 +150,7 @@ describe('Customer page', () => {
     });
     it('should change the city Label Text with save', async () => {
         await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.CityLabel, customip.city)
+        await actionsWrappers.clearAndsetValue(custom_path.CityLabel, customip.city)
         await custom_fn.snakBarValid(custom_path.SavelBtn)
         await customer_fn.open();
         await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.CityText, customip.cityText)
@@ -158,7 +159,7 @@ describe('Customer page', () => {
     });
     it('should change the District Label Text with save', async () => {
         await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.DistrLabel, customip.district)
+        await actionsWrappers.clearAndsetValue(custom_path.DistrLabel, customip.district)
         await custom_fn.snakBarValid(custom_path.SavelBtn)
         await customer_fn.open();
         await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.DistrictText, customip.districtText)
@@ -167,7 +168,7 @@ describe('Customer page', () => {
     });
     it('should change the State Label Text with save', async () => {
         await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.StateLabel, customip.state)
+        await actionsWrappers.clearAndsetValue(custom_path.StateLabel, customip.state)
         await custom_fn.snakBarValid(custom_path.SavelBtn)
         await customer_fn.open();
         await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.StateText, customip.stateText)
@@ -176,7 +177,7 @@ describe('Customer page', () => {
     });
     it('should change the Pincode Label Text with save', async () => {
         await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.PincodeLabel, customip.pincode)
+        await actionsWrappers.clearAndsetValue(custom_path.PincodeLabel, customip.pincode)
         await custom_fn.snakBarValid(custom_path.SavelBtn)
         await customer_fn.open();
         await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.PincodeText, customip.pincodeText)
@@ -185,7 +186,7 @@ describe('Customer page', () => {
     });
     it('should change the Country Label Text with save', async () => {
         await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.CountryLabel, customip.country)
+        await actionsWrappers.clearAndsetValue(custom_path.CountryLabel, customip.country)
         await custom_fn.snakBarValid(custom_path.SavelBtn)
         await customer_fn.open();
         await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.CountryText, customip.countryText)
@@ -194,7 +195,7 @@ describe('Customer page', () => {
     });
     it('should change the Primary Contact Label Text with save', async () => {
         await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.PrimContactNoLabel, customip.primaryContact)
+        await actionsWrappers.clearAndsetValue(custom_path.PrimContactNoLabel, customip.primaryContact)
         await custom_fn.snakBarValid(custom_path.SavelBtn)
         await customer_fn.open();
         await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.PrimaryContactText, customip.primaryContactText)
@@ -203,7 +204,7 @@ describe('Customer page', () => {
     });
     it('should change the Contact No Label Text with save', async () => {
         await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.ContactNoLabel, customip.contactNo)
+        await actionsWrappers.clearAndsetValue(custom_path.ContactNoLabel, customip.contactNo)
         await custom_fn.snakBarValid(custom_path.SavelBtn)
         await customer_fn.open();
         await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.ContactNoText, customip.contactNoText)
@@ -212,7 +213,7 @@ describe('Customer page', () => {
     });
     it('should change the Tax Label Text with save', async () => {
         await browser.pause(2000)
-        await actionsWrappers.clickAndSetvalue(custom_path.TaxLabel, customip.tax)
+        await actionsWrappers.clearAndsetValue(custom_path.TaxLabel, customip.tax)
         await custom_fn.snakBarValid(custom_path.SavelBtn)
         await customer_fn.open();
         await customer_fn.labelCheck(customer_path.AddCustomer, custom_path.TaxText, customip.taxText)

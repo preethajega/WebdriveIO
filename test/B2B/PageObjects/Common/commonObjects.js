@@ -19,6 +19,9 @@ get close(){
 get close1(){
     return super.pathByXpath('//button[@aria-label="Close"]');
 }
+get closeCardQuote(){
+    return super.pathByXpath('//button[@aria-label="close"]');
+}
 get submit(){
     return super.pathById('loadingButton');
 }

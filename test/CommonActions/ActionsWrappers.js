@@ -271,7 +271,17 @@ navigateTo= async(Url)=>{
     await ele.waitForDisplayed(3000);
     await ele.keys("\uE003");
   }
-
+  //clear the value & set the new value
+  clearAndsetValue1=async(ele,value)=>{
+    await ele.waitForDisplayed(2000);
+    await ele.scrollIntoView();
+    await ele.click();
+    await ele.clearValue();
+    await browser.pause(2000);
+    await ele.setValue(value);
+    await browser.pause(1000);
+  }
+  
   //clear the value & set the new value else enter the new value
   clearAndsetValue = async (ele, inputValue) => {
     await ele.waitForDisplayed(4000);

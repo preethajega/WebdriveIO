@@ -45,18 +45,17 @@ const OrderFilterPath = require("../../../../PageObjects/SalesModule/summarypage
 const OrderFIlter_fn = require("../../../../CommonFunctions/salesModule/SalesCards/OrderFilterCard");
 const OrderFIlterIp = require("../../../../Inputs/salesModule/summarypage/OrderFilterCardIp");
 const QuoteBTnsIp = require("../../../../Inputs/salesModule/summarypage/QuoteBTnsIp");
-const { logout } = require("../../../../PageObjects/logout.page");
 
 
 
 describe("cart Page", () => {
 
 
-    //  it("Should allow to access login ", async () => {
-    //     await LoginPage.open();
-    //     await LoginPage.login(B2B_loginIp.OwnerEmail, B2B_loginIp.OwnerPassword);
-    //     await actionsWrappers.urlValidation("/dev3.myapptino.com/");
-    // })
+    it("Should allow to access login ", async () => {
+        await LoginPage.open();
+        await LoginPage.login(B2B_loginIp.OwnerEmail, B2B_loginIp.OwnerPassword);
+        await actionsWrappers.urlValidation("/dev3.myapptino.com/");
+    })
     // it("cart to summary page ", async () => {
     //     await browser.refresh()
     //     await cart_fn.ClickAndclearCart(cart_path.cartIcon);
@@ -119,53 +118,88 @@ describe("cart Page", () => {
     //     await Quote_fn.UpdateQuoteName(QuoteBtnPath.SelectfirstData,QuoteBtnPath.QuoteOrderNameEditIcon,QuoteBtnPath.QuoteOrderNameInput,
     //       QuoteFilterIp.QuoteNameOrginal,QuoteBtnPath.QuoteOrderConfyesBtn)
     //   });
-      it('should create RFQ as a buyer then as a seller it will review the RFQ quote',async () => {
-        await LoginPage.open();
-        await LoginPage.login(B2B_loginIp.Buyer3Email, B2B_loginIp.Buyer3Password);
-        await actionsWrappers.urlValidation("/dev3.myapptino.com/");
-        await cart_fn.ClickAndclearCart(cart_path.cartIcon);
-        await browser.pause(4000)
-        await cart_fn.selectProducts(CartIp.itemName);
-        await browser.pause(4000)
-        await assert.strictEqual(
-        await common.snackbar.getText(), CartIp.cartAlert);
-        await actionsWrappers.Click(cart_path.createQuote)
-        await EndCustomer_fn.RequiredDateFieldBuyer(QuoteBtnPath.BuyerReqForQuoteBtn,
-            EndCustomer_path.RequiredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath,)
-        await browser.pause(5000)
-        await actionsWrappers.Click(QuoteBtnPath.BuyerReqForQuoteBtn)
-        await Quote_fn.createQuote(QuoteBtnPath.CreateQuoteName,QuoteIp.RfqQuoteName,QuoteBtnPath.ConfBtn)
-        await browser.pause(9000)
-        await LogOutPage.logout(LogOutPage.logouticon,LogOutPage.logoutBtn,common.snackbar,
-        B2B_loginIp.logoutAlertMsg)
-        await browser.pause(5000)
-        await LoginPage.open();
-        await LoginPage.login(B2B_loginIp.OwnerEmail, B2B_loginIp.OwnerPassword);
-        await actionsWrappers.urlValidation("/dev3.myapptino.com/");
+    //   it('should create RFQ as a buyer then as a seller it will review the RFQ quote',async () => {
+    //     await LoginPage.open();
+    //     await LoginPage.login(B2B_loginIp.Buyer3Email, B2B_loginIp.Buyer3Password);
+    //     await actionsWrappers.urlValidation("/dev3.myapptino.com/");
+    //     await cart_fn.ClickAndclearCart(cart_path.cartIcon);
+    //     await browser.pause(4000)
+    //     await cart_fn.selectProducts(CartIp.itemName);
+    //     await browser.pause(4000)
+    //     await assert.strictEqual(
+    //     await common.snackbar.getText(), CartIp.cartAlert);
+    //     await actionsWrappers.Click(cart_path.createQuote)
+    //     await EndCustomer_fn.RequiredDateFieldBuyer(QuoteBtnPath.BuyerReqForQuoteBtn,
+    //         EndCustomer_path.RequiredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath)
+    //     await browser.pause(5000)
+    //     await actionsWrappers.Click(QuoteBtnPath.BuyerReqForQuoteBtn)
+    //     await Quote_fn.createQuote(QuoteBtnPath.CreateQuoteName,QuoteIp.RfqQuoteName,QuoteBtnPath.ConfBtn)
+    //     await browser.pause(9000)
+    //     await LogOutPage.logout(LogOutPage.logouticon,LogOutPage.logoutBtn,common.snackbar,
+    //     B2B_loginIp.logoutAlertMsg)
+    //     await browser.pause(5000)
+    //     await LoginPage.open();
+    //     await LoginPage.login(B2B_loginIp.OwnerEmail, B2B_loginIp.OwnerPassword);
+    //     await actionsWrappers.urlValidation("/dev3.myapptino.com/");
+    //     await Quote_fn.open()
+    //     await browser.pause(5000)
+    //     await quotefilter_fn.AddFilter1(QuotefilterPath.AllFilterTab,QuotefilterPath.quoteName,
+    //     QuoteFilterIp.RfqQname,QuotefilterPath.ApplyBtn)
+    //     await browser.pause(5000)
+    //     await Quote_fn.RespondReviewQuote(QuoteBtnPath.SelectfirstData,SidNavQuote_path.RespondBtn,QuoteBtnPath.RequestApproval,
+    //       QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn,
+    //   SidNavQuote_path.SubmitReviewBtn,QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn)
+    //   await actionsWrappers.Click(common.close)
+    //   });
+    //   it('should review the Quote as a seller',async () => {
+    //   await Quote_fn.open()
+    //   await browser.pause(5000)
+    //   await quotefilter_fn.MultipleFilter(QuotefilterPath.AllFilterTab,QuotefilterPath.quoteName,QuoteFilterIp.RfqQname,
+    //       QuotefilterPath.QuoteStatus,QuoteFilterIp.QuoteStatus8,QuotefilterPath.ApplyBtn)
+    //   await Quote_fn.RespondReviewQuote(QuoteBtnPath.SelectfirstData,SidNavQuote_path.ReviewBtn,SidNavQuote_path.SubmitReviewBtn,
+    //       QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn,
+    //       SidNavQuote_path.SubmitReviewBtn,QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn)
+    // await actionsWrappers.Click(common.closeCardQuote)
+    // await quotefilter_fn.ClearFilter(QuotefilterPath.AllFilterTab,QuotefilterPath.ClearAllBtn,QuotefilterPath.ApplyBtn)
+
+    //   });
+    //   it('should sumbit the Approved quote to Buyer ',async () => {
+    //     await Quote_fn.open()
+    //     await browser.pause(5000)
+    //     await quotefilter_fn.AddFilter(QuotefilterPath.AllFilterTab,QuotefilterPath.QuoteStatus,QuoteFilterIp.QuoteStatus9)
+    //     await Quote_fn.sumbitQuoteToCus(QuoteBtnPath.SelectfirstData,EndCustomer_path.RequiredDateIcon,
+    //         EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath,SidNavQuote_path.ConfYesBtn)
+    //     await actionsWrappers.Click(common.closeCardQuote)
+    //     await quotefilter_fn.ClearFilter(QuotefilterPath.AllFilterTab,QuotefilterPath.ClearAllBtn,QuotefilterPath.ApplyBtn)
+    //   });
+
+    it('should Clone the latest version of quote', async () => {
         await Quote_fn.open()
-        await browser.pause(5000)
-        await quotefilter_fn.AddFilter1(QuotefilterPath.AllFilterTab,QuotefilterPath.quoteName,
-        QuoteFilterIp.RfqQname,QuotefilterPath.ApplyBtn)
-        await browser.pause(5000)
-        await Quote_fn.RespondReviewQuote(QuoteBtnPath.SelectfirstData,SidNavQuote_path.RespondBtn,QuoteBtnPath.RequestApproval,
-          QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn,
-      SidNavQuote_path.SubmitReviewBtn,QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn)
-      await actionsWrappers.Click(common.close)
-      });
-      it('should review the Quote as a seller',async () => {
-      await Quote_fn.open()
-      await browser.pause(5000)
-      await quotefilter_fn.MultipleFilter(QuotefilterPath.AllFilterTab,QuotefilterPath.quoteName,QuoteFilterIp.RfqQname,
-          QuotefilterPath.QuoteStatus,QuoteFilterIp.QuoteStatus8,QuotefilterPath.ApplyBtn)
-      await Quote_fn.RespondReviewQuote(QuoteBtnPath.SelectfirstData,SidNavQuote_path.ReviewBtn,SidNavQuote_path.SubmitReviewBtn,
-          QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn,
-          SidNavQuote_path.SubmitReviewBtn,QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn)
-      });
+        await quotefilter_fn.AddFilter1(QuotefilterPath.AllFilterTab, QuotefilterPath.quoteName,
+            QuoteFilterIp.RfqQname, QuotefilterPath.ApplyBtn)
+        await actionsWrappers.Click(QuoteBtnPath.SelectfirstData)
+        await Quote_fn.cloneQuoteseller(SidNavQuote_path.CreateOrREqApproveBtn, QuoteIp.CreateQuoteBtnTxt, QuoteBtnPath.CreateQuoteBtn, QuoteBtnPath.RequestApproval,
+            EndCustomer_path.RequiredDateIcon, EndCustomer_path.NextMonthBtn, EndCustomer_path.DatePath, approval_path.Tag, TagIp.tag, approval_path.Tag,
+            SidNavQuote_path.CreateOrREqApproveBtn, QuoteIp.CreateQuoteBtnTxt, QuoteBtnPath.CreateQuoteBtn, QuoteBtnPath.RequestApproval,
+            QuoteBtnPath.QuoteConfWindow, QuoteIp.CreateQuoteText, QuoteBtnPath.CreateQuoteName, QuoteIp.QuoteName, QuoteBtnPath.ConfBtn,
+            QuoteBtnPath.ReqApprovalQuoteName, QuoteIp.QuoteName, QuoteBtnPath.Comments, QuoteIp.comments, QuoteBtnPath.ConfBtn)
+        await browser.pause(2000)
+        await quotefilter_fn.ClearFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.ClearAllBtn, QuotefilterPath.ApplyBtn)
+
+    });
+    it('should cancel the created cloned Quote', async () => {
+        await browser.pause(2000)
+        await Quote_fn.cancelQuote(QuoteBtnPath.SelectfirstData, SidNavQuote_path.MoreOptionBtn, SidNavQuote_path.CancelQuoteBtn,
+            SidNavQuote_path.CancelMsgBox, SidnavIp.cancelMsg1, QuoteBtnPath.ConfBtn)
+        await actionsWrappers.Click(common.closeCardQuote)
+
+    });
+
 
     // it('should logged out from the application',async () => {
     //     await LogOutPage.logout(LogOutPage.logouticon,LogOutPage.logoutBtn,common.snackbar,
     //         B2B_loginIp.logoutAlertMsg)
-        
+
     // });
 
 });

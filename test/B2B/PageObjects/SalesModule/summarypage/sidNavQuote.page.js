@@ -2,6 +2,10 @@ const Page = require("../../../PageObjects/page");
 
 class SidNavPage extends Page{
 
+    get CreateOrREqApproveBtn(){
+        return super.pathByXpath('//div[contains(@class,"css-15vlb5b")]//button[2]')
+    }
+
     get RespondBtn(){
         return super.pathByXpath('//button[@aria-label="Respond"]')
     }

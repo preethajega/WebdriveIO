@@ -5,6 +5,7 @@ function QuoteIP(){
     this.QuotelandingPageUrl="/Quotes/Quote-landing"
     this.ReqApprovalBtnTxt="REQUEST APPROVAL"
     this.CreateQuoteBtnTxt="CREATE QUOTE"
+    this.CreateQuoteBtnTxt1="Create Quote"
     this.RfqQuoteName="Buyer RFQ"
     this.QuoteName="Automation"+today+"Quote"
     this.EditQuoteName ="Quote Name"+today+"Edited"
