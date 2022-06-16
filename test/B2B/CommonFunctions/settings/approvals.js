@@ -13,10 +13,19 @@ class Approval extends Page {
     async open() {
         super.open(approvip.approvUrl); 
     }
-    CreateApprGrp = async(btn) =>{
+    CreateApprGrp = async(approvip1,btn) =>{
         await actionWrapper.Click(path.CreateApprBtn)
-        await actionWrapper.clickAndSetvalue(path.ApprName,approvip.approvName)
+        await actionWrapper.clickAndSetvalue(path.ApprName,approvip1)
         await actionWrapper.Click(btn)
+        await browser.pause(3000)
+        await actionWrapper.snackBarValidate(common.snackbar,approvip.saveAlert)
+    }
+    CreateApprGrp1 = async(approvip1,btn) =>{
+        await actionWrapper.Click(path.CreateApprBtn)
+        await actionWrapper.clickAndSetvalue(path.ApprName,approvip1)
+        await actionWrapper.Click(path.DiscountBtn)
+        await actionWrapper.Click(btn)
+        await browser.pause(3000)
         await actionWrapper.snackBarValidate(common.snackbar,approvip.saveAlert)
     }
     ApproverGrpfieldValid = async()=>{
@@ -41,17 +50,17 @@ class Approval extends Page {
         await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(snakpath,alertip)
     }
-    AddUserGrp = async(btn) =>{
+    AddUserGrp = async(grpName,approver1,approver2,btn) =>{
         await actionWrapper.Click(path.DeleteAprTab)
         await actionWrapper.Click(path.AddGrpbtn)
         await actionWrapper.Click(path.ReviewerBtn)
         await actionWrapper.Click(path.ApproverBtn)
         await browser.pause(1000)
         await actionWrapper.clickSetvalueAndSelectoption(path.OptionalAppro,approvip.optionalAppr)
-        await actionWrapper.clickAndSetvalue(path.GrpName,approvip.grpName)
+        await actionWrapper.clickAndSetvalue(path.GrpName,grpName)
         await actionWrapper.clickSetvalueAndSelectoption(path.Precedence,approvip.precedence)
-        await actionWrapper.clickSetvalueAndSelectoption(path.Approvers,approvip.approver1)
-        await actionWrapper.clickSetvalueAndSelectoption(path.DefaultAppr,approvip.approver1)
+        await actionWrapper.clickSetvalueAndSelectoption(path.Approvers,approver1)
+        await actionWrapper.clickSetvalueAndSelectoption(path.DefaultAppr,approver2)
         await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(common.snackbar,approvip.changalert)
     }
@@ -68,11 +77,11 @@ class Approval extends Page {
         await actionWrapper.Click(path.ConfcancelBtn)
         await actionWrapper.snackBarValidate(common.snackbar,approvip.saveAlert)
     }
-    AddRange = async(btn)=>{
+    AddRange = async(endRange,rangeip,btn)=>{
         await actionWrapper.Click(path.RangTab)
         await actionWrapper.Click(path.AddRangebtn)
-        await actionWrapper.clearAndsetValue(path.Endrange,approvip.endRange)
-        await actionWrapper.clickSetvalueAndSelectoption(path.ApprGrpName)
+        await actionWrapper.clearAndsetValue(path.Endrange,endRange)
+        await actionWrapper.clickSetvalueAndSelectoption(path.ApprGrpName,rangeip)
         await actionWrapper.Click(btn)
     }
     DeleteRange = async(btn)=>{

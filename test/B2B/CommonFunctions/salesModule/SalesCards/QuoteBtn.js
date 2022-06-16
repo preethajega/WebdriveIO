@@ -160,6 +160,7 @@ class QuoteBtnCard extends Page {
 
     }
 
+
     /************* BUYER SIDE METHOD FOR SIDNAVE PAGE ************* */
     createQuote1 = async (quoteName, quoteIp, ConfBtn) => {
         await actionWrapper.clearAndsetValue(quoteName, quoteIp)

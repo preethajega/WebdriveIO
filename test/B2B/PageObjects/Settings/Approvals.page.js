@@ -39,6 +39,9 @@ class Approval extends Page{
         return super.pathByXpath('(//ul[contains(@class,"MuiList-root MuiList-dense")]/div/div)[last()]')
         //return super.pathByXpath('(//div[@class="scrollbar-container ps"]/div)[last()]')
     }
+    get DiscountBtn(){
+        return super.pathById('isDiscount')
+    }
  //Add group card
     get GrpTab(){
         return super.pathById('wrapped-tab-0')

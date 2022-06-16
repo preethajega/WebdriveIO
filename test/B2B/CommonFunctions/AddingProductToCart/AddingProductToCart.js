@@ -192,11 +192,15 @@ commonEnquiryFields = async(ContactNo,Attchment,alertmsg)  =>{
     await browser.pause(2000)
   }  
   /* update Quanty alert */
-  UpdateQuantyAlert = async(quantityIP1)=>{
-    if (await common.snackbar === CartIP.qtyAlert) {
+  UpdateQuantyAlert = async(quantityIP1,createquotebtn)=>{
+    if ((await common.snackbar.isDisplayed()) === true) {
+    if ((await common.snackbar.getText()) === CartIP.qtyAlert) {
       await actionWrapper.clearAndsetValue(path.quantity,quantityIP1)
+      await browser.pause(2000)
+      await actionWrapper.Click(createquotebtn)
     }
   }
+}
 }
 
 

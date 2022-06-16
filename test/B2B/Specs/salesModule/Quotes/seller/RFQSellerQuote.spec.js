@@ -45,6 +45,9 @@ const OrderFilterPath = require("../../../../PageObjects/SalesModule/summarypage
 const OrderFIlter_fn = require("../../../../CommonFunctions/salesModule/SalesCards/OrderFilterCard");
 const OrderFIlterIp = require("../../../../Inputs/salesModule/summarypage/OrderFilterCardIp");
 const QuoteBTnsIp = require("../../../../Inputs/salesModule/summarypage/QuoteBTnsIp");
+const approvals_path = require("../../../../PageObjects/Settings/Approvals.page");
+const approvals_fn = require("../../../../CommonFunctions/settings/approvals")
+var approvalsip = require("../../../../Inputs/settings/AprovalIP");
 
 
 
@@ -173,25 +176,111 @@ describe("cart Page", () => {
     //     await quotefilter_fn.ClearFilter(QuotefilterPath.AllFilterTab,QuotefilterPath.ClearAllBtn,QuotefilterPath.ApplyBtn)
     //   });
 
-    it('should Clone the latest version of quote', async () => {
-        await Quote_fn.open()
-        await quotefilter_fn.AddFilter1(QuotefilterPath.AllFilterTab, QuotefilterPath.quoteName,
-            QuoteFilterIp.RfqQname, QuotefilterPath.ApplyBtn)
-        await actionsWrappers.Click(QuoteBtnPath.SelectfirstData)
-        await Quote_fn.cloneQuoteseller(SidNavQuote_path.CreateOrREqApproveBtn, QuoteIp.CreateQuoteBtnTxt, QuoteBtnPath.CreateQuoteBtn, QuoteBtnPath.RequestApproval,
-            EndCustomer_path.RequiredDateIcon, EndCustomer_path.NextMonthBtn, EndCustomer_path.DatePath, approval_path.Tag, TagIp.tag, approval_path.Tag,
-            SidNavQuote_path.CreateOrREqApproveBtn, QuoteIp.CreateQuoteBtnTxt, QuoteBtnPath.CreateQuoteBtn, QuoteBtnPath.RequestApproval,
-            QuoteBtnPath.QuoteConfWindow, QuoteIp.CreateQuoteText, QuoteBtnPath.CreateQuoteName, QuoteIp.QuoteName, QuoteBtnPath.ConfBtn,
-            QuoteBtnPath.ReqApprovalQuoteName, QuoteIp.QuoteName, QuoteBtnPath.Comments, QuoteIp.comments, QuoteBtnPath.ConfBtn)
-        await browser.pause(2000)
-        await quotefilter_fn.ClearFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.ClearAllBtn, QuotefilterPath.ApplyBtn)
+    // it('should Clone the latest version of quote', async () => {
+    //     await Quote_fn.open() /* its should removed before all the it testcase is run  */
+    //     await quotefilter_fn.AddFilter1(QuotefilterPath.AllFilterTab, QuotefilterPath.quoteName,
+    //         QuoteFilterIp.RfqQname, QuotefilterPath.ApplyBtn)
+    //     await actionsWrappers.Click(QuoteBtnPath.SelectfirstData)
+    //     await Quote_fn.cloneQuoteseller(SidNavQuote_path.CreateOrREqApproveBtn, QuoteIp.CreateQuoteBtnTxt, QuoteBtnPath.CreateQuoteBtn, QuoteBtnPath.RequestApproval,
+    //         EndCustomer_path.RequiredDateIcon, EndCustomer_path.NextMonthBtn, EndCustomer_path.DatePath, approval_path.Tag, TagIp.tag, approval_path.Tag,
+    //         SidNavQuote_path.CreateOrREqApproveBtn, QuoteIp.CreateQuoteBtnTxt, QuoteBtnPath.CreateQuoteBtn, QuoteBtnPath.RequestApproval,
+    //         QuoteBtnPath.QuoteConfWindow, QuoteIp.CreateQuoteText, QuoteBtnPath.CreateQuoteName, QuoteIp.QuoteName, QuoteBtnPath.ConfBtn,
+    //         QuoteBtnPath.ReqApprovalQuoteName, QuoteIp.QuoteName, QuoteBtnPath.Comments, QuoteIp.comments, QuoteBtnPath.ConfBtn)
+    //     await browser.pause(2000)
+    //     await quotefilter_fn.ClearFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.ClearAllBtn, QuotefilterPath.ApplyBtn)
 
-    });
-    it('should cancel the created cloned Quote', async () => {
+    // });
+    // it('should cancel the created cloned Quote', async () => {
+    //     await browser.pause(2000)
+    //     await Quote_fn.cancelQuote(QuoteBtnPath.SelectfirstData, SidNavQuote_path.MoreOptionBtn, SidNavQuote_path.CancelQuoteBtn,
+    //         SidNavQuote_path.CancelMsgBox, SidnavIp.cancelMsg1, QuoteBtnPath.ConfBtn)
+    //     await actionsWrappers.Click(common.closeCardQuote)
+
+    // });
+    // it('should clone the order lost quote',async () => {
+    //     await Quote_fn.open() /* its should removed before all the it testcase is run  */
+    //     await quotefilter_fn.AddFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.QuoteStatus,QuoteFilterIp.QuoteStatus6)
+    //     await actionsWrappers.Click(QuoteBtnPath.SelectfirstData)
+    //     await Quote_fn.cloneQuoteseller(SidNavQuote_path.CreateOrREqApproveBtn, QuoteIp.CreateQuoteBtnTxt, QuoteBtnPath.CreateQuoteBtn, QuoteBtnPath.RequestApproval,
+    //         EndCustomer_path.RequiredDateIcon, EndCustomer_path.NextMonthBtn, EndCustomer_path.DatePath, approval_path.Tag, TagIp.tag, approval_path.Tag,
+    //         SidNavQuote_path.CreateOrREqApproveBtn, QuoteIp.CreateQuoteBtnTxt, QuoteBtnPath.CreateQuoteBtn, QuoteBtnPath.RequestApproval,
+    //         QuoteBtnPath.QuoteConfWindow, QuoteIp.CreateQuoteText, QuoteBtnPath.CreateQuoteName, QuoteIp.QuoteName, QuoteBtnPath.ConfBtn,
+    //         QuoteBtnPath.ReqApprovalQuoteName, QuoteIp.QuoteName, QuoteBtnPath.Comments, QuoteIp.comments, QuoteBtnPath.ConfBtn)
+    //     await browser.pause(2000)
+    //     await quotefilter_fn.ClearFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.ClearAllBtn, QuotefilterPath.ApplyBtn)   
+    // });
+
+    // it('should create SPR Quote as a buyer then as a seller it will review the RFQ quote', async () => {
+    //     await LoginPage.open();
+    //     await LoginPage.login(B2B_loginIp.Buyer3Email, B2B_loginIp.Buyer3Password);
+    //     await actionsWrappers.urlValidation("/dev3.myapptino.com/");
+    //     await cart_fn.ClickAndclearCart(cart_path.cartIcon);
+    //     await browser.pause(4000)
+    //     await cart_fn.selectProducts(CartIp.itemName);
+    //     await browser.pause(4000)
+    //     await assert.strictEqual(
+    //         await common.snackbar.getText(), CartIp.cartAlert);
+    //     await cart_fn.SerchProdUpdateQuanty(CartIp.itemName1, CartIp.ProdQty)
+    //     await actionsWrappers.Click(cart_path.createQuote)
+    //     await cart_fn.UpdateQuantyAlert(CartIp.ProdQty1, cart_path.createQuote)
+    //     await browser.pause(3000)
+    //     await ApplyDiscount_fn.ApplyTargetPriceOrDisc(ApplyDiscount_path.TargetDiscount, ApplyDiscount_path.TargetDiscount,
+    //         ApplyDiscountIp.ByDiscount)
+    //     await EndCustomer_fn.RequiredDateFieldBuyer(QuoteBtnPath.BuyerReqForQuoteBtn,
+    //         EndCustomer_path.RequiredDateIcon, EndCustomer_path.NextMonthBtn, EndCustomer_path.DatePath)
+    //     await browser.pause(5000)
+    //     await EndCustomer_fn.BuyerSPRFieldValid(QuoteBtnPath.BuyerReqForQuoteBtn, EndCustomer_path.BuyerEndCusRefNum, EndCustomerIp.EndCusRefNum,
+    //         EndCustomer_path.EndCusName, EndCustomerIp.EndCusName, EndCustomer_path.ProjectName, EndCustomerIp.EndCusProject, EndCustomer_path.BuyerEndCusCompitetor,
+    //         EndCustomerIp.EndCusCompititers, EndCustomer_path.PriceJustification, EndCustomerIp.EndCusPriceJustification)
+    //     await browser.pause(3000)
+    //     await actionsWrappers.Click(QuoteBtnPath.BuyerReqForQuoteBtn)
+    //     await Quote_fn.createQuote(QuoteBtnPath.CreateQuoteName, QuoteIp.SPRQuoteName, QuoteBtnPath.ConfBtn)
+    //     await browser.pause(9000)
+    //     await LogOutPage.logout(LogOutPage.logouticon, LogOutPage.logoutBtn, common.snackbar,
+    //         B2B_loginIp.logoutAlertMsg)
+    //     await browser.pause(5000)
+    //     await LoginPage.open();
+    //     await LoginPage.login(B2B_loginIp.OwnerEmail, B2B_loginIp.OwnerPassword);
+    //     await actionsWrappers.urlValidation("/dev3.myapptino.com/");
+    //     await Quote_fn.open()
+    //     await browser.pause(5000)
+    //     await quotefilter_fn.AddFilter1(QuotefilterPath.AllFilterTab, QuotefilterPath.quoteName,
+    //         QuoteFilterIp.SPRQuoteName, QuotefilterPath.ApplyBtn)
+    //     await browser.pause(5000)
+    //     await Quote_fn.RespondReviewQuote(QuoteBtnPath.SelectfirstData, SidNavQuote_path.RespondBtn, QuoteBtnPath.RequestApproval,
+    //         QuoteBtnPath.Comments, QuoteBTnsIp.comments, QuoteBtnPath.ConfBtn,
+    //         SidNavQuote_path.SubmitReviewBtn, QuoteBtnPath.Comments, QuoteBTnsIp.comments, QuoteBtnPath.ConfBtn)
+    //     await actionsWrappers.Click(common.closeCardQuote)
+    // });
+    // it('should add aditional discount & given Tareget Discount also to the SPR Quote and Review & respond to buyer', async () => {
+    //     await browser.refresh()
+    //     await browser.pause(5000)
+    //     await quotefilter_fn.MultipleFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.quoteName, QuoteFilterIp.SPRQuoteName,
+    //         QuotefilterPath.QuoteStatus, QuoteFilterIp.QuoteStatus8, QuotefilterPath.ApplyBtn)
+    //     await Quote_fn.RespondReviewQuote(QuoteBtnPath.SelectfirstData, SidNavQuote_path.ReviewBtn, SidNavQuote_path.SubmitReviewBtn,
+    //         QuoteBtnPath.Comments, QuoteBTnsIp.comments, QuoteBtnPath.ConfBtn,
+    //         SidNavQuote_path.SubmitReviewBtn, QuoteBtnPath.Comments, QuoteBTnsIp.comments, QuoteBtnPath.ConfBtn)
+    //     await actionsWrappers.Click(common.closeCardQuote)
+    //     await browser.refresh()
+    //     await browser.pause(5000)
+    //     await quotefilter_fn.AddFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.QuoteStatus, QuoteFilterIp.QuoteStatus9)
+    //     await ApplyDiscount_fn.respondQuoteWithApplyDis(QuoteBtnPath.SelectfirstData, ApplyDiscount_path.ByDiscountBtn,ApplyDiscount_path.TargetDisSeller,ApplyDiscount_path.ApplyDisApply,
+    //         ApplyDiscount_path.ByDiscountBtn,ApplyDiscount_path.AddOnDisSeller,ApplyDiscount_path.ByDiscountInput,ApplyDiscountIp.ByDiscount,ApplyDiscount_path.ApplyDisApply,
+    //         ApplyDiscount_path.IncreaseBtn,ApplyDiscount_path.ApplyDisApply,
+    //         EndCustomer_path.RequiredDateIcon,EndCustomer_path.NextMonthBtn, EndCustomer_path.DatePath, SidNavQuote_path.ConfYesBtn)
+    //     await actionsWrappers.Click(common.closeCardQuote)
+    //     await quotefilter_fn.ClearFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.ClearAllBtn, QuotefilterPath.ApplyBtn)
+
+    // });
+
+    it('Complete approval flow with all the users available mapped in tags',async () => {
+        await approvals_fn.open();
+        await approvals_fn.CreateApprGrp1(approvalsip.approvName2,approvals_path.ConfSavelBtn)
         await browser.pause(2000)
-        await Quote_fn.cancelQuote(QuoteBtnPath.SelectfirstData, SidNavQuote_path.MoreOptionBtn, SidNavQuote_path.CancelQuoteBtn,
-            SidNavQuote_path.CancelMsgBox, SidnavIp.cancelMsg1, QuoteBtnPath.ConfBtn)
-        await actionsWrappers.Click(common.closeCardQuote)
+        await approvals_fn.AddUserGrp(approvalsip.grpName1,approvalsip.approver1,approvalsip.approver1,approvals_path.ConfSavelBtn)
+        await approvals_fn.AddUserGrp(approvalsip.grpName2,approvalsip.approver3,approvalsip.approver3,approvals_path.ConfSavelBtn)
+        await approvals_fn.AddRange(approvalsip.endRange,approvalsip.grpName1,approvals_path.ConfSavelBtn)
+        await approvals_fn.AddRange(approvalsip.endRange1,approvalsip.grpName2,approvals_path.ConfSavelBtn)
 
     });
 

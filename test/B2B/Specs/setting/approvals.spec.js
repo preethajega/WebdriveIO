@@ -18,10 +18,10 @@ describe('Approval Page', () => {
   });
  /* ***************** create Group Name card ***************************   */
   it('shoud allow a user to create a Approver Group with cancel', async () => {
-    await approval_fn.CreateApprGrp(approval_path.ConfcancelBtn)
+    await approval_fn.CreateApprGrp(approvalip.approvName,approval_path.ConfcancelBtn)
   });
   it('shoud allow a user to create a Approver Group with save', async () => {
-    await approval_fn.CreateApprGrp(approval_path.ConfSavelBtn)
+    await approval_fn.CreateApprGrp(approvalip.approvName,approval_path.ConfSavelBtn)
   });
 
   it('should validate the appprover group name field in Create Approver Card', async () => {
@@ -46,16 +46,16 @@ describe('Approval Page', () => {
   });
   it('shoud allow a user to create a Approver Group with save', async () => {
     await browser.pause(2000)
-    await approval_fn.CreateApprGrp(approval_path.ConfSavelBtn)
+    await approval_fn.CreateApprGrp(approvalip.approvName,approval_path.ConfSavelBtn)
   });
 
   /* ************** Approver User Group Card ********************************* */
   it('should create a new User group with cancel', async () => {
     await browser.refresh()
-    await approval_fn.AddUserGrp(approval_path.ConfcancelBtn)
+    await approval_fn.AddUserGrp(approvalip.grpName,approvalip.approver1,approvalip.approver2,approval_path.ConfcancelBtn)
   });
   it('should create a new User group with save', async () => {
-    await approval_fn.AddUserGrp(approval_path.ConfSavelBtn)
+    await approval_fn.AddUserGrp(approvalip.grpName,approvalip.approver1,approvalip.approver2,approval_path.ConfSavelBtn)
   });
   it('should edit the user group', async () => {
     await browser.pause(2000)
@@ -90,16 +90,16 @@ describe('Approval Page', () => {
   });
   it('should create a new User group with save', async () => {
     await browser.pause(1000)
-    await approval_fn.AddUserGrp(approval_path.ConfSavelBtn)
+    await approval_fn.AddUserGrp(approvalip.grpName,approvalip.approver1,approvalip.approver2,approval_path.ConfSavelBtn)
   });
 
   /* ************** Range Card ***************************  */    
   it('should create a new Range with cancel ', async () => {
     await actionsWrappers.Click(approval_path.DeleteAprTab)
-    await approval_fn.AddRange(approval_path.ConfcancelBtn)
+    await approval_fn.AddRange(approvalip.endRange,approvalip.grpName,approval_path.ConfcancelBtn)
   });
   it('should create a new Range with save ', async () => {
-    await approval_fn.AddRange(approval_path.ConfSavelBtn)
+    await approval_fn.AddRange(approvalip.endRange,approvalip.grpName,approval_path.ConfSavelBtn)
   });
   it('should edit the range with save', async () => {
     await approval_fn.EditRange(approval_path.ConfSavelBtn)
@@ -114,7 +114,7 @@ describe('Approval Page', () => {
     await approval_fn.DeleteRange(approval_path.ConfSavelBtn)
   });
   it('should create a new Range with save ', async () => {
-    await approval_fn.AddRange(approval_path.ConfSavelBtn)
+    await approval_fn.AddRange(approvalip.endRange,approvalip.grpName,approval_path.ConfSavelBtn)
   });
   it('should try to delete a mapped User group', async () => {
     await actionsWrappers.Click(approval_path.GrpTab)

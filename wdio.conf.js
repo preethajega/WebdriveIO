@@ -11,7 +11,7 @@ exports.config = {
         // './test/B2B/Specs/setting/appSetup.spec.js',
         // './test/B2B/Specs/setting/businessunit.spec.js',
         // './test/B2B/Specs/setting/competitors.spec.js',
-        './test/B2B/Specs/setting/customization.spec.js',
+        // './test/B2B/Specs/setting/customization.spec.js',
         // './test/B2B/Specs/setting/General.spec.js',
         // './test/B2B/Specs/setting/integrations.spec.js',
         // './test/B2B/Specs/setting/moduleAuthorization.spec.js',
@@ -23,7 +23,7 @@ exports.config = {
         // './test/B2B/Specs/setting/zone.spec.js',
         //  './test/B2B/Specs/Customers/customer.spec.js',
         //  './test/B2B/Specs/salesModule/Quotes/Buyer/RFQBuyerQuote.spec.js',
-        //  './test/B2B/Specs/salesModule/Quotes/Seller/RFQSellerQuote.spec.js'
+         './test/B2B/Specs/salesModule/Quotes/Seller/RFQSellerQuote.spec.js'
         //  './test/B2B/Specs/Cart/Cart.spec.js',
     ],
     // Patterns to exclude.
