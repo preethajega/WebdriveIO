@@ -13,6 +13,9 @@ get moreOptions() {
 get refresh(){
     return super.pathByXpath('//button[@title="Click to Refresh"]');
 }
+get Refresh(){
+    return super.pathByXpath('//button[@aria-label="refresh"]')
+}
 get close(){
     return super.pathByXpath('//button[@title="Close"]');
 }

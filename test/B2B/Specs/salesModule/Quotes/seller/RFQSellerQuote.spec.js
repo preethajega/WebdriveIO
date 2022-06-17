@@ -277,11 +277,28 @@ describe("cart Page", () => {
         await approvals_fn.open();
         await approvals_fn.CreateApprGrp1(approvalsip.approvName2,approvals_path.ConfSavelBtn)
         await browser.pause(2000)
-        await approvals_fn.AddUserGrp(approvalsip.grpName1,approvalsip.approver1,approvalsip.approver1,approvals_path.ConfSavelBtn)
-        await approvals_fn.AddUserGrp(approvalsip.grpName2,approvalsip.approver3,approvalsip.approver3,approvals_path.ConfSavelBtn)
-        await approvals_fn.AddRange(approvalsip.endRange,approvalsip.grpName1,approvals_path.ConfSavelBtn)
-        await approvals_fn.AddRange(approvalsip.endRange1,approvalsip.grpName2,approvals_path.ConfSavelBtn)
+        await approvals_fn.AddUserGrp(approvalsip.grpName1,approvalsip.approver1,approvals_path.ConfSavelBtn)
+        await approvals_fn.AddUserGrp(approvalsip.grpName2,approvalsip.approver3,approvals_path.ConfSavelBtn)
+        await approvals_fn.AddRange(approvalsip.endRange1,approvalsip.grpName1,approvals_path.ConfSavelBtn)
+        await approvals_fn.AddRange(approvalsip.endRange,approvalsip.grpName2,approvals_path.ConfSavelBtn)
+        await cart_fn.ClickAndclearCart(cart_path.cartIcon);
+        await browser.pause(4000)
+        await cart_fn.selectProducts(CartIp.itemName);
+        await browser.pause(2000)
+        await cart_fn.selectProducts(CartIp.itemName1);
+        await browser.pause(2000)
+        await cart_fn.selectProducts(CartIp.itemName2);
+        await browser.pause(2000)
+        await cart_fn.selectProducts(CartIp.itemName3);
+        await browser.pause(2000)
+        await assert.strictEqual(await common.snackbar.getText(), CartIp.cartAlert);
+        await cart_fn.carttoSummary(CartIp.BuyerName1, await cart_path.createQuote);
 
+        // await browser.pause(3000)
+        // await approvals_fn.open();
+        // await actionsWrappers.Click(common.Refresh)
+        // await actionsWrappers.Click(approvals_path.DeleteAprTab)
+        // await approvals_fn.deleteAll2()
     });
 
 

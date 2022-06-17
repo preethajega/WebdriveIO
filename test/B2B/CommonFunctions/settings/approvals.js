@@ -50,7 +50,8 @@ class Approval extends Page {
         await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(snakpath,alertip)
     }
-    AddUserGrp = async(grpName,approver1,approver2,btn) =>{
+    
+    AddUserGrp = async(grpName,approver1,btn) =>{
         await actionWrapper.Click(path.DeleteAprTab)
         await actionWrapper.Click(path.AddGrpbtn)
         await actionWrapper.Click(path.ReviewerBtn)
@@ -60,7 +61,7 @@ class Approval extends Page {
         await actionWrapper.clickAndSetvalue(path.GrpName,grpName)
         await actionWrapper.clickSetvalueAndSelectoption(path.Precedence,approvip.precedence)
         await actionWrapper.clickSetvalueAndSelectoption(path.Approvers,approver1)
-        await actionWrapper.clickSetvalueAndSelectoption(path.DefaultAppr,approver2)
+        await actionWrapper.selectDrpdownusingKeyboard(path.DefaultAppr)
         await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(common.snackbar,approvip.changalert)
     }
@@ -81,6 +82,7 @@ class Approval extends Page {
         await actionWrapper.Click(path.RangTab)
         await actionWrapper.Click(path.AddRangebtn)
         await actionWrapper.clearAndsetValue(path.Endrange,endRange)
+        await browser.pause(2000)
         await actionWrapper.clickSetvalueAndSelectoption(path.ApprGrpName,rangeip)
         await actionWrapper.Click(btn)
     }
@@ -122,6 +124,21 @@ class Approval extends Page {
         await actionWrapper.Click(path.ConfDeleBtn)
         await actionWrapper.snackBarValidate(common.snackbar,approvip.deleAlert)    
     }
+    deleteAll2 = async() =>{
+        await actionWrapper.Click(path.RangTab)
+        await actionWrapper.Click(path.DeleRannge)
+        await actionWrapper.Click(path.DeleRannge)
+        await actionWrapper.Click(path.ConfSavelBtn)
+        await actionWrapper.Click(path.GrpTab)
+        await actionWrapper.Click(path.DeleUserGrpbtn)
+        await actionWrapper.Click(path.DeleUserGrpbtn)
+        await actionWrapper.Click(path.ConfSavelBtn)
+        await actionWrapper.Click(path.MoreOptionbtn)
+        await actionWrapper.Click(path.DeleteApr)
+        await actionWrapper.Click(path.ConfDeleBtn)
+        await actionWrapper.snackBarValidate(common.snackbar,approvip.deleAlert)    
+    }
+
 
 }
 module.exports = new Approval();

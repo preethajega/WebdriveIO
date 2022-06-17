@@ -37,10 +37,9 @@ class Approval extends Page{
     }
     get DeleteAprTab(){
         return super.pathByXpath('(//ul[contains(@class,"MuiList-root MuiList-dense")]/div/div)[last()]')
-        //return super.pathByXpath('(//div[@class="scrollbar-container ps"]/div)[last()]')
     }
     get DiscountBtn(){
-        return super.pathById('isDiscount')
+        return super.pathByXpath('//div[text()="Create Group Name"]/following::div[contains(@class,"MuiListItemS")]')
     }
  //Add group card
     get GrpTab(){
@@ -54,7 +53,6 @@ class Approval extends Page{
     }
     get ReviewerBtn(){
         return super.pathByXpath("(//div[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 c')]/div[1])[last()]")
-        //return super.pathByXpath('(//*[starts-with(@id,"isReviewer")])[last()]')
     }
     get ApproverBtn(){
         return super.pathByXpath('(//*[starts-with(@class,"MuiFormControlL")])[last()]')
@@ -75,7 +73,6 @@ class Approval extends Page{
         return super.pathByXpath('(//*[starts-with(@id,"defaultApprover")])[last()]')
     }
     get DeleUserGrpbtn(){
-        //return super.pathById('removeApproverGroup')
         return super.pathByXpath('(//button[@id="removeApproverGroup"])[last()]')
     }
     get EditUserGrp(){
@@ -102,7 +99,6 @@ class Approval extends Page{
     }
     get DeleteRangebtn(){
         return super.pathById('deleteRange')
-        //return super.pathByXpath('//button[@id="deleteRange"])[last()']
     }
     get Endrange(){
         return super.pathByXpath('(//*[contains(@name,"endRange")])[last()]')
