@@ -22,7 +22,14 @@ class AddProduct {
   carttoSummary  =async (buyerName,cartButton) => {
     await actionWrapper.searchAndselectDrpdownusingKeyboard(
      buyerName,await path.selectbuyer);
-       await actionWrapper.checkVisibleClickableAndClick(cartButton);
+     await browser.pause(3000);
+     await actionWrapper.checkVisibleClickableAndClick(cartButton);
+  }
+
+  carttoSummary1 =async (buyerName,cartButton) => {
+    await actionWrapper.clickSetvalueAndSelectoption(await path.selectbuyer,buyerName);
+     await browser.pause(3000);
+     await actionWrapper.checkVisibleClickableAndClick(cartButton);
   }
 
 

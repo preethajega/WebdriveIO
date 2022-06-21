@@ -103,6 +103,9 @@ class Approval extends Page{
     get Endrange(){
         return super.pathByXpath('(//*[contains(@name,"endRange")])[last()]')
     }
+    get ApprGrpNameFirst(){
+        return super.pathByXpath('(//*[@placeholder="Search"])[1]')
+    }
     get ApprGrpName(){
         return super.pathByXpath('(//*[@placeholder="Search"])[last()]')
     }

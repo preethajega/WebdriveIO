@@ -51,7 +51,7 @@ class Approval extends Page {
         await actionWrapper.snackBarValidate(snakpath,alertip)
     }
     
-    AddUserGrp = async(grpName,approver1,btn) =>{
+    AddUserGrp = async(grpName,precedence,approver1,btn) =>{
         await actionWrapper.Click(path.DeleteAprTab)
         await actionWrapper.Click(path.AddGrpbtn)
         await actionWrapper.Click(path.ReviewerBtn)
@@ -59,7 +59,7 @@ class Approval extends Page {
         await browser.pause(1000)
         await actionWrapper.clickSetvalueAndSelectoption(path.OptionalAppro,approvip.optionalAppr)
         await actionWrapper.clickAndSetvalue(path.GrpName,grpName)
-        await actionWrapper.clickSetvalueAndSelectoption(path.Precedence,approvip.precedence)
+        await actionWrapper.clickSetvalueAndSelectoption(path.Precedence,precedence)
         await actionWrapper.clickSetvalueAndSelectoption(path.Approvers,approver1)
         await actionWrapper.selectDrpdownusingKeyboard(path.DefaultAppr)
         await actionWrapper.Click(btn)
@@ -86,7 +86,15 @@ class Approval extends Page {
         await actionWrapper.clickSetvalueAndSelectoption(path.ApprGrpName,rangeip)
         await actionWrapper.Click(btn)
     }
-    DeleteRange = async(btn)=>{
+    AddRange1 = async(endRange,ApprGrpName,rangeip,ApprGrpName1,rangeip1,btn)=>{
+        await actionWrapper.Click(path.RangTab)
+        await actionWrapper.Click(path.AddRangebtn)
+        await actionWrapper.clearAndsetValue(path.Endrange,endRange)
+        await browser.pause(2000)
+        await actionWrapper.clicksetvalueAndSelectOptionTwoTimes(ApprGrpName,rangeip,ApprGrpName1,rangeip1)
+        await actionWrapper.Click(btn)
+    }
+        DeleteRange = async(btn)=>{
         await actionWrapper.Click(path.RangTab)
         await actionWrapper.Click(path.DeleRannge)
         await actionWrapper.Click(btn)

@@ -8,6 +8,7 @@ function QuoteIP(){
     this.CreateQuoteBtnTxt1="Create Quote"
     this.SPRQuoteName="Buyer SPR"
     this.RfqQuoteName="Buyer RFQ"
+    this.QuoteName1="Approval"+today+"Quote"
     this.QuoteName="Automation"+today+"Quote"
     this.EditQuoteName ="Quote Name"+today+"Edited"
     this.comments="Automation Commenting on"+today+"Ok"

@@ -275,12 +275,13 @@ describe("cart Page", () => {
 
     it('Complete approval flow with all the users available mapped in tags',async () => {
         await approvals_fn.open();
-        await approvals_fn.CreateApprGrp1(approvalsip.approvName2,approvals_path.ConfSavelBtn)
+        await approvals_fn.CreateApprGrp(approvalsip.approvName2,approvals_path.ConfSavelBtn)
         await browser.pause(2000)
-        await approvals_fn.AddUserGrp(approvalsip.grpName1,approvalsip.approver1,approvals_path.ConfSavelBtn)
-        await approvals_fn.AddUserGrp(approvalsip.grpName2,approvalsip.approver3,approvals_path.ConfSavelBtn)
-        await approvals_fn.AddRange(approvalsip.endRange1,approvalsip.grpName1,approvals_path.ConfSavelBtn)
-        await approvals_fn.AddRange(approvalsip.endRange,approvalsip.grpName2,approvals_path.ConfSavelBtn)
+        await approvals_fn.AddUserGrp(approvalsip.grpName1,approvalsip.precedence,approvalsip.approver1,approvals_path.ConfSavelBtn)
+        await approvals_fn.AddUserGrp(approvalsip.grpName2,approvalsip.precedence1,approvalsip.approver3,approvals_path.ConfSavelBtn)
+        await approvals_fn.AddUserGrp(approvalsip.grpName3,approvalsip.precedence2,approvalsip.approver5,approvals_path.ConfSavelBtn)
+        await approvals_fn.AddRange1(approvalsip.endRange2,approvals_path.ApprGrpName,approvalsip.grpName2,approvals_path.ApprGrpName,approvalsip.grpName3,approvals_path.ConfSavelBtn)
+        await approvals_fn.AddRange(approvalsip.endRange2,approvalsip.grpName2,approvals_path.ConfSavelBtn)
         await cart_fn.ClickAndclearCart(cart_path.cartIcon);
         await browser.pause(4000)
         await cart_fn.selectProducts(CartIp.itemName);
@@ -292,7 +293,27 @@ describe("cart Page", () => {
         await cart_fn.selectProducts(CartIp.itemName3);
         await browser.pause(2000)
         await assert.strictEqual(await common.snackbar.getText(), CartIp.cartAlert);
-        await cart_fn.carttoSummary(CartIp.BuyerName1, await cart_path.createQuote);
+        await cart_fn.carttoSummary1(CartIp.BuyerName1, await cart_path.createQuote);
+        await approval_fn.AddApproval(approval_path.ApprovalGrp, approvalIp.approvalName4)
+        await browser.pause(2000)
+        await EndCustomer_fn.RequiredDateValid(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval,
+            EndCustomer_path.RequiredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath,
+            approval_path.Tag, TagIp.tag, approval_path.Tag)
+        await browser.pause(5000)
+        await Quote_fn.QuotePopUP(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval,
+            QuoteBtnPath.QuoteConfWindow,QuoteIp.CreateQuoteText,QuoteBtnPath.CreateQuoteName,QuoteIp.QuoteName,QuoteBtnPath.ConfBtn,
+            QuoteBtnPath.ReqApprovalQuoteName,QuoteIp.QuoteName1,QuoteBtnPath.Comments,QuoteIp.comments,QuoteBtnPath.ConfBtn)
+        await quotefilter_fn.AddFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.quoteName,QuoteIp.QuoteName1)
+        await actionsWrappers.Click(QuoteBtnPath.SelectfirstData)
+        await Quote_fn.QuoteNameValidation(QuoteBtnPath.QuoteOrderEditFirst,QuoteBtnPath.QuoteOrderNameInput,QuoteIp.QuoteName1)
+        await actionsWrappers.Click(common.closeCardQuote)
+        await Quote_fn.RespondReviewQuote(QuoteBtnPath.SelectfirstData,SidNavQuote_path.ReviewBtn,QuoteBtnPath.RequestApproval,
+          QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn,
+      SidNavQuote_path.RejectQuoteBtn,QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn)
+      await actionsWrappers.Click(common.closeCardQuote)
+      /******* we have to check the condition autoapproved rejected */
+
+        
 
         // await browser.pause(3000)
         // await approvals_fn.open();

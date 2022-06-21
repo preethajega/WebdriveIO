@@ -66,6 +66,18 @@ class SidNavPage extends Page{
     get ExportBtn(){
         return super.pathById('exportQuote')
     }
+    get ApprovalExpandBtn(){
+        return super.pathByXpath("//div[contains(@class,'expandIconWrapper')]")
+    }
+    get Approver1Status(){
+        return super.pathByXpath('//div[contains(@class,"MuiAccordionDetails")]/div/div[2]/div[2]//div/p')
+    }
+    get Approver2Status(){
+        return super.pathByXpath('//div[contains(@class,"MuiAccordionDetails")]/div/div[3]/div[2]//div/p')
+    }
+    get Approver3Status(){
+        return super.pathByXpath('//div[contains(@class,"MuiAccordionDetails")]/div/div[4]/div[2]//div/p')
+    }
 
     /************** BUYER SIDNAV PATHS ************ */
     get SubmitVersionText(){

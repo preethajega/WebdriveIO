@@ -96,10 +96,10 @@ describe('Approval Page', () => {
   /* ************** Range Card ***************************  */    
   it('should create a new Range with cancel ', async () => {
     await actionsWrappers.Click(approval_path.DeleteAprTab)
-    await approval_fn.AddRange(approvalip.endRange,approvalip.grpName,approval_path.ConfcancelBtn)
+    await approval_fn.AddRange(approvalip.endRange,approvalip.precedence2,approvalip.grpName,approval_path.ConfcancelBtn)
   });
   it('should create a new Range with save ', async () => {
-    await approval_fn.AddRange(approvalip.endRange,approvalip.grpName,approval_path.ConfSavelBtn)
+    await approval_fn.AddRange(approvalip.endRange,approvalip.precedence,approvalip.grpName,approval_path.ConfSavelBtn)
   });
   it('should edit the range with save', async () => {
     await approval_fn.EditRange(approval_path.ConfSavelBtn)
@@ -114,7 +114,7 @@ describe('Approval Page', () => {
     await approval_fn.DeleteRange(approval_path.ConfSavelBtn)
   });
   it('should create a new Range with save ', async () => {
-    await approval_fn.AddRange(approvalip.endRange,approvalip.grpName,approval_path.ConfSavelBtn)
+    await approval_fn.AddRange(approvalip.endRange,approvalip.precedence1,approvalip.grpName,approval_path.ConfSavelBtn)
   });
   it('should try to delete a mapped User group', async () => {
     await actionsWrappers.Click(approval_path.GrpTab)

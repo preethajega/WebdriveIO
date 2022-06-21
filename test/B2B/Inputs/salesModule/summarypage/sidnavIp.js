@@ -6,6 +6,12 @@ function Approvalip(){
     this.cancelMsg3="cancel as a seller User"
     this.cancelMsg4="cancel as a seller Admin"
     this.quotecancelMsg="Quote Cancelled"
+    this.ApproverAutoRejected="Auto Rejected"
+    this.ApproverRejected="Rejected"
+    this.ApproverApproved="Approved"
+    this.ApproverAutoApproved="Auto Approved"
+    this.ApproverPending="Pending"
+    this.ApproverInitiated="Initiated"
 
     
 }
