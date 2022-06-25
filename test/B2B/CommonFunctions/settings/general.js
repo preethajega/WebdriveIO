@@ -62,7 +62,7 @@ class General extends Page {
         await actionWrapper.snackBarValidate(msg,input1)
     }
     EditRegionalSetting = async(ele,elepath,input,btn,msg,input1) => {
-        await browser.pause(1000)
+        await browser.pause(2000)
         await actionWrapper.clearValues(ele)
         await actionWrapper.clickSetvalueAndSelectoption(elepath,input)
         await actionWrapper.Click(btn)

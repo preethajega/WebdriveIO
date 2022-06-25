@@ -22,6 +22,16 @@ class ApplyDiscount extends Page{
     get ApplyDisApply(){
         return super.pathByXpath('//div[@class="MuiBox-root css-138dq1"]/button[2]')
     }
+    get TargetDisSeller(){
+        return super.pathByXpath('//button[text()="Target Discount"]')
+    }
+    get OverAllDisSeller(){
+        return super.pathByXpath('//button[text()="Overall Discount"]')
+    }
+    get AddOnDisSeller(){
+        return super.pathByXpath('//button[text()="Add On Discount"]')
+    }
+
     get ByDiscountInput(){
         return super.pathByXpath('//div[@class="MuiBox-root css-3mvcpe"]//input')
     }

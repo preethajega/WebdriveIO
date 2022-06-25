@@ -19,6 +19,7 @@ class Compitite extends Page {
         await browser.pause(2000)
         await actionWrapper.Click(path.Savebtn)
         await actionWrapper.snackBarValidate(snakpath,snakip)
+        await browser.pause(2000)
     }
     DeleComp = async(btn)=>{
         await actionWrapper.Click(path.DeleCompti)

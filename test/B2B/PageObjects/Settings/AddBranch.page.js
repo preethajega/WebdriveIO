@@ -67,6 +67,9 @@ class Branch extends Page{
     get ContactName(){
         return super.pathByName('addressId.primaryContact')
     }
+    get countrycode(){
+        return super.pathByName('addressId.mobileNoCallingCode')
+    }
     get PhoneNumber(){
         return super.pathByName('addressId.mobileNo')
     }
@@ -88,23 +91,32 @@ class Branch extends Page{
     get Deletedata(){
         return super.pathByXpath("//tbody/tr[1]")
     }
-    get MapedData(){
-        return super.pathByXpath("//tbody/tr[3]")
+    get SelectLastData(){
+        return super.pathByXpath("//tbody/tr[last()]")
     }
-    get Editdata(){
+    get SelectFirstdata(){
         return super.pathByXpath("//tbody/tr[1]")
     }
-    get DeleteBtn(){
-        return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiPaper-e')]/div[2]/button[1]")
+    get WHClearBtn(){
+        return super.pathByXpath('//input[@id="wareHouses"]/following::button[@title="Clear"][1]')
+    }
+    get BUClearBtn(){
+        return super.pathByXpath('//input[@id="businessUnit"]/following::button[@title="Clear"][1]')
     }
     get EditBtn(){
         return super.pathByXpath('(//button[text()="Edit"])[last()]')
-        // return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiPaper-e')]/div[2]/button[2]")
+    }
+    get FirstDeleteBtn(){
+        return super.pathByXpath('//tbody/tr[1]//button[@aria-label="clear"]')
+    }
+    get LastDeleteBtn(){
+        return super.pathByXpath('(//button[@aria-label="clear"])[last()]')
     }
     get ConformCancelBtn(){
         return super.pathByXpath('//div[contains(@class,"MuiDialogA")]/button[1]')
     }
     get ConformDeleteBtn(){
+        // return super.pathByXpath('//button[@aria-label="Delete"]')
         return super.pathByXpath('//div[contains(@class,"MuiDialogA")]/button[2]')
     }
     get errBranchName(){

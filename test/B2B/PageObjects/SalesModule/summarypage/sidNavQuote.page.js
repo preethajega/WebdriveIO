@@ -2,6 +2,10 @@ const Page = require("../../../PageObjects/page");
 
 class SidNavPage extends Page{
 
+    get CreateOrREqApproveBtn(){
+        return super.pathByXpath('//div[contains(@class,"css-15vlb5b")]//button[2]')
+    }
+
     get RespondBtn(){
         return super.pathByXpath('//button[@aria-label="Respond"]')
     }
@@ -59,7 +63,35 @@ class SidNavPage extends Page{
     get CloseCardBtn(){
         return super.pathByXpath('//button[@aria-label="Close"]')
     }
+    get ExportBtn(){
+        return super.pathById('exportQuote')
+    }
+    get ApprovalExpandBtn(){
+        return super.pathByXpath("//div[contains(@class,'expandIconWrapper')]")
+    }
+    get Approver1Status(){
+        return super.pathByXpath('//div[contains(@class,"MuiAccordionDetails")]/div/div[2]/div[2]//div/p')
+    }
+    get Approver2Status(){
+        return super.pathByXpath('//div[contains(@class,"MuiAccordionDetails")]/div/div[3]/div[2]//div/p')
+    }
+    get Approver3Status(){
+        return super.pathByXpath('//div[contains(@class,"MuiAccordionDetails")]/div/div[4]/div[2]//div/p')
+    }
 
+    /************** BUYER SIDNAV PATHS ************ */
+    get SubmitVersionText(){
+        return super.pathByXpath("//h2[text()='Submit new version']")
+    }
+    get CancelMsgBox(){
+        return super.pathByName('cancelMsg')
+    }
+    get DetailPageStatus(){
+        return super.pathByXpath('(//div[@class="MuiBox-root css-70qvj9"]/p)[1]')
+    }
+    get BuyerCloseCardBtn(){
+        return super.pathByXpath('//button[@aria-label="close"]')
+    }
 
 
 }

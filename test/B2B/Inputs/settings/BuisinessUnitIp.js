@@ -14,9 +14,11 @@ function Buip() {
     this.priority3="&*$"
     this.priority2="2"
     this.priority1='5'
+    this.priority4='15'
     this.buCode="BU05"
     this.buCode2="BU07"
-    this.buCode3="12"
+    this.buCode4="12"
+    this.buCode3="20"
     this.chanName="Regular"
     this.chaname1="Odinary"
     this.chanName2="One Time Use"

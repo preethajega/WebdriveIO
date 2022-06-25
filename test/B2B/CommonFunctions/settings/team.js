@@ -60,6 +60,7 @@ class Team extends Page {
     }
     AddBu = async(branchpath,branchip,bupath,BUip,btn) =>{
         await actionWrapper.scrollEleAndClick(path.BUAddBtn)
+        await browser.pause(2000)
         await actionWrapper.clickSetvalueAndSelectSecondOption(branchpath,branchip)
         await actionWrapper.clickSetvalueAndSelectoption(bupath,BUip)
         await actionWrapper.Click(btn)

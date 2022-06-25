@@ -6,6 +6,9 @@ class Comp extends Page{
         // return super.pathByXpath('//span[@aria-label="upload picture"]')
         return super.pathByXpath('//h5[contains(text(),"Details")]/following::input[1]')
     }
+    get logoupload1(){
+        return super.pathByXpath("//*[contains(text(),'Edit Company')]/following::input[1]")
+    }
     get savebtn(){
         return super.pathByXpath('//button[text()="Save"]')
         // return super.pathById('loadingButton')

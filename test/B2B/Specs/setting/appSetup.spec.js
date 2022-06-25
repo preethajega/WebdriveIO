@@ -24,7 +24,7 @@ describe('App SetUp Page', () => {
     it('should Validate a APP Setup by updating a Logo with valid files', async () => {
         await browser.pause(5000)
         await profile_fn.UploadLogo(Comp_path.savebtn);
-        await browser.pause(2000);  
+        await browser.pause(6000);  
         await actionsWrappers.snackBarValidate(common.snackbar,profileip.AppSaveAlert)
         await browser.pause(3000);  
     });

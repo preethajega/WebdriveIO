@@ -82,8 +82,11 @@ class Warehouse extends Page{
     get Editdata(){
         return super.pathByXpath("//tbody/tr[1]")
     }
-    get DeleteBtn(){
-        return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiPaper-e')]/div[2]/button[1]")
+    get FirstDeleteBtn(){
+        return super.pathByXpath('(//button[@aria-label="clear"])[1]')
+    }
+    get LastDeleteBtn(){
+        return super.pathByXpath('(//button[@aria-label="clear"])[last()]')
     }
     get EditBtn(){
         return super.pathByXpath("//header[contains(@class,'MuiPaper-root MuiPaper-e')]/div[2]/button[2]")
@@ -120,6 +123,9 @@ class Warehouse extends Page{
     }
     get errCity(){
         return super.pathByXpath("//p[text()='City required']")
+    }
+    get CountryCode(){
+        return super.pathByName('contactNumberCallingCode')
     }
 
 }

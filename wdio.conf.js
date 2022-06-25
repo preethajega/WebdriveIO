@@ -67,6 +67,12 @@ exports.config = {
     
     framework: 'mocha',
     reporters: ['spec'],
+    // reporters: [['allure', {
+    //     outputDir: 'allure-results',
+    //     disableWebdriverStepsReporting: true,
+    //     disableWebdriverScreenshotsReporting: true,
+    // }]],
+// }
   mochaOpts: {
         ui: 'bdd',
         timeout: 1200000,

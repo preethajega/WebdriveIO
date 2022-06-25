@@ -41,6 +41,13 @@ class Custom extends Page {
         await actionWrapper.Click(contactpath)
         await actionWrapper.Click(taxpath)
     }
+    customBtnValidation= async(confbtn)=>{
+        if ((await confbtn.isDisplayed()) === true) {
+            await actionWrapper.Click(confbtn)
+            await actionWrapper.snackBarValidate(common.snackbar,customip.saveAlert)
+            await browser.pause(2000)
+        }
+    }
 
 }
 module.exports = new Custom();

@@ -22,7 +22,14 @@ class AddProduct {
   carttoSummary  =async (buyerName,cartButton) => {
     await actionWrapper.searchAndselectDrpdownusingKeyboard(
      buyerName,await path.selectbuyer);
-       await actionWrapper.checkVisibleClickableAndClick(cartButton);
+     await browser.pause(3000);
+     await actionWrapper.checkVisibleClickableAndClick(cartButton);
+  }
+
+  carttoSummary1 =async (buyerName,cartButton) => {
+    await actionWrapper.clickSetvalueAndSelectoption(await path.selectbuyer,buyerName);
+     await browser.pause(3000);
+     await actionWrapper.checkVisibleClickableAndClick(cartButton);
   }
 
 
@@ -192,11 +199,15 @@ commonEnquiryFields = async(ContactNo,Attchment,alertmsg)  =>{
     await browser.pause(2000)
   }  
   /* update Quanty alert */
-  UpdateQuantyAlert = async(quantityIP1)=>{
-    if (await common.snackbar === CartIP.qtyAlert) {
+  UpdateQuantyAlert = async(quantityIP1,createquotebtn)=>{
+    if ((await common.snackbar.isDisplayed()) === true) {
+    if ((await common.snackbar.getText()) === CartIP.qtyAlert) {
       await actionWrapper.clearAndsetValue(path.quantity,quantityIP1)
+      await browser.pause(2000)
+      await actionWrapper.Click(createquotebtn)
     }
   }
+}
 }
 
 

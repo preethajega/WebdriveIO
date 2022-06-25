@@ -13,8 +13,17 @@ get moreOptions() {
 get refresh(){
     return super.pathByXpath('//button[@title="Click to Refresh"]');
 }
+get Refresh(){
+    return super.pathByXpath('//button[@aria-label="refresh"]')
+}
 get close(){
     return super.pathByXpath('//button[@title="Close"]');
+}
+get close1(){
+    return super.pathByXpath('//button[@aria-label="Close"]');
+}
+get closeCardQuote(){
+    return super.pathByXpath('//button[@aria-label="close"]');
 }
 get submit(){
     return super.pathById('loadingButton');

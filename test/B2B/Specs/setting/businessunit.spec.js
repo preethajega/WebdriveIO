@@ -110,20 +110,20 @@ describe("Division & BU Page", () => {
   it('should update the created BU with cancel', async () => {
     await browser.refresh()
     await BU_fn.UpdateBU(bu_path.Name, BUip.buName1, bu_path.Code, BUip.buCode3,
-      bu_path.priority, BUip.priority1, bu_path.cancelbtn)
+      bu_path.priority, BUip.priority4, bu_path.cancelbtn)
   });
   it('should update the created BU with save', async () => {
     await browser.refresh()
     await BU_fn.UpdateBU(bu_path.Name, BUip.buName1, bu_path.Code, BUip.buCode3,
-      bu_path.priority, BUip.priority1, bu_path.savebtn)
+      bu_path.priority, BUip.priority4, bu_path.savebtn)
   });
   it('should validate a BU name field', async () => {
     await browser.refresh()
-    await BU_fn.BuFieldValidate(bu_path.Code, BUip.buCode3, bu_path.NameErrmsg, BUip.errorMsg1)
+    await BU_fn.BuFieldValidate(bu_path.Code, BUip.buCode4, bu_path.NameErrmsg, BUip.errorMsg1)
   });
   it('should validate a BU Priority field', async () => {
     await browser.refresh()
-    await BU_fn.BuFieldValidate(bu_path.Code, BUip.buCode3, bu_path.ProityErrMag, BUip.errorMsg)
+    await BU_fn.BuFieldValidate(bu_path.Code, BUip.buCode4, bu_path.ProityErrMag, BUip.errorMsg)
   });
   it('should delete a crated BU with cancel', async () => {
     await browser.refresh()

@@ -1,12 +1,13 @@
 const Page = require("../../../../B2B/PageObjects/page");
 const actionWrapper = require("../../../../CommonActions/ActionsWrappers");
 const EndCusip = require("../../../Inputs/salesModule/summarypage/EndCustomerIp");
+const SidNavip = require("../../../Inputs/salesModule/summarypage/sidnavIp");
 const attchmentUpload = require("../../../../CommonActions/attchmentUpload");
 const common = require("../../../PageObjects/Common/commonObjects");
 const assert = require("assert");
 const Tag_fn = require("../../../CommonFunctions/salesModule/SalesCards/tag")
 const EndCustomer_path = require("../../../PageObjects/SalesModule/summarypage/EndCustomerCard.page");
-
+const Sidnav_path = require("../../../PageObjects/SalesModule/summarypage/sidNavQuote.page");
 
 
 
@@ -17,7 +18,6 @@ class EndCusCard extends Page {
         await actionWrapper.Click(tagpath)
     }
     QuoteBtnIdentify = async(sumbitBtn,sumbitIp,CreateQuoteBtn,ReqApprovalBtn)=>{
-        console.log(await sumbitBtn.getText());
         if ((await sumbitBtn.getText()) === sumbitIp) 
         {
             await actionWrapper.Click(CreateQuoteBtn)
@@ -109,6 +109,22 @@ class EndCusCard extends Page {
         await actionWrapper.clickAndSetvalue(PriceJustifiPath,PriceJustifiIp)
 
     }
+    SumbitVersionQuoteBox = async(ConfbtnPath)=>{
+        await actionWrapper.Click(Sidnav_path.SumbitBtn)
+        if ((await Sidnav_path.SubmitVersionText.getText()) === 'Submit new version') {
+            await actionWrapper.Click(ConfbtnPath)
+        }
+    }
+    BuyerSPRFieldValid = async(CreateQuoteBtn,CusNumPath,CusNumIp,CusNamePath,CusNameIp,ProjectNamePath,ProjectNameIp,
+        competitorpath,competitorIp,PriceJustifiPath,PriceJustifiIp)=>{
+        await browser.pause(4000)
+        await actionWrapper.Click(CreateQuoteBtn)
+        if ((await common.snackbar.getText()) === "Please fill in all the required fields") {
+            await this.BuyerSPRFieldsFill(CusNumPath,CusNumIp,CusNamePath,CusNameIp,ProjectNamePath,ProjectNameIp,
+                competitorpath,competitorIp,PriceJustifiPath,PriceJustifiIp)
+        }
+    }
+    
 
 }
 module.exports = new EndCusCard();

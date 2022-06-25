@@ -11,6 +11,9 @@ class Team extends Page{
     get Code(){
         return super.pathByName('userCode')
     }
+    get CountryCode(){
+        return super.pathById('country-select-demo')
+    }
     get MobileNo(){
         return super.pathByName('mobileNo')
     }

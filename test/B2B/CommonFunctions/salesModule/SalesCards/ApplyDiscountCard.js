@@ -4,7 +4,7 @@ const Applydiscountip = require("../../../Inputs/salesModule/summarypage/Approva
 const attchmentUpload = require("../../../../CommonActions/attchmentUpload");
 const common = require("../../../PageObjects/Common/commonObjects");
 const path = require("../../../PageObjects/SalesModule/summarypage/ApplyDiscountCard.page");
-const assert = require("assert");
+const Sidnav_path = require("../../../PageObjects/SalesModule/summarypage/sidNavQuote.page");
 
 
 
@@ -14,11 +14,22 @@ class ApplyDiscountCard extends Page {
         await actionWrapper.clickAndSetvalue(inputPath,inputIp)
         await actionWrapper.Click(ApplyOrResetBtn)
     }
-    ApplyDiscBYDiscount = async(DiscountBtn,inputPath,inputIp,ApplyOrResetBtn)=>{
+    ApplyDiscBYAddOnOverAllDis = async(DiscountBtn,disTypeBtn,inputPath,inputIp,ApplyOrResetBtn)=>{
         await actionWrapper.Click(DiscountBtn)
+        await actionWrapper.Click(disTypeBtn)
         await actionWrapper.clearAndsetValue(inputPath,inputIp)
         await actionWrapper.Click(ApplyOrResetBtn)
     }
+    ApplyDiscBYTaregetDis = async(DiscountBtn,disTypeBtn,ApplyOrResetBtn)=>{
+        await actionWrapper.Click(DiscountBtn)
+        await actionWrapper.Click(disTypeBtn)
+        await actionWrapper.Click(ApplyOrResetBtn)
+    }
+    IncreseDecreseDis = async(IncreseDecreseBtn,ApplyOrResetBtn)=>{
+        await actionWrapper.Click(IncreseDecreseBtn)
+        await actionWrapper.Click(ApplyOrResetBtn)
+    }
+
     ResetDiscount = async(AmountOrDiscountBtn,RestBtn)=>{
         await actionWrapper.Click(AmountOrDiscountBtn)
         await actionWrapper.Click(RestBtn)
@@ -61,6 +72,36 @@ class ApplyDiscountCard extends Page {
         await actionWrapper.MoveTo(TargetPriceDiscountPath1)
         await actionWrapper.clearAndsetValue(TargetPriceDiscountPath,TagetPriceDiscountIp)
     }
+    DateSelecter = async (validFromPath, NextMonBtn, datepath) => {
+        await actionWrapper.MoveTo(validFromPath)
+        await browser.pause(2000)
+        await actionWrapper.Click(NextMonBtn)
+        await browser.pause(1000)
+        await actionWrapper.Click(datepath)
+    }
+
+    respondQuoteWithApplyDis = async(selectdata,DiscountBtn,disTypeBtn,ApplyOrResetBtn,
+        DiscountBtn1,disTypeBtn1,inputPath1,inputIp1,ApplyOrResetBtn1,
+        IncreseDecreseBtn,ApplyOrResetBtn2,validFromPath, NextMonBtn, datepath,confbtn)=>{
+        await actionWrapper.Click(selectdata)
+        await browser.pause(2000)
+        await actionWrapper.Click(Sidnav_path.RespondBtn)
+        await actionWrapper.scrollEle(DiscountBtn)
+        await this.ApplyDiscBYTaregetDis(DiscountBtn,disTypeBtn,ApplyOrResetBtn)
+        await this.ApplyDiscBYAddOnOverAllDis(DiscountBtn1,disTypeBtn1,inputPath1,inputIp1,ApplyOrResetBtn1)
+        await this.IncreseDecreseDis(IncreseDecreseBtn,ApplyOrResetBtn2)
+        await actionWrapper.Click(Sidnav_path.SumbitToCustomer)
+        if ((await common.snackbar.isDisplayed()) === true) {
+            if (await common.snackbar.getText() === "Select future date") {
+                await this.DateSelecter(validFromPath, NextMonBtn, datepath)
+                await actionWrapper.Click(confbtn)
+            }
+        } else {
+            await actionWrapper.Click(confbtn)
+        }
+
+    }
+
 
 
 }

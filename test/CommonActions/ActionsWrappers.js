@@ -23,6 +23,11 @@ checkVisibleClickableMove = async (ele) => {
     await ele.click();
     await browser.pause(1000);
   };
+  Click1 = async(ele) => {
+    await ele.click();
+    await browser.pause(1000);
+  };
+
   // scroll into view and click an element
   scrollEleAndClick = async(ele)=>{
     await ele.waitForDisplayed(2000);
@@ -48,6 +53,7 @@ checkVisibleClickableMove = async (ele) => {
     await ele.scrollIntoView();
     await ele.click();
     await ele.clearValue();
+    await browser.pause(2000);
     await ele.setValue(value);
     await browser.pause(1000);
     await ele.keys("\uE015");
@@ -57,7 +63,7 @@ checkVisibleClickableMove = async (ele) => {
   
   // click a element & set the value & click the first option using keyboard 
   clickSetvalueAndSelectoption= async(ele,value) =>{
-    await ele.waitForDisplayed(2000);
+    await ele.waitForDisplayed(2000)
     await ele.scrollIntoView();
     await ele.click();
     await ele.setValue(value);
@@ -66,13 +72,31 @@ checkVisibleClickableMove = async (ele) => {
     await browser.pause(1000);
     await ele.keys("\uE007");
   }
+  clicksetvalueAndSelectOptionTwoTimes = async(ele,value,ele1,value1)=>{
+    await ele.waitForDisplayed(2000)
+    await ele.scrollIntoView();
+    await ele.click();
+    await ele.setValue(value);
+    await browser.pause(1000);
+    await ele.keys("\uE015");
+    await browser.pause(1000);
+    await ele.keys("\uE007");
+    await ele.click();
+    await browser.pause(2000);
+    await ele1.setValue(value1);
+    await browser.pause(2000);
+    await ele1.keys("\uE015");
+    await browser.pause(1000);
+    await ele1.keys("\uE007");  
+  }
+
   clickSetvalueAndSelectoption1= async(ele,value) =>{
     await ele.waitForDisplayed(2000);
     await ele.click();
     await ele.setValue(value);
     await browser.pause(1000);
     await ele.keys("\uE015");
-    await browser.pause(1000);
+    await browser.pause(2000);
     await ele.keys("\uE007");
   }
   // click a element & set value & selct the second option using Keyboard
@@ -80,7 +104,7 @@ checkVisibleClickableMove = async (ele) => {
     await ele.waitForDisplayed(2000);
     await ele.click();
     await ele.setValue(value);
-    await browser.pause(1000);
+    await browser.pause(2000);
     await ele.keys("\uE015");
     await ele.keys("\uE015");
     await browser.pause(2000);
@@ -210,7 +234,7 @@ checkVisibleClickableMove = async (ele) => {
     await ele.setValue(searchText);
     await ele.click();
     await ele.keys("\uE015");
-    await browser.pause(2000);
+    await browser.pause(3000);
     await ele.keys("\uE007");
     await browser.pause(2000);
   }
@@ -265,7 +289,22 @@ navigateTo= async(Url)=>{
       await ele.setValue(inputValue);
     }
   };
-
+    //clear the value using a keyboad backspace key
+  clearValueKeyboard = async(ele)=>{
+    await ele.waitForDisplayed(3000);
+    await ele.keys("\uE003");
+  }
+  //clear the value & set the new value
+  clearAndsetValue1=async(ele,value)=>{
+    await ele.waitForDisplayed(2000);
+    await ele.scrollIntoView();
+    await ele.click();
+    await ele.clearValue();
+    await browser.pause(2000);
+    await ele.setValue(value);
+    await browser.pause(1000);
+  }
+  
   //clear the value & set the new value else enter the new value
   clearAndsetValue = async (ele, inputValue) => {
     await ele.waitForDisplayed(4000);
@@ -308,6 +347,16 @@ MoveTo = async(ele)=>{
   await ele.waitForDisplayed(2000);
   await ele.click({action: 'moveTo',x:20,right:10})
 
+}
+MoveTO1 = async(ele)=>{
+  await ele.waitForDisplayed(2000);
+  await ele.scrollIntoView(0,50);
+  await ele.moveTo()
+}
+HoverMoveTO = async(ele,ele1)=>{
+  await ele.waitForDisplayed(2000);
+  await ele.moveTo();
+  await ele1.click();
 }
   //hover method
   hoverElement = async(ele,ele1)=>{

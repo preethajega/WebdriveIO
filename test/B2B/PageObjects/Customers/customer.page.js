@@ -18,6 +18,9 @@ class Customer extends Page{
     get CheckTxtERPCode(){
         return super.pathByXpath("(//td[text()='C102780'])[1]")
     }
+    get MobNOErrtext(){
+        return super.pathByXpath('//p[text()="Mobile no. is not vaild"]')
+    }
 
 /* ******************** FILTER CARD *********************** */  
     get FilterBtn(){
@@ -51,7 +54,10 @@ class Customer extends Page{
         return super.pathByXpath('//button[@aria-label="clearAll"]')
     }
     get ProtalAcees(){
-        return super.pathByXpath('//div[contains(@class,"MuiListItemSecon")]//label')
+        return super.pathByXpath('(//div[contains(@class,"MuiListItemSecon")]//label)[2]')
+    }
+    get DeactivateCus(){
+        return super.pathByXpath('(//div[contains(@class,"MuiListItemSecon")]//label)[1]')
     }
     get ActiveText(){
         return super.pathByXpath("(//p[text()='Active'])[1]")
@@ -65,6 +71,10 @@ class Customer extends Page{
     get ProtalAcessText(){
         return super.pathByXpath("(//p[text()='Yes'])[1]")
     }
+    get DeactivateCusText(){
+        return super.pathByXpath("//p[text()='Deactivated']")
+    }
+    
 
 
 /* ******************** CREATE CUSTOMER CARD *********************** */  
@@ -98,7 +108,10 @@ class Customer extends Page{
         return super.pathByName('displayName')
     }
     get MobNo(){
-        return super.pathById('mobileNo')
+        return super.pathByName('regAddress.mobileNo')
+    }
+    get countryCode(){
+        return super.pathById('country-select-demo')
     }
     get BusinessMail(){
         return super.pathByName('userEmail')
@@ -166,6 +179,9 @@ class Customer extends Page{
     get ConfCancelBtn(){
         return super.pathByXpath('//button[@aria-label="cancel"]')
     }
+    get uploadlogo(){
+        return super.pathByXpath("//*[contains(text(),'Edit Company')]/following::input[1]")
+    }
 
 /* ******************** CONTACTS CARD *********************** */ 
     get InviteBtn(){
@@ -197,6 +213,10 @@ class Customer extends Page{
     }
     get confSaveBtn(){
         return super.pathByXpath('//button[@aria-label="save"]')
+
+    }
+    get confyesBtn(){
+        return super.pathByXpath('//button[@aria-label="Yes"]')
 
     }
 

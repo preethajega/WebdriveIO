@@ -24,11 +24,18 @@ class Tag extends Page {
         await ele.keys("\uE007")
         await actionWrapper.snackBarValidate(elepath,errip)
     }
-    Deletetag = async(path1,ele,btn,elepath,errip) =>{
+    DeleteMapedtag = async(path1,ele,btn,snakpath,errip) =>{
         await actionWrapper.Click(path1)
         await actionWrapper.Click(ele)
         await actionWrapper.Click(btn)
-        await actionWrapper.snackBarValidate(elepath,errip)
+        await actionWrapper.snackBarValidate(snakpath,errip)
     }
+    Deletetag = async(elepath,btn,snakpath,errip) =>{
+        await actionWrapper.Click(elepath)
+        await actionWrapper.clearValueKeyboard(elepath)
+        await actionWrapper.Click(btn)
+        await actionWrapper.snackBarValidate(snakpath,errip)
+    }
+
 }
 module.exports = new Tag();
