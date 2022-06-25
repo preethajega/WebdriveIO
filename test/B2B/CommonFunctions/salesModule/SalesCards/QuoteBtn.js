@@ -159,6 +159,11 @@ class QuoteBtnCard extends Page {
             quoteIp, ConfBtn, quoteName1, quoteIp1, commentName, commentIp, ConfBtn1)
 
     }
+    ApprovalTextValid =async(ExpandBtn,textpath,textip)=>{
+        await actionWrapper.Click(ExpandBtn)
+        await browser.pause(2000)
+        await actionWrapper.snackBarValidate(textpath,textip)
+    }
 
 
     /************* BUYER SIDE METHOD FOR SIDNAVE PAGE ************* */

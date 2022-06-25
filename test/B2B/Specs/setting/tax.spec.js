@@ -51,6 +51,7 @@ describe('Tax Page', () => {
    /* *************     TAX GROUP CARD        ************************ */
 
    it('should add a new Tax group with cancel', async () => {
+      await browser.refresh()
       await actionsWrappers.Click(tax_path.TaxGrpTab)
       await tax_fn.AddTaxGrp(tax_path.CancelBtn)
    });
@@ -83,6 +84,7 @@ describe('Tax Page', () => {
    });
    /* *************     PRODUCT TAX CODE CARD        ************************ */
    it('should create a new Product Tax Code with cancel', async () => {
+      await browser.refresh()
       await actionsWrappers.Click(tax_path.ProdTaxCodeTab)
       await tax_fn.AddProTaxCode(tax_path.CancelBtn)
    });

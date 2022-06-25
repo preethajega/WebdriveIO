@@ -70,6 +70,10 @@ class Approval extends Page {
         await actionWrapper.Click(btn)
         await actionWrapper.snackBarValidate(errmesg,alertip)
     }
+    DeleMapedUserGrp=async(errmesg,alertip)=>{
+        await actionWrapper.Click(path.DeleUserGrpbtn)
+        await actionWrapper.snackBarValidate(errmesg,alertip)
+    }
     UserGrpFieldValid = async(errmesg,alertip) =>{
         await actionWrapper.Click(path.AddGrpbtn)
         await actionWrapper.Click(path.ApproverBtn)

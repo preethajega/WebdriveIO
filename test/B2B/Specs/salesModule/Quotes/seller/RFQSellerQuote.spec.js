@@ -48,6 +48,7 @@ const QuoteBTnsIp = require("../../../../Inputs/salesModule/summarypage/QuoteBTn
 const approvals_path = require("../../../../PageObjects/Settings/Approvals.page");
 const approvals_fn = require("../../../../CommonFunctions/settings/approvals")
 var approvalsip = require("../../../../Inputs/settings/AprovalIP");
+const sidnavIp = require("../../../../Inputs/salesModule/summarypage/sidnavIp");
 
 
 
@@ -310,6 +311,7 @@ describe("cart Page", () => {
         await Quote_fn.RespondReviewQuote(QuoteBtnPath.SelectfirstData,SidNavQuote_path.ReviewBtn,QuoteBtnPath.RequestApproval,
           QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn,
       SidNavQuote_path.RejectQuoteBtn,QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn)
+      await Quote_fn.ApprovalTextValid(SidNavQuote_path.ApprovalExpandBtn,SidNavQuote_path.Approver2Status,sidnavIp.ApproverAutoRejected)
       await actionsWrappers.Click(common.closeCardQuote)
       /******* we have to check the condition autoapproved rejected */
 

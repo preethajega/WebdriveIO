@@ -21,19 +21,19 @@ describe('Integrations Page', () => {
     it('should validate a Account name field in the Direct Bank card',async () => {
         await integrtion_fn.DirectBankCard(integration_path.AccName,integrtionip.AccName,common.SaveBtn,common.snackbar,integrtionip.saveAlert)
     });
-    it('should validate a Account name field in the Direct Bank card',async () => {
+    it('should validate a Account Number field in the Direct Bank card',async () => {
         await integrtion_fn.DirectBankCard(integration_path.AccNum,integrtionip.AccNum,common.SaveBtn,common.snackbar,integrtionip.saveAlert)
     });
-    it('should validate a Account name field in the Direct Bank card',async () => {
+    it('should validate a Account Bank Name field in the Direct Bank card',async () => {
         await integrtion_fn.DirectBankCard(integration_path.BankName,integrtionip.BankName,common.SaveBtn,common.snackbar,integrtionip.saveAlert)
     });
-    it('should validate a Account name field in the Direct Bank card',async () => {
+    it('should validate a Bank Location field in the Direct Bank card',async () => {
         await integrtion_fn.DirectBankCard(integration_path.BankLocation,integrtionip.BankLocation,common.SaveBtn,common.snackbar,integrtionip.saveAlert)
     });
-    it('should validate a Account name field in the Direct Bank card',async () => {
+    it('should validate a Banck Code field in the Direct Bank card',async () => {
         await integrtion_fn.DirectBankCard(integration_path.BankCode,integrtionip.BankCode,common.SaveBtn,common.snackbar,integrtionip.saveAlert)
     });
-    it('should validate a Account name field in the Direct Bank card',async () => {
+    it('should validate a IBAN field in the Direct Bank card',async () => {
         await integrtion_fn.DirectBankCard(integration_path.IBAN,integrtionip.IBAN,common.SaveBtn,common.snackbar,integrtionip.saveAlert)
     });
     it('should change the changed data into orginal data',async () => {

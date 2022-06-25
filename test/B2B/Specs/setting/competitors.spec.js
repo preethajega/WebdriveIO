@@ -23,7 +23,7 @@ describe('Compitiers Page', () => {
     it('should not allow a user to enter the same Compititers name', async () => {
         await compitie_fn.AddComp(common.snackbar, compitieip.alredyExistAlert)
         await browser.pause(3000)
-        await actionsWrappers.Click(compitie_path.DeleCompti)
+        await compitie_fn.DeleComp(compitie_path.CancelBtn)
     });
     it('should delete the created Compititers with cancel', async () => {
         await compitie_fn.DeleComp(compitie_path.CancelBtn)
