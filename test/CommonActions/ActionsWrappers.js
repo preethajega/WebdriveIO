@@ -323,10 +323,18 @@ MoveTo = async(ele)=>{
     await  browser.pause(10000);
     if(await ele.isDisplayed()===true){
       await ele2.click();
+      await browser.pause(2000);
       await ele3.click();
+      await browser.pause(2000);
       await ele4.click();
     }
 
+  }
+
+  submitValidation = async (ele1,ele2,input)=>{
+   this.Click(ele1);
+   await browser.pause(2000);
+   this.snackBarValidate(ele2,input);
   }
 
 

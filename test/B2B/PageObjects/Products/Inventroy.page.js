@@ -43,7 +43,7 @@ class Inventory extends Page{
         return super.pathById('brand');
     }
     get prodId() {
-        return super.pathByXpath('(//*[text()="Product ID"])[1]');
+        return super.pathByXpath('//*[@id="brand"]/following::input[1]');
     }
     get prodwarehouse() {
         return super.pathById('warehouse');
@@ -91,7 +91,11 @@ class Inventory extends Page{
     /*Inventory Detail page */
 
     get prodSearch(){
-        return super.pathByXpath('//[@placeholder="Search for products"]');
+        return super.pathByXpath('//*[@placeholder="Search for products"]');
+    }
+
+    get searchResults(){
+        return super.pathByXpath('//div[@role="button"][1]');
     }
 
     get newProdID() {
@@ -117,6 +121,11 @@ class Inventory extends Page{
     }
     get warehouseDropDown() {
         return super.pathByXpath('//button[@title="Open"]');
+    }
+
+    get helperText(){
+        return super.pathById('InventoryForm.wareHouseDtoId-helper-text');
+
     }
 
     get newProdStockQty() {

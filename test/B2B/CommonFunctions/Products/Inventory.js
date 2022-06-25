@@ -45,7 +45,7 @@ class Inventory extends Page {
     emptyQtyRequiredCheck = async(ele1,ele2)=>{
         this.UploadInventory(ele1);
         this.QtyChange(ele2,InventoryIp.emptyQty,commonObjects.submit);
-        await actionWrapper.snackBarValidate(commonObjects.snackbar,InventoryIp.tableAlert);
+        await actionWrapper.snackBarValidate(commonObjects.snackbar,InventoryIp.RequiredAlert);
         await actionWrapper.Click(commonObjects.cancelTxt);
     }
 
@@ -53,6 +53,50 @@ class Inventory extends Page {
         this.landingPageChange(ele1,ele2);
         this.landingPageChange(ele3,ele4);
     }
+
+    ClearInventoryFilters = async()=>{
+        await actionWrapper.ClearFilter( filterObjects.filterResults,filterObjects.Filter,
+            filterObjects.clearAll,filterObjects.save);
+    }
+
+    ApplyFilterusingDrpDown = async(ele,input)=>{
+        await actionWrapper.Click(filterObjects.Filter);
+        await actionWrapper.clickSetvalueAndSelectoption(ele,InventoryIp.firstletter);
+        await actionWrapper.Click(filterObjects.save);
+        await actionWrapper.displayValidation(filterObjects.filterResults)
+    }
+
+    ApplyFilterusingIp= async(ele,input)=>{
+        await actionWrapper.Click(filterObjects.Filter);
+        await actionWrapper.clickAndSetvalue(ele,input);
+        await actionWrapper.Click(filterObjects.save);
+        await actionWrapper.displayValidation(filterObjects.filterResults)
+    }
+
+    searchandSelectProduct = async (input) =>{
+        await actionWrapper.Click(path.AddInventory)
+        await actionWrapper.checkEnabledAndSetValue(path.prodSearch,input)
+        await browser.pause(2000);
+        await actionWrapper.Click(path.searchResults)
+    }
+
+    insertProdDetails = async (ele,input)=>{
+        if (await ele.isDisplayed()===false){
+             ele.scrollintoview();
+        }
+        await actionWrapper.isEmpty_setValue(ele,input)
+
+    }
+
+    WarehouseSelect =async(ele,input,ele2,ele3)=>{
+        if (await ele.getValue !==''){
+            await actionWrapper.clearValue_selectDropdownvalue
+        }
+
+    
+    }
+
+
 
 }
 
