@@ -27,6 +27,7 @@ describe("Division & BU Page", () => {
   });
   it('should add a new Division with save', async () => {
     await browser.refresh()
+    await browser.pause(3000)
     await BU_fn.AddDiv_Chan(bu_path.DivisionTab, bu_path.NameDiv_Cha, BUip.divName, bu_path.codeDiv_Cha, BUip.divCode,
       bu_path.savebtn, common.snackbar, BUip.saveAlert)
   });

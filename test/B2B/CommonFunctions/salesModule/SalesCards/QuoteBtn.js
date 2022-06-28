@@ -8,6 +8,10 @@ const EndCustomer_path = require("../../../PageObjects/SalesModule/summarypage/E
 const EndCusip = require("../../../Inputs/salesModule/summarypage/EndCustomerIp");
 const Sidnav_path = require("../../../PageObjects/SalesModule/summarypage/sidNavQuote.page");
 const sidnavIp = require("../../../Inputs/salesModule/summarypage/sidnavIp");
+const LogOutPage = require("../../../PageObjects/logout.page");
+const LoginPage = require("../../../PageObjects/Login.page");
+const B2B_loginIp = require("../../../Inputs/B2B_login");
+
 
 const assert = require("assert");
 
@@ -159,10 +163,57 @@ class QuoteBtnCard extends Page {
             quoteIp, ConfBtn, quoteName1, quoteIp1, commentName, commentIp, ConfBtn1)
 
     }
-    ApprovalTextValid =async(ExpandBtn,textpath,textip)=>{
-        await actionWrapper.Click(ExpandBtn)
+    ApprovalTextValid = async (ExpandBtn, textpath, textip) => {
+        await this.ApprovalExpanValid(textpath,ExpandBtn)
         await browser.pause(2000)
-        await actionWrapper.snackBarValidate(textpath,textip)
+        await actionWrapper.snackBarValidate(textpath, textip)
+    }
+    ApprovalExpanValid =async(textpath,ExpandBtn)=>{
+        if ((await textpath.isDisplayed()) !== true) {
+            await actionWrapper.Click(ExpandBtn)
+        }
+    }
+    ApprovedQuoteValid = async(ExpandBtn, textpath, textip,textpath1,textpath2, textip1)=>{
+        await this.ApprovalTextValid(ExpandBtn, textpath, textip)
+        const currentApprover = textpath1.getText().slice(1, -1);
+        const nextlogeduser = textpath2.getText().slice(1, -1);
+        await browser.pause(2000)
+        await actionWrapper.Click()
+        const currentuser = textip1.getText()
+        if (await currentApprover === currentuser) {
+            await LogOutPage.logout(LogOutPage.logouticon, LogOutPage.logoutBtn, common.snackbar,
+                B2B_loginIp.logoutAlertMsg)
+                await LoginPage.open();
+                await LoginPage.login(nextlogeduser, B2B_loginIp.OwnerPassword);
+                await actionWrapper.urlValidation("/dev3.myapptino.com/");
+            }
+
+    }
+    ApprovalWorkflowLoginLogout = async (selectData,ExpandBtn,textpath, textip) => {
+        await actionWrapper.Click(selectData)
+        await this.ApprovalExpanValid(textpath,ExpandBtn)
+        await browser.pause(5000)
+        if ((await textpath.getText()) === textip) {
+            await LogOutPage.logout(LogOutPage.logouticon, LogOutPage.logoutBtn, common.snackbar,
+                B2B_loginIp.logoutAlertMsg)
+            await browser.pause(3000)
+            await LoginPage.open();
+            await LoginPage.login(B2B_loginIp.Buyer5Email, B2B_loginIp.OwnerPassword);
+            await actionWrapper.urlValidation("/dev3.myapptino.com/");
+        }
+        else{
+            await LogOutPage.logout(LogOutPage.logouticon, LogOutPage.logoutBtn, common.snackbar,
+                B2B_loginIp.logoutAlertMsg)
+            await browser.pause(3000)
+            await LoginPage.open();
+            await LoginPage.login(B2B_loginIp.Buyer4Email, B2B_loginIp.OwnerPassword);
+            await actionWrapper.urlValidation("/dev3.myapptino.com/");
+
+        }
+
+
+
+
     }
 
 

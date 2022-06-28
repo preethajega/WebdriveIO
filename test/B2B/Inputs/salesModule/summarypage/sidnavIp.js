@@ -12,6 +12,7 @@ function Approvalip(){
     this.ApproverAutoApproved="Auto Approved"
     this.ApproverPending="Pending"
     this.ApproverInitiated="Initiated"
+    this.Approvername="(jegapreetha71@gmail.com)"
 
     
 }

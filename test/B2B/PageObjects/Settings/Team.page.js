@@ -51,11 +51,11 @@ class Team extends Page{
     get EmailexistMsg(){
         return super.pathByXpath("//p[text()='Email id already exists']")
     }
-    get Editdata(){
+    get Editdata1(){
         return super.pathByXpath('(//table/tbody/tr)[last()]')
     }
-    get Editdata1(){
-        return super.pathByXpath('//table/tbody/tr[22]')
+    get Editdata(){
+        return super.pathByXpath('(//table/tbody/tr)[1]')
     }
     get UserInviteBtn(){
         return super.pathByXpath('//button[@aria-label="Invite"]')

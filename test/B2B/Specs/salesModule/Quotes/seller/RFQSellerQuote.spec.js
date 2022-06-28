@@ -274,55 +274,99 @@ describe("cart Page", () => {
 
     // });
 
-    it('Complete approval flow with all the users available mapped in tags',async () => {
-        await approvals_fn.open();
-        await approvals_fn.CreateApprGrp(approvalsip.approvName2,approvals_path.ConfSavelBtn)
-        await browser.pause(2000)
-        await approvals_fn.AddUserGrp(approvalsip.grpName1,approvalsip.precedence,approvalsip.approver1,approvals_path.ConfSavelBtn)
-        await approvals_fn.AddUserGrp(approvalsip.grpName2,approvalsip.precedence1,approvalsip.approver3,approvals_path.ConfSavelBtn)
-        await approvals_fn.AddUserGrp(approvalsip.grpName3,approvalsip.precedence2,approvalsip.approver5,approvals_path.ConfSavelBtn)
-        await approvals_fn.AddRange1(approvalsip.endRange2,approvals_path.ApprGrpName,approvalsip.grpName2,approvals_path.ApprGrpName,approvalsip.grpName3,approvals_path.ConfSavelBtn)
-        await approvals_fn.AddRange(approvalsip.endRange2,approvalsip.grpName2,approvals_path.ConfSavelBtn)
-        await cart_fn.ClickAndclearCart(cart_path.cartIcon);
-        await browser.pause(4000)
-        await cart_fn.selectProducts(CartIp.itemName);
-        await browser.pause(2000)
-        await cart_fn.selectProducts(CartIp.itemName1);
-        await browser.pause(2000)
-        await cart_fn.selectProducts(CartIp.itemName2);
-        await browser.pause(2000)
-        await cart_fn.selectProducts(CartIp.itemName3);
-        await browser.pause(2000)
-        await assert.strictEqual(await common.snackbar.getText(), CartIp.cartAlert);
-        await cart_fn.carttoSummary1(CartIp.BuyerName1, await cart_path.createQuote);
-        await approval_fn.AddApproval(approval_path.ApprovalGrp, approvalIp.approvalName4)
-        await browser.pause(2000)
-        await EndCustomer_fn.RequiredDateValid(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval,
-            EndCustomer_path.RequiredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath,
-            approval_path.Tag, TagIp.tag, approval_path.Tag)
-        await browser.pause(5000)
-        await Quote_fn.QuotePopUP(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval,
-            QuoteBtnPath.QuoteConfWindow,QuoteIp.CreateQuoteText,QuoteBtnPath.CreateQuoteName,QuoteIp.QuoteName,QuoteBtnPath.ConfBtn,
-            QuoteBtnPath.ReqApprovalQuoteName,QuoteIp.QuoteName1,QuoteBtnPath.Comments,QuoteIp.comments,QuoteBtnPath.ConfBtn)
-        await quotefilter_fn.AddFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.quoteName,QuoteIp.QuoteName1)
-        await actionsWrappers.Click(QuoteBtnPath.SelectfirstData)
-        await Quote_fn.QuoteNameValidation(QuoteBtnPath.QuoteOrderEditFirst,QuoteBtnPath.QuoteOrderNameInput,QuoteIp.QuoteName1)
-        await actionsWrappers.Click(common.closeCardQuote)
-        await Quote_fn.RespondReviewQuote(QuoteBtnPath.SelectfirstData,SidNavQuote_path.ReviewBtn,QuoteBtnPath.RequestApproval,
-          QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn,
-      SidNavQuote_path.RejectQuoteBtn,QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn)
-      await Quote_fn.ApprovalTextValid(SidNavQuote_path.ApprovalExpandBtn,SidNavQuote_path.Approver2Status,sidnavIp.ApproverAutoRejected)
-      await actionsWrappers.Click(common.closeCardQuote)
-      /******* we have to check the condition autoapproved rejected */
+    // it('Complete approval flow with all the users available mapped in tags', async () => {
+        //     await cart_fn.ClickAndclearCart(cart_path.cartIcon);
+        //     await browser.pause(4000)
+        //     await cart_fn.selectProducts(CartIp.itemName);
+        //     await browser.pause(2000)
+        //     await cart_fn.selectProducts(CartIp.itemName1);
+        //     await browser.pause(2000)
+        //     await cart_fn.selectProducts(CartIp.itemName2);
+        //     await browser.pause(2000)
+        //     await cart_fn.selectProducts(CartIp.itemName3);
+        //     await browser.pause(2000)
+        //     await assert.strictEqual(await common.snackbar.getText(), CartIp.cartAlert);
+        //     await cart_fn.carttoSummary1(CartIp.BuyerName1, await cart_path.createQuote);
+        //     await approval_fn.AddApproval(approval_path.ApprovalGrp, approvalIp.approvalName4)
+        //     await browser.pause(2000)
+        //     await EndCustomer_fn.RequiredDateValid(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval,
+        //         EndCustomer_path.RequiredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath,
+        //         approval_path.Tag, TagIp.tag, approval_path.Tag)
+        //     await browser.pause(5000)
+        //     await Quote_fn.QuotePopUP(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval,
+        //         QuoteBtnPath.QuoteConfWindow,QuoteIp.CreateQuoteText,QuoteBtnPath.CreateQuoteName,QuoteIp.QuoteName,QuoteBtnPath.ConfBtn,
+        //         QuoteBtnPath.ReqApprovalQuoteName,QuoteIp.QuoteName1,QuoteBtnPath.Comments,QuoteIp.comments,QuoteBtnPath.ConfBtn)
+        //     await quotefilter_fn.AddFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.quoteName,QuoteIp.QuoteName1)
+        //     await actionsWrappers.Click(QuoteBtnPath.SelectfirstData)
+        //     await Quote_fn.QuoteNameValidation(QuoteBtnPath.QuoteOrderEditFirst,QuoteBtnPath.QuoteOrderNameInput,QuoteIp.QuoteName1)
+        //     await actionsWrappers.Click(common.closeCardQuote)
+        // /*************  AutoRejected condition checked ****************/
+        //     await Quote_fn.RespondReviewQuote(QuoteBtnPath.SelectfirstData,SidNavQuote_path.ReviewBtn,QuoteBtnPath.RequestApproval,
+        //       QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn,
+        //   SidNavQuote_path.RejectQuoteBtn,QuoteBtnPath.Comments,QuoteBTnsIp.comments,QuoteBtnPath.ConfBtn)
+        //   await Quote_fn.ApprovalTextValid(SidNavQuote_path.ApprovalExpandBtn,SidNavQuote_path.Approver2Status,sidnavIp.ApproverAutoRejected)
+        //   await actionsWrappers.Click(common.closeCardQuote)
+        // /*************  AutoApproved condition checked ****************/
+        // await Quote_fn.open()//it has to removed 
+        // await browser.pause(5000)
+        // await Quote_fn.RespondReviewQuote(QuoteBtnPath.SelectfirstData, SidNavQuote_path.RespondBtn, QuoteBtnPath.RequestApproval,
+        //     QuoteBtnPath.Comments, QuoteBTnsIp.comments, QuoteBtnPath.ConfBtn,
+        //     SidNavQuote_path.SubmitReviewBtn, QuoteBtnPath.Comments, QuoteBTnsIp.comments, QuoteBtnPath.ConfBtn)
+        // await browser.pause(2000)
+        // await actionsWrappers.Click(common.closeCardQuote)
+        // await Quote_fn.RespondReviewQuote(QuoteBtnPath.SelectfirstData, SidNavQuote_path.ReviewBtn, QuoteBtnPath.RequestApproval,
+        //     QuoteBtnPath.Comments, QuoteBTnsIp.comments, QuoteBtnPath.ConfBtn,
+        //     SidNavQuote_path.SubmitReviewBtn, QuoteBtnPath.Comments, QuoteBTnsIp.comments, QuoteBtnPath.ConfBtn)
+        // await Quote_fn.ApprovalTextValid(SidNavQuote_path.ApprovalExpandBtn, SidNavQuote_path.Approver2Status, sidnavIp.ApproverAutoApproved)
+        // await actionsWrappers.Click(common.closeCardQuote)
+    // });
 
-        
 
-        // await browser.pause(3000)
-        // await approvals_fn.open();
-        // await actionsWrappers.Click(common.Refresh)
-        // await actionsWrappers.Click(approvals_path.DeleteAprTab)
-        // await approvals_fn.deleteAll2()
-    });
+        it('should validate the full approval Workflow with three approvers present', async () => {
+            await Quote_fn.open()//it has to removed 
+            await browser.pause(5000)    
+            // await cart_fn.ClickAndclearCart(cart_path.cartIcon);
+            // await browser.pause(4000)
+            // await cart_fn.selectProducts(CartIp.itemName);
+            // await browser.pause(2000)
+            // await cart_fn.selectProducts(CartIp.itemName1);
+            // await browser.pause(2000)
+            // await cart_fn.selectProducts(CartIp.itemName2);
+            // await browser.pause(2000)
+            // await cart_fn.selectProducts(CartIp.itemName3);
+            // await browser.pause(2000)
+            // await assert.strictEqual(await common.snackbar.getText(), CartIp.cartAlert);
+            // await cart_fn.carttoSummary1(CartIp.BuyerName1, await cart_path.createQuote);
+            // await approval_fn.AddApproval(approval_path.ApprovalGrp, approvalIp.approvalName4)
+            // await browser.pause(2000)
+            // await EndCustomer_fn.RequiredDateValid(QuoteBtnPath.CreateOrREqApproveBtn, QuoteIp.CreateQuoteBtnTxt, QuoteBtnPath.CreateQuoteBtn, QuoteBtnPath.RequestApproval,
+            //     EndCustomer_path.RequiredDateIcon, EndCustomer_path.NextMonthBtn, EndCustomer_path.DatePath,
+            //     approval_path.Tag, TagIp.tag, approval_path.Tag)
+            // await browser.pause(5000)
+            // await Quote_fn.QuotePopUP(QuoteBtnPath.CreateOrREqApproveBtn, QuoteIp.CreateQuoteBtnTxt, QuoteBtnPath.CreateQuoteBtn, QuoteBtnPath.RequestApproval,
+            //     QuoteBtnPath.QuoteConfWindow, QuoteIp.CreateQuoteText, QuoteBtnPath.CreateQuoteName, QuoteIp.QuoteName, QuoteBtnPath.ConfBtn,
+            //     QuoteBtnPath.ReqApprovalQuoteName, QuoteIp.QuoteName1, QuoteBtnPath.Comments, QuoteIp.comments, QuoteBtnPath.ConfBtn)
+            // await quotefilter_fn.AddFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.quoteName, QuoteIp.QuoteName1)
+            await Quote_fn.QuoteNameValidation(QuoteBtnPath.QuoteOrderEditFirst, QuoteBtnPath.QuoteOrderNameInput, QuoteIp.QuoteName1)
+            await Quote_fn.ApprovalWorkflowLoginLogout(QuoteBtnPath.SelectfirstData, SidNavQuote_path.ApprovalExpandBtn,
+                SidNavQuote_path.ApproverName2, sidnavIp.Approvername)
+    /******* Approving a Quote by lower precedence ********/
+            await Quote_fn.open() 
+            await browser.pause(5000)    
+            // await quotefilter_fn.AddFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.quoteName, QuoteIp.QuoteName1)
+        await Quote_fn.RespondReviewQuote(QuoteBtnPath.SelectfirstData, SidNavQuote_path.ReviewBtn, SidNavQuote_path.SubmitReviewBtn,
+            QuoteBtnPath.Comments, QuoteBTnsIp.comments, QuoteBtnPath.ConfBtn,
+            SidNavQuote_path.SubmitReviewBtn, QuoteBtnPath.Comments, QuoteBTnsIp.Approvercomments, QuoteBtnPath.ConfBtn)
+            await browser.pause(5000)    
+        await Quote_fn.ApprovedQuoteValid(SidNavQuote_path.ApprovalExpandBtn, SidNavQuote_path.Approver2Status, sidnavIp.ApproverApproved,
+            SidNavQuote_path.Approver2Status,SidNavQuote_path.Approver3Status,LogOutPage.loggedMailName)
+
+    
+        });
+
+
+    /******* we have to check the  slice function */
+
 
 
     // it('should logged out from the application',async () => {
