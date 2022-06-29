@@ -22,6 +22,7 @@ class ApplyDiscountCard extends Page {
     }
     ApplyDiscBYTaregetDis = async(DiscountBtn,disTypeBtn,ApplyOrResetBtn)=>{
         await actionWrapper.Click(DiscountBtn)
+        await browser.pause(2000)
         await actionWrapper.Click(disTypeBtn)
         await actionWrapper.Click(ApplyOrResetBtn)
     }
