@@ -113,8 +113,9 @@ class Approval extends Page {
     Rangefieldvalid =async(errmesg,alertip)=>{
         await actionWrapper.Click(path.AddRangebtn)
         await actionWrapper.clearAndsetValue(path.Endrange,approvip.editrange)
+        await browser.pause(2000)
         await actionWrapper.Click(path.ConfSavelBtn)
-        await browser.pause(1000)
+        await browser.pause(2000)
         await actionWrapper.snackBarValidate(errmesg,alertip)
        // await actionWrapper.Click(path.ConfcancelBtn)
     }

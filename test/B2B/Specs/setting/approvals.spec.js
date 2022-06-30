@@ -52,6 +52,7 @@ describe('Approval Page', () => {
   /* ************** Approver User Group Card ********************************* */
   it('should create a new User group with cancel', async () => {
     await browser.refresh()
+    await browser.pause(2000)
     await approval_fn.AddUserGrp(approvalip.grpName, approvalip.precedence, approvalip.approver1, approval_path.ConfcancelBtn)
   });
   it('should create a new User group with save', async () => {
@@ -124,16 +125,16 @@ describe('Approval Page', () => {
     await approval_fn.deleteAll()
   });
   it('should create a approval & delete the approvalgrp', async () => {
-    await approvals_fn.open();
-    await approvals_fn.CreateApprGrp(approvalsip.approvName2, approvals_path.ConfSavelBtn)
+    await approval_fn.open();
+    await approval_fn.CreateApprGrp(approvalsip.approvName2, approvals_path.ConfSavelBtn)
     await browser.pause(2000)
-    await approvals_fn.AddUserGrp(approvalsip.grpName1, approvalsip.precedence, approvalsip.approver1, approvals_path.ConfSavelBtn)
-    await approvals_fn.AddUserGrp(approvalsip.grpName2, approvalsip.precedence1, approvalsip.approver3, approvals_path.ConfSavelBtn)
-    await approvals_fn.AddUserGrp(approvalsip.grpName3, approvalsip.precedence2, approvalsip.approver5, approvals_path.ConfSavelBtn)
-    await approvals_fn.AddRange1(approvalsip.endRange2, approvals_path.ApprGrpName, approvalsip.grpName2, approvals_path.ApprGrpName, approvalsip.grpName3, approvals_path.ConfSavelBtn)
-    await approvals_fn.AddRange(approvalsip.endRange2, approvalsip.grpName2, approvals_path.ConfSavelBtn)
+    await approval_fn.AddUserGrp(approvalsip.grpName1, approvalsip.precedence, approvalsip.approver1, approvals_path.ConfSavelBtn)
+    await approval_fn.AddUserGrp(approvalsip.grpName2, approvalsip.precedence1, approvalsip.approver3, approvals_path.ConfSavelBtn)
+    await approval_fn.AddUserGrp(approvalsip.grpName3, approvalsip.precedence2, approvalsip.approver5, approvals_path.ConfSavelBtn)
+    await approval_fn.AddRange1(approvalsip.endRange2, approvals_path.ApprGrpName, approvalsip.grpName2, approvals_path.ApprGrpName, approvalsip.grpName3, approvals_path.ConfSavelBtn)
+    await approval_fn.AddRange(approvalsip.endRange2, approvalsip.grpName2, approvals_path.ConfSavelBtn)
     await browser.pause(3000)
-    await approvals_fn.open();
+    await approval_fn.open();
     await actionsWrappers.Click(common.Refresh)
     await actionsWrappers.Click(approvals_path.DeleteAprTab)
     await approvals_fn.deleteAll2()

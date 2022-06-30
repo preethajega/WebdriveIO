@@ -85,6 +85,21 @@ describe("Division & BU Page", () => {
   it('should not alow a user to add another BU without entering any details', async () => {
     await BU_fn.EmptyAlertBU(bu_path.BUTab, bu_path.addSymbol)
   });
+  it('should not allow a user to enter the same BU Name value as a input', async () => {
+    await browser.refresh()
+    await BU_fn.AlredyExitVal(bu_path.BUTab, bu_path.addSymbol, bu_path.Name, BUip.buName,
+      common.snackbar, BUip.buNameExitAlert)
+  });
+  it('should not allow a user to enter the BU code value as a input', async () => {
+    await browser.pause(2000)
+    await BU_fn.AlredyExitVal(bu_path.BUTab, bu_path.addSymbol, bu_path.Code, BUip.buCode,
+      common.snackbar, BUip.buCodeExitAlert)
+  });
+  it('should not allow a user to enter the BU Priority value as a input', async () => {
+    await browser.pause(2000)
+    await BU_fn.AlredyExitPrioVal(bu_path.BUTab, bu_path.addSymbol, bu_path.priority, BUip.priority,
+      common.snackbar, BUip.priAlredExitAlert)
+  });
   it('should try to delete the mapped BU with cancel', async () => {
     await browser.refresh()
     await BU_fn.DeleteBU_div_cha(bu_path.BUTab, bu_path.delefirstBU, bu_path.cancelbtn, common.snackbar, BUip.buMapAlert)
@@ -93,21 +108,7 @@ describe("Division & BU Page", () => {
     await browser.refresh()
     await BU_fn.DeleteBU_div_cha(bu_path.BUTab, bu_path.delefirstBU, bu_path.savebtn, common.snackbar, BUip.buMapAlert)
   });
-  it('should not allow a user to enter the same BU Name value as a input', async () => {
-    await browser.refresh()
-    await BU_fn.AlredyExitVal(bu_path.BUTab, bu_path.addSymbol, bu_path.Name, BUip.buName,
-      common.snackbar, BUip.buNameExitAlert)
-  });
-  it('should not allow a user to enter the BU code value as a input', async () => {
-    await browser.refresh()
-    await BU_fn.AlredyExitVal(bu_path.BUTab, bu_path.addSymbol, bu_path.Code, BUip.buCode,
-      common.snackbar, BUip.buCodeExitAlert)
-  });
-  it('should not allow a user to enter the BU Priority value as a input', async () => {
-    await browser.refresh()
-    await BU_fn.AlredyExitPrioVal(bu_path.BUTab, bu_path.addSymbol, bu_path.priority, BUip.priority,
-      common.snackbar, BUip.priAlredExitAlert)
-  });
+  
   it('should update the created BU with cancel', async () => {
     await browser.refresh()
     await BU_fn.UpdateBU(bu_path.Name, BUip.buName1, bu_path.Code, BUip.buCode3,
@@ -127,6 +128,7 @@ describe("Division & BU Page", () => {
     await BU_fn.BuFieldValidate(bu_path.Code, BUip.buCode4, bu_path.ProityErrMag, BUip.errorMsg)
   });
   it('should delete a crated BU with cancel', async () => {
+    await browser.pause(2000)
     await browser.refresh()
     await BU_fn.DeleteBU_div_cha(bu_path.BUTab, bu_path.delelastBU, bu_path.cancelbtn, common.snackbar, BUip.saveAlert)
   });
@@ -151,38 +153,38 @@ describe("Division & BU Page", () => {
   it('should not alow a user to add another Channel without entering any details', async () => {
     await BU_fn.EmptyAlert(bu_path.ChannelTab, bu_path.AddBtn)
   });
-  it('should update the created Division with cancel', async () => {
+  it('should update the created Channel with cancel', async () => {
     await BU_fn.UpdateDiv_Cha(bu_path.NameDiv_Cha, BUip.chaname1, bu_path.codeDiv_Cha, BUip.chanCode2, bu_path.cancelbtn)
   });
-  it('should update the created Division with save', async () => {
+  it('should update the created Channel with save', async () => {
     await BU_fn.UpdateDiv_Cha(bu_path.NameDiv_Cha, BUip.chaname1, bu_path.codeDiv_Cha, BUip.chanCode2, bu_path.savebtn)
   });
-  it('should try to delete the mapped Division with save', async () => {
+  it('should try to delete the mapped Channel with save', async () => {
     await BU_fn.DeleteBU_div_cha(bu_path.ChannelTab, bu_path.delefirstDiv_Cha, bu_path.savebtn,
       common.snackbar, BUip.channelMapAlert)
   });
-  it('should not allow a user to enter the same Division Name value as a input', async () => {
+  it('should not allow a user to enter the same Channel Name value as a input', async () => {
     await browser.refresh()
     await BU_fn.AlredyExitVal(bu_path.ChannelTab, bu_path.AddBtn, bu_path.NameDiv_Cha, BUip.chaname1,
       common.snackbar, BUip.channelNameExitAlert)
   });
-  it('should not allow a user to enter the same code value as a input', async () => {
+  it('should not allow a user to enter the same code value as a input in Channel', async () => {
     await browser.refresh()
     await BU_fn.AlredyExitVal(bu_path.ChannelTab, bu_path.AddBtn, bu_path.codeDiv_Cha, BUip.chanCode1,
       common.snackbar, BUip.channelCodeExitAlert)
   });
-  it('should validate a division name field', async () => {
+  it('should validate a Channel name field', async () => {
     await browser.pause(1000)
     await BU_fn.Div_ChanFieldValid(bu_path.ChannelTab, bu_path.NameErrmsg, BUip.errorMsg1)
   });
-  it('should validate a Code field', async () => {
+  it('should validate a Code field in Channel', async () => {
     await BU_fn.Div_ChanFieldValid(bu_path.ChannelTab, bu_path.codeErrMag, BUip.errorMsg)
   });
-  it('should delete a crated Division with cancel', async () => {
+  it('should delete a crated channel with cancel', async () => {
     await browser.pause(1000)
     await BU_fn.DeleteBU_div_cha(bu_path.ChannelTab, bu_path.delelastDiv_Cha, bu_path.cancelbtn, common.snackbar, BUip.saveAlert)
   });
-  it('should delete a crated Division with save', async () => {
+  it('should delete a crated Channel with save', async () => {
     await BU_fn.DeleteBU_div_cha(bu_path.ChannelTab, bu_path.delelastDiv_Cha, bu_path.savebtn, common.snackbar, BUip.saveAlert)
   });
 
