@@ -104,6 +104,7 @@ class QuoteBtnCard extends Page {
     QuoteNameValidation = async (selectData, QuoteOrderNameInputs, names) => {
         await browser.pause(4000)
         await actionWrapper.checkClickableAnddoubleClick(selectData)
+        await browser.pause(3000)
         await actionWrapper.Click(path.QuoteOrderNameEditIcon)
         if ((await QuoteOrderNameInputs.getValue() === names)) {
             await actionWrapper.Click(path.QuoteOrderConfyesBtn)
@@ -215,12 +216,14 @@ class QuoteBtnCard extends Page {
             await LoginPage.open();
             await LoginPage.login(B2B_loginIp.Buyer4Email, B2B_loginIp.OwnerPassword);
             await actionWrapper.urlValidation("/dev3.myapptino.com/");
-
         }
+    }
 
-
-
-
+    ApproveRejectQuote= async(ApproveRejectBtn,commentpath, commentip,confbtn)=>{
+        await actionWrapper.Click(ApproveRejectBtn)
+        await browser.pause(3000)
+        await actionWrapper.clickAndSetvalue(commentpath, commentip)
+        await actionWrapper.Click(confbtn)
     }
 
 

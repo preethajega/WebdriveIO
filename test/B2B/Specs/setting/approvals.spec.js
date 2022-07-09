@@ -126,17 +126,17 @@ describe('Approval Page', () => {
   });
   it('should create a approval & delete the approvalgrp', async () => {
     await approval_fn.open();
-    await approval_fn.CreateApprGrp(approvalsip.approvName2, approvals_path.ConfSavelBtn)
+    await approval_fn.CreateApprGrp(approvalip.approvName2, approvals_path.ConfSavelBtn)
     await browser.pause(2000)
-    await approval_fn.AddUserGrp(approvalsip.grpName1, approvalsip.precedence, approvalsip.approver1, approvals_path.ConfSavelBtn)
-    await approval_fn.AddUserGrp(approvalsip.grpName2, approvalsip.precedence1, approvalsip.approver3, approvals_path.ConfSavelBtn)
-    await approval_fn.AddUserGrp(approvalsip.grpName3, approvalsip.precedence2, approvalsip.approver5, approvals_path.ConfSavelBtn)
-    await approval_fn.AddRange1(approvalsip.endRange2, approvals_path.ApprGrpName, approvalsip.grpName2, approvals_path.ApprGrpName, approvalsip.grpName3, approvals_path.ConfSavelBtn)
-    await approval_fn.AddRange(approvalsip.endRange2, approvalsip.grpName2, approvals_path.ConfSavelBtn)
+    await approval_fn.AddUserGrp(approvalip.grpName1, approvalip.precedence, approvalip.approver1, approvals_path.ConfSavelBtn)
+    await approval_fn.AddUserGrp(approvalip.grpName2, approvalip.precedence1, approvalip.approver3, approvals_path.ConfSavelBtn)
+    await approval_fn.AddUserGrp(approvalip.grpName3, approvalip.precedence2, approvalip.approver5, approvals_path.ConfSavelBtn)
+    await approval_fn.AddRange1(approvalip.endRange2, approvals_path.ApprGrpName, approvalip.grpName2, approvals_path.ApprGrpName, approvalip.grpName3, approvals_path.ConfSavelBtn)
+    await approval_fn.AddRange(approvalip.endRange2, approvalip.grpName2, approvals_path.ConfSavelBtn)
     await browser.pause(3000)
     await approval_fn.open();
     await actionsWrappers.Click(common.Refresh)
-    await actionsWrappers.Click(approvals_path.DeleteAprTab)
+    await actionsWrappers.Click(approval_path.DeleteAprTab)
     await approvals_fn.deleteAll2()
 
 

@@ -18,7 +18,7 @@ exports.config = {
         // './test/B2B/Specs/setting/profile.spec.js',
         // './test/B2B/Specs/setting/tag.spec.js',
         // './test/B2B/Specs/setting/tax.spec.js',
-        './test/B2B/Specs/setting/team.spec.js',
+        // './test/B2B/Specs/setting/team.spec.js',
         // './test/B2B/Specs/setting/terms.spec.js',
         // './test/B2B/Specs/setting/zone.spec.js',
         //  './test/B2B/Specs/Customers/customer.spec.js',

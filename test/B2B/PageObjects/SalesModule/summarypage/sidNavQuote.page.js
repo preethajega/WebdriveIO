@@ -93,6 +93,12 @@ class SidNavPage extends Page{
     get RejectBtnExpand(){
         return super.pathById('reject')
     }
+    get ApproveBtn(){
+        return super.pathById('approve')
+    }
+    get RejectBtn(){
+        return super.pathById('reject')
+    }
     /************** BUYER SIDNAV PATHS ************ */
     get SubmitVersionText(){
         return super.pathByXpath("//h2[text()='Submit new version']")

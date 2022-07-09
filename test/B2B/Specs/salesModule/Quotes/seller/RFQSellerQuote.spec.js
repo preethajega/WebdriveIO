@@ -57,8 +57,8 @@ describe("cart Page", () => {
 
     it("Should allow to access login ", async () => {
         await LoginPage.open();
-        await LoginPage.login(B2B_loginIp.OwnerEmail, B2B_loginIp.OwnerPassword);
-        // await LoginPage.login(B2B_loginIp.Buyer4Email, B2B_loginIp.OwnerPassword);
+        // await LoginPage.login(B2B_loginIp.OwnerEmail, B2B_loginIp.OwnerPassword);
+        await LoginPage.login(B2B_loginIp.Buyer5Email, B2B_loginIp.OwnerPassword);
         await actionsWrappers.urlValidation("/dev3.myapptino.com/");
     })
     it("cart to summary page ", async () => {
@@ -340,7 +340,8 @@ describe("cart Page", () => {
     });
 
 
-    it('should validate the full approval Workflow with three approvers present', async () => {
+    it('should validate the full approval Workflow with Approving by three approvers present', async () => {
+        await Quote_fn.open()
         await browser.pause(5000)
         await cart_fn.ClickAndclearCart(cart_path.cartIcon);
         await browser.pause(4000)
@@ -400,8 +401,8 @@ describe("cart Page", () => {
         await actionsWrappers.Click(common.closeCardQuote)
     });
 
-    it('should validate the full approval Workflow with three approvers present', async () => {
-        // await Quote_fn.open()
+    it('should validate the full approval Workflow with Rejection of  three approvers present', async () => {
+        await Quote_fn.open()
         await browser.pause(5000)
         await cart_fn.ClickAndclearCart(cart_path.cartIcon);
         await browser.pause(4000)
@@ -463,7 +464,62 @@ describe("cart Page", () => {
     });
 
 
-
+    it('should validate the full approval Workflow by Approving  three approvers & without Reviewer present', async () => {
+        await browser.pause(5000)
+        await cart_fn.ClickAndclearCart(cart_path.cartIcon);
+        await browser.pause(4000)
+        await cart_fn.selectProducts(CartIp.itemName);
+        await browser.pause(2000)
+        await cart_fn.selectProducts(CartIp.itemName1);
+        await browser.pause(2000)
+        await cart_fn.selectProducts(CartIp.itemName2);
+        await browser.pause(2000)
+        await cart_fn.selectProducts(CartIp.itemName3);
+        await browser.pause(2000)
+        await assert.strictEqual(await common.snackbar.getText(), CartIp.cartAlert);
+        await cart_fn.carttoSummary1(CartIp.BuyerName1, await cart_path.createQuote);
+        await approval_fn.AddApproval(approval_path.ApprovalGrp, approvalIp.approvalName5)
+        await browser.pause(2000)
+        await EndCustomer_fn.RequiredDateValid(QuoteBtnPath.CreateOrREqApproveBtn, QuoteIp.CreateQuoteBtnTxt, QuoteBtnPath.CreateQuoteBtn, QuoteBtnPath.RequestApproval,
+            EndCustomer_path.RequiredDateIcon, EndCustomer_path.NextMonthBtn, EndCustomer_path.DatePath,
+            approval_path.Tag, TagIp.tag, approval_path.Tag)
+        await browser.pause(5000)
+        await Quote_fn.QuotePopUP(QuoteBtnPath.CreateOrREqApproveBtn, QuoteIp.CreateQuoteBtnTxt, QuoteBtnPath.CreateQuoteBtn, QuoteBtnPath.RequestApproval,
+            QuoteBtnPath.QuoteConfWindow, QuoteIp.CreateQuoteText, QuoteBtnPath.CreateQuoteName, QuoteIp.QuoteName, QuoteBtnPath.ConfBtn,
+            QuoteBtnPath.ReqApprovalQuoteName, QuoteIp.QuoteName1, QuoteBtnPath.Comments, QuoteIp.comments, QuoteBtnPath.ConfBtn)
+        await quotefilter_fn.AddFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.quoteName, QuoteIp.QuoteName1)
+        await Quote_fn.QuoteNameValidation(QuoteBtnPath.QuoteOrderEditFirst, QuoteBtnPath.QuoteOrderNameInput, QuoteIp.QuoteName1)
+        await Quote_fn.ApprovalWorkflowLoginLogout(QuoteBtnPath.SelectfirstData,SidNavQuote_path.ApproverName3, sidnavIp.Approvername)
+        /******* Approving a Quote by  first lower precedence ********/
+        await Quote_fn.open()
+        await browser.pause(5000)
+        await quotefilter_fn.AddFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.quoteName, QuoteIp.QuoteName1)
+        await actionsWrappers.Click(QuoteBtnPath.SelectfirstData)
+        await Quote_fn.ApproveRejectQuote(SidNavQuote_path.ApproveBtn,QuoteBtnPath.Comments, QuoteBTnsIp.Approvercomments, QuoteBtnPath.ConfBtn)
+        await browser.pause(5000)
+        await actionsWrappers.Click(QuoteBtnPath.SelectfirstData)
+        await Quote_fn.ApprovedQuoteValid( SidNavQuote_path.Approver3Status, sidnavIp.ApproverApproved,
+            SidNavQuote_path.ApproverName3, SidNavQuote_path.ApproverName2, LogOutPage.loggedMailName)
+        /******* Approving a Quote by second lower precedence ********/
+        await Quote_fn.open()
+        await browser.pause(5000)
+        await quotefilter_fn.AddFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.quoteName, QuoteIp.QuoteName1)
+        await actionsWrappers.Click(QuoteBtnPath.SelectfirstData)
+        await Quote_fn.ApproveRejectQuote(SidNavQuote_path.ApproveBtn,QuoteBtnPath.Comments, QuoteBTnsIp.Approvercomments, QuoteBtnPath.ConfBtn)
+        await browser.pause(5000)
+        await actionsWrappers.Click(QuoteBtnPath.SelectfirstData)
+        await Quote_fn.ApprovedQuoteValid(SidNavQuote_path.Approver2Status, sidnavIp.ApproverApproved,
+            SidNavQuote_path.ApproverName2, SidNavQuote_path.ApproverName1, LogOutPage.loggedMailName)
+        /******* Approving a Quote by Higer precedence ********/
+        await Quote_fn.open()
+        await browser.pause(5000)
+        await quotefilter_fn.AddFilter(QuotefilterPath.AllFilterTab, QuotefilterPath.quoteName, QuoteIp.QuoteName1)
+        await actionsWrappers.Click(QuoteBtnPath.SelectfirstData)
+        await Quote_fn.ApproveRejectQuote(SidNavQuote_path.ApproveBtn,QuoteBtnPath.Comments, QuoteBTnsIp.Approvercomments, QuoteBtnPath.ConfBtn)
+        await browser.pause(5000)
+        await Quote_fn.ApprovalTextValid1(SidNavQuote_path.Approver1Status, SidNavQuote_path.ApprovalExpandBtn, SidNavQuote_path.Approver1Status, sidnavIp.ApproverApproved)
+        await actionsWrappers.Click(common.closeCardQuote)
+    });
     /*******  */
 
 
