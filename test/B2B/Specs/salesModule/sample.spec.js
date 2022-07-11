@@ -36,6 +36,7 @@ const prodTable_path = require("../../PageObjects/SalesModule/summarypage/Produc
 const prodTable_fn = require("../../CommonFunctions/salesModule/SalesCards/ProductTable");
 
 
+
 describe("cart Page", () => {
   it("Should allow to access login ", async () => {
     await LoginPage.open();
@@ -72,23 +73,34 @@ describe("cart Page", () => {
     await browser.pause(3000)
     await assert.strictEqual(
       await common.snackbar.getText(), CartIp.cartAlert);
-    await actionsWrappers.clearValues(await cart_path.selectbuyer);
-    await cart_fn.carttoSummary(CartIp.BuyerName1, await cart_path.createQuote);
+      browser.pause(2000)
+    //await actionsWrappers.clearValues(cart_path.selectbuyer);
+    await cart_fn.carttoSummary(CartIp.BuyerName1,cart_path.createQuote);
+    browser.pause(2000)
     await actionsWrappers.urlValidation("/quote-summary");
-    // await actionsWrappers.scrollEle(prodTable_path.discount(0));
+    await actionsWrappers.scrollEle(prodTable_path.productCost(0));
+  
+    console.log(prodTable_path.productCost(0))
+    let cost= await prodTable_path.productCost(0).getValue();
+   if(cost==='600'){
+    await actionsWrappers.clearAndsetValue(prodTable_path.productCost(0),500)
+   }else{
+    await actionsWrappers.clearAndsetValue(prodTable_path.productCost(0),700)
+   }
+   
   })
   // it('should add the product and Upadate the Quanty',async () => {
   //   await cart_fn.SerchProdUpdateQuanty(CartIp.itemName1,CartIp.ProdQty,CartIp.ProdQty1)
   // });
   /* ************************ It should change the Approval Group ************************* */
-  it('should change a Approval Group', async () => {
-    await browser.pause(4000)
-    await approval_fn.AddApproval(approval_path.ApprovalGrp, approvalIp.approvalName1)
-  });
-  it('should change a Approval Group', async () => {
-    await browser.pause(4000)
-    await approval_fn.AddApproval(approval_path.ApprovalGrp, approvalIp.approvalName3)
-  });
+  // it('should change a Approval Group', async () => {
+  //   await browser.pause(4000)
+  //   await approval_fn.AddApproval(approval_path.ApprovalGrp, approvalIp.approvalName1)
+  // });
+  // it('should change a Approval Group', async () => {
+  //   await browser.pause(4000)
+  //   await approval_fn.AddApproval(approval_path.ApprovalGrp, approvalIp.approvalName3)
+  // });
   /* ************************ It should work on Currency Fields ************************ */
   // it('should add a Currency', async () => {
   //   await browser.pause(2000)
@@ -386,12 +398,12 @@ describe("cart Page", () => {
   //    await EndCustomer_fn.SPRFieldValidate(EndCustomer_path.ErrCompetitor,EndCustomer_path.ErrCompetitor,EndCustomerIp.ErrMsgCompetitors)
   //    await EndCustomer_fn.SPRFieldValidate(EndCustomer_path.ErrPriceJustification,EndCustomer_path.ErrPriceJustification,EndCustomerIp.ErrMsgPriceJustification)
   //   });
-  it('should add Required date to the Quote summary page',async () => {
-    await browser.pause(4000)
-    await actionsWrappers.scrollEle(EndCustomer_path.RequiredDate)
-    await EndCustomer_fn.DateSelecter(EndCustomer_path.RequiredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath)
-  });
-  /* ************************ Creating a Quote validations ************************ */
+  // it('should add Required date to the Quote summary page',async () => {
+  //   await browser.pause(4000)
+  //   await actionsWrappers.scrollEle(EndCustomer_path.RequiredDate)
+  //   await EndCustomer_fn.DateSelecter(EndCustomer_path.RequiredDateIcon,EndCustomer_path.NextMonthBtn,EndCustomer_path.DatePath)
+  // });
+  // /* ************************ Creating a Quote validations ************************ */
   // it('should create a Quote',async () => {
   //   await Quote_fn.QuotePopUP(QuoteBtnPath.CreateOrREqApproveBtn,QuoteIp.CreateQuoteBtnTxt,QuoteBtnPath.CreateQuoteBtn,QuoteBtnPath.RequestApproval,
   //     QuoteBtnPath.QuoteConfWindow,QuoteIp.CreateQuoteText,QuoteBtnPath.CreateQuoteName,QuoteIp.QuoteName,QuoteBtnPath.ConfBtn,

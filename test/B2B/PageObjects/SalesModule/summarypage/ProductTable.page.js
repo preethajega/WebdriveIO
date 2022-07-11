@@ -19,6 +19,10 @@ buyerProductDescription(row){
     return $(`[name="products[${row}].buyerProductDescription"]`)
 }
 
+unitListPrice(row){
+    return $(`[name="products[${row}].unitListPrice"]`)
+}
+
 discount(row){
     return $(`[name="products[${row}].discount"]`)
 }

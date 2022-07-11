@@ -2,28 +2,29 @@ const url = require('./url')
 
 exports.config = {
     specs: [
-        // './test/B2B/Specs/setting/company/AddWarehouse.spec.js',
- //'./test/B2B/Specs/setting/tag.spec.js',
-// './test/B2B/Specs/setting/tax.spec.js',
-//'./test/B2B/Specs/setting/zone.spec.js',
-
-// './test/B2B/Specs/setting/team.spec.js',
-
-
-
-
-        //  './test/B2B/Specs/setting/terms.spec.js',
-        //  './test/B2B/Specs/setting/zone.spec.js',
-        //  './test/B2B/Specs/setting/tax.spec.js',
-        //  './test/B2B/Specs/setting/team.spec.js',
-        //  './test/B2B/Specs/setting/appSetup.spec.js',
-        // './test/B2B/Specs/Customers/customer.spec.js',
-        //  './test/B2B/Specs/salesModule/Quotes/Buyer/RFQBuyerQuote.spec.js'
-        //  './test/B2B/Specs/Cart/Cart.spec.js',
-        //  './test/B2B/Specs/Products/Brands.spec.js',
-          './test/B2B/Specs/Products/Inventory.spec.js',
+//  './test/B2B/Specs/setting/company/AddBranch.spec.js',
+//   './test/B2B/Specs/setting/company/AddWarehouse.spec.js',
+//   './test/B2B/Specs/setting/company/company.spec.js',
+  
+//   './test/B2B/Specs/setting/tag.spec.js',
+//   './test/B2B/Specs/setting/tax.spec.js',
+//   './test/B2B/Specs/setting/zone.spec.js',
+//   './test/B2B/Specs/setting/team.spec.js',
+//        './test/B2B/Specs/setting/terms.spec.js',
+        //  './test/B2B/Specs/setting/API.spec.js',
+        //  './test/B2B/Specs/setting/approvals.spec.js',
+        //  './test/B2B/Specs/setting/businessunit.spec.js',
+        //  './test/B2B/Specs/setting/competitors.spec.js',
+        //  './test/B2B/Specs/setting/customization.spec.js',
+//          './test/B2B/Specs/setting/General.spec.js',
+//          './test/B2B/Specs/setting/integrations.spec.js',
+//          './test/B2B/Specs/setting/profile.spec.js',
+//          './test/B2B/Specs/Customers/customer.spec.js',
+//         './test/B2B/Specs/Products/Brands.spec.js',
+//           './test/B2B/Specs/Products/Inventory.spec.js', 
+             './test/B2B/Specs/salesModule/sample.spec.js',
     ],
-    // Patterns to exclude.
+     //Patterns to exclude
     exclude: [
         // 'path/to/excluded/files'
     ],
@@ -52,7 +53,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: url.dev3,
+    baseUrl: url.dev,
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
