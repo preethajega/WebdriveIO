@@ -8,6 +8,10 @@ const EndCustomer_path = require("../../../PageObjects/SalesModule/summarypage/E
 const EndCusip = require("../../../Inputs/salesModule/summarypage/EndCustomerIp");
 const Sidnav_path = require("../../../PageObjects/SalesModule/summarypage/sidNavQuote.page");
 const sidnavIp = require("../../../Inputs/salesModule/summarypage/sidnavIp");
+const LogOutPage = require("../../../PageObjects/logout.page");
+const LoginPage = require("../../../PageObjects/Login.page");
+const B2B_loginIp = require("../../../Inputs/B2B_login");
+
 
 const assert = require("assert");
 
@@ -100,6 +104,7 @@ class QuoteBtnCard extends Page {
     QuoteNameValidation = async (selectData, QuoteOrderNameInputs, names) => {
         await browser.pause(4000)
         await actionWrapper.checkClickableAnddoubleClick(selectData)
+        await browser.pause(3000)
         await actionWrapper.Click(path.QuoteOrderNameEditIcon)
         if ((await QuoteOrderNameInputs.getValue() === names)) {
             await actionWrapper.Click(path.QuoteOrderConfyesBtn)
@@ -159,10 +164,66 @@ class QuoteBtnCard extends Page {
             quoteIp, ConfBtn, quoteName1, quoteIp1, commentName, commentIp, ConfBtn1)
 
     }
-    ApprovalTextValid =async(ExpandBtn,textpath,textip)=>{
+    ApprovalTextValid1 = async (textpath,ExpandBtn, textpath1, textip) => {
+        await this.ApprovalExpanValid(textpath,ExpandBtn)
+        await browser.pause(2000)
+        await actionWrapper.snackBarValidate(textpath1, textip)
+    }
+    ApprovalTextValid = async (ExpandBtn, textpath1, textip) => {
         await actionWrapper.Click(ExpandBtn)
         await browser.pause(2000)
-        await actionWrapper.snackBarValidate(textpath,textip)
+        await actionWrapper.snackBarValidate(textpath1, textip)
+    }
+    ApprovalExpanValid =async(textpath,ExpandBtn)=>{
+        if ((await textpath.isDisplayed()) == true) {
+            await actionWrapper.Click1(ExpandBtn)
+        }
+    }
+    ApprovedQuoteValid = async(textpath, textip,textpath1,textpath2, textip1)=>{
+        await actionWrapper.snackBarValidate(textpath, textip)
+        const value1 =await textpath1.getText()
+        const  currentApprover = await value1.slice(1, -1);
+        const value2 =await textpath2.getText()
+        const nextlogeduser = await value2.slice(1, -1);
+        await browser.pause(2000)
+        await actionWrapper.Click(LogOutPage.logouticon)
+        const currentuser =await textip1.getText()
+        await actionWrapper.Click(LoginPage.homePge)
+        if ((await currentApprover) == currentuser) {
+            await LogOutPage.logout(LogOutPage.logouticon, LogOutPage.logoutBtn, common.snackbar,
+                B2B_loginIp.logoutAlertMsg)
+                await LoginPage.open();
+                await LoginPage.login(nextlogeduser, B2B_loginIp.OwnerPassword);
+                await actionWrapper.urlValidation("/dev3.myapptino.com/");
+            }
+    }
+    ApprovalWorkflowLoginLogout = async (selectData,textpath1, textip) => {
+        await actionWrapper.Click(selectData)
+        // await this.ApprovalExpanValid(textpath,ExpandBtn)
+        await browser.pause(5000)
+        if ((await textpath1.getText()) === textip) {
+            await LogOutPage.logout(LogOutPage.logouticon, LogOutPage.logoutBtn, common.snackbar,
+                B2B_loginIp.logoutAlertMsg)
+            await browser.pause(3000)
+            await LoginPage.open();
+            await LoginPage.login(B2B_loginIp.Buyer5Email, B2B_loginIp.OwnerPassword);
+            await actionWrapper.urlValidation("/dev3.myapptino.com/");
+        }
+        else{
+            await LogOutPage.logout(LogOutPage.logouticon, LogOutPage.logoutBtn, common.snackbar,
+                B2B_loginIp.logoutAlertMsg)
+            await browser.pause(3000)
+            await LoginPage.open();
+            await LoginPage.login(B2B_loginIp.Buyer4Email, B2B_loginIp.OwnerPassword);
+            await actionWrapper.urlValidation("/dev3.myapptino.com/");
+        }
+    }
+
+    ApproveRejectQuote= async(ApproveRejectBtn,commentpath, commentip,confbtn)=>{
+        await actionWrapper.Click(ApproveRejectBtn)
+        await browser.pause(3000)
+        await actionWrapper.clickAndSetvalue(commentpath, commentip)
+        await actionWrapper.Click(confbtn)
     }
 
 

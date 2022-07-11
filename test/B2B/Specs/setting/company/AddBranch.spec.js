@@ -23,6 +23,7 @@ describe('Branch card', () => {
         await Branch_fn.AddBranch(Branch_path.SaveBtn)
     });
     it('should delete a selected Address with CancelBtn',async () => {
+        await browser.pause(3000)
         await Branch_fn.MappedDeleteValid(Branch_path.ConformCancelBtn,common.snackbar,Branchip.MapedBranchDeleteAlert)
     });
     it('should delete a selected Address with DeleteBtn',async () => {

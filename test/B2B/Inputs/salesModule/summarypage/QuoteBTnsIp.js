@@ -12,6 +12,7 @@ function QuoteIP(){
     this.QuoteName="Automation"+today+"Quote"
     this.EditQuoteName ="Quote Name"+today+"Edited"
     this.comments="Automation Commenting on"+today+"Ok"
+    this.Approvercomments="Automation Approved on"+today+"Ok"
     this.ApproverName="preethaAdmin"
     this.ApproverName1="preetha"
     this.ApproverName2="JP"

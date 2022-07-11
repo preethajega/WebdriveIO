@@ -10,6 +10,7 @@ class LoginPage extends Page {
     get inputUsername () { return super.pathByName('Email') }
     get inputPassword () { return super.pathByName("Password") }
     get btnSubmit () { return super.pathByXpath('//button[@type="submit"]') }
+    get homePge(){return super.pathById('Home')}
 
     /**
      * a method to encapsule automation code to interact with the page

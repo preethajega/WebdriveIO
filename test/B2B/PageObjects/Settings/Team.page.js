@@ -51,11 +51,14 @@ class Team extends Page{
     get EmailexistMsg(){
         return super.pathByXpath("//p[text()='Email id already exists']")
     }
-    get Editdata(){
+    get Editdata1(){
         return super.pathByXpath('(//table/tbody/tr)[last()]')
     }
-    get Editdata1(){
-        return super.pathByXpath('//table/tbody/tr[22]')
+    get Editdata(){
+        return super.pathByXpath('(//table/tbody/tr)[1]')
+    }
+    get Editdata2(){
+        return super.pathByXpath('(//table/tbody/tr)[2]')
     }
     get UserInviteBtn(){
         return super.pathByXpath('//button[@aria-label="Invite"]')
@@ -125,7 +128,13 @@ class Team extends Page{
    get InvaliMail(){
        return super.pathByXpath('//p[text()="Invalid email id"]')
    }
-
+   get ReportingToManger(){
+    return super.pathById('reportingTo')
+   }
+   get DotedReportingToManger(){
+    return super.pathById('dottedReportingTo')
+   }
+   
 
 }
 module.exports = new Team();

@@ -67,7 +67,7 @@ class SidNavPage extends Page{
         return super.pathById('exportQuote')
     }
     get ApprovalExpandBtn(){
-        return super.pathByXpath("//div[contains(@class,'expandIconWrapper')]")
+        return super.pathByXpath("(//div[contains(@class,'expandIconWrapper')])[1]")
     }
     get Approver1Status(){
         return super.pathByXpath('//div[contains(@class,"MuiAccordionDetails")]/div/div[2]/div[2]//div/p')
@@ -78,7 +78,27 @@ class SidNavPage extends Page{
     get Approver3Status(){
         return super.pathByXpath('//div[contains(@class,"MuiAccordionDetails")]/div/div[4]/div[2]//div/p')
     }
-
+    get ApproverName1(){
+        return super.pathByXpath('//div[contains(@class,"MuiAccordionDetails")]/div/div[2]/div[1]/h6')
+    }
+    get ApproverName2(){
+        return super.pathByXpath('//div[contains(@class,"MuiAccordionDetails")]/div/div[3]/div[1]/h6')
+    }
+    get ApproverName3(){
+        return super.pathByXpath('//div[contains(@class,"MuiAccordionDetails")]/div/div[4]/div[1]/h6')
+    }
+    get ApproveBtnExpand(){
+        return super.pathById('approve')
+    }
+    get RejectBtnExpand(){
+        return super.pathById('reject')
+    }
+    get ApproveBtn(){
+        return super.pathById('approve')
+    }
+    get RejectBtn(){
+        return super.pathById('reject')
+    }
     /************** BUYER SIDNAV PATHS ************ */
     get SubmitVersionText(){
         return super.pathByXpath("//h2[text()='Submit new version']")

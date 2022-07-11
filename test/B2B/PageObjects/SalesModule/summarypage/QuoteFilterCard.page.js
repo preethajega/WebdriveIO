@@ -22,7 +22,7 @@ class QuoteFilter extends Page{
         return super.pathById('qid')
     }
     get quoteName(){
-        return super.pathById('qname')
+        return super.pathByXpath('//input[@id="qname"]')
     }
     get BuyerInfo(){
         return super.pathById('checkboxes-Accounts')

@@ -15,7 +15,7 @@ function cartPageInput() {
     this.ProdQty2="5";
     this.LeadName = 'sanity';
     this.BuyerName = 'Apptino';
-    this.BuyerName1="preetha";
+    this.BuyerName1="preetha pvt ltd";
     this.BuyerName2="NIET";
     this.BuyerName3="Zoho";
     this.CompanyName = "apptino software";

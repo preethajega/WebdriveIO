@@ -35,9 +35,9 @@ class Team extends Page {
     }
     AlredyExistsFieldValid = async(exitspath,existsip,errpath,errip) =>{
         await actionWrapper.Click(path.AddUserbtn)
-        await actionWrapper.clickAndSetvalue(exitspath,existsip,path.Email,teamip.email)
+        await actionWrapper.clickAndSetvalue(exitspath,existsip)
         await actionWrapper.Click(path.Savebtn)
-        await actionWrapper.snackBarValidate(errpath,errip,path.errMail,teamip.mailexitsAlert)
+        await actionWrapper.snackBarValidate(errpath,errip)
         await actionWrapper.Click(path.CancelBtn)
         await actionWrapper.Click(path.Closecard)
     }
@@ -47,7 +47,7 @@ class Team extends Page {
         await browser.pause(2000)
         await actionWrapper.snackBarValidate(common.snackbar,teamip.alert)
         await browser.pause(3000)
-        await browser.refresh()
+        await actionWrapper.Click(common.Refresh)
     }
     DeleteTag = async(btn) =>{
         await actionWrapper.scrollEleAndClick(path.Tags)
@@ -56,18 +56,18 @@ class Team extends Page {
         await browser.pause(2000)
         await actionWrapper.snackBarValidate(common.snackbar,teamip.alert)
         await browser.pause(3000)
-        await browser.refresh()
+        await actionWrapper.Click(common.Refresh)
     }
     AddBu = async(branchpath,branchip,bupath,BUip,btn) =>{
         await actionWrapper.scrollEleAndClick(path.BUAddBtn)
-        await browser.pause(2000)
-        await actionWrapper.clickSetvalueAndSelectSecondOption(branchpath,branchip)
+        await browser.pause(4000)
+        await actionWrapper.clickSetvalueAndSelectoption(branchpath,branchip)
         await actionWrapper.clickSetvalueAndSelectoption(bupath,BUip)
         await actionWrapper.Click(btn)
         await browser.pause(2000)
         await actionWrapper.snackBarValidate(common.snackbar,teamip.alert)
         await browser.pause(2000)
-        await browser.refresh()
+        await actionWrapper.Click(common.Refresh)
     }
     DeleteBu = async(btn)=>{
         await actionWrapper.scrollEleAndClick(path.DeleteBU)
@@ -75,7 +75,7 @@ class Team extends Page {
         await browser.pause(2000)
         await actionWrapper.snackBarValidate(common.snackbar,teamip.alert)
         await browser.pause(3000)
-        await browser.refresh()
+        await actionWrapper.Click(common.Refresh)
     }
     AddBranch = async() =>{
         await browser.pause(2000)
@@ -85,7 +85,7 @@ class Team extends Page {
         await browser.pause(2000)
         await actionWrapper.Click(path.Savebtn)
         await actionWrapper.snackBarValidate(common.snackbar,teamip.alert)
-        await browser.refresh()
+        await actionWrapper.Click(common.Refresh)
     }
     BranchValid = async() =>{
         await actionWrapper.scrollEleAndClick(path.BUAddBtn)
@@ -97,24 +97,27 @@ class Team extends Page {
         await actionWrapper.Click(path.Closecard)
     }
     InviteUser =async() =>{
-        await actionWrapper.scrollEleAndClick(path.Editdata)
+        await actionWrapper.Click(path.Editdata)
         await actionWrapper.Click(path.refershbtn)
         await actionWrapper.Click(path.UserInviteBtn)
-        await actionWrapper.snackBarValidate(common.snackbar,teamip.invitealert)
         await browser.pause(2000)
+        await actionWrapper.snackBarValidate(common.snackbar,teamip.invitealert)
+        await browser.pause(3000)
         await actionWrapper.Click(path.Closecard)
     }
     ReinvieUser = async() =>{
         await browser.pause(2000)
-        await actionWrapper.scrollEleAndClick(path.Editdata)
+        await actionWrapper.Click(path.Editdata)
         await actionWrapper.Click(path.MoreOptionbtn)
         await actionWrapper.Click(path.Reinvitebtn)
+        await browser.pause(2000)
         await actionWrapper.snackBarValidate(common.snackbar,teamip.reinvitealert)
+        await browser.pause(3000)
         await actionWrapper.Click(path.Closecard)
     }
     DeleteUser = async(btn) =>{
         await browser.pause(2000)
-        await actionWrapper.scrollEleAndClick(path.Editdata)
+        await actionWrapper.Click(path.Editdata)
         await browser.pause(2000)
         await actionWrapper.Click(path.MoreOptionbtn)
         await actionWrapper.Click(path.Deletebtn)
@@ -126,14 +129,37 @@ class Team extends Page {
     }
     statusUser = async(statusbtn,confbtn,snackpath,alertip)=>{
         await browser.pause(2000)
-        await actionWrapper.scrollEleAndClick(path.Editdata)
+        await actionWrapper.Click(path.Editdata2)
         await browser.pause(2000)
         // await actionWrapper.Click(path.refershbtn)
         await actionWrapper.Click(path.MoreOptionbtn)
         await actionWrapper.Click(statusbtn)
         await actionWrapper.Click(confbtn)
+        await browser.pause(2000)
         await actionWrapper.snackBarValidate(snackpath,alertip)
+        await browser.pause(2000)
         await actionWrapper.Click(path.Closecard)
+    }
+    AddReportManager=async(reportpath,btn)=>{
+        await actionWrapper.Click(path.Editdata)
+        await actionWrapper.scrollEle(reportpath)
+        await actionWrapper.selectDrpdownusingKeyboard(reportpath)
+        await actionWrapper.Click(btn)
+        await browser.pause(2000)
+        await actionWrapper.snackBarValidate(common.snackbar,teamip.alert)
+        await browser.pause(2000)
+        await actionWrapper.Click(common.closeCardQuote)
+    }
+    deleteReportManager=async(reportpath,btn)=>{
+        await actionWrapper.Click(path.Editdata)
+        await actionWrapper.scrollEle(reportpath)
+        await actionWrapper.clearValues(reportpath)
+        await actionWrapper.Click(btn)
+        await browser.pause(2000)
+        await actionWrapper.snackBarValidate(common.snackbar,teamip.alert)
+        await browser.pause(2000)
+        await actionWrapper.Click(common.closeCardQuote)
+
     }
 
 
