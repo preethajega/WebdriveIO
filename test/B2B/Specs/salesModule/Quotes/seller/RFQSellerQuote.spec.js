@@ -57,8 +57,8 @@ describe("cart Page", () => {
 
     it("Should allow to access login ", async () => {
         await LoginPage.open();
-        // await LoginPage.login(B2B_loginIp.OwnerEmail, B2B_loginIp.OwnerPassword);
-        await LoginPage.login(B2B_loginIp.Buyer5Email, B2B_loginIp.OwnerPassword);
+        await LoginPage.login(B2B_loginIp.OwnerEmail, B2B_loginIp.OwnerPassword);
+        // await LoginPage.login(B2B_loginIp.Buyer5Email, B2B_loginIp.OwnerPassword);
         await actionsWrappers.urlValidation("/dev3.myapptino.com/");
     })
     it("cart to summary page ", async () => {
@@ -521,6 +521,16 @@ describe("cart Page", () => {
         await actionsWrappers.Click(common.closeCardQuote)
     });
     /*******  */
+    it('sample term vaidation',async () => {
+        await Quote_fn.open()
+        await browser.pause(5000)
+        await actionsWrappers.Click(QuoteBtnPath.SelectfirstData)
+        await actionsWrappers.Click(SidNavQuote_path.RespondBtn)
+        await Quote_fn.TermsValid(Term_path.DeleiverTerm)
+        await Quote_fn.TermsValid(Term_path.PaymentTerm)
+        await Quote_fn.TermsValid(Term_path.WarrentyTerm)
+
+    });
 
 
 

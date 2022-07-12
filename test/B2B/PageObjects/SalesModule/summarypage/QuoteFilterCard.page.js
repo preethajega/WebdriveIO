@@ -49,7 +49,7 @@ class QuoteFilter extends Page{
         return super.pathByXpath('//button[@aria-label="clearAll"]')
     }
     get AllFilterTab(){
-        return super.pathById('scrollable-force-tab-0')
+        return super.pathById('filter-tab-0')
     }
     get AddFilterBtn(){
         return super.pathByXpath('//button[@aria-label="Add Tab for filters"]')

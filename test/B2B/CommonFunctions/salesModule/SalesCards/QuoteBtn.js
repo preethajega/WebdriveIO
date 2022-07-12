@@ -225,7 +225,11 @@ class QuoteBtnCard extends Page {
         await actionWrapper.clickAndSetvalue(commentpath, commentip)
         await actionWrapper.Click(confbtn)
     }
-
+TermsValid = async(ele)=>{
+        await actionWrapper.MoveTo(ele)
+        const value =await ele.getValue();
+        await console.log(value)
+    }
 
     /************* BUYER SIDE METHOD FOR SIDNAVE PAGE ************* */
     createQuote1 = async (quoteName, quoteIp, ConfBtn) => {
