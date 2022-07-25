@@ -366,6 +366,19 @@ HoverMoveTO = async(ele,ele1)=>{
    await ele1.click();
   }
   
+  // Hover And Click Select A Dropdown 2 value//
+
+  HoverAndClick=async(ele,ele1,ele3)=>{
+    await ele.moveTo()
+    await this.Click(ele1)
+    await ele1.keys("\uE015")
+    await ele1.keys("\uE015")
+    await browser.pause(2000)
+    await ele3.click()
+    await browser.pause(2000)
+
+  }
+     
 
 
   

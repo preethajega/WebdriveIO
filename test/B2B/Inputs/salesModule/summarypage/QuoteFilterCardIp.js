@@ -20,9 +20,15 @@ function QuoteFilterIp(){
     this.QuoteStatus9="Quote Approved"
     this.QuoteStatus=""
     this.QuoteStatus=""
+    this.StartValue="₹10000"
+    this.EndValue="₹20000"
+    this.StartTaxableAmount="₹1000"
+    this.EndTaxableAmount="₹2000"
+    this.StartTotal="₹5000"
+    this.EndTotal="₹15000"
     this.quotecancelMsg="Quote Cancelled"
 
-
+    
     
 }
 module.exports = new QuoteFilterIp();

@@ -23,8 +23,13 @@ exports.config = {
         // './test/B2B/Specs/setting/zone.spec.js',
         //  './test/B2B/Specs/Customers/customer.spec.js',
         //  './test/B2B/Specs/salesModule/Quotes/Buyer/RFQBuyerQuote.spec.js',
-         './test/B2B/Specs/salesModule/Quotes/Seller/RFQSellerQuote.spec.js'
+        //  './test/B2B/Specs/salesModule/Quotes/Seller/RFQSellerQuote.spec.js'
         //  './test/B2B/Specs/Cart/Cart.spec.js',
+        // './test/specs/**/*.js'
+        // './test/B2B/Specs/salesModule/Quotes/seller/Quotefilter.spec.js'
+        // './test/B2B/Specs/salesModule/Quotes/seller/Orderfilter.spec.js'
+        './test/B2B/Specs/Orders/Reorder.spec.js'
+        
     ],
     // Patterns to exclude.
     exclude: [
@@ -83,3 +88,11 @@ exports.config = {
     },
 
 }
+
+
+
+
+
+
+
+
