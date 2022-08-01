@@ -1,3 +1,5 @@
+const { AddCustomProduct } = require("../../CommonFunctions/Quotes/CustomProductCards");
+const AddCustomProducts = require("../../Inputs/salesModule/AddCustomProducts");
 const Page = require("../../PageObjects/page");
 class CustomProductCard extends Page {
     open() {
@@ -70,6 +72,9 @@ class CustomProductCard extends Page {
       get SaveBtn(){
         return super.pathByXpath('//button[@id="editDialogButton"]')
       }
+      get Toaster(){
+        return super.pathByXpath('//div[@id="notistack-snackbar"]')
+    }
       get CancelBtn(){
         return super.pathByXpath('//button[@id="editDialogCancel"]')
       }
@@ -107,15 +112,30 @@ class CustomProductCard extends Page {
         return super.pathByXpath('//button[@id="cq_rfq"]')
       }
       get Quote_AddCustomProductBtn1(){
-        return super.pathByXpath('//button[@class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButtonBase-root  css-oim6ay"]')
+        return super.pathByXpath('//button[@class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButtonBase-root  css-1i9x1pu"]')
       }
-      get CPproduct(){
-        return super.pathByXpath('//div[@class="MuiBox-root css-70qvj9"]/child::h3')
+      get ClickCP_product(){
+        return super.pathByXpath('//div[contains(@class," jss886 css-45ujxc")]/div[3]/div[1]//h3')
+      }
+      get Click_prodGetTxt(){
+        return super.pathByXpath(`//h3[text()="${AddCustomProducts.ProductVariantname}"]`)
       }
       get PenBtnProductPage(){
         return super.pathByXpath('//div[@id="productEditButton"]')
       }
-      
+      get TextOfCp(){
+        return super.pathByXpath('//p[text()="CP"]')
+      }
+      get scrollToCP(){
+         return super.pathByXpath('//span[text()="Is it a custom product?"]')
+      }
+      get CPOff(){
+         return super.pathByXpath('//span[text()="Is it a custom product?"]/following::input')
+      }
+      get saveAndpublish(){
+        return super.pathByXpath('//button[@id="loadingButton"]')
+      }
+
       
 
     };

@@ -17,18 +17,13 @@ class CustomProduct extends Page{
     AddCustomProduct = async (AddcustomPBtn,productIDfield,productIP,ProductVariantfiled,productvarientIP,
         productnamefield,productnameIP,primarycategoryfield,primarycategoryIP,HSDcode,HSDcodIP,unitLP,unitLPIP,
         productcost,productcostIP,unitQuantity,unitQuantityIp,PackQuantity,PackQuantityIP,Divisionpath,DivisionIP,
-        BU,BUip,unitmeasure,unitmeasureIP,SaveBtn,/*toasterpath,savedmessage*/)=>{
+        BU,BUip,unitmeasure,unitmeasureIP)=>{
 
         await ActionWrappers.Click(AddcustomPBtn)
-        await browser.pause(3000)
         await ActionWrappers.clickAndSetvalue(productIDfield,productIP)
-        await browser.pause(3000)
         await ActionWrappers.clickAndSetvalue(ProductVariantfiled,productvarientIP)
-        await browser.pause(5000)
         await ActionWrappers.clickSetvalueAndSelectoption1(productnamefield,productnameIP)
-        await browser.pause(5000)
         await ActionWrappers.clickSetvalueAndSelectoption1(primarycategoryfield,primarycategoryIP)
-
         await ActionWrappers.clickSetvalueAndSelectoption1(HSDcode,HSDcodIP)       
         await ActionWrappers.clearAndsetValue(unitLP,unitLPIP)
         await ActionWrappers.clearAndsetValue(productcost,productcostIP)
@@ -36,10 +31,12 @@ class CustomProduct extends Page{
         await ActionWrappers.clearAndsetValue(PackQuantity,PackQuantityIP)
         await ActionWrappers.clickSetvalueAndSelectoption1(Divisionpath,DivisionIP)
         await ActionWrappers.clickSetvalueAndSelectoption1(BU,BUip)
-        await ActionWrappers.clearAndsetValue(unitmeasure,unitmeasureIP)
-        await ActionWrappers.Click1(SaveBtn)
-        await browser.pause(5000)
-        // await ActionWrappers.snackBarValidate(toasterpath,savedmessage)        
+        await ActionWrappers.clearAndsetValue(unitmeasure,unitmeasureIP)    
+    }
+    snakbar = async(btn,snakpath,snakip)=>{
+        await ActionWrappers.Click(btn)
+        await ActionWrappers.snackBarValidate(snakpath,snakip)
+        await browser.pause(2000)
     }
     MandatoryFieldCheck = async (AddcustomPBtn,ProductidReq,ProductVariantReq,ProductNameReq,PrimaryCategoryReq,HSNCodeReq,save,Cancel) =>{
         await ActionWrappers.Click(AddcustomPBtn)
@@ -55,94 +52,43 @@ class CustomProduct extends Page{
         await ActionWrappers.Click(Cancel)
 
     }
-    CP_Card_Behaviors = async (QuantityINC,remove1,Cancelcp,remove2,remove3)=>{
+    CP_Card_Behaviors = async (QuantityINC,remove1,Cancelcp,remove2)=>{
         await ActionWrappers.Click(QuantityINC)
         QuantityINC.keys('\ue013')
         await browser.pause(2000)
         await ActionWrappers.Click(remove1)
         await ActionWrappers.Click(Cancelcp)
         await ActionWrappers.Click(remove2)
-        await ActionWrappers.Click(remove3)
-        await browser.pause(5000)
+        await browser.pause(2000)
     }
     cancel_Btn = async(btn)=>{
         await ActionWrappers.Click(btn)
+    }
+    Unselect_CP_Mark_setting = async(pathofCP,prdt,editpen,scolele,switchbtn,saveandpublish)=>{
+        console.log(pathofCP);
+        if(await pathofCP.isExisting())
+        {
+            console.log("value of prdt",await prdt.getText());
+            await ActionWrappers.Click1(prdt)
+            await browser.pause(2000)
+            await ActionWrappers.Click(editpen)
+            await browser.pause(2000)
+            await ActionWrappers.scrollEle(scolele)
+            await browser.pause(5000)
+            await ActionWrappers.Click1(switchbtn)
+            await ActionWrappers.Click(saveandpublish)
+            
+        }
+        else
+        {
+            console.log("It is not a custom product")
+        }
     }
     Create_Quote_CP =async(buyerpath,buyerIP,createquotepath)=>{
         await ActionWrappers.clickSetvalueAndSelectoption(buyerpath,buyerIP)
         await browser.pause(2000)
         await ActionWrappers.Click(createquotepath)
     }
-    Unselect_CP_Mark_setting = async()=>{
-    
-    }
-    
-    // ClickAddCustomProductBtn1 = async (toclickcustombtn) =>{
-    //     await ActionWrappers.Click(toclickcustombtn)
-    //     await browser.pause(3000)
-    // }
-    // EnterProductID = async (selectpath,tofillproductID) =>{
-        
-    // }
-    // EnterProductVariant = async(selectpath, tofillproductvariant) =>{
-     
-    // }
-
-    // EnterProductNameUsingDrpdwn = async(selectpath, productnamevalue) =>{
-    //     await ActionWrappers.clickSetvalueAndSelectoption1(selectpath,productnamevalue)
-    // }
-    // EnterProductNameUsingclickfield = async(selectpath, productnamevalue) =>{
-        
-    // }
-    // EnterPrimaryCategoryusingDrpdwn = async (selectpath,Primarycategoryvalue) =>{
-    //     await ActionWrappers.clickSetvalueAndSelectoption1(selectpath,Primarycategoryvalue)
-    // }
-    // EnterPrimaryCategoryusingclickField = async (selectpath,Primarycategoryvalue)=>{
-        
-    // }
-    // ClickClosebtnforPrimaryCategory = async (selectpath) =>{
-    //     await ActionWrappers.Click(selectpath)
-    // }
-    // EnterHSNCodeUsingclickField = async (selectpath,HSNcodevalue) =>{
-    //     await ActionWrappers.clickSetvalueAndSelectoption1(selectpath,HSNcodevalue)
-    // }
-    // EnterHSNCodeUsingDrpdwn = async (selectpath,HSNcodevalue) =>{
-    //     await ActionWrappers.clickSetvalueAndSelectoption1(selectpath,HSNcodevalue)
-    // }
-    // EnterUnitPrice = async (selectpath,unitpricevalue) =>{
-    //     await ActionWrappers.clearAndsetValue(selectpath,unitpricevalue)
-    // }
-    // EnterProductCost = async (selectpath,productcostvalue) =>{
-    //     await ActionWrappers.clearAndsetValue(selectpath,productcostvalue)
-    // }
-    // EnterUnitQuantity = async (selectpath,unitqualityvalue) =>{
-    //     await ActionWrappers.clearAndsetValue(selectpath,unitqualityvalue)
-    // }
-    // EnterPackQuantity = async (selectpath,packquantityvalue) =>{
-    //     await ActionWrappers.clearAndsetValue(selectpath,packquantityvalue)
-    // }
-    // EnterDivisionUsingClickfiled = async (selectpath,divisionvalue) =>{
-    //     await ActionWrappers.clickAndSetvalue(selectpath,divisionvalue)
-    // }
-    // EnterDivisionUsingdrpdwn = async (selectpath,divisionvalue) =>{
-    //     await ActionWrappers.clickSetvalueAndSelectoption1(selectpath,divisionvalue)
-    // }
-    // EnterBUusingClickfield = async (selectpath,BUvalue) =>{
-    //     await ActionWrappers.clickSetvalueAndSelectoption1(selectpath,BUvalue)
-    // }
-    // EnterBUusingdrpdwn = async (selectpath,BUvalue) =>{
-    //     await ActionWrappers.clickSetvalueAndSelectoption1(selectpath,BUvalue)
-    // }
-    // EnterUnitMeasure = async (selectpath,UnitOfMeasurevalue) =>{
-    //     await ActionWrappers.clearAndsetValue(selectpath,UnitOfMeasurevalue)
-    // }
-    // SaveBtn = async(selectpath) =>{
-    //     await ActionWrappers.Click(selectpath)
-    // }
-    // CancelBtn = async (selectpath) =>{
-    //     await ActionWrappers.Click(selectpath)
-    // }
-    // saveCP= async ()=>{
     
 }
 module.exports = new CustomProduct();

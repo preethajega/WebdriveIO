@@ -1,6 +1,7 @@
 function AddCustomProducts(){
     const path = require('path');
-    this.ProductID="CUSTOM0023"
+    this.ProductID1="CUSTOM0014"
+    this.ProductID2="CUSTOM0015"
     this.ProductVariantname="BlackBoard"
     this.Productname="White shirt"
     this.Primarycategory="Sub category"
@@ -19,6 +20,6 @@ function AddCustomProducts(){
     this.PrimaryCategoryReq="Primary category required"
     this.HSNCodeReq="HSN/SAC required"
     this.SelectBuyIP="Sakthi enterprise, Toronto"
-
+    this.snackRemoveMsg="Product removed succesfully"
 }
 module.exports = new AddCustomProducts();
