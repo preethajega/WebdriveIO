@@ -1,6 +1,9 @@
 
 const ActionsWrappers = require("../../../CommonActions/ActionsWrappers");
 const Page = require("../../PageObjects/page");
+const toasterip=require('../../Inputs/Orders/Reorder_ip')
+const Reorderpage=require('../../PageObjects/Orders/Reorder');
+
 
 
 class Reorder extends Page{
@@ -13,7 +16,7 @@ class Reorder extends Page{
     
     }
 
-    AddProduct=async(scrollele,search,searchvalue,clickdropvalue,toasterpath,SuccsesAdingproductToasterIp,placeorderbtn,requiredDateToasterIp)=>{
+    AddProduct=async(scrollele,search,searchvalue,clickdropvalue,toasterpath,SuccsesAdingproductToasterIp)=>{
         await ActionsWrappers.scrollEle(scrollele)
         await browser.pause(2000)
         await ActionsWrappers.clickAndSetvalue(search,searchvalue)
@@ -21,28 +24,128 @@ class Reorder extends Page{
         await ActionsWrappers.Click(clickdropvalue)
         await browser.pause(2000)
         await ActionsWrappers.snackBarValidate(toasterpath,SuccsesAdingproductToasterIp)
-        // await ActionsWrappers.scrollEle(scrollele2)
-        await ActionsWrappers.Click(placeorderbtn)
-        await ActionsWrappers.snackBarValidate(toasterpath,requiredDateToasterIp)
+        // await ActionsWrappers.Click(placeorderutton)
     }
 
 
-    validation=async(path)=>{
-        const toast=await path.getText()
-
-        if(toast=="Order has product(s) with prices unknown, Remove product(s) with unknown price or ask for quote"){
-           console.log("hii iam jas000000000")
-
-        }
-        else if(toast=="MOQ is 5 for FG100024"){
-         console.log("hi iam ji 1111111111")
-        }
+    ValidationOfRequestPrice=async(snackbar,scrollele,search,searchvalue,clickdropvalue,toasterpath,SuccsesAdingproductToasterIp)=>{
        
+    for(let i=0;await snackbar.isDisplayed()===true;i++){
+        if(await snackbar.getText()===toasterip.RequiredpriceUnknownMsg){
+            await ActionsWrappers.scrollEle(Reorderpage.CheckRequestPrice)
+            await browser.pause(3000)
+            await ActionsWrappers.Click1(Reorderpage.RequestPriceInput)
+            await ActionsWrappers.Click(Reorderpage.RemoveProduct)
+            await ActionsWrappers.Click(Reorderpage.RemoveProductYesButton)
+            await this.AddProduct(scrollele,search,searchvalue,clickdropvalue,toasterpath,SuccsesAdingproductToasterIp)
+        }
+         
     }
+}
 
+        ValidationOfMOQ=async(path,ErrorMsg)=>{
 
-   
-    
+            for(let i=0;await path.isDisplayed()===true;i++){
+                let a=await Reorderpage.PackOfQTY.getText()
+                // console.log(a)
+                 let b=a.slice(7);
+                 let c=parseInt(b)
+                 if (c%2!==0) {
+                    if(a=="Pack of 3"){
+                     await ActionsWrappers.scrollEle(Reorderpage.InputMOQ)
+                     await browser.pause(2000)
+                     await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"2")
+                     await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                     await ActionsWrappers.snackBarValidate(ErrorMsg,"MOQ is 3")
+                     await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"4")
+                     await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                     await ActionsWrappers.snackBarValidate(ErrorMsg,"Enter in multiples of 3")
+                     await ActionsWrappers.ClickAndUpArrow(Reorderpage.InputMOQ)
+                     await ActionsWrappers.Click(Reorderpage.PlaceOrderBtn)
+                   }
+                   if(a=="Pack of 5"){
+                    await ActionsWrappers.scrollEle(Reorderpage.InputMOQ)
+                    await browser.pause(2000)
+                    await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"3")
+                    await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                    await browser.pause(2000)
+                    await ActionsWrappers.snackBarValidate(ErrorMsg,"MOQ is 5")
+                    await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"6")
+                    await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                    await browser.pause(2000)
+                    await ActionsWrappers.snackBarValidate(ErrorMsg,"Enter in multiples of 5")
+                    await ActionsWrappers.ClickAndUpArrow(Reorderpage.InputMOQ)
+                    await ActionsWrappers.Click(Reorderpage.PlaceOrderBtn)
+                    
+                   }
+                    
+                }else if(c%2==0){
+                    if(a=="Pack of 2"){
+                        await ActionsWrappers.scrollEle(Reorderpage.InputMOQ)
+                        await browser.pause(2000)
+                        await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"1")
+                        await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                        await browser.pause(2000)
+                        await ActionsWrappers.snackBarValidate(ErrorMsg,"MOQ is 2")
+                        await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"7")
+                        await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                        await browser.pause(2000)
+                        await ActionsWrappers.snackBarValidate(ErrorMsg,"Enter in multiples of 2")
+                        await ActionsWrappers.ClickAndUpArrow(Reorderpage.InputMOQ)
+                        await ActionsWrappers.Click(Reorderpage.PlaceOrderBtn)
+                      
+                     }
+                     if(a=="Pack of 4"){
+                        await ActionsWrappers.scrollEle(Reorderpage.InputMOQ)
+                        await browser.pause(2000)
+                        await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"3")
+                        await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                        await browser.pause(2000)
+                        await ActionsWrappers.snackBarValidate(ErrorMsg,"MOQ is 4")
+                        await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"9")
+                        await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                        await browser.pause(2000)
+                        await ActionsWrappers.snackBarValidate(ErrorMsg,"Enter in multiples of 4")
+                        await ActionsWrappers.ClickAndUpArrow(Reorderpage.InputMOQ)
+                        await ActionsWrappers.Click(Reorderpage.PlaceOrderBtn)
+                       
+                     }
+                       if(a=="Pack of 10"){
+                        await ActionsWrappers.scrollEle(Reorderpage.InputMOQ)
+                        await browser.pause(2000)
+                        await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"7")
+                        await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                        await browser.pause(2000)
+                        await ActionsWrappers.snackBarValidate(ErrorMsg,"MOQ is 10")
+                        await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"11")
+                        await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                        await browser.pause(2000)
+                        await ActionsWrappers.snackBarValidate(ErrorMsg,"Enter in multiples of 10")
+                        await ActionsWrappers.ClickAndUpArrow(Reorderpage.InputMOQ)
+                        await ActionsWrappers.Click(Reorderpage.PlaceOrderBtn)
+                       
+                     }
+                }else{
+                    break
+                }
+                
 
+            }
+
+        }
 }
 module.exports =new Reorder()
+
+
+
+
+
+// let a=53;
+
+// for (i=0;i<5;i++){
+//     let c=a+i
+//     if(c%5==0){
+//         console.log(c)
+//         break
+//     }
+// }

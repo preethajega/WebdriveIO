@@ -378,6 +378,11 @@ HoverMoveTO = async(ele,ele1)=>{
     await browser.pause(2000)
 
   }
+
+  ClickAndUpArrow=async(ele)=>{
+    await ele.click()
+    await ele.keys("\ue013")
+  }
      
 
 

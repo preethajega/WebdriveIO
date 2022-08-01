@@ -51,7 +51,7 @@ class Quotefilder1 extends Page{
 
     ValidationDoubleValue=async(path,input1,input2)=>{
 
-       
+
         const gettext=await path.getText()
 
         if((input1<=gettext)&&(input2>=gettext)){
