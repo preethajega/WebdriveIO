@@ -25,6 +25,7 @@ exports.config = {
         //  './test/B2B/Specs/salesModule/Quotes/Buyer/RFQBuyerQuote.spec.js',
          './test/B2B/Specs/salesModule/Quotes/Seller/RFQSellerQuote.spec.js'
         //  './test/B2B/Specs/Cart/Cart.spec.js',
+        
     ],
     // Patterns to exclude.
     exclude: [

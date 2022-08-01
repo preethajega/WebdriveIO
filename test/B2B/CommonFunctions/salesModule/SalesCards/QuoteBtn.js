@@ -11,6 +11,11 @@ const sidnavIp = require("../../../Inputs/salesModule/summarypage/sidnavIp");
 const LogOutPage = require("../../../PageObjects/logout.page");
 const LoginPage = require("../../../PageObjects/Login.page");
 const B2B_loginIp = require("../../../Inputs/B2B_login");
+const termsettingsPath = require("../../../PageObjects/Settings/terms.page");
+const termsettingsFn = require("../../../CommonFunctions/settings/terms")
+const termSettingsip = require("../../../Inputs/settings/TermsIP");
+const TermIp = require("../../../Inputs/salesModule/summarypage/TermsCard")
+
 
 
 const assert = require("assert");
@@ -164,8 +169,8 @@ class QuoteBtnCard extends Page {
             quoteIp, ConfBtn, quoteName1, quoteIp1, commentName, commentIp, ConfBtn1)
 
     }
-    ApprovalTextValid1 = async (textpath,ExpandBtn, textpath1, textip) => {
-        await this.ApprovalExpanValid(textpath,ExpandBtn)
+    ApprovalTextValid1 = async (textpath, ExpandBtn, textpath1, textip) => {
+        await this.ApprovalExpanValid(textpath, ExpandBtn)
         await browser.pause(2000)
         await actionWrapper.snackBarValidate(textpath1, textip)
     }
@@ -174,30 +179,30 @@ class QuoteBtnCard extends Page {
         await browser.pause(2000)
         await actionWrapper.snackBarValidate(textpath1, textip)
     }
-    ApprovalExpanValid =async(textpath,ExpandBtn)=>{
+    ApprovalExpanValid = async (textpath, ExpandBtn) => {
         if ((await textpath.isDisplayed()) == true) {
             await actionWrapper.Click1(ExpandBtn)
         }
     }
-    ApprovedQuoteValid = async(textpath, textip,textpath1,textpath2, textip1)=>{
+    ApprovedQuoteValid = async (textpath, textip, textpath1, textpath2, textip1) => {
         await actionWrapper.snackBarValidate(textpath, textip)
-        const value1 =await textpath1.getText()
-        const  currentApprover = await value1.slice(1, -1);
-        const value2 =await textpath2.getText()
+        const value1 = await textpath1.getText()
+        const currentApprover = await value1.slice(1, -1);
+        const value2 = await textpath2.getText()
         const nextlogeduser = await value2.slice(1, -1);
         await browser.pause(2000)
         await actionWrapper.Click(LogOutPage.logouticon)
-        const currentuser =await textip1.getText()
+        const currentuser = await textip1.getText()
         await actionWrapper.Click(LoginPage.homePge)
         if ((await currentApprover) == currentuser) {
             await LogOutPage.logout(LogOutPage.logouticon, LogOutPage.logoutBtn, common.snackbar,
                 B2B_loginIp.logoutAlertMsg)
-                await LoginPage.open();
-                await LoginPage.login(nextlogeduser, B2B_loginIp.OwnerPassword);
-                await actionWrapper.urlValidation("/dev3.myapptino.com/");
-            }
+            await LoginPage.open();
+            await LoginPage.login(nextlogeduser, B2B_loginIp.OwnerPassword);
+            await actionWrapper.urlValidation("/dev3.myapptino.com/");
+        }
     }
-    ApprovalWorkflowLoginLogout = async (selectData,textpath1, textip) => {
+    ApprovalWorkflowLoginLogout = async (selectData, textpath1, textip) => {
         await actionWrapper.Click(selectData)
         // await this.ApprovalExpanValid(textpath,ExpandBtn)
         await browser.pause(5000)
@@ -208,8 +213,7 @@ class QuoteBtnCard extends Page {
             await LoginPage.open();
             await LoginPage.login(B2B_loginIp.Buyer5Email, B2B_loginIp.OwnerPassword);
             await actionWrapper.urlValidation("/dev3.myapptino.com/");
-        }
-        else{
+        } else {
             await LogOutPage.logout(LogOutPage.logouticon, LogOutPage.logoutBtn, common.snackbar,
                 B2B_loginIp.logoutAlertMsg)
             await browser.pause(3000)
@@ -219,16 +223,95 @@ class QuoteBtnCard extends Page {
         }
     }
 
-    ApproveRejectQuote= async(ApproveRejectBtn,commentpath, commentip,confbtn)=>{
+    ApproveRejectQuote = async (ApproveRejectBtn, commentpath, commentip, confbtn) => {
         await actionWrapper.Click(ApproveRejectBtn)
         await browser.pause(3000)
         await actionWrapper.clickAndSetvalue(commentpath, commentip)
         await actionWrapper.Click(confbtn)
     }
-TermsValid = async(ele)=>{
+    GetStoreValueOfEle = async (ele) => {
         await actionWrapper.MoveTo(ele)
-        const value =await ele.getValue();
+        const value = await ele.getValue();
         await console.log(value)
+    }
+    Termschange = async (ele) => {
+        await actionWrapper.MoveTo(ele)
+        await actionWrapper.clearValueAndSetValueSelectDropdown(ele, )
+        browser.pause(2000)
+    }
+    Termsvalid = async (termTabPath, needapprovalEle, settingsTermele, selectdata, respondBtn, termsidnavele,
+        SumbitRevResBtn, commentpath, commentip, confbtn, SumbitRevResBtn1, commentpath1, commentip1, confbtn1,
+        enableEle, settingsTermele1, selectdata1, respondBtn1, termsidnavele1,
+        SumbitRevResBtn2, commentpath2, commentip2, confbtn2, SumbitRevResBtn3, commentpath3, commentip3, confbtn3) => {
+        await termsettingsFn.open()
+        browser.pause(4000)
+        await actionWrapper.scrollEleAndDoubleClick(termTabPath)
+        await needapprovalEle.waitForDisplayed(5000);
+        if ((await needapprovalEle.isEnabled()) === true) {
+            browser.pause(3000)
+            await actionWrapper.MoveTo(settingsTermele)
+            browser.pause(4000)
+            const value = await settingsTermele.getValue();
+            await console.log(value)
+            browser.pause(4000)
+            await this.open()
+            browser.pause(4000)
+            await actionWrapper.Click(selectdata)
+            browser.pause(5000)
+            await actionWrapper.Click(respondBtn)
+            browser.pause(5000)
+            await actionWrapper.MoveTo(termsidnavele)
+            browser.pause(3000)
+            await actionWrapper.clearValueAndSetValueSelectDropdown(termsidnavele, value)
+            browser.pause(2000)
+            if ((await common.snackbar.getText()) === TermIp.RequireApprialAlert) {
+                await actionWrapper.Click(SumbitRevResBtn)
+                await browser.pause(3000)
+                await actionWrapper.clickAndSetvalue(commentpath, commentip)
+                await actionWrapper.Click(confbtn)
+                await actionWrapper.Click(common.closeCardQuote)
+            } else {
+                await actionWrapper.Click(SumbitRevResBtn1)
+                await browser.pause(3000)
+                await actionWrapper.clickAndSetvalue(commentpath1, commentip1)
+                await actionWrapper.Click(confbtn1)
+                await actionWrapper.Click(common.closeCardQuote)
+            }
+        } else {
+            await actionWrapper.Click(enableEle)
+            browser.pause(3000)
+            await actionWrapper.Click(termsettingsPath.Savebtn)
+            browser.pause(4000)
+            await actionWrapper.MoveTo(settingsTermele1)
+            browser.pause(3000)
+            const value1 = await settingsTermele1.getValue();
+            await console.log(value)
+            browser.pause(4000)
+            await this.open()
+            browser.pause(4000)
+            await actionWrapper.Click(selectdata1)
+            browser.pause(5000)
+            await actionWrapper.Click(respondBtn1)
+            browser.pause(5000)
+            await actionWrapper.MoveTo(termsidnavele1)
+            browser.pause(3000)
+            await actionWrapper.clearValueAndSetValueSelectDropdown(termsidnavele1, value1)
+            browser.pause(2000)
+            if ((await common.snackbar.getText()) === TermIp.RequireApprialAlert) {
+                await actionWrapper.Click(SumbitRevResBtn2)
+                await browser.pause(3000)
+                await actionWrapper.clickAndSetvalue(commentpath2, commentip2)
+                await actionWrapper.Click(confbtn2)
+                await actionWrapper.Click(common.closeCardQuote)
+            } else {
+                await actionWrapper.Click(SumbitRevResBtn3)
+                await browser.pause(3000)
+                await actionWrapper.clickAndSetvalue(commentpath3, commentip3)
+                await actionWrapper.Click(confbtn3)
+                await actionWrapper.Click(common.closeCardQuote)
+            }
+
+        }
     }
 
     /************* BUYER SIDE METHOD FOR SIDNAVE PAGE ************* */

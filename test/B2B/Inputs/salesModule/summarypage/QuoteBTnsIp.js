@@ -25,5 +25,6 @@ function QuoteIP(){
     this.ErrMsgApprover="Select a approver"
     this.ErrMsgCommentName="Comments is required"
     this.ReqApprovalAlert="Quote requires approval"
+    this.tempQuoteID="QMBM22070035"
 }
 module.exports = new QuoteIP();
