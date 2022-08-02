@@ -11,7 +11,7 @@ class ReOrder extends page{
     get firstrow(){
         return super.pathByXpath('//table/tbody/tr[1]')
     }
-    get productid(){
+    get Sproductid(){
         return super.pathByXpath('//table/tbody/tr[1]/td[2]/div/p/a')
     }
     get MoreOption(){
@@ -43,7 +43,7 @@ class ReOrder extends page{
         return super.pathById('editDialogButton')
     }
     get OrderAcknowledge(){
-        return super.pathByXpath('//p[text()="ORDER ACKNOWLEDGED"]')
+        return super.pathByXpath('//div[@class="MuiBox-root css-70qvj9"]/div[@class="MuiBox-root css-1ni0sna"]/following::p[1]')
     }
     get clicksearch(){
         return super.pathByXpath('//ul[@class="MuiList-root MuiList-padding css-1ontqvh"]/child::div[1]')
@@ -75,6 +75,12 @@ class ReOrder extends page{
 
         get BScrollToShip(){
             return super.pathByXpath('//div[@class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1s50f5r"]/child::h4[text()="Ship To"]')
+        }
+        get BTHQuantity(){
+            return super.pathByXpath('//th/p[text()="Quantity"]')
+        }
+        get ScrollAttachment(){
+            return super.pathByXpath('//h4[text()="Attachments"][@class="MuiTypography-root MuiTypography-h4 css-mbzx6o"]')
         }
 
         //// REQUEST PRICE ////

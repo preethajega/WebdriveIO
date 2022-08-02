@@ -55,10 +55,10 @@ class Reorder extends Page{
                      await ActionsWrappers.scrollEle(Reorderpage.InputMOQ)
                      await browser.pause(2000)
                      await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"2")
-                     await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                     await ActionsWrappers.Click(Reorderpage.BTHQuantity);
                      await ActionsWrappers.snackBarValidate(ErrorMsg,"MOQ is 3")
                      await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"4")
-                     await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                     await ActionsWrappers.Click(Reorderpage.BTHQuantity);
                      await ActionsWrappers.snackBarValidate(ErrorMsg,"Enter in multiples of 3")
                      await ActionsWrappers.ClickAndUpArrow(Reorderpage.InputMOQ)
                      await ActionsWrappers.Click(Reorderpage.PlaceOrderBtn)
@@ -67,11 +67,11 @@ class Reorder extends Page{
                     await ActionsWrappers.scrollEle(Reorderpage.InputMOQ)
                     await browser.pause(2000)
                     await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"3")
-                    await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                    await ActionsWrappers.Click(Reorderpage.BTHQuantity);
                     await browser.pause(2000)
                     await ActionsWrappers.snackBarValidate(ErrorMsg,"MOQ is 5")
                     await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"6")
-                    await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                    await ActionsWrappers.Click(Reorderpage.BTHQuantity);
                     await browser.pause(2000)
                     await ActionsWrappers.snackBarValidate(ErrorMsg,"Enter in multiples of 5")
                     await ActionsWrappers.ClickAndUpArrow(Reorderpage.InputMOQ)
@@ -84,11 +84,11 @@ class Reorder extends Page{
                         await ActionsWrappers.scrollEle(Reorderpage.InputMOQ)
                         await browser.pause(2000)
                         await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"1")
-                        await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                        await ActionsWrappers.Click(Reorderpage.BTHQuantity);
                         await browser.pause(2000)
                         await ActionsWrappers.snackBarValidate(ErrorMsg,"MOQ is 2")
                         await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"7")
-                        await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                        await ActionsWrappers.Click(Reorderpage.BTHQuantity);
                         await browser.pause(2000)
                         await ActionsWrappers.snackBarValidate(ErrorMsg,"Enter in multiples of 2")
                         await ActionsWrappers.ClickAndUpArrow(Reorderpage.InputMOQ)
@@ -99,11 +99,11 @@ class Reorder extends Page{
                         await ActionsWrappers.scrollEle(Reorderpage.InputMOQ)
                         await browser.pause(2000)
                         await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"3")
-                        await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                        await ActionsWrappers.Click(Reorderpage.BTHQuantity);
                         await browser.pause(2000)
                         await ActionsWrappers.snackBarValidate(ErrorMsg,"MOQ is 4")
                         await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"9")
-                        await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                        await ActionsWrappers.Click(Reorderpage.BTHQuantity);
                         await browser.pause(2000)
                         await ActionsWrappers.snackBarValidate(ErrorMsg,"Enter in multiples of 4")
                         await ActionsWrappers.ClickAndUpArrow(Reorderpage.InputMOQ)
@@ -114,11 +114,11 @@ class Reorder extends Page{
                         await ActionsWrappers.scrollEle(Reorderpage.InputMOQ)
                         await browser.pause(2000)
                         await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"7")
-                        await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                        await ActionsWrappers.Click(Reorderpage.BTHQuantity);
                         await browser.pause(2000)
                         await ActionsWrappers.snackBarValidate(ErrorMsg,"MOQ is 10")
                         await ActionsWrappers.clickAndSetvalue(Reorderpage.InputMOQ,"11")
-                        await ActionsWrappers.scrollEle(Reorderpage.InputMOQ);
+                        await ActionsWrappers.Click(Reorderpage.BTHQuantity);
                         await browser.pause(2000)
                         await ActionsWrappers.snackBarValidate(ErrorMsg,"Enter in multiples of 10")
                         await ActionsWrappers.ClickAndUpArrow(Reorderpage.InputMOQ)
