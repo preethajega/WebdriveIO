@@ -62,7 +62,10 @@ class Branch extends Page{
         return super.pathByName('salesBranchCode')
     }
     get SalesOrgCode(){
-        return super.pathByName('salesOrgCode')
+        return super.pathByName('salesOrgId')
+    }
+    get DDSalesOrgCode(){
+        return super.pathByXpath('//input[@name="salesOrgId"]/following::button[2]')
     }
     get ContactName(){
         return super.pathByName('addressId.primaryContact')

@@ -29,7 +29,7 @@ exports.config = {
         //  './test/B2B/Specs/Cart/Cart.spec.js',
         // './test/B2B/Specs/salesModule/Quotes/seller/Quotefilter.spec.js'
         // './test/B2B/Specs/salesModule/Quotes/seller/Orderfilter.spec.js'
-        './test/B2B/Specs/Orders/Reorder.spec.js'
+        // './test/B2B/Specs/Orders/Reorder.spec.js'
         
         
     ],

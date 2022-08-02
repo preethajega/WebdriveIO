@@ -418,6 +418,17 @@ class TestActionWrapper {
     await ele.click()
     await ele.keys("\ue013")
   }
+
+  DDClickAndFirstValue=async(ele)=>{
+   await ele.waitForDisplayed(2000);
+   await ele.scrollIntoView()
+   await ele.click();
+   await browser.pause(1000);
+   await ele.keys("\uE015");
+   await browser.pause(1000);
+   await ele.keys("\uE007");
+   await browser.pause(1000);
+  }
      
 
 

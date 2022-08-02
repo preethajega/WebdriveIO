@@ -38,7 +38,7 @@ class Comp extends Page{
         return super.pathByXpath("//div[contains(@class,'MuiForm')]/following::div[contains(@class,'MuiAutocomplete-e')]")
     }
     get SubIndustry(){
-        return super.pathByXpath('//input[@name="subIndustryId"]')
+        return super.pathByXpath('//input[@name="subIndustryId.name"]')
     }
     get SubIndustryoption(){
         return super.pathByXpath("//ul[@id='mui-85097-popup']/li[1]")
