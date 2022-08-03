@@ -1,7 +1,8 @@
 const page=require("../page");
+const Orderip=require("../../Inputs/Orders/Order_ip")
 
 
-class ReOrder extends page{
+class Order extends page{
 
    // SELLER SIDE PATH //   
 
@@ -112,17 +113,52 @@ class ReOrder extends page{
             return super.pathByXpath('//table/tbody/tr[1]/td[2]/div/div[2]/span[3]')
         }
 
-
-
-//table/tbody/tr/td/p[text()="Request price"]/following::td/p[text()="Request price"]
-        
-
-
-
-
-        
-
-
+         // order buyer path
+       get selectbuyer(){
+        return super.pathByXpath('//input[@id="asynchronous-demo"]')
+       }
+       get CreateOrderbtn(){
+        return super.pathByXpath('//button[@id="co"]')
+       }
+       get selectproduct(){
+        return super.pathByXpath(`//p[text()="${Orderip.search}"]`)
+       }
+       get PlaceOrderName(){
+        return super.pathByXpath('//input[@id="name"]')
+       }
+       get placeOrderDilogBtn(){
+        return super.pathByXpath('//button[@id="editDialogButton"]')
+       }
+       get PODialogCancelbtn(){
+        return super.pathByXpath('//button[@id="editDialogCancel"]')
+       }
+       get PONamemadatory(){
+        return super.pathByXpath('//p[text()="Name is required"]')
+       }
+       get logicon(){
+        return super.pathById('userIcon')
+       }
+       get Salespath(){
+        return super.pathByXpath('//div[text()="Sales"]')
+       }
+       get OrdersDetailsPage(){
+        return super.pathByXpath('//div[text()="Orders"]')
+       }
+       get OrderDetailsPage_Order(){
+        return super.pathByXpath(`//td[text()="${Orderip.NewOrder_Buyer}"]`)
+       }
+       get statusOfOrderpath(){
+        return super.pathByXpath('//p[text()="ORDER ACKNOWLEDGED"]')
+       }
+       get ExportBtn_OrderProd(){
+        return super.pathByXpath('//button[@id="exportorder"]')
+       }
+       get ThreeDot(){
+        return super.pathByXpath('//button[@aria-label="moreOptions"]')
+       }
+       get downloadOrderPDF(){
+        return super.pathByXpath('//ul[@role="menu"]/li[4]')
+       }
 
 }
-module.exports = new ReOrder()
+module.exports = new Order()

@@ -7,7 +7,7 @@ class CustomProductCard extends Page {
       }
 
       get ClickCartIcon(){
-        return super.pathByXpath('//*[@class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11e6ife"]/ancestor::button');
+        return super.pathByXpath('//*[@id="cartIcon"]/ancestor::button');
       }
       get AddCustomProductBtn(){
         return super.pathByXpath('//button[@id="acp"]');
