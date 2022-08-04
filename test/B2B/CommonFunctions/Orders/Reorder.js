@@ -1,8 +1,8 @@
 
 const ActionsWrappers = require("../../../CommonActions/ActionsWrappers");
 const Page = require("../../PageObjects/page");
-const toasterip=require('../../Inputs/Orders/Reorder_ip')
-const Reorderpage=require('../../PageObjects/Orders/Reorder');
+const toasterip=require('../../Inputs/Orders/Order_ip')
+const Reorderpage=require('../../PageObjects/Orders/Order.path');
 
 
 

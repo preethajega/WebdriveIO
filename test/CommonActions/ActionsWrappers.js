@@ -51,6 +51,13 @@ class TestActionWrapper {
         await msgalert.getText(), ipalert);
     }
   }
+  // Validation for all mandatory fields and status //
+  Validate = async (msgalert, ipalert) => {
+    if (await msgalert.isDisplayed()) {
+      assert.strictEqual(
+        await msgalert.getText(), ipalert);
+    }
+  }
 
   //clear a value then click an element then set the value
   clearValueAndSetValueSelectDropdown = async (ele, value) => {
