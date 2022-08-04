@@ -15,7 +15,7 @@ describe('Reorder the product', async() => {
 
     // it('Should allow to access login seller ',async () => {
         
-    // await Login.open()
+    //  Login.open()
     // await Login.login(B2Bloginip.OwnerEmail,B2Bloginip.OwnerPassword);
     // await browser.pause(2000)
     // await actionsWrappers.urlValidation("/dev3.myapptino.com/");
@@ -57,7 +57,7 @@ describe('Reorder the product', async() => {
 
   it('Should allow to access login Buyer',async () => {
         
-    await Login.open()
+          Login.open()
     await Login.login(B2Bloginip.Buyer6Email,B2Bloginip.Buyer6Password);
     await actionsWrappers.urlValidation("/dev3.myapptino.com/");
     })
@@ -81,7 +81,7 @@ describe('Reorder the product', async() => {
       // await commonfun.AddProduct(reorderpage.ScrollAttachment,reorderpage.Searchbox,"starbase",reorderpage.clicksearch,reorderpage.Toaster,Reorder_ip.ProductAddSuccToasterIp)
       // await actionsWrappers.Click(reorderpage.PlaceOrderBtn)
       await commonfun.ValidationOfMOQ(reorderpage.Toaster,reorderpage.MOQErrorMsg)
-      await actionsWrappers.Click(reorderpage.EditDialogeCancel)
+      await actionsWrappers.Click(reorderpage.EditDialogePlaceOrder)
       await browser.pause(7000)
     });
     it('Logout the Buyer Account',async () => {
@@ -91,7 +91,7 @@ describe('Reorder the product', async() => {
 
      it('Should allow to access login seller ',async () => {
         
-    await Login.open()
+           Login.open()
     await Login.login(B2Bloginip.OwnerEmail,B2Bloginip.OwnerPassword);
     await browser.pause(2000)
     await actionsWrappers.urlValidation("/dev3.myapptino.com/");

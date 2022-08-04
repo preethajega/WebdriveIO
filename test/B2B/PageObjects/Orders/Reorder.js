@@ -89,6 +89,7 @@ class ReOrder extends page{
         }
         get CheckRequestPrice(){
             return super.pathByXpath('//p[text()="Amount(₹)"]/following::td[9]')
+            //table/tbody/tr/td/p[text()="Request price"]/following::td/p[text()="Request price"]
         }
         get RemoveProduct(){
             return super.pathById('removeProduct')
@@ -114,7 +115,7 @@ class ReOrder extends page{
 
 
 
-//table/tbody/tr/td/p[text()="Request price"]/following::td/p[text()="Request price"]
+
         
 
 
