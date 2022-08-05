@@ -4,7 +4,7 @@ exports.config = {
     specs: [
 
         // './test/B2B/Specs/setting/company/AddBranch.spec.js',
-        // './test/B2B/Specs/setting/company/AddWarehouse.spec.js',
+        './test/B2B/Specs/setting/company/AddWarehouse.spec.js',
         // './test/B2B/Specs/setting/company/company.spec.js',
         // './test/B2B/Specs/setting/API.spec.js',
         // './test/B2B/Specs/setting/approvals.spec.js',
@@ -29,12 +29,8 @@ exports.config = {
         //  './test/B2B/Specs/Cart/Cart.spec.js',
         // './test/B2B/Specs/salesModule/Quotes/seller/Quotefilter.spec.js'
         // './test/B2B/Specs/salesModule/Quotes/seller/Orderfilter.spec.js'
-<<<<<<< HEAD
-        './test/B2B/Specs/Orders/Reorder.spec.js'
-=======
         // './test/B2B/Specs/Orders/Reorder.spec.js'
-        './test/B2B/Specs/Orders/Order.spec.js'
->>>>>>> cc63f61721efeeb4799c7a0c62850d7d88a29b53
+        // './test/B2B/Specs/Orders/Order.spec.js'
         
         
     ],

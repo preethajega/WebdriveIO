@@ -8,6 +8,7 @@ const Comp_fn = require("../../../CommonFunctions/settings/Company");
 var Compip = require("../../../Inputs/settings/CompanyIP");
 const imageUpload = path.join(__dirname, './../../FileUtils/profilepic.png');
 const common = require("../../../PageObjects/Common/commonObjects");
+const { should } = require("chai");
 
 
 
@@ -53,9 +54,15 @@ describe('Company Page', () => {
     it('should not allow a user to save the Company Name field without entering any values', async () => {
         await Comp_fn.fieldValid(Comp_path.CompName, Comp_path.errCompName, Compip.errMsgcompname)
     });
-/*    it('should validate a acc type Refelected text', async () => {
-        await Comp_fn.Acctypeinertxt(Comp_path.RefelectTxt)
-    }); */
+     it('should allow a user to save the Subindustry without entering any values ',async () => {
+        await browser.pause(6000)
+        await Comp_fn.clearDropdown(Comp_path.SubIndustry,Comp_path.savebtn)
+        await browser.pause(6000)
+
+    });
+// /*    it('should validate a acc type Refelected text', async () => {
+//         await Comp_fn.Acctypeinertxt(Comp_path.RefelectTxt)
+//     }); */
     it('should replace the all the changed data into orginal',async () => {
         await Comp_fn.Updatevalue(Comp_path.CompName, Compip.OrgComName, Comp_path.savebtn,common.snackbar,Compip.saveAlert);
         await Comp_fn.Updatevalue(Comp_path.EPNOName, Compip.orgEbno, Comp_path.savebtn,common.snackbar,Compip.saveAlert);
