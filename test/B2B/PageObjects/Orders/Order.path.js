@@ -1,179 +1,166 @@
-const page=require("../page");
-const Orderip=require("../../Inputs/Orders/Order_ip")
+const page = require("../page");
+const Orderip = require("../../Inputs/Orders/Order_ip")
 
 
-class Order extends page{
+class Order extends page {
 
-   // SELLER SIDE PATH //   
+    // SELLER SIDE PATH //   
 
-    get ALLTab(){
+    get ALLTab() {
         return super.pathById('scrollable-force-tab-0')
     }
-    get firstrow(){
+    get firstrow() {
         return super.pathByXpath('//table/tbody/tr[1]')
     }
-    get Sproductid(){
+    get Sproductid() {
         return super.pathByXpath('//table/tbody/tr[1]/td[2]/div/p/a')
     }
-    get MoreOption(){
+    get MoreOption() {
         return super.pathByXpath('//button[@aria-label="moreOptions"]')
     }
-    get reorder(){
+    get reorder() {
         return super.pathByXpath('//li[text()="Reorder"]')
     }
-    get ScrollAddMoreProduct(){
+    get ScrollAddMoreProduct() {
         return super.pathByXpath('//h4[text()=" Add More Products"]')
     }
-  
-    get Searchbox(){
+
+    get Searchbox() {
         return super.pathByXpath('//input[@placeholder="Search for products"]')
     }
-    get RequiredDate(){
+    get RequiredDate() {
         return super.pathByXpath('//div[@class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth Mui-focused MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd css-5bi86z"]/child::input')
     }
-    get PlaceOrderBtn(){
+    get PlaceOrderBtn() {
         return super.pathById('loadingButton')
     }
-    get placeOrderName(){
+    get placeOrderName() {
         return super.pathById('name')
     }
-    get EditDialogeCancel(){
+    get EditDialogeCancel() {
         return super.pathById('editDialogCancel')
     }
-    get EditDialogePlaceOrder(){
+    get EditDialogePlaceOrder() {
         return super.pathById('editDialogButton')
     }
-    get OrderAcknowledge(){
+    get OrderAcknowledge() {
         return super.pathByXpath('//div[@class="MuiBox-root css-70qvj9"]/div[@class="MuiBox-root css-1ni0sna"]/following::p[1]')
     }
-    get clicksearch(){
+    get clicksearch() {
         return super.pathByXpath('//ul[@class="MuiList-root MuiList-padding css-1ontqvh"]/child::div[1]')
     }
-    get scrollSelectAccount(){
+    get scrollSelectAccount() {
         return super.pathByXpath('//h4[text()="Select Account"]')
     }
 
-    get Toaster(){
+    get Toaster() {
         return super.pathByXpath('//div[@id="notistack-snackbar"]')
     }
-    get tagsButton(){
+    get tagsButton() {
         return super.pathByXpath('//input[@id="tags-outlined"]/following::button[1]')
     }
 
-    get MOQErrorMsg(){
+    get MOQErrorMsg() {
         return super.pathByXpath('//p[@id="dbProductDetails[0].askedQuantity-helper-text"]')
     }
 
-    get InputMOQ(){
+    get InputMOQ() {
         return super.pathByXpath('//input[@id="dbProductDetails[0].askedQuantity"]')
     }
 
-        // BUYER SIDE PATH //
+    // BUYER SIDE PATH //
 
-        get Bproductid(){
-            return super.pathByXpath('//table/tbody/tr[1]/td[3]/div/p/a')
-        }
+    get Bproductid() {
+        return super.pathByXpath('//table/tbody/tr[1]/td[3]/div/p/a')
+    }
 
-        get BScrollToShip(){
-            return super.pathByXpath('//div[@class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1s50f5r"]/child::h4[text()="Ship To"]')
-        }
-        get BTHQuantity(){
-            return super.pathByXpath('//th/p[text()="Quantity"]')
-        }
-        get ScrollAttachment(){
-            return super.pathByXpath('//h4[text()="Attachments"][@class="MuiTypography-root MuiTypography-h4 css-mbzx6o"]')
-        }
+    get BScrollToShip() {
+        return super.pathByXpath('//div[@class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1s50f5r"]/child::h4[text()="Ship To"]')
+    }
+    get BTHQuantity() {
+        return super.pathByXpath('//th/p[text()="Quantity"]')
+    }
+    get ScrollAttachment() {
+        return super.pathByXpath('//h4[text()="Attachments"][@class="MuiTypography-root MuiTypography-h4 css-mbzx6o"]')
+    }
 
-        //// REQUEST PRICE ////
-        get RequestPriceInput(){
-            return super.pathByXpath('//tbody/tr[1]/td[1]/span/input')
-        }
-        get CheckRequestPrice(){
-            return super.pathByXpath('//p[text()="Amount(₹)"]/following::td[9]')
-            //table/tbody/tr/td/p[text()="Request price"]/following::td/p[text()="Request price"]
-        }
-        get RemoveProduct(){
-            return super.pathById('removeProduct')
-        }
-        get RemoveProductYesButton(){
-            return super.pathById('yes')
-        }
-        get RemoveProductCancelButton(){
-            return super.pathByXpath('//button[text()="Cancel"]')
-        }
-
-
-        get MOQinput(){
-            return super.pathByXpath('//p[text()="MOQ is 3"]/preceding::input[1]')
-        }
-
-        get SearchProductId(){
-            return super.pathByXpath('//p[text()="MOQ is 5"]/preceding::input[1]/preceding::h6[1]')
-        }
-        get PackOfQTY(){
-            return super.pathByXpath('//table/tbody/tr[1]/td[2]/div/div[2]/span[3]')
-        }
-
-<<<<<<< HEAD:test/B2B/PageObjects/Orders/Reorder.js
+    //// REQUEST PRICE ////
+    get RequestPriceInput() {
+        return super.pathByXpath('//tbody/tr[1]/td[1]/span/input')
+    }
+    get CheckRequestPrice() {
+        return super.pathByXpath('//p[text()="Amount(₹)"]/following::td[9]')
+        //table/tbody/tr/td/p[text()="Request price"]/following::td/p[text()="Request price"]
+    }
+    get RemoveProduct() {
+        return super.pathById('removeProduct')
+    }
+    get RemoveProductYesButton() {
+        return super.pathById('yes')
+    }
+    get RemoveProductCancelButton() {
+        return super.pathByXpath('//button[text()="Cancel"]')
+    }
 
 
+    get MOQinput() {
+        return super.pathByXpath('//p[text()="MOQ is 3"]/preceding::input[1]')
+    }
 
-        
+    get SearchProductId() {
+        return super.pathByXpath('//p[text()="MOQ is 5"]/preceding::input[1]/preceding::h6[1]')
+    }
+    get PackOfQTY() {
+        return super.pathByXpath('//table/tbody/tr[1]/td[2]/div/div[2]/span[3]')
+    }
 
 
-
-
-        
-
-
-=======
-         // order buyer path
-       get selectbuyer(){
+    // order buyer pathz
+    get selectbuyer() {
         return super.pathByXpath('//input[@id="asynchronous-demo"]')
-       }
-       get CreateOrderbtn(){
+    }
+    get CreateOrderbtn() {
         return super.pathByXpath('//button[@id="co"]')
-       }
-       get selectproduct(){
+    }
+    get selectproduct() {
         return super.pathByXpath(`//p[text()="${Orderip.search}"]`)
-       }
-       get PlaceOrderName(){
+    }
+    get PlaceOrderName() {
         return super.pathByXpath('//input[@id="name"]')
-       }
-       get placeOrderDilogBtn(){
+    }
+    get placeOrderDilogBtn() {
         return super.pathByXpath('//button[@id="editDialogButton"]')
-       }
-       get PODialogCancelbtn(){
+    }
+    get PODialogCancelbtn() {
         return super.pathByXpath('//button[@id="editDialogCancel"]')
-       }
-       get PONamemadatory(){
+    }
+    get PONamemadatory() {
         return super.pathByXpath('//p[text()="Name is required"]')
-       }
-       get logicon(){
+    }
+    get logicon() {
         return super.pathById('userIcon')
-       }
-       get Salespath(){
+    }
+    get Salespath() {
         return super.pathByXpath('//div[text()="Sales"]')
-       }
-       get OrdersDetailsPage(){
+    }
+    get OrdersDetailsPage() {
         return super.pathByXpath('//div[text()="Orders"]')
-       }
-       get OrderDetailsPage_Order(){
+    }
+    get OrderDetailsPage_Order() {
         return super.pathByXpath(`//td[text()="${Orderip.NewOrder_Buyer}"]`)
-       }
-       get statusOfOrderpath(){
+    }
+    get statusOfOrderpath() {
         return super.pathByXpath('//p[text()="ORDER ACKNOWLEDGED"]')
-       }
-       get ExportBtn_OrderProd(){
+    }
+    get ExportBtn_OrderProd() {
         return super.pathByXpath('//button[@id="exportorder"]')
-       }
-       get ThreeDot(){
+    }
+    get ThreeDot() {
         return super.pathByXpath('//button[@aria-label="moreOptions"]')
-       }
-       get downloadOrderPDF(){
+    }
+    get downloadOrderPDF() {
         return super.pathByXpath('//ul[@role="menu"]/li[4]')
-       }
->>>>>>> cc63f61721efeeb4799c7a0c62850d7d88a29b53:test/B2B/PageObjects/Orders/Order.path.js
+    }
 
 }
 module.exports = new Order()

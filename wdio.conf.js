@@ -4,7 +4,7 @@ exports.config = {
     specs: [
 
         // './test/B2B/Specs/setting/company/AddBranch.spec.js',
-        './test/B2B/Specs/setting/company/AddWarehouse.spec.js',
+        // './test/B2B/Specs/setting/company/AddWarehouse.spec.js',
         // './test/B2B/Specs/setting/company/company.spec.js',
         // './test/B2B/Specs/setting/API.spec.js',
         // './test/B2B/Specs/setting/approvals.spec.js',
@@ -25,7 +25,7 @@ exports.config = {
         //  './test/B2B/Specs/salesModule/Quotes/Buyer/RFQBuyerQuote.spec.js',
          //'./test/B2B/Specs/salesModule/Quotes/seller/CustomProductDialog.js'
         //  './test/B2B/Specs/salesModule/Quotes/seller/CustomProductDialog.js',
-        //  './test/B2B/Specs/salesModule/Quotes/Seller/RFQSellerQuote.spec.js'
+         './test/B2B/Specs/salesModule/Quotes/Seller/RFQSellerQuote.spec.js'
         //  './test/B2B/Specs/Cart/Cart.spec.js',
         // './test/B2B/Specs/salesModule/Quotes/seller/Quotefilter.spec.js'
         // './test/B2B/Specs/salesModule/Quotes/seller/Orderfilter.spec.js'
