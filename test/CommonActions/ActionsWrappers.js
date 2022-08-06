@@ -277,7 +277,6 @@ class TestActionWrapper {
     await ele.click();
     await browser.keys(["\uE009", "a"]);
     await ele.keys("\uE003");
-
   };
 
 
@@ -435,6 +434,16 @@ class TestActionWrapper {
    await browser.pause(1000);
    await ele.keys("\uE007");
    await browser.pause(1000);
+  }
+
+  ClickAndSnackBarValidate=async(ele,msgalert,ipalert)=>{
+    await ele.click()
+    await browser.pause(1000)
+    if (await msgalert.isDisplayed()) {
+      assert.strictEqual(
+        await msgalert.getText(), ipalert);
+    }
+   
   }
      
 

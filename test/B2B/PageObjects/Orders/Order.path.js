@@ -9,10 +9,13 @@ class Order extends page {
     get ALLTab() {
         return super.pathById('scrollable-force-tab-0')
     }
-    get firstrow() {
-        return super.pathByXpath('//table/tbody/tr[1]')
+    get NameOfFilter(){
+        return super.pathById('oname')
     }
-    get Sproductid() {
+    get ApplyBtnOfFilter(){
+        return super.pathById('filterApply')
+    }
+    get Sproductid(){
         return super.pathByXpath('//table/tbody/tr[1]/td[2]/div/p/a')
     }
     get MoreOption() {
@@ -43,7 +46,10 @@ class Order extends page {
     get EditDialogePlaceOrder() {
         return super.pathById('editDialogButton')
     }
-    get OrderAcknowledge() {
+    get EditDialogePlaceOrderERMsg(){
+        return super.pathById('name-helper-text')
+    }
+    get OrderStatus(){
         return super.pathByXpath('//div[@class="MuiBox-root css-70qvj9"]/div[@class="MuiBox-root css-1ni0sna"]/following::p[1]')
     }
     get clicksearch() {
@@ -84,39 +90,36 @@ class Order extends page {
         return super.pathByXpath('//h4[text()="Attachments"][@class="MuiTypography-root MuiTypography-h4 css-mbzx6o"]')
     }
 
-    //// REQUEST PRICE ////
-    get RequestPriceInput() {
-        return super.pathByXpath('//tbody/tr[1]/td[1]/span/input')
-    }
-    get CheckRequestPrice() {
-        return super.pathByXpath('//p[text()="Amount(₹)"]/following::td[9]')
-        //table/tbody/tr/td/p[text()="Request price"]/following::td/p[text()="Request price"]
-    }
-    get RemoveProduct() {
-        return super.pathById('removeProduct')
-    }
-    get RemoveProductYesButton() {
-        return super.pathById('yes')
-    }
-    get RemoveProductCancelButton() {
-        return super.pathByXpath('//button[text()="Cancel"]')
-    }
+        //// REQUEST PRICE ////
+        get RequestPriceInput(){
+            return super.pathByXpath('//tbody/tr[1]/td[1]/span/input')
+        }
+        get CheckRequestPrice(){
+            return super.pathByXpath('//p[text()="Amount(₹)"]/following::td[9]')
+            //table/tbody/tr/td/p[text()="Request price"]/following::td/p[text()="Request price"]
+        }
+        get RemoveProduct(){
+            return super.pathById('removeProduct')
+        }
+        get RemoveProductYesButton(){
+            return super.pathById('yes')
+        }
+        get RemoveProductCancelButton(){
+            return super.pathByXpath('//button[text()="Cancel"]')
+        }
+        get MOQinput(){
+            return super.pathByXpath('//p[text()="MOQ is 3"]/preceding::input[1]')
+        }
 
+        get SearchProductId(){
+            return super.pathByXpath('//p[text()="MOQ is 5"]/preceding::input[1]/preceding::h6[1]')
+        }
+        get PackOfQTY(){
+            return super.pathByXpath('//table/tbody/tr[1]/td[2]/div/div[2]/span[3]')
+        }
 
-    get MOQinput() {
-        return super.pathByXpath('//p[text()="MOQ is 3"]/preceding::input[1]')
-    }
-
-    get SearchProductId() {
-        return super.pathByXpath('//p[text()="MOQ is 5"]/preceding::input[1]/preceding::h6[1]')
-    }
-    get PackOfQTY() {
-        return super.pathByXpath('//table/tbody/tr[1]/td[2]/div/div[2]/span[3]')
-    }
-
-
-    // order buyer pathz
-    get selectbuyer() {
+         // order buyer path
+       get selectbuyer(){
         return super.pathByXpath('//input[@id="asynchronous-demo"]')
     }
     get CreateOrderbtn() {
@@ -160,7 +163,38 @@ class Order extends page {
     }
     get downloadOrderPDF() {
         return super.pathByXpath('//ul[@role="menu"]/li[4]')
+       }
+
+      
+       //*** Cancel the "ORDER ACKNOWLEDGED  buyer" ***// 
+
+    get CancelDialogeBoxInput(){
+        return super.pathByXpath('//textarea[@name="cancelMsg"]')
+     }
+    get CancelDialogeBoxERMsg(){
+        return super.pathByXpath('//textarea[@name="cancelMsg"]/following::p[1]')
     }
+    get CancelDialogeBoxCancelBtn(){
+        return super.pathById('editDialogCancel')
+    }
+    get CancelDialogeBoxCancelOrderBtn(){
+        return super.pathById('editDialogButton')
+    }
+    get ReasonOfCancel(){
+        return super.pathByXpath('//div[@class="MuiCardContent-root css-2c2xgk"]/div[@class="MuiBox-root css-dpoqzr"]')
+    }
+    get RequestEditBtn(){
+        return super.pathByXpath('//button[@aria-label="Request Edit"]')
+    }
+     // SELLER //
+    get SEditOrderBtn(){
+        return super.pathByXpath('//button[@aria-label="Edit Order"]')
+    }
+    get SCreateInvoiceBtn(){
+        return super.pathByXpath('//button[@aria-label="Create Invoice"]')
+    }
+
+
 
 }
 module.exports = new Order()
