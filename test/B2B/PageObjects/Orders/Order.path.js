@@ -9,8 +9,11 @@ class Order extends page{
     get ALLTab(){
         return super.pathById('scrollable-force-tab-0')
     }
-    get firstrow(){
-        return super.pathByXpath('//table/tbody/tr[1]')
+    get NameOfFilter(){
+        return super.pathById('oname')
+    }
+    get ApplyBtnOfFilter(){
+        return super.pathById('filterApply')
     }
     get Sproductid(){
         return super.pathByXpath('//table/tbody/tr[1]/td[2]/div/p/a')
@@ -43,7 +46,10 @@ class Order extends page{
     get EditDialogePlaceOrder(){
         return super.pathById('editDialogButton')
     }
-    get OrderAcknowledge(){
+    get EditDialogePlaceOrderERMsg(){
+        return super.pathById('name-helper-text')
+    }
+    get OrderStatus(){
         return super.pathByXpath('//div[@class="MuiBox-root css-70qvj9"]/div[@class="MuiBox-root css-1ni0sna"]/following::p[1]')
     }
     get clicksearch(){
@@ -101,8 +107,6 @@ class Order extends page{
         get RemoveProductCancelButton(){
             return super.pathByXpath('//button[text()="Cancel"]')
         }
-
-
         get MOQinput(){
             return super.pathByXpath('//p[text()="MOQ is 3"]/preceding::input[1]')
         }
@@ -114,19 +118,6 @@ class Order extends page{
             return super.pathByXpath('//table/tbody/tr[1]/td[2]/div/div[2]/span[3]')
         }
 
-<<<<<<< HEAD:test/B2B/PageObjects/Orders/Reorder.js
-
-
-
-        
-
-
-
-
-        
-
-
-=======
          // order buyer path
        get selectbuyer(){
         return super.pathByXpath('//input[@id="asynchronous-demo"]')
@@ -173,7 +164,37 @@ class Order extends page{
        get downloadOrderPDF(){
         return super.pathByXpath('//ul[@role="menu"]/li[4]')
        }
->>>>>>> cc63f61721efeeb4799c7a0c62850d7d88a29b53:test/B2B/PageObjects/Orders/Order.path.js
+
+      
+       //*** Cancel the "ORDER ACKNOWLEDGED  buyer" ***// 
+
+    get CancelDialogeBoxInput(){
+        return super.pathByXpath('//textarea[@name="cancelMsg"]')
+     }
+    get CancelDialogeBoxERMsg(){
+        return super.pathByXpath('//textarea[@name="cancelMsg"]/following::p[1]')
+    }
+    get CancelDialogeBoxCancelBtn(){
+        return super.pathById('editDialogCancel')
+    }
+    get CancelDialogeBoxCancelOrderBtn(){
+        return super.pathById('editDialogButton')
+    }
+    get ReasonOfCancel(){
+        return super.pathByXpath('//div[@class="MuiCardContent-root css-2c2xgk"]/div[@class="MuiBox-root css-dpoqzr"]')
+    }
+    get RequestEditBtn(){
+        return super.pathByXpath('//button[@aria-label="Request Edit"]')
+    }
+     // SELLER //
+    get SEditOrderBtn(){
+        return super.pathByXpath('//button[@aria-label="Edit Order"]')
+    }
+    get SCreateInvoiceBtn(){
+        return super.pathByXpath('//button[@aria-label="Create Invoice"]')
+    }
+
+
 
 }
 module.exports = new Order()
