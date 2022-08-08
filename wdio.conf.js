@@ -1,8 +1,9 @@
 const url = require('./url')
+const allure = require('allure-commandline')
 
 exports.config = {
     specs: [
-//  './test/B2B/Specs/setting/company/AddBranch.spec.js',
+  './test/B2B/Specs/setting/company/AddBranch.spec.js',
 //   './test/B2B/Specs/setting/company/AddWarehouse.spec.js',
 //   './test/B2B/Specs/setting/company/company.spec.js',
   
@@ -22,7 +23,8 @@ exports.config = {
 //          './test/B2B/Specs/Customers/customer.spec.js',
 //         './test/B2B/Specs/Products/Brands.spec.js',
 //           './test/B2B/Specs/Products/Inventory.spec.js', 
-             './test/B2B/Specs/salesModule/sample.spec.js',
+//           './test/B2B/Specs/salesModule/sample.spec.js',
+    //         './test/B2B/Specs/salesModule/Calculation/summary.spec.js'
     ],
      //Patterns to exclude
     exclude: [
@@ -68,16 +70,42 @@ exports.config = {
     
     framework: 'mocha',
     reporters: ['spec'],
-    // reporters: [['allure', {
-    //     outputDir: 'allure-results',
-    //     disableWebdriverStepsReporting: true,
-    //     disableWebdriverScreenshotsReporting: true,
-    // }]],
+     reporters: [['allure', {
+       outputDir: 'allure-results',
+       disableWebdriverStepsReporting: true,
+       disableWebdriverScreenshotsReporting: false,
+     }]],
 // }
   mochaOpts: {
         ui: 'bdd',
         timeout: 1200000,
         require: ['@babel/register'],
     },
+    afterStep: async function (step, scenario, { error, duration, passed }, context) {
+        if (error) {
+          await browser.takeScreenshot();
+        }
+      },
+
+    //   onComplete: function() {
+    //     const reportError = new Error('Could not generate Allure report')
+    //     const generation = allure(['generate', 'allure-results', '--clean'])
+    //     return new Promise((resolve, reject) => {
+    //         const generationTimeout = setTimeout(
+    //             () => reject(reportError),
+    //             5000)
+
+    //         generation.on('exit', function(exitCode) {
+    //             clearTimeout(generationTimeout)
+
+    //             if (exitCode !== 0) {
+    //                 return reject(reportError)
+    //             }
+
+    //             console.log('Allure report successfully generated')
+    //             resolve()
+    //         })
+    //     })
+    // }
 
 }
