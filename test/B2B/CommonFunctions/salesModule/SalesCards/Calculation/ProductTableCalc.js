@@ -4,6 +4,8 @@ const path = require("../../../../PageObjects/SalesModule/summarypage/ProductTab
 
 class CalcFunction {
 
+ 
+
 eleValue(ele){
     return ele.getValue();
 }

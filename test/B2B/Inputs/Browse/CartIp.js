@@ -14,7 +14,7 @@ function cartPageInput() {
     this.ProdQty1="21";
     this.ProdQty2="5";
     this.LeadName = 'sanity';
-    this.BuyerName = 'Apptino';
+    this.BuyerName = 'Personiv Coimbatore ';
     this.BuyerName1="preetha pvt ltd";
     this.BuyerName2="NIET";
     this.BuyerName3="Zoho";
@@ -30,7 +30,7 @@ function cartPageInput() {
     this.customAlert="You cannot create enquiry with custom product(s)";
     this.uploadAlert = "Uploading attachment, please wait";
     this.Attachment = path.join(__dirname,'./../../../FileUtils/Growmax PWA Icon 500x500.png');
-    this.uploadExcel=path.join(__dirname,'./../../../FileUtils/sample-cart.1fd3e1a4.xlsx');
+    this.uploadExcel=path.join(__dirname,'./../../../FileUtils/sample-cart.xlsx');
     this.Attachmenttext="text";
     this.qtyAlert="Invalid quantity";
 }

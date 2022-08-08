@@ -119,7 +119,7 @@ checkVisibleClickableMove = async (ele) => {
   // Wait for an element, check clickable before clicking
   checkVisibleClickableAndClick = async (ele) => {
     await ele.waitForDisplayed(1000);
-    await ele.waitForClickable({ timeout: 2000 });
+    await ele.waitForClickable({ timeout: 4000 });
     await ele.click();
   };
   //   Clear the input and enter the value
@@ -233,6 +233,7 @@ checkVisibleClickableMove = async (ele) => {
     await browser.pause(2000);
     await ele.setValue(searchText);
     await ele.click();
+    await browser.pause(2000);
     await ele.keys("\uE015");
     await browser.pause(3000);
     await ele.keys("\uE007");

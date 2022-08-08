@@ -1,3 +1,4 @@
+/* Exporting the object. */
 module.exports={
 
     new:'https://new.bcommerce.in',
