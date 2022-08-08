@@ -1,7 +1,8 @@
 function AddCustomProducts(){
     const path = require('path');
-    this.ProductID1="CUSTOM0014"
-    this.ProductID2="CUSTOM0015"
+    this.ProductID1="CUSTOM0041"
+    this.ProductID2="CUSTOM0042"
+    this.ProductID3="CUSTOM0043"
     this.ProductVariantname="BlackBoard"
     this.Productname="White shirt"
     this.Primarycategory="Sub category"

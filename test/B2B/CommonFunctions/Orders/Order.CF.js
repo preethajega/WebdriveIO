@@ -10,6 +10,8 @@ class order extends Path {
     ClickCartIcon1 = async (toclickcart) => {
         await ActionWrappers.Click(toclickcart)
     }
+
+ //   Buyer placing the order
     Place_Order = async(createorderbtn,searchpath,searchvalue,pathofvalue,pathofsnackbar,toastmsgRP,placeorderbtn,pathofsnackbar1,toastmsgRD) => {
         await ActionWrappers.Click1(createorderbtn)
         await browser.pause(8000)
@@ -22,6 +24,12 @@ class order extends Path {
         await ActionWrappers.Click1(placeorderbtn)
         await ActionWrappers.snackBarValidate(pathofsnackbar1,toastmsgRD)
     }
+    Select_Tag = async(tagpath)=>{
+        await ActionWrappers.Click1(tagpath)
+        await tagpath.keys('\ue015')
+        await tagpath.keys('\ue007')
+    }
+    // Buyer naming the order
     PlaceOrder_NameDialog =async(pathofPO,PODbtn,pathofvalidation,vali_value,cancelPOD,pathofPO1,pathPO,POvalue,PODbtn1)=>{
         await ActionWrappers.Click(pathofPO)
         await ActionWrappers.Click1(PODbtn)

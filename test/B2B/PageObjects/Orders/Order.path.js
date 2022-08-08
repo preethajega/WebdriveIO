@@ -164,6 +164,12 @@ class Order extends page {
     get downloadOrderPDF() {
         return super.pathByXpath('//ul[@role="menu"]/li[4]')
        }
+       get Plusbtn_AddCP(){
+        return super.pathByXpath('//td[@class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall css-1qyou2d"]/child::button')
+       }
+       get Tagpath(){
+        return super.pathByXpath('//input[@placeholder="Search for tags"]')
+       }
 
       
        //*** Cancel the "ORDER ACKNOWLEDGED  buyer" ***// 

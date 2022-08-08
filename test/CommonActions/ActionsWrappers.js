@@ -157,6 +157,7 @@ class TestActionWrapper {
     await ele.click();
     await browser.pause(2000);
     await ele.keys(keyValue);
+    await browser.pause(2000);
     await ele.keys("\uE015");
     await browser.pause(1000);
     await ele.keys("\uE007");
