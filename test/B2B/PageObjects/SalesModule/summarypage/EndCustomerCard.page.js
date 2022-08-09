@@ -44,6 +44,12 @@ class EndCustomerCard extends Page{
         return super.pathByXpath('//p[text()="Provide required delivery date"]')
     }
 
+    //// BUYER SIDE REQUIRE DATE PICKER ///
+    get RequiredDeliveryDateBuyer(){
+        return super.pathByXpath('//label[text()="Required Date"]/following::button[@aria-label="Choose date"]')
+    }
+   
+
 /* ************* SPR FIELDS  ************* */
     get EndCusRefeNum(){
         return super.pathByName('Reference')

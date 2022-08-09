@@ -47,6 +47,11 @@ Updatedropdown = async(subIndPath,SubIndustrypath,subindustryIP,btn) =>{
     await actionWrapper.Click(btn)
     await actionWrapper.snackBarValidate(common.snackbar,compIp.saveAlert)
   }
+  clearDropdown = async(subIndPath,btn)=>{
+    await actionWrapper.clearValues(subIndPath)
+    await actionWrapper.Click(btn)
+    await actionWrapper.snackBarValidate(common.snackbar,compIp.saveAlert)
+  }
 UpdateDisabled= async(ele,input) =>{
     await actionWrapper.Click(ele)
     if ((await ele.setValue(input)) === false) {

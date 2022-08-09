@@ -112,7 +112,7 @@ get selectBuyer() {
     return super.xpathById("shippingChange");
   }
   get endCustNo() {
-    return super.xpathById("standard-number");
+    return super.pathById("standard-number");
   }
 
   get searchBox() {

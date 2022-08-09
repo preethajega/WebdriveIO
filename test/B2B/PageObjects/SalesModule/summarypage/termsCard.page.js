@@ -31,6 +31,12 @@ class TermsCard extends Page{
     get AddtionalTerm(){
         return super.pathByXpath('//textarea[@name="additionalTerms"]')
     }
+    get DeliveryPlaceTerm(){
+        return super.pathById('INCO2-terms-summary ')
+    }
+    get DeleveryPlaceErrMsg(){
+        return super.pathByXpath("//p[text()='Delivery Place is required']")
+    }
 
 }
 module.exports = new(TermsCard);

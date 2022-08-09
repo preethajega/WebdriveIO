@@ -18,5 +18,6 @@ function Approvalip(){
     this.insuranceTerm="Excluded. Buyer Scope"
     this.AddtionalTerm="Door Delivery"
     this.AddtionalTerm1="Door Delivery"
+    this.RequireApprialAlert="Quote requires approval"
 }
 module.exports = new Approvalip();

@@ -11,8 +11,11 @@ class Warehouse extends Page{
     get WarehouseCode(){
         return super.pathByName('wareHousecode')
     }
-    get PlantCode(){
-        return super.pathByName('plantCode')
+    get SalesOrgCode(){
+        return super.pathByName('salesOrgCode')
+    }
+    get DDSalesOrgCode(){
+        return super.pathByName('//input[@name="salesOrgCode"]/following::button[2]')
     }
     get CompDefaultWarehouse(){
         return super.pathByXpath("//li[contains(@class,'MuiListItem-co')][1]/div[2]")

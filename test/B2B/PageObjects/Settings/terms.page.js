@@ -32,6 +32,12 @@ class Terms extends Page{
     get ModeTerm(){
         return super.pathByXpath('(//input[contains(@name,"dispatchInstructionsCode")])[last()]')
     }
+    get ModeTermInputfitst(){
+       return super.pathByXpath('(//input[contains(@name,"termData[0].description")])[1]')
+    }
+    get ModeTermFirst(){
+        return super.pathByXpath('(//input[contains(@name,"dispatchInstructionsCode")])[1]')
+    }
     get FrightTerm(){
         return super.pathByXpath('(//input[contains(@name,"freightCode")])[last()]')
     }
@@ -44,7 +50,10 @@ class Terms extends Page{
     get WarrantyTerm(){
         return super.pathByXpath('(//input[contains(@name,"warrantyCode")])[last()]')
     }
-
+    get NeedApprovalFirst(){
+        // return super.pathByXpath('(//span[starts-with(@class,"MuiSwitch-root ")]//span//input)[last()]')
+        return super.pathByXpath('(//span[starts-with(@class,"MuiSwitch-root ")])[1]')
+    }
     get NeedApproval(){
         return super.pathByXpath('(//span[starts-with(@class,"MuiSwitch-root ")])[last()]')
     }

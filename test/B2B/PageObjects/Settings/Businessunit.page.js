@@ -18,10 +18,10 @@ class BU extends Page {
 // ************************   DIVISION & CHANNEL CARD  **************************
     
     get DivisionTab(){
-        return super.pathById('wrapped-tab-0')
+        return super.pathById('wrapped-tab-1')
     }
     get ChannelTab(){
-        return super.pathById('wrapped-tab-2')
+        return super.pathById('wrapped-tab-4')
     }
 
     get delefirstDiv_Cha(){
@@ -42,7 +42,7 @@ class BU extends Page {
 
 // ************************   BUSINESSUNIT CARD  **************************
     get BUTab(){
-        return super.pathById('wrapped-tab-1')
+        return super.pathById('wrapped-tab-3')
     }
     get addSymbol() {
         return super.pathByXpath('//button[@aria-label="Add business unit"]')
@@ -52,7 +52,7 @@ class BU extends Page {
     }
     get Code(){
         return super.pathByXpath('(//input[@id="margin-none"])[last()]')
-        }
+    }
     get priority(){
         return super.pathByXpath('(//input[starts-with(@id,"MSETT_PT_CD_")])[last()]')
     }

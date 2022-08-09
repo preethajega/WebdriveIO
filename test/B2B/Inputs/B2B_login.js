@@ -11,6 +11,11 @@ function B2B_loginIp() {
     this.Buyer3Password="Admin@123"
     this.PTCBuyerLogin="testerpree@gmail.com"
     this.logoutAlertMsg="Logged out successfully"
+    this.Buyer6Email="sakthiprasanth99@gmail.com"
+    this.Buyer6Password="Sakthi@123"
+    this.Buyer7Email="sakthisakthivelp9725@gmail.com"
+
+
 }
 
 

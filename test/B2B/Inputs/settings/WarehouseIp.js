@@ -8,7 +8,7 @@ function Warehouseip(){
     this.WarehouseName4="Ambattur Branch"
     this.WarehouseName5="AmbaturBranch"
     this.WarehouseCode="RP123"
-    this.PlantCode="RP321"
+    // this.PlantCode="RP321"
     this.MappedAddress1="Delhi"
     this.MappedAdress="Chennai"
     this.SearchAddressName="Rani paints"

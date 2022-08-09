@@ -85,41 +85,41 @@ describe('Warehouse card', () => {
     it('should validate a Branch Name field', async () => {
         await Warehouse_fn.FieldValid(Warehouse_path.errAddressName, Warehouseip.errmsgAddressName)
     });
-    // it('should change the custom Settings mode Optional into Required',async () => {
-    //     await actionsWrappers.scrollEleAndClick(custom_path.CustomTab)
-    //         await custom_fn.Status(custom_path.BranchReq, custom_path.AddressReq, custom_path.LocalityReq, custom_path.CityReq, custom_path.DistrReq, custom_path.StateReq,
-    //            custom_path.PincodeReq, custom_path.CountryReq, custom_path.PrimContactNoReq, custom_path.ContactNoReq, custom_path.TaxReq)
-    //         await custom_fn.snakBarValid(custom_path.SavelBtn)
-    //     await actionsWrappers.scrollEleAndClick(custom_path.CompTab)
-    // });
-    // it('should validate a Address field', async () => {
-    //     await Warehouse_fn.FieldValid(Warehouse_path.errAddress, Warehouseip.errmsgAddress)
-    // });
-    // it('should validate a Locality field', async () => {
-    //     await Warehouse_fn.FieldValid(Warehouse_path.errLocality, Warehouseip.errmsgLocality)
-    // });
-    // it('should validate a Country field', async () => {
-    //     await Warehouse_fn.FieldValid(Warehouse_path.errCountry, Warehouseip.errmsgCountry)
-    // });
-    // it('should validate a State field', async () => {
-    //     await Warehouse_fn.FieldValid(Warehouse_path.errState, Warehouseip.errmsgState)
-    // });
-    // it('should validate a District field', async () => {
-    //     await Warehouse_fn.FieldValid(Warehouse_path.errDistrict, Warehouseip.errmsgDistrict)
-    // });
-    // it('should validate a Pincode field', async () => {
-    //     await Warehouse_fn.FieldValid(Warehouse_path.errPincode, Warehouseip.errmsgPinCode)
-    // });
-    // it('should validate a City field', async () => {
-    //     await Warehouse_fn.FieldValid(Warehouse_path.errCity, Warehouseip.errmsgCity)
-    // });
-    // it('should change the Customization mode into Optional',async () => {
-    //     await actionsWrappers.scrollEleAndClick(custom_path.CustomTab)
-    //     await custom_fn.Status(custom_path.BranchOpt, custom_path.AddressOpt, custom_path.LocalityOpt, custom_path.CityOpt, custom_path.DistrOpt, custom_path.StateOpt,
-    //         custom_path.PincodeOpt, custom_path.CountryOpt, custom_path.PrimContactNoOpt, custom_path.ContactNoOpt, custom_path.TaxOpt)
-    //      await custom_fn.snakBarValid(custom_path.SavelBtn) 
-    //      await actionsWrappers.scrollEleAndClick(custom_path.CompTab)  
-    // });
+    it('should change the custom Settings mode Optional into Required',async () => {
+        await actionsWrappers.scrollEleAndClick(custom_path.CustomTab)
+            await custom_fn.Status(custom_path.BranchReq, custom_path.AddressReq, custom_path.LocalityReq, custom_path.CityReq, custom_path.DistrReq, custom_path.StateReq,
+               custom_path.PincodeReq, custom_path.CountryReq, custom_path.PrimContactNoReq, custom_path.ContactNoReq, custom_path.TaxReq)
+            await custom_fn.snakBarValid(custom_path.SavelBtn)
+        await actionsWrappers.scrollEleAndClick(custom_path.CompTab)
+    });
+    it('should validate a Address field', async () => {
+        await Warehouse_fn.FieldValid(Warehouse_path.errAddress, Warehouseip.errmsgAddress)
+    });
+    it('should validate a Locality field', async () => {
+        await Warehouse_fn.FieldValid(Warehouse_path.errLocality, Warehouseip.errmsgLocality)
+    });
+    it('should validate a Country field', async () => {
+        await Warehouse_fn.FieldValid(Warehouse_path.errCountry, Warehouseip.errmsgCountry)
+    });
+    it('should validate a State field', async () => {
+        await Warehouse_fn.FieldValid(Warehouse_path.errState, Warehouseip.errmsgState)
+    });
+    it('should validate a District field', async () => {
+        await Warehouse_fn.FieldValid(Warehouse_path.errDistrict, Warehouseip.errmsgDistrict)
+    });
+    it('should validate a Pincode field', async () => {
+        await Warehouse_fn.FieldValid(Warehouse_path.errPincode, Warehouseip.errmsgPinCode)
+    });
+    it('should validate a City field', async () => {
+        await Warehouse_fn.FieldValid(Warehouse_path.errCity, Warehouseip.errmsgCity)
+    });
+    it('should change the Customization mode into Optional',async () => {
+        await actionsWrappers.scrollEleAndClick(custom_path.CustomTab)
+        await custom_fn.Status(custom_path.BranchOpt, custom_path.AddressOpt, custom_path.LocalityOpt, custom_path.CityOpt, custom_path.DistrOpt, custom_path.StateOpt,
+            custom_path.PincodeOpt, custom_path.CountryOpt, custom_path.PrimContactNoOpt, custom_path.ContactNoOpt, custom_path.TaxOpt)
+         await custom_fn.snakBarValid(custom_path.SavelBtn) 
+         await actionsWrappers.scrollEleAndClick(custom_path.CompTab)  
+    });
 
 
 
