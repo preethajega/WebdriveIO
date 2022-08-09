@@ -3,7 +3,7 @@ const allure = require('allure-commandline')
 
 exports.config = {
     specs: [
-        // './test/B2B/Specs/setting/company/AddBranch.spec.js',
+         './test/B2B/Specs/setting/company/AddBranch.spec.js',
         // './test/B2B/Specs/setting/company/AddWarehouse.spec.js',
         // './test/B2B/Specs/setting/company/company.spec.js',
         // './test/B2B/Specs/setting/API.spec.js',
@@ -25,7 +25,7 @@ exports.config = {
         //  './test/B2B/Specs/salesModule/Quotes/Buyer/RFQBuyerQuote.spec.js',
          //'./test/B2B/Specs/salesModule/Quotes/seller/CustomProductDialog.js'
         //  './test/B2B/Specs/salesModule/Quotes/seller/CustomProductDialog.js',
-         './test/B2B/Specs/salesModule/Quotes/Seller/RFQSellerQuote.spec.js'
+        //'./test/B2B/Specs/salesModule/Quotes/Seller/RFQSellerQuote.spec.js'
         //  './test/B2B/Specs/Cart/Cart.spec.js',
         // './test/B2B/Specs/salesModule/Quotes/seller/Quotefilter.spec.js'
         // './test/B2B/Specs/salesModule/Quotes/seller/Orderfilter.spec.js'
@@ -39,11 +39,16 @@ exports.config = {
     ],
     maxInstances: 15,
     capabilities: [{
-    
-        maxInstances: 5,
-        browserName: 'chrome',
-        acceptInsecureCerts: true
-    }],
+      maxInstances: 1,
+      browserName: 'chrome',
+      'goog:chromeOptions': {
+          prefs: {
+              'profile.managed_default_content_settings.popups' : 1,
+              'profile.managed_default_content_settings.notifications' : 1,
+          }
+      }
+
+  }],
     //
     
     // ===================
