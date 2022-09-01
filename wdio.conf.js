@@ -3,7 +3,7 @@ const allure = require('allure-commandline')
 
 exports.config = {
     specs: [
-         './test/B2B/Specs/setting/company/AddBranch.spec.js',
+        //  './test/B2B/Specs/setting/company/AddBranch.spec.js',
         // './test/B2B/Specs/setting/company/AddWarehouse.spec.js',
         // './test/B2B/Specs/setting/company/company.spec.js',
         // './test/B2B/Specs/setting/API.spec.js',
@@ -31,7 +31,7 @@ exports.config = {
         // './test/B2B/Specs/salesModule/Quotes/seller/Orderfilter.spec.js'
         // './test/B2B/Specs/Orders/Reorder.spec.js'
         // './test/B2B/Specs/Orders/Order.spec.js'        
-        
+        // './test/B2B/Specs/salesModule/Calculation/summary.spec.js'
     ],
      //Patterns to exclude
     exclude: [

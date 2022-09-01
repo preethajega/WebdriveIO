@@ -15,6 +15,9 @@ class ApplyDiscount extends Page{
     get ByDiscountBtn(){
         return super.pathByXpath('//button[text()="By Discount %"]')
     }
+    get DiscountAmntBtn(){
+        return super.pathByXpath('//button[text()="Discount Amount"]')
+    }
 
     get ApplyDisReset(){
         return super.pathByXpath('//div[@class="MuiBox-root css-138dq1"]/button[1]')
@@ -71,6 +74,9 @@ class ApplyDiscount extends Page{
     get RoundUpApply(){
         return super.pathByXpath('//div[@class="MuiBox-root css-1rxpjkd"]/button[2]')
     }
+    get NewSubTotal(){
+        return super.pathByXpath('//button[text()="New Subtotal"]')
+    }
     /********************** PRICE DETAILS CARD ********************** */
     get TotalTextValue(){
         return super.pathByXpath('//h5[text()="Total"]/following::h5[1]')
@@ -82,7 +88,7 @@ class ApplyDiscount extends Page{
         return super.pathByXpath('//h5[text()="Subtotal"]/following::h6[1]')
     }
     get ShippingChargeTxtValue(){
-        return super.pathByXpath('(//h5[text()="Shipping Charges"]/following::h6)[5]')
+        return super.pathByXpath('(//h5[text()="Shipping Charges"]/following::h6)[1]')
     }
     get PFTextvalue(){
         return super.pathByXpath('(//h5[text()="P&F Rate"]/following::h6[3])[1]')

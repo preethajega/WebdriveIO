@@ -72,6 +72,19 @@ targetPrice(row)  {
     return $(`[name="products[${row}].buyerRequestedPrice"]`)
 }
 
+Amount(row){
+    return $(`//tbody/tr[${row}]/td[11]/p`)
+
+    // return $(`//tbody/tr[${row}]/td[12]/p`)
+
+}
+PFrate(row){
+    return $(`//tbody/tr[${row}]/td[12]/p`)
+    
+    // return $(`//tbody/tr[${row}]/td[13]/p`)
+
+}
+
 get AddCustomProduct() {
     return super.pathByXpath('//button[text()="Add Custom Product"]');
 }
@@ -82,6 +95,16 @@ get AddMoreProduct(){
 
 get searchResultsImage() {
     return super.pathByXpath('//*[@placeholder="Search for products"]/following::div[4]');
+}
+
+get ScrolProduct(){
+    return super.pathByXpath('//h5[text()="Products"]')
+}
+get DMCToggleBtn(){
+  return super.pathByXpath('//span[text()="Show DMC?"]')
+}
+get SaveBtn(){
+    return super.pathByXpath('//button[text()="Save"]')
 }
 
   
