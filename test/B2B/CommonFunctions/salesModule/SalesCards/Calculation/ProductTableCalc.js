@@ -2,6 +2,11 @@ const actionWrapper = require("../../../../../CommonActions/ActionsWrappers");
 const path = require("../../../../PageObjects/SalesModule/summarypage/ProductTable.page");
 const Page = require("../../../../PageObjects/page");
 const TableIP=require('../../../../Inputs/salesModule/summarypage/ProductTableCal_IP')
+const ApplyDisCommon=require('../../../../CommonFunctions/salesModule/SalesCards/ApplyDiscountCard')
+const ApplyDisIP=require('../../../../Inputs/salesModule/summarypage/ApplyDiscountIP')
+const priceDetailpage=require('../../../../PageObjects/SalesModule/summarypage/ApplyDiscountCard.page')
+const prodTable_path = require("../../../../PageObjects/SalesModule/summarypage/ProductTable.page");
+
 
 
 class CalcFunction extends Page{
@@ -276,6 +281,72 @@ Validation1=async(value1,value2,value3)=>{
       }
     }
    }
+
+   AddOnDis=async(DisIP)=>{
+    await ApplyDisCommon.ApplyDiscBYAmount(priceDetailpage.AddOnDiscount,priceDetailpage.ByDiscountInput,DisIP,priceDetailpage.ApplyDisApply)
+    let inputvalue=await this.eleValue(priceDetailpage.ByDiscountInput)
+    let disValue=await this.eleValue(prodTable_path.discount(0))
+
+    if ((inputvalue*1==disValue)) {
+        await ApplyDisCommon.IncreseDecreseDis(priceDetailpage.IncreaseBtn,priceDetailpage.ApplyDisApply)
+        let inputvalue=await this.eleValue(priceDetailpage.ByDiscountInput)
+        let disValue=await this.eleValue(prodTable_path.discount(0))  
+
+        if ((inputvalue*2==disValue)) {
+            await ApplyDisCommon.IncreseDecreseDis(priceDetailpage.DecreaseBtn,priceDetailpage.ApplyDisApply)
+            let inputvalue=await this.eleValue(priceDetailpage.ByDiscountInput)
+            let disValue=await this.eleValue(prodTable_path.discount(0))
+
+            if (inputvalue==disValue) {
+                console.log("decrease");
+            }else{
+                console.log(inputvalue,disValue);
+                console.log("DEC");
+
+            }  
+        }
+    }
+   }
+
+
+//    roundupPlusTwo=async()=>{
+//     let text=await ele.getText()
+//     let value=text.slice(1)
+//     var numarray=value.split('.');
+//     var a=new Array();
+//     a=numarray;
+//     var c=parseInt(a[1])
+//     var b=18
+//     if(c+1==b){
+//     console.log("crt");
+//    }else{
+//     console.log("wrong")
+//     }
+//    }
+
+roundupPlusTwo=async()=>{
+    await this.eleText()
+}
+// export const roundUp = (num, precision) => {
+//     precision = Math.pow(10, precision)
+//     return Math.ceil(num * precision) / precision
+// }
+// export const round5 = (x) => {
+//     return Math.ceil(x / 5) * 5;
+// }
+// export const getRoundup = (products, roundValue, crncyfactor, buyerCurrencyIsBase) => {
+//     _.each(products, item => {
+//         item.actualdisc = item.discount
+//         item.acturalUP = item.unitPrice
+//         item.unitPrice = roundUp(item.unitPrice, roundValue)
+//         if (buyerCurrencyIsBase) {
+//             item.unitPriceBackUp = item.unitPrice / crncyfactor
+//         } else {
+//             item.unitPriceBackUp = _.cloneDeep(item.unitPrice)
+//         }
+//     })
+//     return products
+// }
 
 
 
