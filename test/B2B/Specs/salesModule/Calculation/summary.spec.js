@@ -286,33 +286,42 @@ describe("cart Page", () => {
       await prodTable_fn.ByDiscount(prodTable_path.unitListPrice(0),prodTable_path.discount(0),prodTable_path.unitPrice(0),prodTable_path.askedQuantity(0),prodTable_path.Amount(1),prodTable_path.Amount(2),priceDetailpage.SubTotalTxtValue)
       await ApplyDisCommon.ResetDiscount(priceDetailpage.ByDiscountBtn,priceDetailpage.ApplyDisReset)
       ////// Add On Discount //////
+
       // await ApplyDisCommon.ApplyDiscBYAmount(priceDetailpage.AddOnDiscount,priceDetailpage.ByDiscountInput,ApplyDisIP.ByDiscount1,priceDetailpage.ApplyDisApply)
       // await ApplyDisCommon.IncreseDecreseDis(priceDetailpage.IncreaseBtn,priceDetailpage.ApplyDisApply)
       // await browser.pause(2000)
       // await ApplyDisCommon.IncreseDecreseDis(priceDetailpage.DecreaseBtn,priceDetailpage.ApplyDisApply)
+
       await prodTable_fn.AddOnDis(ApplyDisIP.ByDiscount)
     });
 
-    // it('Check The Round Up',async () => {
-    //   ////// plus one //////
-    //   await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpPlusOne,priceDetailpage.RoundUpApply)
-    //   await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpPlusOne,priceDetailpage.RoundUpReset)
+    it('Check The Round Up',async () => {
+      //// Change the unit price ////
+      await prodTable_fn.AddedTwoValue(prodTable_path.unitPrice(0),CalIP.UP2,prodTable_path.unitPrice(0),CalIP.UP3)
+       ////// plus one //////
+      await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpPlusOne,priceDetailpage.RoundUpApply)
+      await prodTable_fn.NewSubTotal(prodTable_path.Amount(1),prodTable_path.Amount(2),priceDetailpage.SubTotalTxtValue)
+      await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpPlusOne,priceDetailpage.RoundUpReset)
 
-    //   ////// plus Two /////
-    //   await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpPlusTwo,priceDetailpage.RoundUpApply)
-    //   await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpPlusTwo,priceDetailpage.RoundUpReset)
+      ////// plus Two /////
+      await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpPlusTwo,priceDetailpage.RoundUpApply)
+      await prodTable_fn.NewSubTotal(prodTable_path.Amount(1),prodTable_path.Amount(2),priceDetailpage.SubTotalTxtValue)
+      await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpPlusTwo,priceDetailpage.RoundUpReset)
 
     //   ////// Minus One //////
-    //   await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpMinusOne,priceDetailpage.RoundUpApply)
-    //   await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpMinusOne,priceDetailpage.RoundUpReset)
+      await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpMinusOne,priceDetailpage.RoundUpApply)
+      await prodTable_fn.NewSubTotal(prodTable_path.Amount(1),prodTable_path.Amount(2),priceDetailpage.SubTotalTxtValue)
+      await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpMinusOne,priceDetailpage.RoundUpReset)
 
     //   ////// Minus Two //////
-    //   await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpMinusTwo,priceDetailpage.RoundUpApply)
-    //   await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpMinusTwo,priceDetailpage.RoundUpReset)
+      await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpMinusTwo,priceDetailpage.RoundUpApply)
+      await prodTable_fn.NewSubTotal(prodTable_path.Amount(1),prodTable_path.Amount(2),priceDetailpage.SubTotalTxtValue)
+      await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpMinusTwo,priceDetailpage.RoundUpReset)
 
-    //   ///// Zero //////
-    //   await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpZero,priceDetailpage.RoundUpApply)
-    //   await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpZero,priceDetailpage.RoundUpReset)
-    // });
+       ///// Zero //////
+    await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpZero,priceDetailpage.RoundUpApply)
+    await prodTable_fn.NewSubTotal(prodTable_path.Amount(1),prodTable_path.Amount(2),priceDetailpage.SubTotalTxtValue)
+    await ApplyDisCommon.RoundUp(priceDetailpage.RoundUpZero,priceDetailpage.RoundUpReset)
+     });
 
 });
