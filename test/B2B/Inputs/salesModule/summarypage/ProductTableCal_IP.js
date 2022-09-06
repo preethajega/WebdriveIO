@@ -11,7 +11,7 @@ function ProductTableCalIp(){
 
     this.UP=500
     this.UP1=650
-    this.UP2=532.54
+    this.UP2=63.47
     this.UP3=432.78
     this.Cost1=550
     this.Cost2=430

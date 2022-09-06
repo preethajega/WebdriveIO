@@ -82,7 +82,15 @@ PFrate(row){
     return $(`//tbody/tr[${row}]/td[12]/p`)
     
     // return $(`//tbody/tr[${row}]/td[13]/p`)
-
+}
+get CheckBox(){
+    return super.pathByXpath('//tbody/tr[1]/td[1]/span/input')
+}
+get RemoveBtn(){
+    return super.pathByXpath('//button[text()="Remove"]')
+}
+get YesBtn(){
+    return super.pathByXpath('//button[text()="Yes"]')
 }
 
 get AddCustomProduct() {
@@ -106,6 +114,7 @@ get DMCToggleBtn(){
 get SaveBtn(){
     return super.pathByXpath('//button[text()="Save"]')
 }
+
 
   
 

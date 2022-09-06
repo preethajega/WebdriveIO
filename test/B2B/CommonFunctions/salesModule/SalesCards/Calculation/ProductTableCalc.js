@@ -240,14 +240,7 @@ Validation1=async(value1,value2,value3)=>{
     await browser.pause(5000)
    }
 
-//    text=async(ele)=>{
-//     let text=await ele.getText()
-//     let value=text.slice(1)
-//     let Value1=value.replace(/,/g, '')
-//     let value2=parseFloat(Value1)
-//     return value2
-//    }
-
+   
    NewSubTotal=async(ele1,ele2,ele3)=>{
     const value1=await this.eleText(ele1)
     const value2=await this.eleText(ele2)
@@ -308,6 +301,40 @@ Validation1=async(value1,value2,value3)=>{
     }
    }
 
+RoundUpcal=async(RoundUpBtn,path)=>{
+await actionWrapper.Click(RoundUpBtn)
+let num=await this.eleValue(prodTable_path.unitPrice(0))
+let pre=await path.getText()
+for(let i=0;i<=2;i++){
+    if (i==pre) {
+    console.log("roundup value")
+    let precision=pre
+    let precision1= Math.pow(10, precision)
+    let result= Math.ceil(num * precision1) / precision1
+    console.log(result,"roundup value.......")
+    return result
+}
+}
+for(let i=-1;i>=-2;i--){
+  if (i==pre) {
+    let precision=pre
+    let precision1= Math.pow(10, precision)
+    let result= Math.ceil(num * precision1) / precision1
+    console.log(result)
+    return result
+    }
+}
+    
+   }
+
+   RemoveProd=async(checkbox,removebtn,yesbtn)=>{
+    await actionWrapper.Click1(checkbox)
+    await actionWrapper.Click1(removebtn)
+    await actionWrapper.Click(yesbtn)
+   }
+
+       
+
 
 //    roundupPlusTwo=async()=>{
 //     let text=await ele.getText()
@@ -323,10 +350,6 @@ Validation1=async(value1,value2,value3)=>{
 //     console.log("wrong")
 //     }
 //    }
-
-roundupPlusTwo=async()=>{
-    await this.eleText()
-}
 // export const roundUp = (num, precision) => {
 //     precision = Math.pow(10, precision)
 //     return Math.ceil(num * precision) / precision
@@ -347,6 +370,13 @@ roundupPlusTwo=async()=>{
 //     })
 //     return products
 // }
+
+// item.contribution =
+//             parseFloat(((item.totalPrice / subtotal) * 100).toFixed(precision));
+//         item.revisedValue = parseFloat(((newTotal * item.contribution) / 100).toFixed(precision));
+//         item.unitQuotePrice = parseFloat((item.revisedValue / item.askedQuantity).toFixed(precision));
+//         item.unitQuotePriceDiscount = parseFloat(
+//             parseFloat((((item.unitPrice - item.unitQuotePrice) / item.unitPrice) * 100).toFixed(precision))
 
 
 
